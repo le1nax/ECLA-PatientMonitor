@@ -55,99 +55,12 @@ void SocketClient::sendBytes(vector<std::byte> bytes)
     uint32_t numBytesSent = SendTo(m_sa_remoteIPtarget, charBytes, len, 0);
 }
 
-void SocketClient::SendWaveAssociationRequest()
-{
-    std::cout << "Sending WaveAssociationRequest" << std::endl;
-    //sendBytes(aarq_msg_wave_ext_poll2);
-}
 
 void SocketClient::ProcessPacket(char* buffer)
 {
     std::cout << "finished ProcessPacket" << std::endl;
 }
 
-
-/// @brief 
-/// @param bcdtimebuffer 
-/// @return 
-
-
-tm SocketClient::GetAbsoluteTimeFromBCDFormat(char* bcdtimebuffer)
-    {
-        ///@todo vielleicht anderen struct als tm benutzen
-        tm dateTime = m_baseDateTime;
-
-        int century = BinaryCodedDecimalToInteger(bcdtimebuffer[0]); //century
-        int year = BinaryCodedDecimalToInteger(bcdtimebuffer[1]); //year
-        int month = BinaryCodedDecimalToInteger(bcdtimebuffer[2]); //month
-        int day = BinaryCodedDecimalToInteger(bcdtimebuffer[3]);//day
-        int hour = BinaryCodedDecimalToInteger(bcdtimebuffer[4]);//hour
-        int minute = BinaryCodedDecimalToInteger(bcdtimebuffer[5]);//minute
-        int second = BinaryCodedDecimalToInteger(bcdtimebuffer[6]);//second
-        int fraction = BinaryCodedDecimalToInteger(bcdtimebuffer[7]); //fraction
-
-        int formattedyear = (century * 100) + year;
-
-        dateTime.tm_sec = second;
-        dateTime.tm_min = minute;
-        dateTime.tm_hour = hour;
-        dateTime.tm_mday = day;
-        dateTime.tm_mon = month;
-        dateTime.tm_year = year;
-
-        return dateTime;
-
-    }
-
-
-
-
-void SocketClient::AddTmMillseconds(tm& timeInfo, double milliseconds) 
-{
-    // Convert milliseconds to seconds
-    int seconds = milliseconds / 1000;
-
-    // Add seconds to tm_sec
-    timeInfo.tm_sec += seconds;
-
-    // Normalize tm_sec and calculate the overflow in minutes
-    int overflowMinutes = timeInfo.tm_sec / 60;
-    timeInfo.tm_sec %= 60;
-
-    // Add overflow minutes to tm_min
-    timeInfo.tm_min += overflowMinutes;
-
-    // Normalize tm_min and calculate the overflow in hours
-    int overflowHours = timeInfo.tm_min / 60;
-    timeInfo.tm_min %= 60;
-
-    // Add overflow hours to tm_hour
-    timeInfo.tm_hour += overflowHours;
-
-    // Normalize tm_hour and calculate the overflow in days
-    int overflowDays = timeInfo.tm_hour / 24;
-    timeInfo.tm_hour %= 24;
-
-    // Add overflow days to tm_mday
-    timeInfo.tm_mday += overflowDays;
-
-    // Normalize tm_mday and calculate the overflow in months
-    int overflowMonths = timeInfo.tm_mday / 32;
-    timeInfo.tm_mday %= 32;
-
-    // Add overflow months to tm_mon
-    timeInfo.tm_mon += overflowMonths;
-
-    // Normalize tm_mon and calculate the overflow in years
-    int overflowYears = timeInfo.tm_mon / 12;
-    timeInfo.tm_mon %= 12;
-
-    // Add overflow years to tm_year
-    timeInfo.tm_year += overflowYears;
-
-    // Update other time components if necessary
-    // (e.g., tm_wday, tm_yday, tm_isdst)
-}
 
 void SocketClient::SendCycledExtendedPollDataRequest(size_t nInterval)
 {

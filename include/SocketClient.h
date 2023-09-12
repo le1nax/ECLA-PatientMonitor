@@ -25,10 +25,6 @@ class SocketClient : public UDPSocket {
         /// @brief a getter method for the SOCKET sock
         /// @return the membervariable SOCKET sock
         SOCKET getSocket();
-
-        /// @brief Sendet Assiation Request
-        /// @brief A method that sends a Wave Association Request by sending the corresponding bytes via sendBytes()
-        void SendWaveAssociationRequest();
         
         sockaddr_in m_sa_remoteIPtarget;
         /// @brief A method for receiving data from the server
@@ -43,10 +39,9 @@ class SocketClient : public UDPSocket {
 
         /// @brief Processes all incoming types of data protocols
         /// @param buffer char array with the sent bytes
-        /// @brief the method that is called whenever data is received from the monitor to categorise, decode and process the received data
-        /// @param buffer the buffer with the received data
         void ProcessPacket(char* buffer);
 
+        ///@brief Logging variable (Last message received)
         char* m_lastMsg;
         size_t lastMsgSize = 0;
 
@@ -55,10 +50,7 @@ class SocketClient : public UDPSocket {
         std::string m_DeviceID= "";
         std::string m_idlabelstring = "";
         const unsigned short m_port = 0; 
-        /// @brief A method to create a mask for only the significant bits, here mainly for creating a mask for the msb
-        /// @param significantbits the significant bits
-        /// @return the mask
-        int CreateMask(int significantbits);
+        
         /// @brief A method to convert int to unsigned char
         /// @param value the int value to be converted
         /// @return the unsgined char
@@ -67,27 +59,8 @@ class SocketClient : public UDPSocket {
         /// @brief A method to check if data is in little endian format
         /// @return true if it is little endian
         bool IsLittleEndian();
-        void AppendToCSVBuilder(std::ostringstream& csvBuilder, const std::string& timestamp, const std::string& relativetimestamp, const std::string& systemLocalTime, double waveval);        tm m_baseDateTime{};
-        void SaveNumericValueListRows();
-        /// @brief A method to write the headers for the csv file of the exported data
-        void WriteNumericHeadersList();
-        /// @brief A method to write the numeric values for the csv file of the exported data
-        void SaveNumericValueListConsolidatedCSV();
-        /// @brief A method to write the headers for the csv file of the exported data at transmission start
-        void WriteNumericHeadersListConsolidatedCSV();
-        bool m_transmissionstart = TRUE;
-        tm GetAbsoluteTimeFromBCDFormat(char* bcdtimebuffer);
-        void AddTmMillseconds(tm& time, double millisecs);
-
-        /// @brief A method to initialise the possible messages with their corresponding bytes
-        void initMsgs();
 
         private:
-
-        /// @brief A method that is called as part of the ProcessPacket() function to further categorise, decode and process the received data
-        /// @param buffer the buffer with the receieved data
-        void CheckLinkedPollPacketActionType(char* buffer);
-        
       
         void SendRTSAPriorityMessage(std::vector<std::byte> WaveTrType);
         /// @brief A method for the thread that repeatedly sends an extended poll data request
@@ -97,10 +70,6 @@ class SocketClient : public UDPSocket {
         /// @param nInterval the time interval between polls
         void SendCycledExtendedPollWaveDataRequest(size_t nInterval);
 
-        
-        /// @brief A method for repeatedly sending an MDSCreateEventResult so that the monitor keeps the connection alive
-        /// @param nInterval the time interval between sends
-        void KeepConnectionAlive(int nInterval = 0);
         
         /// @brief the Callback function to be called whenever a data packet has been received to process the data
         /// @param errorCode the error code from the receive operation
