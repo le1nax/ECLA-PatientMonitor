@@ -1,0 +1,8 @@
+Package: pcanbasic
+Version: 1.0.0
+Depends: vcpkg-cmake:x64-windows
+Architecture: x86-windows
+Multi-Arch: same
+Abi: 3266b5e4ec49b5affc6fc7c046c65c792384fb8fde02ca24c44d7b30c2c11013
+Description: pcanbasic cpp lib
+Status: install ok installed

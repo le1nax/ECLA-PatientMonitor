@@ -1,0 +1,16 @@
+x86-windows/
+x86-windows/bin/
+x86-windows/bin/PCANBasic.dll
+x86-windows/debug/
+x86-windows/debug/bin/
+x86-windows/debug/bin/PCANBasic.dll
+x86-windows/debug/lib/
+x86-windows/debug/lib/PCANBasic.lib
+x86-windows/include/
+x86-windows/include/PCANBasic.h
+x86-windows/lib/
+x86-windows/lib/PCANBasic.lib
+x86-windows/share/
+x86-windows/share/pcanbasic/
+x86-windows/share/pcanbasic/vcpkg.spdx.json
+x86-windows/share/pcanbasic/vcpkg_abi_info.txt

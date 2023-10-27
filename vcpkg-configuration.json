@@ -1,0 +1,6 @@
+{
+  "overlay-ports": [
+    "C:/src/vcpkg/ports/pcanbasic",
+    "C:/src/vcpkg/ports/vcpkg-cmake"
+   ]
+}

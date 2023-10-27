@@ -1,0 +1,14 @@
+{
+    "name": "ecla-pm",
+    "version": "1.0.0",
+    "dependencies": [
+      
+        {
+          "name": "pcanbasic"
+        },
+        {
+          "name": "vcpkg-cmake",
+          "host": true
+        } 
+    ]
+  }
