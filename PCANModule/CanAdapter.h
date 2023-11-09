@@ -15,4 +15,5 @@ public:
 private:
 	// Define the PCAN device to be used
 	TPCANHandle device;
+	DataPoint parseDatapoint(TPCANMsg msg);
 };

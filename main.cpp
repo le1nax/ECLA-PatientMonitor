@@ -22,6 +22,7 @@ int main()
 	for (size_t i = 0; i < 15; i++)
 	{
 		DataPoint data = can_adapter.listen();
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		tr.sendData(data);
 	}
 	tr.endSending();

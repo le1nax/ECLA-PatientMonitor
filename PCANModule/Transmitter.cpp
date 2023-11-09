@@ -17,12 +17,12 @@ Transmitter::Transmitter()
 
 bool Transmitter::sendData(const DataPoint& data)
 {
-	file << data.internID << ",";
-	for (int i = 0; i < data.dataLength; i++)
+	// file << data.m_internID << ",";
+	for (int i = 0; i < 8; i++)
 	{
-		file << data.data[i];
+		file << data.m_value[i];
 	}
-	file << "," << data.timestamp << std::endl;
+	file << "," << data.m_timestamp << std::endl;
 	return true;
 }
 

@@ -18,6 +18,9 @@ bin/
 lib/
 libs/
 
+#vcpkg
+.vcpkg_installed
+
 # IDE-specific files and directories
 .vscode/
 .idea/

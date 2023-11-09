@@ -18,6 +18,12 @@
 #include <WS2tcpip.h>
 
 static constexpr size_t maxbuffersize = 2001;
+static constexpr size_t valuebuffersize = sizeof(int32_t);
+static constexpr size_t beaconbuffersize = sizeof(uint8_t);
+static constexpr size_t timestampbuffersize = sizeof(uint16_t);
+static constexpr size_t counterbuffersize = beaconbuffersize;
+
+
 
 template<typename... Ts>
 std::vector<std::byte> make_bytes(Ts&&... args) noexcept {
@@ -126,6 +132,16 @@ static int BinaryCodedDecimalToInteger(int value)
 
 /// @todo testen
 static char* ReadBytesFromBuffer(const char* array, size_t startIndex, size_t numBytes) {
+    char* output = new char[numBytes];
+
+    for (size_t i = 0; i < numBytes; ++i) {
+        output[i] = array[startIndex + i];
+    }
+
+    return output;
+}
+
+static char* ReadBytesFromBufferc(char* array, size_t startIndex, size_t numBytes) {
     char* output = new char[numBytes];
 
     for (size_t i = 0; i < numBytes; ++i) {

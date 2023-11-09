@@ -4,8 +4,7 @@ list(APPEND CMAKE_PREFIX_PATH "C:/src/vcpkg/packages")
 
 find_path(pcanbasic_INCLUDE_DIR 
       NAMES "PCANBasic.h" 
-      PATHS "${CMAKE_CURRENT_LIST_DIR}/../../../../src/vcpkg/packages/pcanbasic_x86-windows/include" 
-      NO_DEFAULT_PATH)
+      PATHS "${CMAKE_CURRENT_LIST_DIR}/../../../../src/vcpkg/packages/pcanbasic_x86-windows/include")
 
 message("pcanbasic_INCLUDE_DIR: ${pcanbasic_INCLUDE_DIR}")
 if(NOT pcanbasic_INCLUDE_DIR)
@@ -16,7 +15,7 @@ get_filename_component(_pcanbasic_installed_prefix "${pcanbasic_INCLUDE_DIR}" DI
 
 if(NOT pcanbasic_LIBRARY)
 message("not pcanbasic_LIBRARY")
-  find_library(pcanbasic_LIBRARY_RELEASE NAMES "PCANBasic.lib" PATHS "${_pcanbasic_installed_prefix}/lib" NO_DEFAULT_PATH)
+  find_library(pcanbasic_LIBRARY_RELEASE NAMES "PCANBasic.lib" PATHS "${_pcanbasic_installed_prefix}/lib")
   # find_library(pcanbasic_LIBRARY_DEBUG NAMES "pcanbasic" PATHS "${_pcanbasic_installed_prefix}/debug/lib" NO_DEFAULT_PATH)
   select_library_configurations(pcanbasic)
 endif()
