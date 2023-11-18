@@ -1,9 +1,0 @@
--- Using cached le1nax-medit-libs-2355b33862ee5e18b491f1e0f5d080a9ec698782.tar.gz.
--- Extracting source C:/Users/danie/AppData/Local/vcpkg/downloads/le1nax-medit-libs-2355b33862ee5e18b491f1e0f5d080a9ec698782.tar.gz
--- Using source at C:/Repositories/Medit/WiHi/ECLA-PatientMonitor/vcpkg_installed/vcpkg/blds/pcanbasic/src/a9ec698782-5befec5411.clean
-CMake Error at C:/src/vcpkg/ports/pcanbasic/portfile.cmake:25 (file):
-  file called with unknown argument "RENAME".
-Call Stack (most recent call first):
-  scripts/ports.cmake:147 (include)
-
-
