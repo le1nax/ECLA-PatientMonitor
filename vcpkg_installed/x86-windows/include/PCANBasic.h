@@ -242,7 +242,7 @@ extern "C" {
 #define PCAN_MESSAGE_EXTENDED         0x02U  // The PCAN message is a CAN Extended Frame (29-bit identifier)
 #define PCAN_MESSAGE_FD               0x04U  // The PCAN message represents a FD frame in terms of CiA Specs
 #define PCAN_MESSAGE_BRS              0x08U  // The PCAN message represents a FD bit rate switch (CAN data at a higher bit rate)
-#define PCAN_MESSAGE_ESI              0x10U  // The PCAN message represents a FD error state indicator(CAN FD transmitter was error active)
+#define PCAN_MESSAGE_ESI              0x10U  // The PCAN message represents a FD error state indicator(CAN FD DataManager was error active)
 #define PCAN_MESSAGE_ECHO	          0x20U  // The PCAN message represents an echo CAN Frame
 #define PCAN_MESSAGE_ERRFRAME         0x40U  // The PCAN message represents an error frame
 #define PCAN_MESSAGE_STATUS           0x80U  // The PCAN message represents a PCAN status message

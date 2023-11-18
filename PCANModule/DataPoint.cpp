@@ -22,8 +22,9 @@ DataPoint::DataPoint(uint32_t canID, char* data, uint8_t dataLength)
 
 void DataPoint::parseValuesFromDataString(char* data, uint8_t dataLength)
 {
-	m_value = ReadBytesFromBufferc(data, 0, valuebuffersize);
-	m_beacon = ReadBytesFromBufferc(data, valuebuffersize, beaconbuffersize);
-	m_timestamp = ReadBytesFromBufferc(data, valuebuffersize+beaconbuffersize, timestampbuffersize);
-	m_counter = ReadBytesFromBufferc(data, valuebuffersize+beaconbuffersize+timestampbuffersize, counterbuffersize);
+	m_data_lenght = dataLength;
+	m_value = ReadBytesFromBuffer(data, 0, valuebuffersize).release();
+	m_beacon = ReadBytesFromBuffer(data, valuebuffersize, beaconbuffersize).release();
+	m_timestamp = ReadBytesFromBuffer(data, valuebuffersize+beaconbuffersize, timestampbuffersize).release();
+	m_counter = ReadBytesFromBuffer(data, valuebuffersize+beaconbuffersize+timestampbuffersize, counterbuffersize).release();
 }

@@ -5,6 +5,7 @@
 #include <list>
 #include <vector>
 #include <string>
+#include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -16,6 +17,7 @@
 #include <iomanip>
 #include <WinSock2.h>
 #include <WS2tcpip.h>
+#include "imgui.h"
 
 static constexpr size_t maxbuffersize = 2001;
 static constexpr size_t valuebuffersize = sizeof(int32_t);
@@ -23,7 +25,13 @@ static constexpr size_t beaconbuffersize = sizeof(uint8_t);
 static constexpr size_t timestampbuffersize = sizeof(uint16_t);
 static constexpr size_t counterbuffersize = beaconbuffersize;
 
-
+enum class DataPointType 
+{
+    BP = 0, 
+    ECG = 1, 
+    CONFIG = 2,
+    DEBUG = 3
+};
 
 template<typename... Ts>
 std::vector<std::byte> make_bytes(Ts&&... args) noexcept {
@@ -115,6 +123,18 @@ static std::string formatTm(const struct tm& timeInfo) {
     return oss.str();
 }
 
+// Function to plot a std::vector<int>
+static void PlotVector(const char* label, const std::vector<float>& values) {
+
+    ImGui::PlotLines(label, values.data(), static_cast<int>(values.size()), 0, nullptr, FLT_MIN, FLT_MAX, ImVec2(0, 80));
+}
+
+static void glfw_error_callback(int error, const char* description)
+{
+    fprintf(stderr, "GLFW Error %d: %s\n", error, description);
+}
+
+
 static int BinaryCodedDecimalToInteger(int value)
         {
             if (value != 0xFF)
@@ -130,19 +150,8 @@ static int BinaryCodedDecimalToInteger(int value)
             else return 0;
         }
 
-/// @todo testen
-static char* ReadBytesFromBuffer(const char* array, size_t startIndex, size_t numBytes) {
-    char* output = new char[numBytes];
-
-    for (size_t i = 0; i < numBytes; ++i) {
-        output[i] = array[startIndex + i];
-    }
-
-    return output;
-}
-
-static char* ReadBytesFromBufferc(char* array, size_t startIndex, size_t numBytes) {
-    char* output = new char[numBytes];
+static std::unique_ptr<char[]> ReadBytesFromBuffer(const char* array, size_t startIndex, size_t numBytes) {
+    std::unique_ptr<char[]> output(new char[numBytes]);
 
     for (size_t i = 0; i < numBytes; ++i) {
         output[i] = array[startIndex + i];
@@ -152,16 +161,22 @@ static char* ReadBytesFromBufferc(char* array, size_t startIndex, size_t numByte
 }
 
 static uint16_t Read16ByteValuesFromBuffer(const char* buffer, size_t startIndex) {
-    auto buf = ReadBytesFromBuffer(buffer, startIndex, uInt16Size);
+    char* buf = ReadBytesFromBuffer(buffer, startIndex, uInt16Size).release();
     unsigned long  value = 0;
     std::memcpy(&value, buf, uInt16Size);
+    delete[] buf;
     return value;
 }
 
-static unsigned long ReadByteValuesFromBuffer(const char* buffer, unsigned long  startIndex, unsigned long  numBytesToRead)
+
+/// @todo exeption handling 
+static int32_t ReadByteSignedValuesFromBuffer(const char* buffer, unsigned long  startIndex, unsigned long  numBytesToRead)
 {
-    auto buf = ReadBytesFromBuffer(buffer, startIndex, numBytesToRead);
-    unsigned long  value = 0;
-    std::memcpy(&value, buf, numBytesToRead);
-    return value;
-}
+    auto buf = ReadBytesFromBuffer(buffer, startIndex, numBytesToRead).release();
+    // unsigned long  value = 0;
+    // std::memcpy(&value, buf, numBytesToRead);
+
+    int32_t interpretedValue = *(int*)buf;
+    delete[] buf;
+    return interpretedValue;
+}   

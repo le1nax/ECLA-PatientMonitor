@@ -11,6 +11,7 @@ public:
     
 	bool connect();
 	DataPoint listen();
+	void skipDataPoints(size_t amount);
 	
 private:
 	// Define the PCAN device to be used
