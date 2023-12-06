@@ -61,55 +61,6 @@ void SocketClient::ProcessPacket(char* buffer)
     std::cout << "finished ProcessPacket" << std::endl;
 }
 
-
-void SocketClient::SendCycledExtendedPollDataRequest(size_t nInterval)
-{
-    int nmillisecond = nInterval;
-
-        if (nmillisecond != 0)
-        {
-        do
-        {
-            std::cout << "SendCycledExtendedPollDataRequest" << std::endl;
-            //sendBytes(ext_poll_request_msg);
-            ///@todo make time variable
-            std::this_thread::sleep_for(12000ms); 
-
-        }
-        while (true);
-        }
-        else 
-        {
-            std::cout << "Sending extended poll data Request" << std::endl;
-            //sendBytes(ext_poll_request_msg);
-        }
-
-}
-
-void SocketClient::SendCycledExtendedPollWaveDataRequest(size_t nInterval)
-{
-    int nmillisecond = nInterval;
-
-        if (nmillisecond != 0)
-        {
-        do
-        {
-            std::cout << "SendCycledExtendedPollWaveDataRequest" << std::endl;
-            //sendBytes(ext_poll_request_wave_msg);
-            ///@todo make time variable
-            std::this_thread::sleep_for(12000ms); 
-        }
-        while (true);
-        }
-        else
-        {
-            std::cout << "SendCycledExtendedPollWaveDataRequest" << std::endl;
-            //sendBytes(ext_poll_request_wave_msg);
-        } 
-
-}
-
-
 void SocketClient::Receive(char* buffer1, size_t buffersize, int flags)
 {
     Receive_State state;
@@ -277,30 +228,6 @@ void SocketClient::establishLanConnection()
         std::cout << "readassbuffer" << std::endl;
         Receive(readassocbuffer);
         std::cout << "end read assbuffer" << std::endl;
-
-        //Send MDSCreateEventResult message
-        char readmdsconnectbuffer[1380] = "";
-        Receive(readmdsconnectbuffer);
-        ProcessPacket(readmdsconnectbuffer);
-        
-       uint16_t nInterval = 1000; //ms
-       //Send Extended PollData Requests cycled every second
-       std::thread sendCycledExtendedPollDataRequestThread([&]() {SendCycledExtendedPollDataRequest(nInterval);});
-		    sendCycledExtendedPollDataRequestThread.detach();
-        //WaitForSeconds(1);
-     
-            std::thread sendCycledExtendedPollWaveDataRequestThread([&]() {SendCycledExtendedPollWaveDataRequest(nInterval);});
-		        sendCycledExtendedPollWaveDataRequestThread.detach();
-        char receivedBuffer[1380] = "";
-
-		std::thread receiveThread([&]() {ThreadReceive(receivedBuffer);});
-		receiveThread.detach();
-
-    /// @todo when to stop connection
-
-    std::cin.get();
-    // Stop Threads
-    stopThreadReceive = true;
 }
 
 void SocketClient::ThreadReceive(char* receivedBuffer)
@@ -310,9 +237,5 @@ void SocketClient::ThreadReceive(char* receivedBuffer)
     Receive(receivedBuffer);
     std::this_thread::sleep_for(std::chrono::milliseconds(m_receiveInterval));
     }
-}
-
-char* SocketClient::getLastMessage()
-{
 }
 

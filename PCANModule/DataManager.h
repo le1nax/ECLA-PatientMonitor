@@ -34,6 +34,7 @@ public:
         }
     }
 
+    bool sendDataUdp(const DataPoint& dataPoint);
 private:
     // Callback function to be triggered when data is received
     CallbackType callback_;

@@ -3,6 +3,8 @@
 #include "PCANBasic.h"
 #include "DataPoint.h"
 
+class DataManager;
+
 class CanAdapter
 {
 public:
@@ -13,8 +15,9 @@ public:
 	DataPoint listen();
 	void skipDataPoints(size_t amount);
 	
+	
 private:
 	// Define the PCAN device to be used
 	TPCANHandle device;
-	DataPoint parseDatapoint(TPCANMsg msg);
+	uint64_t calculateTotalMilliseconds(const TPCANTimestamp& timestamp);
 };

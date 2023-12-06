@@ -19,6 +19,7 @@
 #include <WS2tcpip.h>
 #include "imgui.h"
 
+static constexpr int udp_freq = 1;
 static constexpr size_t maxbuffersize = 2001;
 static constexpr size_t valuebuffersize = sizeof(int32_t);
 static constexpr size_t beaconbuffersize = sizeof(uint8_t);
@@ -36,6 +37,17 @@ enum class DataPointType
 template<typename... Ts>
 std::vector<std::byte> make_bytes(Ts&&... args) noexcept {
 return{std::byte(std::forward<Ts>(args))...};
+}
+
+static int compareMsgs(const char* msg1, const char* msg2, size_t len)
+{
+    for (size_t i = 0; i < len; ++i) {
+        if (msg1[i] != msg2[i]) {
+            return 0; // Arrays are different
+        }
+    }
+
+    return 1; // Arrays are the same
 }
 
 static void readBytesFromArray(const char* array, size_t numBytes) {

@@ -19,7 +19,7 @@ lib/
 libs/
 
 #vcpkg
-.vcpkg_installed
+vcpkg_installed/
 
 # IDE-specific files and directories
 .vscode/

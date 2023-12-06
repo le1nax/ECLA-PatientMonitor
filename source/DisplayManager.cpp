@@ -11,7 +11,6 @@ void DisplayManager::initWindow()
         displayWindowThread->join(); 
     }
     displayWindowThread = std::make_unique<std::thread>(&DisplayManager::DisplayThread, this);
-
 }
 
 void DisplayManager::onPressureChanged(const DataPoint& dataPointReceived)

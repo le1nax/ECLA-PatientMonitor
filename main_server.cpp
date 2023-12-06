@@ -8,18 +8,12 @@
 #include <stdlib.h> 
 
 
-#define REMOTEIP "169.254.0.1"
-#define REMOTEPORT 24105
-
 #define MAX_BUFFER_SIZE 2001
 
 using namespace std;
 
 // Include the Winsock library (lib) file
 #pragma comment (lib, "ws2_32.lib")
-
-// Saves us from typing std::cout << etc. etc. etc.
-using namespace std; 
 
 // Main entry point into the server
 int main()
@@ -44,7 +38,7 @@ int main()
 	sockaddr_in server;
 	server.sin_addr.S_un.S_addr = ADDR_ANY; // Use any IP address available on the machine
 	server.sin_family = AF_INET; // Address format is IPv4
-	server.sin_port = htons(69696); // Convert from little to big endian
+	server.sin_port = htons(12345); // Convert from little to big endian
 
 	// Try and bind the socket to the IP and port
 	if (bind(serverSocket, (sockaddr*)&server, sizeof(server)) == SOCKET_ERROR)
@@ -59,7 +53,7 @@ int main()
 
     clientAddress.sin_family = AF_INET;
     clientAddress.sin_addr.s_addr = inet_addr("127.0.0.1");
-    clientAddress.sin_port = htons(69696);
+    clientAddress.sin_port = htons(12345);
 
     if (clientAddress.sin_addr.s_addr == INADDR_NONE)
     {

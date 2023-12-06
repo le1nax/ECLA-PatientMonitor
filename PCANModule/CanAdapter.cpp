@@ -1,5 +1,6 @@
 #include <iostream>
 #include "CanAdapter.h"
+#include "DataManager.h"
 
 CanAdapter::CanAdapter(TPCANHandle device)
 {
@@ -25,6 +26,14 @@ bool CanAdapter::connect()
 		return false;
 }
 
+uint64_t CanAdapter::calculateTotalMilliseconds(const TPCANTimestamp& timestamp) {
+    // Use uint64_t to prevent overflow during calculations
+    uint64_t totalMilliseconds = static_cast<uint64_t>(timestamp.millis) +
+                                 (static_cast<uint64_t>(timestamp.millis_overflow) << 32);
+    
+    return totalMilliseconds;
+}
+
 DataPoint CanAdapter::listen()
 {
 	TPCANStatus m_pcanResult;
@@ -38,11 +47,8 @@ DataPoint CanAdapter::listen()
 		if (m_pcanResult == PCAN_ERROR_OK)
 		{
 			std::cout << "received" << std::endl;
-			DataPoint parsed = DataPoint(pcanMessage.ID, reinterpret_cast<char*>(pcanMessage.DATA), 4);
-			// float readData =  static_cast<float>(ReadByteSignedValuesFromBuffer(reinterpret_cast<char*>(pcanMessage.DATA), 0 , 4));
-			//  std::cout << "handeled datapoint: " << readData << " at time:" << pcanTimestamp.millis << std::endl;
+			DataPoint parsed = DataPoint(pcanMessage.ID, reinterpret_cast<char*>(pcanMessage.DATA), calculateTotalMilliseconds(pcanTimestamp), 4);
 			return parsed;
-			//return parseDatapoint(pcanMessage);
 		}
 	}
 }
@@ -65,12 +71,4 @@ void CanAdapter::skipDataPoints(size_t amount)
 		}
 	}
 	}
-}
-
-DataPoint CanAdapter::parseDatapoint(TPCANMsg msg)
-{
-	std::cout << "received" << std::endl;
-
-	return DataPoint(msg.ID, reinterpret_cast<char*>(msg.DATA), 20);
-	
 }
