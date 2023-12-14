@@ -7,12 +7,14 @@ WSASession::WSASession() {
     {
         throw std::system_error(WSAGetLastError(), std::system_category(), "WSAStartup Failed");
     }
-    std::cout << "Started WSASession" << std::endl;
+    if(configModeDebug){
+         std::cout <<  "Started WSASession" << std::endl;
+    }
 }
 
 WSASession::~WSASession() {
     WSACleanup();
-    std::cout << "Closed WSASession" << std::endl;
+    std::cout <<  "Closed WSASession" << std::endl;
 }
 
 
@@ -35,13 +37,17 @@ UDPSocket::UDPSocket() {
 //         throw std::system_error(WSAGetLastError(), std::system_category(), "Error opening socket");
 //         //std::cerr << "Failed to create socket. Error: " << WSAGetLastError() << std::endl;
 
-    std::cout << "created UDP socket" << std::endl;
+    if(configModeDebug){
+         std::cout <<  "created UDP socket" << std::endl;
+    }
 }
 
 
 UDPSocket::~UDPSocket() {
     closesocket(sock);
-    std::cout << "Closed UDP socket" << std::endl;
+    if(configModeDebug){ 
+        std::cout <<  "Closed UDP socket" << std::endl;
+    }
 }
 
 
@@ -54,7 +60,9 @@ SOCKET UDPSocket::getSocket()
 long unsigned int UDPSocket::SendTo(sockaddr_in& remoteIP, char* buffer, size_t buffersize, long unsigned int flags) 
 {
     //send data provided in buffer to receiver address
-    std::cout << "sending bytes of size: " << buffersize << std::endl;
+    if(configModeDebug){
+         std::cout <<  "sending bytes of size: " << buffersize << std::endl;
+    }
     long unsigned int numBytesSent = 0; //will in the end contain the number of bytes sent and be returned
     long unsigned int numBytesTransferred = 0; //will in the end contain the number of bytes sent in the overlap
 
@@ -126,7 +134,7 @@ long unsigned int UDPSocket::SendTo(sockaddr_in& remoteIP, char* buffer, size_t 
 
     // numBytesSent += numBytesTransferred;
 
-    // std::cout << "sent " << numBytesSent << " Bytes" << std::endl;
+    // if(configModeDebug){ std::cout <<  "sent " << numBytesSent << " Bytes" << std::endl;
 
     delete wsabuffer;
     return numBytesSent;

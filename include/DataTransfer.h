@@ -27,4 +27,5 @@ class DataTransfer
         int clientRecvLength;
         std::unique_ptr<std::thread> pcanReadThread {nullptr};
         int udp_signal_period;
+        uint64_t countMsgSend = 0;
 };

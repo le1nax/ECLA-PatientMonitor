@@ -19,7 +19,9 @@
 #include <WS2tcpip.h>
 #include "imgui.h"
 
-static constexpr int udp_freq = 1;
+
+static constexpr bool configModeDebug = false;
+static constexpr int udp_freq = 10;
 static constexpr size_t maxbuffersize = 2001;
 static constexpr size_t valuebuffersize = sizeof(int32_t);
 static constexpr size_t beaconbuffersize = sizeof(uint8_t);

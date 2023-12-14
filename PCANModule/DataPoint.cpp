@@ -22,7 +22,7 @@ void DataPoint::parseValuesFromDataString(char* data, uint64_t milliseconds, uin
 	encodedData.pcanTimestamp = m_pcanTimestamp;
 	encodedData.timestamp = static_cast<uint32_t>(ReadByteSignedValuesFromBuffer(m_timestamp, 0, timestampbuffersize));
 	encodedData.value = static_cast<uint32_t>(ReadByteSignedValuesFromBuffer(m_value, 0 , valuebuffersize));
-	// std::cout << "encoded canID: " << encodedData.canID << std::endl;
-	// std::cout << "encoded timestamp: " << encodedData.timestamp << std::endl;
-	// std::cout << "encoded value: " << encodedData.value << std::endl;
+	// if(configModeDebug){ std::cout <<  "encoded canID: " << encodedData.canID << std::endl;
+	// if(configModeDebug){ std::cout <<  "encoded timestamp: " << encodedData.timestamp << std::endl;
+	// if(configModeDebug){ std::cout <<  "encoded value: " << encodedData.value << std::endl;
 }

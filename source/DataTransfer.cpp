@@ -37,7 +37,9 @@ void DataTransfer::serverSetup()
 	int wsOk = WSAStartup(version, &data);
 	if (wsOk != 0)
     {
-		std::cout << "Can't start Winsock! " << wsOk;
+		if(configModeDebug){
+		std::cout <<  "Can't start Winsock! " << wsOk;
+		}
 		return;
 	}
 	serverSocket = socket(AF_INET, SOCK_DGRAM, 0);
@@ -51,7 +53,9 @@ void DataTransfer::serverSetup()
 	// Try and bind the socket to the IP and port
 	if (bind(serverSocket, (sockaddr*)&server, sizeof(server)) == SOCKET_ERROR)
 	{
-		std::cout << "Can't bind socket! " << WSAGetLastError() << std::endl;
+		if(configModeDebug){ 
+			std::cout <<  "Can't bind socket! " << WSAGetLastError() << std::endl;
+		}
 		return;
 	}
 
@@ -103,7 +107,8 @@ bool DataTransfer::pollClientRequest()
 	ZeroMemory(buffer1, MAX_BUFFER_SIZE); // Clear the receive buffer
 	lpwsabufferServer->buf = buffer1;
 
-	std::cout << "Polling Association Request..." << std::endl;
+		std::cout <<  "Polling Association Request..." << std::endl;
+	
 	// Receive from Client
 	if (WSARecvFrom(serverSocket, lpwsabufferServer, 1, &bytesReceived1, &flags2,
 		reinterpret_cast<sockaddr*>(&clientRecv), reinterpret_cast<LPINT>(&clientRecvLength), nullptr, nullptr) == SOCKET_ERROR)
@@ -124,17 +129,19 @@ bool DataTransfer::pollClientRequest()
 	// Display the message / who sent it
 	char* receivedAssociationMsg = lpwsabufferServer->buf;
 
-	std::cout << "Message recv from " << clientIp << " : " << lpwsabufferServer->buf << std::endl;
+	if(configModeDebug){ 
+		std::cout <<  "Message recv from " << clientIp << " : " << lpwsabufferServer->buf << std::endl;
+	}
 	auto compareResult = compareMsgs(receivedAssociationMsg, init_msg_char, 16);
 	if(compareResult != 1)
 	{
-		std::cout << "poll Request denied due to false association message" << std::endl;
+			std::cout <<  "poll Request denied due to false association message" << std::endl;
 		delete lpwsabufferServer;
 		return false;
 	}
 
 	delete lpwsabufferServer;
-	std::cout << "Poll Request successful" << std::endl;
+	std::cout <<  "Poll Request successful" << std::endl;
 	return true;
 }
 
@@ -167,10 +174,12 @@ void DataTransfer::pcanSendData()
 		////////////////////////////////////////////////////////////
 		//// SERVER SENDS
 		////////////////////////////////////////////////////////////
-		std::cout << "Server sent Data Point canID: " << data.encodedData.canID << std::endl;
-		std::cout << "Server sent Data Point timestamp: " << data.encodedData.timestamp << std::endl;
-		std::cout << "Server sent Data Point payload: " << data.encodedData.value << std::endl;
-		std::cout << "Server sent Data Point pcantimestamp: " << data.encodedData.pcanTimestamp << std::endl;
+		if(configModeDebug){
+			std::cout <<  "Server sent Data Point canID: " << data.encodedData.canID << std::endl;
+			std::cout <<  "Server sent Data Point timestamp: " << data.encodedData.timestamp << std::endl;
+			std::cout <<  "Server sent Data Point payload: " << data.encodedData.value << std::endl;
+			std::cout <<  "Server sent Data Point pcantimestamp: " << data.encodedData.pcanTimestamp << std::endl;
+		}
 		auto dataSize = sizeof(data.encodedData);
 		char buffer[dataSize];
 		memcpy(buffer, &data.encodedData, dataSize);
@@ -186,13 +195,17 @@ void DataTransfer::pcanSendData()
 		reinterpret_cast<sockaddr*>(&clientRecv), sizeof(clientRecv), nullptr, nullptr);
 		if (wsaSendOK == SOCKET_ERROR)
 		{
-			std::cout << "Error when calling WSASendTo: " << WSAGetLastError() << std::endl;
+			std::cout <<  "Error when calling WSASendTo: " << WSAGetLastError() << std::endl; 
 		}
 		delete lpwsabuf;
+		if(configModeDebug){ 
+			countMsgSend = countMsgSend + 1;
+			std::cout <<  countMsgSend << std::endl;
+		}
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(udp_signal_period));
-		m_CanAdapter->skipDataPoints(udp_signal_period*3);
-		//dataManagerInstance.sendData(data);
+		// std::this_thread::sleep_for(std::chrono::milliseconds(udp_signal_period));
+		// m_CanAdapter->skipDataPoints(udp_signal_period*3);
+		// dataManagerInstance.sendData(data);
 	}
 }
 

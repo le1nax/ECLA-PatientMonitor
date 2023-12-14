@@ -16,7 +16,9 @@ void DisplayManager::initWindow()
 void DisplayManager::onPressureChanged(const DataPoint& dataPointReceived)
 {
     float readData = static_cast<float>(ReadByteSignedValuesFromBuffer(dataPointReceived.m_value, 0 ,dataPointReceived.m_data_lenght));
-    std::cout << "handeled datapoint: " << readData << std::endl;
+    if(configModeDebug){ 
+        std::cout <<  "handeled datapoint: " << readData << std::endl;
+    }
 
     m_BPData.push_back(readData);
 }

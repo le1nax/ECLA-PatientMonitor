@@ -15,15 +15,19 @@ bool CanAdapter::connect()
 	// If the connection was successful, return true
 	if (status == PCAN_ERROR_OK)
 	{
-		std::cout << "connection successful" << std::endl;
-		std::cout << device << std::endl;
+		if(configModeDebug){ 
+			std::cout <<  "connection successful" << std::endl;
+			std::cout <<  device << std::endl;
+		}
 		return true;
 	}
 
 	// If the connection failed, return false
 	else
-		std::cout << "connection failed" << std::endl;
+		if(configModeDebug){
+		std::cout <<  "connection failed" << std::endl;
 		return false;
+		}
 }
 
 uint64_t CanAdapter::calculateTotalMilliseconds(const TPCANTimestamp& timestamp) {
@@ -46,7 +50,9 @@ DataPoint CanAdapter::listen()
 		// If a message was received, print its details to the console
 		if (m_pcanResult == PCAN_ERROR_OK)
 		{
-			std::cout << "received" << std::endl;
+			if(configModeDebug){
+				 std::cout <<  "received" << std::endl;
+			}
 			DataPoint parsed = DataPoint(pcanMessage.ID, reinterpret_cast<char*>(pcanMessage.DATA), calculateTotalMilliseconds(pcanTimestamp), 4);
 			return parsed;
 		}

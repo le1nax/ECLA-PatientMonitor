@@ -38,7 +38,9 @@ SocketClient::SocketClient(std::string remoteIPtarget, const unsigned short remo
    // Connect(m_sa_remoteIPtarget);
 
 
-    std::cout << "Created and initialised client" << std::endl;
+    if(configModeDebug){
+         std::cout <<  "Created and initialised client" << std::endl;
+    }
 }
 
 SOCKET SocketClient::getSocket()
@@ -58,7 +60,9 @@ void SocketClient::sendBytes(vector<std::byte> bytes)
 
 void SocketClient::ProcessPacket(char* buffer)
 {
-    std::cout << "finished ProcessPacket" << std::endl;
+    if(configModeDebug){ 
+        std::cout <<  "finished ProcessPacket" << std::endl;
+    }
 }
 
 void SocketClient::Receive(char* buffer1, size_t buffersize, int flags)
@@ -201,8 +205,10 @@ void CALLBACK SocketClient::ReceiveCallback(DWORD errorCode, DWORD numBytesRecei
     bool writing_to_file_successful = ByteArrayToFile(path_to_file, receivedData);
 	        // B: bool writing_to_file_successful2 = ByteArrayToFile(path_to_file, data_bytes, numBytesReceived);
 */
-    std::cout << "now processing packet" << std::endl;
+    if(configModeDebug){
+         std::cout <<  "now processing packet" << std::endl;
     //ProcessPacket(state.wsaBuf.buf);
+    }
 
     }
     else
@@ -219,15 +225,21 @@ void CALLBACK SocketClient::ReceiveCallback(DWORD errorCode, DWORD numBytesRecei
 
 void SocketClient::establishLanConnection() 
 {
-    std::cout << "establishing Lan Connection" << std::endl;
+    if(configModeDebug){ 
+        std::cout <<  "establishing Lan Connection" << std::endl;
+    }
         //Receive AssociationResult message 
 			///@todo schauen wie viel Buffer space wir brauchen (chapter4 p.29 sagt 1380 ->testen)
 					//try:
 			//Receive MDSCreateEventReport message
         char readassocbuffer[1380] = ""; 
-        std::cout << "readassbuffer" << std::endl;
+        if(configModeDebug){ 
+            std::cout <<  "readassbuffer" << std::endl;
+        }
         Receive(readassocbuffer);
-        std::cout << "end read assbuffer" << std::endl;
+        if(configModeDebug){ 
+            std::cout <<  "end read assbuffer" << std::endl;
+        }
 }
 
 void SocketClient::ThreadReceive(char* receivedBuffer)
@@ -235,7 +247,7 @@ void SocketClient::ThreadReceive(char* receivedBuffer)
     while (!stopThreadReceive)
     {
     Receive(receivedBuffer);
-    std::this_thread::sleep_for(std::chrono::milliseconds(m_receiveInterval));
+    //std::this_thread::sleep_for(std::chrono::milliseconds(m_receiveInterval));
     }
 }
 
