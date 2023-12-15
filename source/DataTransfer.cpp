@@ -46,42 +46,41 @@ void DataTransfer::serverSetup()
 
 	// Create a server hint structure for the server
 	sockaddr_in server;
-	server.sin_addr.S_un.S_addr = ADDR_ANY; // Use any IP address available on the machine
+	server.sin_addr.s_addr = INADDR_ANY;
 	server.sin_family = AF_INET; // Address format is IPv4
 	server.sin_port = htons(12345); // Convert from little to big endian
+	
 
 	// Try and bind the socket to the IP and port
 	if (bind(serverSocket, (sockaddr*)&server, sizeof(server)) == SOCKET_ERROR)
 	{
-		if(configModeDebug){ 
-			std::cout <<  "Can't bind socket! " << WSAGetLastError() << std::endl;
-		}
+		std::cout <<  "Can't bind socket! " << WSAGetLastError() << std::endl;
 		return;
 	}
 
-	// Create client address structure
-    int clientAddressSize = sizeof(clientAddress);
+	// // Create client address structure
+    // int clientAddressSize = sizeof(clientAddress);
 
-    clientAddress.sin_family = AF_INET;
-    clientAddress.sin_addr.s_addr = inet_addr("127.0.0.1");
-    clientAddress.sin_port = htons(12345);
+    // clientAddress.sin_family = AF_INET;
+    // clientAddress.sin_addr.s_addr = inet_addr("134.61.171.90");
+    // clientAddress.sin_port = htons(12345);
 
-    if (clientAddress.sin_addr.s_addr == INADDR_NONE)
-    {
-        std::cerr << "The target ip address entered must be a legal IPv4 address." << std::endl;
-        closesocket(serverSocket);
-        WSACleanup();
-        return;
-    }
+    // if (clientAddress.sin_addr.s_addr == INADDR_NONE)
+    // {
+    //     std::cerr << "The target ip address entered must be a legal IPv4 address." << std::endl;
+    //     closesocket(serverSocket);
+    //     WSACleanup();
+    //     return;
+    // }
 
-    // Resolve client hostname
-    if (inet_pton(AF_INET, "127.0.0.1", &(clientAddress.sin_addr)) <= 0)
-    {
-        std::cerr << "Invalid address" << std::endl;
-        closesocket(serverSocket);
-        WSACleanup();
-        return;
-    }
+    // // Resolve client hostname
+    // if (inet_pton(AF_INET, "134.61.171.90", &(clientAddress.sin_addr)) <= 0)
+    // {
+    //     std::cerr << "Invalid address" << std::endl;
+    //     closesocket(serverSocket);
+    //     WSACleanup();
+    //     return;
+    // }
 
 }
 
