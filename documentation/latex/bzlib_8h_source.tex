@@ -1,0 +1,282 @@
+\doxysection{bzlib.\+h}
+\hypertarget{bzlib_8h_source}{}\label{bzlib_8h_source}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/bzlib.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/bzlib.h}}
+\mbox{\hyperlink{bzlib_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00003\ \textcolor{comment}{/*-\/-\/-\/\ Public\ header\ file\ for\ the\ library.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/-\/*/}}
+\DoxyCodeLine{00004\ \textcolor{comment}{/*-\/-\/-\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bzlib.h\ -\/-\/-\/*/}}
+\DoxyCodeLine{00005\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ This\ file\ is\ part\ of\ bzip2/libbzip2,\ a\ program\ and\ library\ for}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ lossless,\ block-\/sorting\ data\ compression.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ bzip2/libbzip2\ version\ 1.0.8\ of\ 13\ July\ 2019}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ Copyright\ (C)\ 1996-\/2019\ Julian\ Seward\ <jseward@acm.org>}}
+\DoxyCodeLine{00013\ \textcolor{comment}{}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ Please\ read\ the\ WARNING,\ DISCLAIMER\ and\ PATENTS\ sections\ in\ the\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ README\ file.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ This\ program\ is\ released\ under\ the\ terms\ of\ the\ license\ contained}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ in\ the\ file\ LICENSE.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifndef\ \_BZLIB\_H}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ \_BZLIB\_H}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00026\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ BZ\_RUN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ BZ\_FLUSH\ \ \ \ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ BZ\_FINISH\ \ \ \ \ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ BZ\_OK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ BZ\_RUN\_OK\ \ \ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ BZ\_FLUSH\_OK\ \ \ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ BZ\_FINISH\_OK\ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ BZ\_STREAM\_END\ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ BZ\_SEQUENCE\_ERROR\ \ \ \ (-\/1)}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ BZ\_PARAM\_ERROR\ \ \ \ \ \ \ (-\/2)}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ BZ\_MEM\_ERROR\ \ \ \ \ \ \ \ \ (-\/3)}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ BZ\_DATA\_ERROR\ \ \ \ \ \ \ \ (-\/4)}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ BZ\_DATA\_ERROR\_MAGIC\ \ (-\/5)}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ BZ\_IO\_ERROR\ \ \ \ \ \ \ \ \ \ (-\/6)}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ BZ\_UNEXPECTED\_EOF\ \ \ \ (-\/7)}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ BZ\_OUTBUFF\_FULL\ \ \ \ \ \ (-\/8)}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ BZ\_CONFIG\_ERROR\ \ \ \ \ \ (-\/9)}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{typedef}\ }
+\DoxyCodeLine{00049\ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structbz__stream_aa4a76b5c671cc4092ad7417f2731b894}{next\_in}};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structbz__stream_a3b4296261f93965fc477277c410603af}{avail\_in}};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structbz__stream_aacacdc7f753d7eab8652592bd15dbe6e}{total\_in\_lo32}};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structbz__stream_af5833cfbe5e07a89c9f33783f323c218}{total\_in\_hi32}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structbz__stream_ad27d0acafb3b84aada276b157e9aef04}{next\_out}};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structbz__stream_a749a8dd37243c6b76f81de5cd2a24e2e}{avail\_out}};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structbz__stream_a7befd6f6ace94f7df3aac07ad48f944b}{total\_out\_lo32}};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structbz__stream_a8906ddf3e4fcc6963ef6680157647001}{total\_out\_hi32}};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structbz__stream_a7b976d082aba4d851eea25a308d96ee8}{state}};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *(*bzalloc)(\textcolor{keywordtype}{void}\ *,int,int);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}\ (*bzfree)(\textcolor{keywordtype}{void}\ *,\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structbz__stream_a8e000913c058c83abd1ec96c6aef302a}{opaque}};}
+\DoxyCodeLine{00065\ \ \ \ \}\ }
+\DoxyCodeLine{00066\ \ \ \ \mbox{\hyperlink{structbz__stream}{bz\_stream}};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#ifndef\ BZ\_NO\_STDIO}}
+\DoxyCodeLine{00069\ \textcolor{comment}{/*\ Need\ a\ definitition\ for\ FILE\ */}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#\ \ \ ifdef\ small}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \textcolor{comment}{/*\ windows.h\ define\ small\ to\ char\ */}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#\ \ \ \ \ \ undef\ small}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#\ \ \ define\ BZ\_API(func)\ func}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#\ \ \ if\ defined(BZ\_BUILD\_DLL)}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#\ \ \ \ \ \ define\ BZ\_EXTERN\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#\ \ \ elif\ 0}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#\ \ \ \ \ \ define\ BZ\_EXTERN\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#\ \ \ else}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#\ \ \ \ \ \ define\ BZ\_EXTERN}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#\ \ \ define\ BZ\_API(func)\ func}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#\ \ \ define\ BZ\_EXTERN\ extern}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{comment}{/*-\/-\/\ Core\ (low-\/level)\ library\ functions\ -\/-\/*/}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_a67ac389693db7cfe87b721bbc8c4eb65}{BZ2\_bzCompressInit}})\ (\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \mbox{\hyperlink{structbz__stream}{bz\_stream}}*\ strm,\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ blockSize100k,\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ verbosity,\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ workFactor\ }
+\DoxyCodeLine{00099\ \ \ \ );}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_a82a451e4cf97a110a8a2aaf5c0284d05}{BZ2\_bzCompress}})\ (\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \mbox{\hyperlink{structbz__stream}{bz\_stream}}*\ strm,\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ action\ }
+\DoxyCodeLine{00104\ \ \ \ );}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_ad6bb27d00fb4bdd329b3234e9acf534d}{BZ2\_bzCompressEnd}})\ (\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \mbox{\hyperlink{structbz__stream}{bz\_stream}}*\ strm\ }
+\DoxyCodeLine{00108\ \ \ \ );}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_a8d8f2f8f24a1916bbaa0d62ac7a7d7f5}{BZ2\_bzDecompressInit}})\ (\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \mbox{\hyperlink{structbz__stream}{bz\_stream}}\ *strm,\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ verbosity,\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ small}
+\DoxyCodeLine{00114\ \ \ \ );}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_ac9ef23cf5fa665ebfa93fa8d0697da99}{BZ2\_bzDecompress}})\ (\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \mbox{\hyperlink{structbz__stream}{bz\_stream}}*\ strm\ }
+\DoxyCodeLine{00118\ \ \ \ );}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_ae6fa41c1836d462e964183b3d2571be8}{BZ2\_bzDecompressEnd}})\ (\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \mbox{\hyperlink{structbz__stream}{bz\_stream}}\ *strm\ }
+\DoxyCodeLine{00122\ \ \ \ );}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{comment}{/*-\/-\/\ High(er)\ level\ library\ functions\ -\/-\/*/}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#ifndef\ BZ\_NO\_STDIO}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ BZ\_MAX\_UNUSED\ 5000}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}};}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}*\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_afc3c14d4bfa0f252ccc920e3b0df4704}{BZ2\_bzReadOpen}})\ (\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \ bzerror,\ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ FILE*\ f,\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ verbosity,\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ small,}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ unused,\ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ nUnused\ }
+\DoxyCodeLine{00140\ \ \ \ );}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_a019cd4200e530c1850fba84a02fa73b5}{BZ2\_bzReadClose}})\ (\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \ \ \ bzerror,\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}*\ b\ }
+\DoxyCodeLine{00145\ \ \ \ );}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_add3c2493d5a8ace977cb48bfd12bdbc8}{BZ2\_bzReadGetUnused}})\ (\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \ \ \ bzerror,\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}*\ b,\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \textcolor{keywordtype}{void}**\ \ unused,\ \ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \ \ \ nUnused\ }
+\DoxyCodeLine{00152\ \ \ \ );}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_aa58d9438a59e466bb6d7a8a350981a28}{BZ2\_bzRead}})\ (\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \ \ \ bzerror,\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}*\ b,\ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ buf,\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ len\ }
+\DoxyCodeLine{00159\ \ \ \ );}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}*\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_ac946b9494a2aa1e9eb9f6072970c07fe}{BZ2\_bzWriteOpen}})\ (\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \ bzerror,\ \ \ \ \ \ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ FILE*\ f,\ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ blockSize100k,\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ verbosity,\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ workFactor\ }
+\DoxyCodeLine{00167\ \ \ \ );}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_ac0ee27cad70465618cdaac4dba76d32e}{BZ2\_bzWrite}})\ (\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \ \ \ bzerror,\ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}*\ b,\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ buf,\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ len\ }
+\DoxyCodeLine{00174\ \ \ \ );}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_a965bb896f11b4e0103ff252049723ee7}{BZ2\_bzWriteClose}})\ (\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \ \ \ \ \ \ \ \ \ bzerror,\ }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}*\ \ \ \ \ \ \ b,\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ abandon,\ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}*\ nbytes\_in,\ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}*\ nbytes\_out\ }
+\DoxyCodeLine{00182\ \ \ \ );}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_aa8f11aea0c222e2f019ec3fdf1c70bcc}{BZ2\_bzWriteClose64}})\ (\ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \ \ \ \ \ \ \ \ \ bzerror,\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}*\ \ \ \ \ \ \ b,\ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ abandon,\ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}*\ nbytes\_in\_lo32,\ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}*\ nbytes\_in\_hi32,\ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}*\ nbytes\_out\_lo32,\ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}*\ nbytes\_out\_hi32}
+\DoxyCodeLine{00192\ \ \ \ );}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \textcolor{comment}{/*-\/-\/\ Utility\ functions\ -\/-\/*/}}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_adceecf16fb855f77c7555e78527d2d89}{BZ2\_bzBuffToBuffCompress}})\ (\ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ \ dest,\ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}*\ destLen,}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ \ source,\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ sourceLen,}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ blockSize100k,\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ verbosity,\ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ workFactor\ }
+\DoxyCodeLine{00206\ \ \ \ );}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_a7efea6f98c51ae16fd90dbb61db6df8c}{BZ2\_bzBuffToBuffDecompress}})\ (\ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ \ dest,\ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}*\ destLen,}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ \ source,\ }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ sourceLen,}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ small,\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ verbosity\ }
+\DoxyCodeLine{00215\ \ \ \ );}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \textcolor{comment}{/*-\/-\/}}
+\DoxyCodeLine{00219\ \textcolor{comment}{\ \ \ Code\ contributed\ by\ Yoshioka\ Tsuneo\ (tsuneo@rr.iij4u.or.jp)}}
+\DoxyCodeLine{00220\ \textcolor{comment}{\ \ \ to\ support\ better\ zlib\ compatibility.}}
+\DoxyCodeLine{00221\ \textcolor{comment}{\ \ \ This\ code\ is\ not\ \_officially\_\ part\ of\ libbzip2\ (yet);}}
+\DoxyCodeLine{00222\ \textcolor{comment}{\ \ \ I\ haven't\ tested\ it,\ documented\ it,\ or\ considered\ the}}
+\DoxyCodeLine{00223\ \textcolor{comment}{\ \ \ threading-\/safeness\ of\ it.}}
+\DoxyCodeLine{00224\ \textcolor{comment}{\ \ \ If\ this\ code\ breaks,\ please\ contact\ both\ Yoshioka\ and\ me.}}
+\DoxyCodeLine{00225\ \textcolor{comment}{-\/-\/*/}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_a367695a3d1fdde55488de9c7b349718a}{BZ2\_bzlibVersion}})\ (}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}}
+\DoxyCodeLine{00229\ \ \ \ );}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#ifndef\ BZ\_NO\_STDIO}}
+\DoxyCodeLine{00232\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}\ *\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_ac8c4ce51692447700845d332cdbe8bca}{BZ2\_bzopen}})\ (}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path,}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1e71d9c196e4683cc06c4b54d53f7ef5}{mode}}}
+\DoxyCodeLine{00235\ \ \ \ );}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}\ *\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_a885bab080a251319905f76162636cfcf}{BZ2\_bzdopen}})\ (}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ fd,}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1e71d9c196e4683cc06c4b54d53f7ef5}{mode}}}
+\DoxyCodeLine{00240\ \ \ \ );}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00242\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_ad9cd9fcce34563c4b6a9b529b87af194}{BZ2\_bzread}})\ (}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}*\ b,\ }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ buf,\ }
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ len\ }
+\DoxyCodeLine{00246\ \ \ \ );}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_aca6d8ba5da54603ea808baa90529af2e}{BZ2\_bzwrite}})\ (}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}*\ b,\ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ buf,\ }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ len\ }
+\DoxyCodeLine{00252\ \ \ \ );}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_a1c6ec455158122290467a0af07516fdb}{BZ2\_bzflush}})\ (}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}*\ b}
+\DoxyCodeLine{00256\ \ \ \ );}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_a62cfd6641b39114695baa90fe5ef2d25}{BZ2\_bzclose}})\ (}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}*\ b}
+\DoxyCodeLine{00260\ \ \ \ );}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\_EXTERN}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\_API}}(\mbox{\hyperlink{bzlib_8h_aecd0c3ff950b5bcabb4a497cb090aa56}{BZ2\_bzerror}})\ (}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}\ *b,\ }
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ *errnum}
+\DoxyCodeLine{00265\ \ \ \ );}
+\DoxyCodeLine{00266\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00269\ \}}
+\DoxyCodeLine{00270\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00275\ \textcolor{comment}{/*-\/-\/-\/\ end\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bzlib.h\ -\/-\/-\/*/}}
+\DoxyCodeLine{00276\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+
+\end{DoxyCode}

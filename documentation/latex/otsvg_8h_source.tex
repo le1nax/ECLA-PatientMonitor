@@ -1,0 +1,342 @@
+\doxysection{otsvg.\+h}
+\hypertarget{otsvg_8h_source}{}\label{otsvg_8h_source}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/freetype/otsvg.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/freetype/otsvg.h}}
+\mbox{\hyperlink{otsvg_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ otsvg.h}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ Interface\ for\ OT-\/SVG\ support\ related\ things\ (specification).}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ Copyright\ (C)\ 2022\ by}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ David\ Turner,\ Robert\ Wilhelm,\ Werner\ Lemberg,\ and\ Moazin\ Khatti.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ the\ FreeType\ project,\ and\ may\ only\ be\ used,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ modified,\ and\ distributed\ under\ the\ terms\ of\ the\ FreeType\ project}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ license,\ LICENSE.TXT.\ \ By\ continuing\ to\ use,\ modify,\ or\ distribute}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ this\ file\ you\ indicate\ that\ you\ have\ read\ the\ license\ and}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ understand\ and\ accept\ it\ fully.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifndef\ OTSVG\_H\_}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ OTSVG\_H\_}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{freetype_8h}{freetype/freetype.h}}>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#ifdef\ FREETYPE\_H}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#error\ "{}freetype.h\ of\ FreeType\ 1\ has\ been\ loaded!"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#error\ "{}Please\ fix\ the\ directory\ search\ order\ for\ header\ files"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#error\ "{}so\ that\ freetype.h\ of\ FreeType\ 2\ is\ found\ first."{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \mbox{\hyperlink{ftheader_8h_a72ee5814b3ae378ebb7fd3a8e3ddec14}{FT\_BEGIN\_HEADER}}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ \ \ *\ @section:}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ \ \ *\ \ \ svg\_fonts}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ \ \ *\ @title:}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ *\ \ \ OpenType\ SVG\ Fonts}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ *\ @abstract:}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ *\ \ \ OT-\/SVG\ API\ between\ FreeType\ and\ an\ external\ SVG\ rendering\ library.}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ \ \ *\ \ \ This\ section\ describes\ the\ four\ hooks\ necessary\ to\ render\ SVG}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ \ \ *\ \ \ 'documents'\ that\ are\ contained\ in\ an\ OpenType\ font's\ 'SVG\string~'\ table.}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ \ \ *\ \ \ For\ more\ information\ on\ the\ implementation,\ see\ our\ standard\ hooks}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ \ \ *\ \ \ based\ on\ 'librsvg'\ in\ the\ [FreeType\ Demo}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ *\ \ \ Programs](https://gitlab.freedesktop.org/freetype/freetype-\/demos)}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ \ \ *\ \ \ repository.}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00058\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00059\ \textcolor{comment}{\ \ \ *\ @functype:}}
+\DoxyCodeLine{00060\ \textcolor{comment}{\ \ \ *\ \ \ SVG\_Lib\_Init\_Func}}
+\DoxyCodeLine{00061\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00062\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ \ \ *\ \ \ A\ callback\ that\ is\ called\ when\ the\ first\ OT-\/SVG\ glyph\ is\ rendered\ in}}
+\DoxyCodeLine{00064\ \textcolor{comment}{\ \ \ *\ \ \ the\ lifetime\ of\ an\ @FT\_Library\ object.\ \ In\ a\ typical\ implementation,}}
+\DoxyCodeLine{00065\ \textcolor{comment}{\ \ \ *\ \ \ one\ would\ want\ to\ allocate\ a\ structure\ and\ point\ the\ \`{}data\_pointer`}}
+\DoxyCodeLine{00066\ \textcolor{comment}{\ \ \ *\ \ \ to\ it\ and\ perform\ any\ library\ initializations\ that\ might\ be\ needed.}}
+\DoxyCodeLine{00067\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ *\ @inout:}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ *\ \ \ data\_pointer\ ::}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ SVG\ rendering\ module\ stores\ a\ pointer\ variable\ that\ can\ be\ used}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ *\ \ \ \ \ by\ clients\ to\ store\ any\ data\ that\ needs\ to\ be\ shared\ across}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ *\ \ \ \ \ different\ hooks.\ \ \`{}data\_pointer`\ is\ essentially\ a\ pointer\ to\ that}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ *\ \ \ \ \ pointer\ such\ that\ it\ can\ be\ written\ to\ as\ well\ as\ read\ from.}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{00076\ \textcolor{comment}{\ \ \ *\ \ \ FreeType\ error\ code.\ \ 0\ means\ success.}}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00078\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00079\ \textcolor{comment}{\ \ \ *\ \ \ 2.12}}
+\DoxyCodeLine{00080\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00081\ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{fttypes_8h_a64c8060bdb3d6eec844a1bf670e06bdd}{FT\_Error}}}
+\DoxyCodeLine{00082\ \ \ (*\mbox{\hyperlink{otsvg_8h_a211f960d1a82ce9a2e3a6656b48a76f1}{SVG\_Lib\_Init\_Func}})(\ \mbox{\hyperlink{fttypes_8h_a00f9e6a0ddd7bc55f79b2f4b5b867266}{FT\_Pointer}}\ \ *data\_pointer\ );}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ \ \ *\ @functype:}}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ \ \ *\ \ \ SVG\_Lib\_Free\_Func}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00091\ \textcolor{comment}{\ \ \ *\ \ \ A\ callback\ that\ is\ called\ when\ the\ \`{}ot-\/svg`\ module\ is\ being\ freed.}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\ \ \ *\ \ \ It\ is\ only\ called\ if\ the\ init\ hook\ was\ called\ earlier.\ \ This\ means}}
+\DoxyCodeLine{00093\ \textcolor{comment}{\ \ \ *\ \ \ that\ neither\ the\ init\ nor\ the\ free\ hook\ is\ called\ if\ no\ OT-\/SVG\ glyph}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ *\ \ \ is\ rendered.}}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ \ \ *\ \ \ In\ a\ typical\ implementation,\ one\ would\ want\ to\ free\ any\ state}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ \ \ *\ \ \ structure\ that\ was\ allocated\ in\ the\ init\ hook\ and\ perform\ any}}
+\DoxyCodeLine{00098\ \textcolor{comment}{\ \ \ *\ \ \ library-\/related\ closure\ that\ might\ be\ needed.}}
+\DoxyCodeLine{00099\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00100\ \textcolor{comment}{\ \ \ *\ @inout:}}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ \ \ *\ \ \ data\_pointer\ ::}}
+\DoxyCodeLine{00102\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ SVG\ rendering\ module\ stores\ a\ pointer\ variable\ that\ can\ be\ used}}
+\DoxyCodeLine{00103\ \textcolor{comment}{\ \ \ *\ \ \ \ \ by\ clients\ to\ store\ any\ data\ that\ needs\ to\ be\ shared\ across}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ \ *\ \ \ \ \ different\ hooks.\ \ \`{}data\_pointer`\ is\ essentially\ a\ pointer\ to\ that}}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ \ \ *\ \ \ \ \ pointer\ such\ that\ it\ can\ be\ written\ to\ as\ well\ as\ read\ from.}}
+\DoxyCodeLine{00106\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00107\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00108\ \textcolor{comment}{\ \ \ *\ \ \ 2.12}}
+\DoxyCodeLine{00109\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00110\ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}}
+\DoxyCodeLine{00111\ \ \ (*\mbox{\hyperlink{otsvg_8h_ab2c2e4efc41c0b2b6b018c466c3ca7fe}{SVG\_Lib\_Free\_Func}})(\ \mbox{\hyperlink{fttypes_8h_a00f9e6a0ddd7bc55f79b2f4b5b867266}{FT\_Pointer}}\ \ *data\_pointer\ );}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00115\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00116\ \textcolor{comment}{\ \ \ *\ @functype:}}
+\DoxyCodeLine{00117\ \textcolor{comment}{\ \ \ *\ \ \ SVG\_Lib\_Render\_Func}}
+\DoxyCodeLine{00118\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00119\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00120\ \textcolor{comment}{\ \ \ *\ \ \ A\ callback\ that\ is\ called\ to\ render\ an\ OT-\/SVG\ glyph.\ \ This\ callback}}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ \ \ *\ \ \ hook\ is\ called\ right\ after\ the\ preset\ hook\ @SVG\_Lib\_Preset\_Slot\_Func}}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ \ \ *\ \ \ has\ been\ called\ with\ \`{}cache`\ set\ to\ \`{}TRUE`.\ \ The\ data\ necessary\ to}}
+\DoxyCodeLine{00123\ \textcolor{comment}{\ \ \ *\ \ \ render\ is\ available\ through\ the\ handle\ @FT\_SVG\_Document,\ which\ is\ set}}
+\DoxyCodeLine{00124\ \textcolor{comment}{\ \ \ *\ \ \ in\ the\ \`{}other`\ field\ of\ @FT\_GlyphSlotRec.}}
+\DoxyCodeLine{00125\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00126\ \textcolor{comment}{\ \ \ *\ \ \ The\ render\ hook\ is\ expected\ to\ render\ the\ SVG\ glyph\ to\ the\ bitmap}}
+\DoxyCodeLine{00127\ \textcolor{comment}{\ \ \ *\ \ \ buffer\ that\ is\ allocated\ already\ at\ \`{}slot-\/>bitmap.buffer`.\ \ It\ also}}
+\DoxyCodeLine{00128\ \textcolor{comment}{\ \ \ *\ \ \ sets\ the\ \`{}num\_grays`\ value\ as\ well\ as\ \`{}slot-\/>format`.}}
+\DoxyCodeLine{00129\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00130\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{00131\ \textcolor{comment}{\ \ \ *\ \ \ slot\ ::}}
+\DoxyCodeLine{00132\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ slot\ to\ render.}}
+\DoxyCodeLine{00133\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00134\ \textcolor{comment}{\ \ \ *\ @inout:}}
+\DoxyCodeLine{00135\ \textcolor{comment}{\ \ \ *\ \ \ data\_pointer\ ::}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ SVG\ rendering\ module\ stores\ a\ pointer\ variable\ that\ can\ be\ used}}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ \ \ *\ \ \ \ \ by\ clients\ to\ store\ any\ data\ that\ needs\ to\ be\ shared\ across}}
+\DoxyCodeLine{00138\ \textcolor{comment}{\ \ \ *\ \ \ \ \ different\ hooks.\ \ \`{}data\_pointer`\ is\ essentially\ a\ pointer\ to\ that}}
+\DoxyCodeLine{00139\ \textcolor{comment}{\ \ \ *\ \ \ \ \ pointer\ such\ that\ it\ can\ be\ written\ to\ as\ well\ as\ read\ from.}}
+\DoxyCodeLine{00140\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00141\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{00142\ \textcolor{comment}{\ \ \ *\ \ \ FreeType\ error\ code.\ \ 0\ means\ success.}}
+\DoxyCodeLine{00143\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00144\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00145\ \textcolor{comment}{\ \ \ *\ \ \ 2.12}}
+\DoxyCodeLine{00146\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00147\ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{fttypes_8h_a64c8060bdb3d6eec844a1bf670e06bdd}{FT\_Error}}}
+\DoxyCodeLine{00148\ \ \ (*\mbox{\hyperlink{otsvg_8h_a30f6ea1cd6169e0e78b7c0563a887714}{SVG\_Lib\_Render\_Func}})(\ \mbox{\hyperlink{struct_f_t___glyph_slot_rec__}{FT\_GlyphSlot}}\ \ slot,}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a00f9e6a0ddd7bc55f79b2f4b5b867266}{FT\_Pointer}}\ \ \ *data\_pointer\ );}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00153\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00154\ \textcolor{comment}{\ \ \ *\ @functype:}}
+\DoxyCodeLine{00155\ \textcolor{comment}{\ \ \ *\ \ \ SVG\_Lib\_Preset\_Slot\_Func}}
+\DoxyCodeLine{00156\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00157\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00158\ \textcolor{comment}{\ \ \ *\ \ \ A\ callback\ that\ is\ called\ to\ preset\ the\ glyph\ slot.\ \ It\ is\ called\ from}}
+\DoxyCodeLine{00159\ \textcolor{comment}{\ \ \ *\ \ \ two\ places.}}
+\DoxyCodeLine{00160\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00161\ \textcolor{comment}{\ \ \ *\ \ \ 1.\ When\ \`{}FT\_Load\_Glyph`\ needs\ to\ preset\ the\ glyph\ slot.}}
+\DoxyCodeLine{00162\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00163\ \textcolor{comment}{\ \ \ *\ \ \ 2.\ Right\ before\ the\ \`{}svg`\ module\ calls\ the\ render\ callback\ hook.}}
+\DoxyCodeLine{00164\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00165\ \textcolor{comment}{\ \ \ *\ \ \ When\ it\ is\ the\ former,\ the\ argument\ \`{}cache`\ is\ set\ to\ \`{}FALSE`.\ \ When}}
+\DoxyCodeLine{00166\ \textcolor{comment}{\ \ \ *\ \ \ it\ is\ the\ latter,\ the\ argument\ \`{}cache`\ is\ set\ to\ \`{}TRUE`.\ \ This}}
+\DoxyCodeLine{00167\ \textcolor{comment}{\ \ \ *\ \ \ distinction\ has\ been\ made\ because\ many\ calculations\ that\ are\ necessary}}
+\DoxyCodeLine{00168\ \textcolor{comment}{\ \ \ *\ \ \ for\ presetting\ a\ glyph\ slot\ are\ the\ same\ needed\ later\ for\ the\ render}}
+\DoxyCodeLine{00169\ \textcolor{comment}{\ \ \ *\ \ \ callback\ hook.\ \ Thus,\ if\ \`{}cache`\ is\ \`{}TRUE`,\ the\ hook\ can\ \_cache\_\ those}}
+\DoxyCodeLine{00170\ \textcolor{comment}{\ \ \ *\ \ \ calculations\ in\ a\ memory\ block\ referenced\ by\ the\ state\ pointer.}}
+\DoxyCodeLine{00171\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00172\ \textcolor{comment}{\ \ \ *\ \ \ This\ hook\ is\ expected\ to\ preset\ the\ slot\ by\ setting\ parameters\ such\ as}}
+\DoxyCodeLine{00173\ \textcolor{comment}{\ \ \ *\ \ \ \`{}bitmap\_left`,\ \`{}bitmap\_top`,\ \`{}width`,\ \`{}rows`,\ \`{}pitch`,\ and}}
+\DoxyCodeLine{00174\ \textcolor{comment}{\ \ \ *\ \ \ \`{}pixel\_mode`.\ \ It\ is\ also\ expected\ to\ set\ all\ the\ metrics\ for\ the\ slot}}
+\DoxyCodeLine{00175\ \textcolor{comment}{\ \ \ *\ \ \ including\ the\ vertical\ advance\ if\ it\ is\ not\ already\ set.\ \ Typically,}}
+\DoxyCodeLine{00176\ \textcolor{comment}{\ \ \ *\ \ \ fonts\ have\ horizontal\ advances\ but\ not\ vertical\ ones.\ \ If\ those\ are}}
+\DoxyCodeLine{00177\ \textcolor{comment}{\ \ \ *\ \ \ available,\ they\ had\ already\ been\ set,\ otherwise\ they\ have\ to\ be}}
+\DoxyCodeLine{00178\ \textcolor{comment}{\ \ \ *\ \ \ estimated\ and\ set\ manually.\ \ The\ hook\ must\ take\ into\ account\ the}}
+\DoxyCodeLine{00179\ \textcolor{comment}{\ \ \ *\ \ \ transformations\ that\ have\ been\ set,\ and\ translate\ the\ transformation}}
+\DoxyCodeLine{00180\ \textcolor{comment}{\ \ \ *\ \ \ matrices\ into\ the\ SVG\ coordinate\ system,\ as\ the\ original\ matrix\ is}}
+\DoxyCodeLine{00181\ \textcolor{comment}{\ \ \ *\ \ \ intended\ for\ the\ TTF/CFF\ coordinate\ system.}}
+\DoxyCodeLine{00182\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00183\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{00184\ \textcolor{comment}{\ \ \ *\ \ \ slot\ ::}}
+\DoxyCodeLine{00185\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ glyph\ slot\ that\ has\ the\ SVG\ document\ loaded.}}
+\DoxyCodeLine{00186\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00187\ \textcolor{comment}{\ \ \ *\ \ \ cache\ ::}}
+\DoxyCodeLine{00188\ \textcolor{comment}{\ \ \ *\ \ \ \ \ See\ description.}}
+\DoxyCodeLine{00189\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00190\ \textcolor{comment}{\ \ \ *\ @inout:}}
+\DoxyCodeLine{00191\ \textcolor{comment}{\ \ \ *\ \ \ data\_pointer\ ::}}
+\DoxyCodeLine{00192\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ SVG\ rendering\ module\ stores\ a\ pointer\ variable\ that\ can\ be\ used}}
+\DoxyCodeLine{00193\ \textcolor{comment}{\ \ \ *\ \ \ \ \ by\ clients\ to\ store\ any\ data\ that\ needs\ to\ be\ shared\ across}}
+\DoxyCodeLine{00194\ \textcolor{comment}{\ \ \ *\ \ \ \ \ different\ hooks.\ \ \`{}data\_pointer`\ is\ essentially\ a\ pointer\ to\ that}}
+\DoxyCodeLine{00195\ \textcolor{comment}{\ \ \ *\ \ \ \ \ pointer\ such\ that\ it\ can\ be\ written\ to\ as\ well\ as\ read\ from.}}
+\DoxyCodeLine{00196\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00197\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{00198\ \textcolor{comment}{\ \ \ *\ \ \ FreeType\ error\ code.\ \ 0\ means\ success.}}
+\DoxyCodeLine{00199\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00200\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00201\ \textcolor{comment}{\ \ \ *\ \ \ 2.12}}
+\DoxyCodeLine{00202\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00203\ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{fttypes_8h_a64c8060bdb3d6eec844a1bf670e06bdd}{FT\_Error}}}
+\DoxyCodeLine{00204\ \ \ (*\mbox{\hyperlink{otsvg_8h_af77e9a29118239c1e5f879478a71a560}{SVG\_Lib\_Preset\_Slot\_Func}})(\ \mbox{\hyperlink{struct_f_t___glyph_slot_rec__}{FT\_GlyphSlot}}\ \ slot,}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a1a832a256bb5a7e6e884afaa1a07f3ae}{FT\_Bool}}\ \ \ \ \ \ \ cache,}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a00f9e6a0ddd7bc55f79b2f4b5b867266}{FT\_Pointer}}\ \ \ *state\ );}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00210\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00211\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00212\ \textcolor{comment}{\ \ \ *\ \ \ SVG\_RendererHooks}}
+\DoxyCodeLine{00213\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00214\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00215\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ that\ stores\ the\ four\ hooks\ needed\ to\ render\ OT-\/SVG\ glyphs}}
+\DoxyCodeLine{00216\ \textcolor{comment}{\ \ \ *\ \ \ properly.\ \ The\ structure\ is\ publicly\ used\ to\ set\ the\ hooks\ via\ the}}
+\DoxyCodeLine{00217\ \textcolor{comment}{\ \ \ *\ \ \ @svg-\/hooks\ driver\ property.}}
+\DoxyCodeLine{00218\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00219\ \textcolor{comment}{\ \ \ *\ \ \ The\ behavior\ of\ each\ hook\ is\ described\ in\ its\ documentation.\ \ One}}
+\DoxyCodeLine{00220\ \textcolor{comment}{\ \ \ *\ \ \ thing\ to\ note\ is\ that\ the\ preset\ hook\ and\ the\ render\ hook\ often\ need}}
+\DoxyCodeLine{00221\ \textcolor{comment}{\ \ \ *\ \ \ to\ do\ the\ same\ operations;\ therefore,\ it's\ better\ to\ cache\ the}}
+\DoxyCodeLine{00222\ \textcolor{comment}{\ \ \ *\ \ \ intermediate\ data\ in\ a\ state\ structure\ to\ avoid\ calculating\ it\ twice.}}
+\DoxyCodeLine{00223\ \textcolor{comment}{\ \ \ *\ \ \ For\ example,\ in\ the\ preset\ hook\ one\ can\ draw\ the\ glyph\ on\ a\ recorder}}
+\DoxyCodeLine{00224\ \textcolor{comment}{\ \ \ *\ \ \ surface\ and\ later\ create\ a\ bitmap\ surface\ from\ it\ in\ the\ render\ hook.}}
+\DoxyCodeLine{00225\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00226\ \textcolor{comment}{\ \ \ *\ \ \ All\ four\ hooks\ must\ be\ non-\/NULL.}}
+\DoxyCodeLine{00227\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00228\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00229\ \textcolor{comment}{\ \ \ *\ \ \ init\_svg\ ::}}
+\DoxyCodeLine{00230\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ initialization\ hook.}}
+\DoxyCodeLine{00231\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00232\ \textcolor{comment}{\ \ \ *\ \ \ free\_svg\ ::}}
+\DoxyCodeLine{00233\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ cleanup\ hook.}}
+\DoxyCodeLine{00234\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00235\ \textcolor{comment}{\ \ \ *\ \ \ render\_hook\ ::}}
+\DoxyCodeLine{00236\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ render\ hook.}}
+\DoxyCodeLine{00237\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00238\ \textcolor{comment}{\ \ \ *\ \ \ preset\_slot\ ::}}
+\DoxyCodeLine{00239\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ preset\ hook.}}
+\DoxyCodeLine{00240\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00241\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00242\ \textcolor{comment}{\ \ \ *\ \ \ 2.12}}
+\DoxyCodeLine{00243\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00244\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_v_g___renderer_hooks__}{SVG\_RendererHooks\_}}}
+\DoxyCodeLine{00245\ \ \ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \mbox{\hyperlink{otsvg_8h_a211f960d1a82ce9a2e3a6656b48a76f1}{SVG\_Lib\_Init\_Func}}\ \ \ \ \mbox{\hyperlink{struct_s_v_g___renderer_hooks___aba4f5fcb05a5b84991f2db32c22eb9e2}{init\_svg}};}
+\DoxyCodeLine{00247\ \ \ \ \ \mbox{\hyperlink{otsvg_8h_ab2c2e4efc41c0b2b6b018c466c3ca7fe}{SVG\_Lib\_Free\_Func}}\ \ \ \ \mbox{\hyperlink{struct_s_v_g___renderer_hooks___a1c7444395131299ad6bd38223ec02de9}{free\_svg}};}
+\DoxyCodeLine{00248\ \ \ \ \ \mbox{\hyperlink{otsvg_8h_a30f6ea1cd6169e0e78b7c0563a887714}{SVG\_Lib\_Render\_Func}}\ \ \mbox{\hyperlink{struct_s_v_g___renderer_hooks___abbbac5f069a6b3fe6620753526a7ce52}{render\_svg}};}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \mbox{\hyperlink{otsvg_8h_af77e9a29118239c1e5f879478a71a560}{SVG\_Lib\_Preset\_Slot\_Func}}\ \ \mbox{\hyperlink{struct_s_v_g___renderer_hooks___aa695b2e7796dc1e3993a12d80cb4aa27}{preset\_slot}};}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \ \ \}\ \mbox{\hyperlink{otsvg_8h_a5b70d77f59466fd7612da6770753cfa5}{SVG\_RendererHooks}};}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00256\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00257\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00258\ \textcolor{comment}{\ \ \ *\ \ \ FT\_SVG\_DocumentRec}}
+\DoxyCodeLine{00259\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00260\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00261\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ that\ models\ one\ SVG\ document.}}
+\DoxyCodeLine{00262\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00263\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00264\ \textcolor{comment}{\ \ \ *\ \ \ svg\_document\ ::}}
+\DoxyCodeLine{00265\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ pointer\ to\ the\ SVG\ document.}}
+\DoxyCodeLine{00266\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00267\ \textcolor{comment}{\ \ \ *\ \ \ svg\_document\_length\ ::}}
+\DoxyCodeLine{00268\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ length\ of\ \`{}svg\_document`.}}
+\DoxyCodeLine{00269\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00270\ \textcolor{comment}{\ \ \ *\ \ \ metrics\ ::}}
+\DoxyCodeLine{00271\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ metrics\ object\ storing\ the\ size\ information.}}
+\DoxyCodeLine{00272\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00273\ \textcolor{comment}{\ \ \ *\ \ \ units\_per\_EM\ ::}}
+\DoxyCodeLine{00274\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ size\ of\ the\ EM\ square.}}
+\DoxyCodeLine{00275\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00276\ \textcolor{comment}{\ \ \ *\ \ \ start\_glyph\_id\ ::}}
+\DoxyCodeLine{00277\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ first\ glyph\ ID\ in\ the\ glyph\ range\ covered\ by\ this\ document.}}
+\DoxyCodeLine{00278\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00279\ \textcolor{comment}{\ \ \ *\ \ \ end\_glyph\_id\ ::}}
+\DoxyCodeLine{00280\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ last\ glyph\ ID\ in\ the\ glyph\ range\ covered\ by\ this\ document.}}
+\DoxyCodeLine{00281\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00282\ \textcolor{comment}{\ \ \ *\ \ \ transform\ ::}}
+\DoxyCodeLine{00283\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ 2x2\ transformation\ matrix\ to\ apply\ to\ the\ glyph\ while\ rendering}}
+\DoxyCodeLine{00284\ \textcolor{comment}{\ \ \ *\ \ \ \ \ it.}}
+\DoxyCodeLine{00285\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00286\ \textcolor{comment}{\ \ \ *\ \ \ delta\ ::}}
+\DoxyCodeLine{00287\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ translation\ to\ apply\ to\ the\ glyph\ while\ rendering.}}
+\DoxyCodeLine{00288\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00289\ \textcolor{comment}{\ \ \ *\ @note:}}
+\DoxyCodeLine{00290\ \textcolor{comment}{\ \ \ *\ \ \ When\ an\ @FT\_GlyphSlot\ object\ \`{}slot`\ is\ passed\ down\ to\ a\ renderer,\ the}}
+\DoxyCodeLine{00291\ \textcolor{comment}{\ \ \ *\ \ \ renderer\ can\ only\ access\ the\ \`{}metrics`\ and\ \`{}units\_per\_EM`\ fields\ via}}
+\DoxyCodeLine{00292\ \textcolor{comment}{\ \ \ *\ \ \ \`{}slot-\/>face`.\ \ However,\ when\ @FT\_Glyph\_To\_Bitmap\ sets\ up\ a\ dummy}}
+\DoxyCodeLine{00293\ \textcolor{comment}{\ \ \ *\ \ \ object,\ it\ has\ no\ way\ to\ set\ a\ \`{}face`\ object.\ \ Thus,\ metrics}}
+\DoxyCodeLine{00294\ \textcolor{comment}{\ \ \ *\ \ \ information\ and\ \`{}units\_per\_EM`\ (which\ is\ necessary\ for\ OT-\/SVG)\ has\ to}}
+\DoxyCodeLine{00295\ \textcolor{comment}{\ \ \ *\ \ \ be\ stored\ separately.}}
+\DoxyCodeLine{00296\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00297\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00298\ \textcolor{comment}{\ \ \ *\ \ \ 2.12}}
+\DoxyCodeLine{00299\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00300\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___s_v_g___document_rec__}{FT\_SVG\_DocumentRec\_}}}
+\DoxyCodeLine{00301\ \ \ \{}
+\DoxyCodeLine{00302\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a51f26183ca0c9f4af958939648caeccd}{FT\_Byte}}*\ \ \mbox{\hyperlink{struct_f_t___s_v_g___document_rec___aab1d7022587f6cd1cbc76f685aa48fe6}{svg\_document}};}
+\DoxyCodeLine{00303\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a4fac88bdba78eb76b505efa6e4fbf3f5}{FT\_ULong}}\ \ \mbox{\hyperlink{struct_f_t___s_v_g___document_rec___abcd326ea3071803034c46bd8270e7feb}{svg\_document\_length}};}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00305\ \ \ \ \ \mbox{\hyperlink{struct_f_t___size___metrics__}{FT\_Size\_Metrics}}\ \ \mbox{\hyperlink{struct_f_t___s_v_g___document_rec___a3e3cc4824e9471ba63fbcf5d22761afa}{metrics}};}
+\DoxyCodeLine{00306\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a937f6c17cf5ffd09086d8610c37b9f58}{FT\_UShort}}\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___s_v_g___document_rec___af0563dde7b3cb988f07389310642d87d}{units\_per\_EM}};}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00308\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a937f6c17cf5ffd09086d8610c37b9f58}{FT\_UShort}}\ \ \mbox{\hyperlink{struct_f_t___s_v_g___document_rec___a83b42afcd5ab72a6e7a4431e9b00bc19}{start\_glyph\_id}};}
+\DoxyCodeLine{00309\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a937f6c17cf5ffd09086d8610c37b9f58}{FT\_UShort}}\ \ \mbox{\hyperlink{struct_f_t___s_v_g___document_rec___a6f6a58c2c7368b6b3211b65924042fb1}{end\_glyph\_id}};}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \ \ \ \ \mbox{\hyperlink{struct_f_t___matrix__}{FT\_Matrix}}\ \ \mbox{\hyperlink{struct_f_t___s_v_g___document_rec___a00766d58bb60e9baaa104a16da2aa95a}{transform}};}
+\DoxyCodeLine{00312\ \ \ \ \ \mbox{\hyperlink{struct_f_t___vector__}{FT\_Vector}}\ \ \mbox{\hyperlink{struct_f_t___s_v_g___document_rec___a8a58c6193e4d6907dbcba71712d327e6}{delta}};}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \ \ \}\ \mbox{\hyperlink{otsvg_8h_a516c602eee25221e5df6cae02e7470c5}{FT\_SVG\_DocumentRec}};}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00317\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00318\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00319\ \textcolor{comment}{\ \ \ *\ @type:}}
+\DoxyCodeLine{00320\ \textcolor{comment}{\ \ \ *\ \ \ FT\_SVG\_Document}}
+\DoxyCodeLine{00321\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00322\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00323\ \textcolor{comment}{\ \ \ *\ \ \ A\ handle\ to\ an\ @FT\_SVG\_DocumentRec\ object.}}
+\DoxyCodeLine{00324\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00325\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00326\ \textcolor{comment}{\ \ \ *\ \ \ 2.12}}
+\DoxyCodeLine{00327\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00328\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_f_t___s_v_g___document_rec__}{FT\_SVG\_DocumentRec\_}}*\ \ \mbox{\hyperlink{otsvg_8h_acb9ee1af1a78f3f5333c580720106579}{FT\_SVG\_Document}};}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00331\ \mbox{\hyperlink{ftheader_8h_a2ebbdbbee7f9bfa8b6b86790de7e9963}{FT\_END\_HEADER}}}
+\DoxyCodeLine{00332\ }
+\DoxyCodeLine{00333\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ OTSVG\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ \textcolor{comment}{/*\ END\ */}}
+
+\end{DoxyCode}

@@ -1,0 +1,56 @@
+var encode_8h =
+[
+    [ "BROTLI_DEFAULT_MODE", "encode_8h.html#a9b18180a611bd32872cfb0e80b567830", null ],
+    [ "BROTLI_DEFAULT_QUALITY", "encode_8h.html#a8d015487f9401ec430a5c9356e773e66", null ],
+    [ "BROTLI_DEFAULT_WINDOW", "encode_8h.html#a46cf52a4bb642771f753dbec48cc2477", null ],
+    [ "BROTLI_LARGE_MAX_WINDOW_BITS", "encode_8h.html#af46c9c1a6488507af0fb7ab2232dc9ee", null ],
+    [ "BROTLI_MAX_INPUT_BLOCK_BITS", "encode_8h.html#ac4fa7009ad322063e2c6975a1b9cb9d7", null ],
+    [ "BROTLI_MAX_QUALITY", "encode_8h.html#ac4582a47de1127136ffe7e7d2b1a6b05", null ],
+    [ "BROTLI_MAX_WINDOW_BITS", "encode_8h.html#a5a8f8b31992980fdf1e34ad8a2e822e8", null ],
+    [ "BROTLI_MIN_INPUT_BLOCK_BITS", "encode_8h.html#a0d235077d87601d89ef51aa09eb907d3", null ],
+    [ "BROTLI_MIN_QUALITY", "encode_8h.html#a94ffc03fed43e8491e998fe74ce42a40", null ],
+    [ "BROTLI_MIN_WINDOW_BITS", "encode_8h.html#ab152537842374c78cce31064d2c4f0c5", null ],
+    [ "BrotliEncoderMode", "encode_8h.html#a6a9a2294e88a30769440872b147d27c9", null ],
+    [ "BrotliEncoderOperation", "encode_8h.html#a1bd662f137583d5949e2ac9d5a177e19", null ],
+    [ "BrotliEncoderParameter", "encode_8h.html#a93608bf1e1ffa4024f110405fdb2c94f", null ],
+    [ "BrotliEncoderPreparedDictionary", "encode_8h.html#a6bad5cd4b3dd2f5d290450f8d69e3cfd", null ],
+    [ "BrotliEncoderState", "encode_8h.html#ab14c96477af86d34cdc1de48d233b74f", null ],
+    [ "BrotliEncoderMode", "encode_8h.html#aa6fdd56b234eddc40cd8b79a0ecc70a7", [
+      [ "BROTLI_MODE_GENERIC", "encode_8h.html#aa6fdd56b234eddc40cd8b79a0ecc70a7a7f53c9c953e88702ed8c7eb8da1a846d", null ],
+      [ "BROTLI_MODE_TEXT", "encode_8h.html#aa6fdd56b234eddc40cd8b79a0ecc70a7a05c92692faa0f316f09f73411d4c9b45", null ],
+      [ "BROTLI_MODE_FONT", "encode_8h.html#aa6fdd56b234eddc40cd8b79a0ecc70a7ad780936a708a653ebf1c4543b7249a34", null ]
+    ] ],
+    [ "BrotliEncoderOperation", "encode_8h.html#aed29c96cccbe4dc2aed53a2f1e2d04cb", [
+      [ "BROTLI_OPERATION_PROCESS", "encode_8h.html#aed29c96cccbe4dc2aed53a2f1e2d04cbab2e4f33caf69a01084bdb1db7fb8c356", null ],
+      [ "BROTLI_OPERATION_FLUSH", "encode_8h.html#aed29c96cccbe4dc2aed53a2f1e2d04cba35d9c34839f1171ecb715de795e47664", null ],
+      [ "BROTLI_OPERATION_FINISH", "encode_8h.html#aed29c96cccbe4dc2aed53a2f1e2d04cba9e7ec104794a42c7a14e3bec4753be18", null ],
+      [ "BROTLI_OPERATION_EMIT_METADATA", "encode_8h.html#aed29c96cccbe4dc2aed53a2f1e2d04cba3b5108b267793993e6f6decd8ebc438a", null ]
+    ] ],
+    [ "BrotliEncoderParameter", "encode_8h.html#a9a8f89a2fd7678ae0cfca1dee4b12fab", [
+      [ "BROTLI_PARAM_MODE", "encode_8h.html#a9a8f89a2fd7678ae0cfca1dee4b12fabaee22e9368dfa5382dc3c8fb07c129f92", null ],
+      [ "BROTLI_PARAM_QUALITY", "encode_8h.html#a9a8f89a2fd7678ae0cfca1dee4b12faba11e8c7def1638f8f31676d233c7c64d6", null ],
+      [ "BROTLI_PARAM_LGWIN", "encode_8h.html#a9a8f89a2fd7678ae0cfca1dee4b12fabae3d363e61b30ea4ae9e08db2d0dfa3d4", null ],
+      [ "BROTLI_PARAM_LGBLOCK", "encode_8h.html#a9a8f89a2fd7678ae0cfca1dee4b12fabaa2a5a09ba4fe98841bb0c8f844f9cf78", null ],
+      [ "BROTLI_PARAM_DISABLE_LITERAL_CONTEXT_MODELING", "encode_8h.html#a9a8f89a2fd7678ae0cfca1dee4b12faba1dbafb6915376ab20fb2a87c721d0f45", null ],
+      [ "BROTLI_PARAM_SIZE_HINT", "encode_8h.html#a9a8f89a2fd7678ae0cfca1dee4b12fababcac7ab9aca3be47a9476528201152e7", null ],
+      [ "BROTLI_PARAM_LARGE_WINDOW", "encode_8h.html#a9a8f89a2fd7678ae0cfca1dee4b12faba4b364d6f74149853fa147d3f4d6db580", null ],
+      [ "BROTLI_PARAM_NPOSTFIX", "encode_8h.html#a9a8f89a2fd7678ae0cfca1dee4b12faba579cc2c55788b70a0bd37efcdf73ea50", null ],
+      [ "BROTLI_PARAM_NDIRECT", "encode_8h.html#a9a8f89a2fd7678ae0cfca1dee4b12faba1cbd778644a1306982bf55fb229d6dc9", null ],
+      [ "BROTLI_PARAM_STREAM_OFFSET", "encode_8h.html#a9a8f89a2fd7678ae0cfca1dee4b12faba3bacc3f5f55a2f4bd1f53a7bd6dcc587", null ]
+    ] ],
+    [ "BrotliEncoderAttachPreparedDictionary", "encode_8h.html#acdff5f8802f56a773cf957fbf3817ae4", null ],
+    [ "BrotliEncoderCompress", "encode_8h.html#a2e6de45c430b52088ce27aa58dd64884", null ],
+    [ "BrotliEncoderCompressStream", "encode_8h.html#ac94b211d362a1a3d4f208a5736cc41a5", null ],
+    [ "BrotliEncoderCreateInstance", "encode_8h.html#a28c1682997d6836cf2bc014916d5aeee", null ],
+    [ "BrotliEncoderDestroyInstance", "encode_8h.html#a530cb7ed15ad6b79fdd77c5d7ef3bc2f", null ],
+    [ "BrotliEncoderDestroyPreparedDictionary", "encode_8h.html#a6ce9421267c33f329e4050ea6f181d3f", null ],
+    [ "BrotliEncoderEstimatePeakMemoryUsage", "encode_8h.html#a866643d57d6803b3d429b8a9027cce74", null ],
+    [ "BrotliEncoderGetPreparedDictionarySize", "encode_8h.html#adbfa2f0ceab3fb35f444bd3ff5f49ecd", null ],
+    [ "BrotliEncoderHasMoreOutput", "encode_8h.html#a122ad712b0987e513af6ce9ad90fc65f", null ],
+    [ "BrotliEncoderIsFinished", "encode_8h.html#a25f930a23bf92ecd33f361083bc1e90a", null ],
+    [ "BrotliEncoderMaxCompressedSize", "encode_8h.html#a288fda6f67776ee205902166d2981c88", null ],
+    [ "BrotliEncoderPrepareDictionary", "encode_8h.html#ad37e094cabda2bbc0192958f49234432", null ],
+    [ "BrotliEncoderSetParameter", "encode_8h.html#a068874cc94e7b3563c4791a9bc5894bd", null ],
+    [ "BrotliEncoderTakeOutput", "encode_8h.html#a2bda817fc6d2bbd9740115590ea93aa5", null ],
+    [ "BrotliEncoderVersion", "encode_8h.html#a98b93f770c11522c2edcb9425afcd0d6", null ]
+];

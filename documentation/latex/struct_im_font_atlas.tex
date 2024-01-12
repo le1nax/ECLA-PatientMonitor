@@ -1,0 +1,445 @@
+\doxysection{Im\+Font\+Atlas Struct Reference}
+\hypertarget{struct_im_font_atlas}{}\label{struct_im_font_atlas}\index{ImFontAtlas@{ImFontAtlas}}
+
+
+{\ttfamily \#include $<$imgui.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font_atlas_afc82339a5c6ce1723c15b764e7ce8ab3}{Im\+Font\+Atlas}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font_atlas_a8042436887183d5ffe0d017a249d59c3}{\texorpdfstring{$\sim$}{\string~}\+Im\+Font\+Atlas}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a29ef46598ddad17ad09e1e171b8369ec}{Add\+Font}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} \texorpdfstring{$\ast$}{*}font\+\_\+cfg)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_ac1919c17d22a237c3d52021df6a7e8a9}{Add\+Font\+Default}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} \texorpdfstring{$\ast$}{*}font\+\_\+cfg=NULL)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_af7526012d417c542eb02071dc5d9db41}{Add\+Font\+From\+File\+TTF}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}filename, float size\+\_\+pixels, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} \texorpdfstring{$\ast$}{*}font\+\_\+cfg=NULL, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*}glyph\+\_\+ranges=NULL)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a8c35f42d760ddcf0aad6066b2dad01a5}{Add\+Font\+From\+Memory\+TTF}} (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}font\+\_\+data, int font\+\_\+size, float size\+\_\+pixels, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} \texorpdfstring{$\ast$}{*}font\+\_\+cfg=NULL, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*}glyph\+\_\+ranges=NULL)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a7ed0dd480b936e65d76008485844f4a7}{Add\+Font\+From\+Memory\+Compressed\+TTF}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}compressed\+\_\+font\+\_\+data, int compressed\+\_\+font\+\_\+size, float size\+\_\+pixels, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} \texorpdfstring{$\ast$}{*}font\+\_\+cfg=NULL, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*}glyph\+\_\+ranges=NULL)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a6955c65e3b9e5b77a112330e81473274}{Add\+Font\+From\+Memory\+Compressed\+Base85\+TTF}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}compressed\+\_\+font\+\_\+data\+\_\+base85, float size\+\_\+pixels, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} \texorpdfstring{$\ast$}{*}font\+\_\+cfg=NULL, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*}glyph\+\_\+ranges=NULL)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_atlas_a53cc004ffd4bd989e227367eaeb0f142}{Clear\+Input\+Data}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_atlas_a97804b3ed2e54b4df70137c88a495d70}{Clear\+Tex\+Data}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_atlas_a71af651bcbeb423b06c9b56ab7dc9749}{Clear\+Fonts}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_atlas_a142f4c3bf3c8909df256ddabd77739c4}{Clear}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} bool \mbox{\hyperlink{struct_im_font_atlas_a2f77a1cae363c27e2903f1bfc29c87e5}{Build}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_atlas_ae50261af7f9ba8c89f12814c8176afda}{Get\+Tex\+Data\+As\+Alpha8}} (unsigned char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}out\+\_\+pixels, int \texorpdfstring{$\ast$}{*}out\+\_\+width, int \texorpdfstring{$\ast$}{*}out\+\_\+height, int \texorpdfstring{$\ast$}{*}out\+\_\+bytes\+\_\+per\+\_\+pixel=NULL)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_atlas_ac7d71e342139a37e58864075ae39c4f3}{Get\+Tex\+Data\+As\+RGBA32}} (unsigned char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}out\+\_\+pixels, int \texorpdfstring{$\ast$}{*}out\+\_\+width, int \texorpdfstring{$\ast$}{*}out\+\_\+height, int \texorpdfstring{$\ast$}{*}out\+\_\+bytes\+\_\+per\+\_\+pixel=NULL)
+\item 
+bool \mbox{\hyperlink{struct_im_font_atlas_a142ba1470099bbd4b67bdb47be92d475}{Is\+Built}} () \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}}
+\item 
+\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_atlas_a96ffd1956c11dac4f79b43c095828445}{Set\+Tex\+ID}} (\mbox{\hyperlink{imgui_8h_a364f4447ecbc4ca176145ccff9db6286}{Im\+Texture\+ID}} id)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a17e2daa4dbc3deaee60c167fd07d804f}{Get\+Glyph\+Ranges\+Default}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a66b07bea4358972b6f226af42bd76b74}{Get\+Glyph\+Ranges\+Greek}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_af94bb4d460ce32244e03b68c78b5491f}{Get\+Glyph\+Ranges\+Korean}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_abccd80eb5bade650655aa3bfc10e4db8}{Get\+Glyph\+Ranges\+Japanese}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a702c87e0ca4c1e003325efe479fecf28}{Get\+Glyph\+Ranges\+Chinese\+Full}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a65dc2a1422fdc419f6cfc7b46f2b8d81}{Get\+Glyph\+Ranges\+Chinese\+Simplified\+Common}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a09f5f97051819ce8d1870d04ca655667}{Get\+Glyph\+Ranges\+Cyrillic}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a7dab3350f054e3e75b37f58d6cf99acc}{Get\+Glyph\+Ranges\+Thai}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_aee619443d2a456737d8f39c17b783e4a}{Get\+Glyph\+Ranges\+Vietnamese}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} int \mbox{\hyperlink{struct_im_font_atlas_aacf37aa9dc02548c067d8687f84a3977}{Add\+Custom\+Rect\+Regular}} (int \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_ad46179dbe9c68fdcea52b34c3480ec0f}{width}}, int \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a60075de22f90a1223dc0bea98d2ee4d5}{height}})
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} int \mbox{\hyperlink{struct_im_font_atlas_aa2d26b7870e620e41fb80af8ee77b41a}{Add\+Custom\+Rect\+Font\+Glyph}} (\mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*}font, \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} id, int \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_ad46179dbe9c68fdcea52b34c3480ec0f}{width}}, int \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a60075de22f90a1223dc0bea98d2ee4d5}{height}}, float advance\+\_\+x, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \&\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_ae1b92ae085ddef4b1cdca7d749339fb0}{offset}}=\mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}}(0, 0))
+\item 
+\mbox{\hyperlink{struct_im_font_atlas_custom_rect}{Im\+Font\+Atlas\+Custom\+Rect}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a6a4c5f59c12c88a5c0429d6a6ec06481}{Get\+Custom\+Rect\+By\+Index}} (int \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a57f14e05b1900f16a2da82ade47d0c6d}{index}})
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_atlas_a11ac0cddc7ed689b1a28cd880ce1935d}{Calc\+Custom\+Rect\+UV}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_atlas_custom_rect}{Im\+Font\+Atlas\+Custom\+Rect}} \texorpdfstring{$\ast$}{*}rect, \mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \texorpdfstring{$\ast$}{*}out\+\_\+uv\+\_\+min, \mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \texorpdfstring{$\ast$}{*}out\+\_\+uv\+\_\+max) \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}}
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} bool \mbox{\hyperlink{struct_im_font_atlas_af2b4253674bac44cf335c9a006fd680f}{Get\+Mouse\+Cursor\+Tex\+Data}} (\mbox{\hyperlink{imgui_8h_a9223d6c82bb5d12c2eab5f829ca520ef}{Im\+Gui\+Mouse\+Cursor}} cursor, \mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \texorpdfstring{$\ast$}{*}out\+\_\+offset, \mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \texorpdfstring{$\ast$}{*}out\+\_\+size, \mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} out\+\_\+uv\+\_\+border\mbox{[}2\mbox{]}, \mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} out\+\_\+uv\+\_\+fill\mbox{[}2\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{imgui_8h_a6ac370f8e39385273ab2d0fcc644db6f}{Im\+Font\+Atlas\+Flags}} \mbox{\hyperlink{struct_im_font_atlas_adf2f2d04b46911ad01cfbef0f59e1f11}{Flags}}
+\item 
+\mbox{\hyperlink{imgui_8h_a364f4447ecbc4ca176145ccff9db6286}{Im\+Texture\+ID}} \mbox{\hyperlink{struct_im_font_atlas_a1d7be9a6190c75706f80bda16c87f28e}{Tex\+ID}}
+\item 
+int \mbox{\hyperlink{struct_im_font_atlas_aa1d62d7da5633f894dbe881547e9de7c}{Tex\+Desired\+Width}}
+\item 
+int \mbox{\hyperlink{struct_im_font_atlas_a32034b2aac4616d8c27ee666a1fd1b62}{Tex\+Glyph\+Padding}}
+\item 
+bool \mbox{\hyperlink{struct_im_font_atlas_a2222ff64ba974a8ee7a286617f879f9b}{Locked}}
+\item 
+\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_ac848a29825d36edf8629b31b419dc21e}{User\+Data}}
+\item 
+bool \mbox{\hyperlink{struct_im_font_atlas_a9d28236e71f9a21a21d8f4f7eac39299}{Tex\+Ready}}
+\item 
+bool \mbox{\hyperlink{struct_im_font_atlas_a4bc426a6a9c2fd3ab1ad3893142613ff}{Tex\+Pixels\+Use\+Colors}}
+\item 
+unsigned char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a443ea9e7c4cf85ee791ffe891280eff3}{Tex\+Pixels\+Alpha8}}
+\item 
+unsigned int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a41163489a5b8060f405c56e22590cba5}{Tex\+Pixels\+RGBA32}}
+\item 
+int \mbox{\hyperlink{struct_im_font_atlas_a2d0662502433e7a87b3aa4681ba17aa3}{Tex\+Width}}
+\item 
+int \mbox{\hyperlink{struct_im_font_atlas_a5ef74d37ec01d9e8aac5c57433296ce3}{Tex\+Height}}
+\item 
+\mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \mbox{\hyperlink{struct_im_font_atlas_adbe3a6b1fd501108649fe04f882b8664}{Tex\+Uv\+Scale}}
+\item 
+\mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \mbox{\hyperlink{struct_im_font_atlas_af1d05221e9a1607d7f625df92a4f9b7e}{Tex\+Uv\+White\+Pixel}}
+\item 
+\mbox{\hyperlink{struct_im_vector}{Im\+Vector}}$<$ \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{struct_im_font_atlas_a0198aeb17ef8bb810ccc8db103b93b1f}{Fonts}}
+\item 
+\mbox{\hyperlink{struct_im_vector}{Im\+Vector}}$<$ \mbox{\hyperlink{struct_im_font_atlas_custom_rect}{Im\+Font\+Atlas\+Custom\+Rect}} $>$ \mbox{\hyperlink{struct_im_font_atlas_ae3752e66f7454a42e5ae5ec052af537c}{Custom\+Rects}}
+\item 
+\mbox{\hyperlink{struct_im_vector}{Im\+Vector}}$<$ \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} $>$ \mbox{\hyperlink{struct_im_font_atlas_afa4f7459807763d032fe2d0022fc0823}{Config\+Data}}
+\item 
+\mbox{\hyperlink{struct_im_vec4}{Im\+Vec4}} \mbox{\hyperlink{struct_im_font_atlas_abf794895d5fb9597bf2a96ab68eb7048}{Tex\+Uv\+Lines}} \mbox{[}\mbox{\hyperlink{imgui_8h_a2e0fd3c4182b90dfde08210254eaeccf}{IM\+\_\+\+DRAWLIST\+\_\+\+TEX\+\_\+\+LINES\+\_\+\+WIDTH\+\_\+\+MAX}}+1\mbox{]}
+\item 
+\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_builder_i_o}{Im\+Font\+Builder\+IO}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_font_atlas_a43337693a61cd40ec0110c83da628f09}{Font\+Builder\+IO}}
+\item 
+unsigned int \mbox{\hyperlink{struct_im_font_atlas_ad149b9a00b3dd033c0568abaf45256c3}{Font\+Builder\+Flags}}
+\item 
+int \mbox{\hyperlink{struct_im_font_atlas_afc92fd54d52cab4fe787e364e7e4f652}{Pack\+Id\+Mouse\+Cursors}}
+\item 
+int \mbox{\hyperlink{struct_im_font_atlas_a0964aa42e665dbd423066309b3c7461b}{Pack\+Id\+Lines}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_im_font_atlas_afc82339a5c6ce1723c15b764e7ce8ab3}\label{struct_im_font_atlas_afc82339a5c6ce1723c15b764e7ce8ab3} 
+\index{ImFontAtlas@{ImFontAtlas}!ImFontAtlas@{ImFontAtlas}}
+\index{ImFontAtlas@{ImFontAtlas}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{ImFontAtlas()}{ImFontAtlas()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} Im\+Font\+Atlas\+::\+Im\+Font\+Atlas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a8042436887183d5ffe0d017a249d59c3}\label{struct_im_font_atlas_a8042436887183d5ffe0d017a249d59c3} 
+\index{ImFontAtlas@{ImFontAtlas}!````~ImFontAtlas@{\texorpdfstring{$\sim$}{\string~}ImFontAtlas}}
+\index{````~ImFontAtlas@{\texorpdfstring{$\sim$}{\string~}ImFontAtlas}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ImFontAtlas()}{\string~ImFontAtlas()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} Im\+Font\+Atlas\+::\texorpdfstring{$\sim$}{\string~}\+Im\+Font\+Atlas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_im_font_atlas_aa2d26b7870e620e41fb80af8ee77b41a}\label{struct_im_font_atlas_aa2d26b7870e620e41fb80af8ee77b41a} 
+\index{ImFontAtlas@{ImFontAtlas}!AddCustomRectFontGlyph@{AddCustomRectFontGlyph}}
+\index{AddCustomRectFontGlyph@{AddCustomRectFontGlyph}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{AddCustomRectFontGlyph()}{AddCustomRectFontGlyph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} int Im\+Font\+Atlas\+::\+Add\+Custom\+Rect\+Font\+Glyph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*}}]{font,  }\item[{\mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}}}]{id,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{float}]{advance\+\_\+x,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \&}]{offset = {\ttfamily \mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}}(0,~0)} }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_aacf37aa9dc02548c067d8687f84a3977}\label{struct_im_font_atlas_aacf37aa9dc02548c067d8687f84a3977} 
+\index{ImFontAtlas@{ImFontAtlas}!AddCustomRectRegular@{AddCustomRectRegular}}
+\index{AddCustomRectRegular@{AddCustomRectRegular}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{AddCustomRectRegular()}{AddCustomRectRegular()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} int Im\+Font\+Atlas\+::\+Add\+Custom\+Rect\+Regular (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a29ef46598ddad17ad09e1e171b8369ec}\label{struct_im_font_atlas_a29ef46598ddad17ad09e1e171b8369ec} 
+\index{ImFontAtlas@{ImFontAtlas}!AddFont@{AddFont}}
+\index{AddFont@{AddFont}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{AddFont()}{AddFont()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Add\+Font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} \texorpdfstring{$\ast$}{*}}]{font\+\_\+cfg }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_ac1919c17d22a237c3d52021df6a7e8a9}\label{struct_im_font_atlas_ac1919c17d22a237c3d52021df6a7e8a9} 
+\index{ImFontAtlas@{ImFontAtlas}!AddFontDefault@{AddFontDefault}}
+\index{AddFontDefault@{AddFontDefault}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{AddFontDefault()}{AddFontDefault()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Add\+Font\+Default (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} \texorpdfstring{$\ast$}{*}}]{font\+\_\+cfg = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_af7526012d417c542eb02071dc5d9db41}\label{struct_im_font_atlas_af7526012d417c542eb02071dc5d9db41} 
+\index{ImFontAtlas@{ImFontAtlas}!AddFontFromFileTTF@{AddFontFromFileTTF}}
+\index{AddFontFromFileTTF@{AddFontFromFileTTF}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{AddFontFromFileTTF()}{AddFontFromFileTTF()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Add\+Font\+From\+File\+TTF (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}}]{filename,  }\item[{float}]{size\+\_\+pixels,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} \texorpdfstring{$\ast$}{*}}]{font\+\_\+cfg = {\ttfamily NULL},  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*}}]{glyph\+\_\+ranges = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a6955c65e3b9e5b77a112330e81473274}\label{struct_im_font_atlas_a6955c65e3b9e5b77a112330e81473274} 
+\index{ImFontAtlas@{ImFontAtlas}!AddFontFromMemoryCompressedBase85TTF@{AddFontFromMemoryCompressedBase85TTF}}
+\index{AddFontFromMemoryCompressedBase85TTF@{AddFontFromMemoryCompressedBase85TTF}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{AddFontFromMemoryCompressedBase85TTF()}{AddFontFromMemoryCompressedBase85TTF()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Add\+Font\+From\+Memory\+Compressed\+Base85\+TTF (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}}]{compressed\+\_\+font\+\_\+data\+\_\+base85,  }\item[{float}]{size\+\_\+pixels,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} \texorpdfstring{$\ast$}{*}}]{font\+\_\+cfg = {\ttfamily NULL},  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*}}]{glyph\+\_\+ranges = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a7ed0dd480b936e65d76008485844f4a7}\label{struct_im_font_atlas_a7ed0dd480b936e65d76008485844f4a7} 
+\index{ImFontAtlas@{ImFontAtlas}!AddFontFromMemoryCompressedTTF@{AddFontFromMemoryCompressedTTF}}
+\index{AddFontFromMemoryCompressedTTF@{AddFontFromMemoryCompressedTTF}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{AddFontFromMemoryCompressedTTF()}{AddFontFromMemoryCompressedTTF()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Add\+Font\+From\+Memory\+Compressed\+TTF (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{compressed\+\_\+font\+\_\+data,  }\item[{int}]{compressed\+\_\+font\+\_\+size,  }\item[{float}]{size\+\_\+pixels,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} \texorpdfstring{$\ast$}{*}}]{font\+\_\+cfg = {\ttfamily NULL},  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*}}]{glyph\+\_\+ranges = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a8c35f42d760ddcf0aad6066b2dad01a5}\label{struct_im_font_atlas_a8c35f42d760ddcf0aad6066b2dad01a5} 
+\index{ImFontAtlas@{ImFontAtlas}!AddFontFromMemoryTTF@{AddFontFromMemoryTTF}}
+\index{AddFontFromMemoryTTF@{AddFontFromMemoryTTF}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{AddFontFromMemoryTTF()}{AddFontFromMemoryTTF()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_font}{Im\+Font}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Add\+Font\+From\+Memory\+TTF (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{font\+\_\+data,  }\item[{int}]{font\+\_\+size,  }\item[{float}]{size\+\_\+pixels,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}} \texorpdfstring{$\ast$}{*}}]{font\+\_\+cfg = {\ttfamily NULL},  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*}}]{glyph\+\_\+ranges = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a2f77a1cae363c27e2903f1bfc29c87e5}\label{struct_im_font_atlas_a2f77a1cae363c27e2903f1bfc29c87e5} 
+\index{ImFontAtlas@{ImFontAtlas}!Build@{Build}}
+\index{Build@{Build}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{Build()}{Build()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} bool Im\+Font\+Atlas\+::\+Build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a11ac0cddc7ed689b1a28cd880ce1935d}\label{struct_im_font_atlas_a11ac0cddc7ed689b1a28cd880ce1935d} 
+\index{ImFontAtlas@{ImFontAtlas}!CalcCustomRectUV@{CalcCustomRectUV}}
+\index{CalcCustomRectUV@{CalcCustomRectUV}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{CalcCustomRectUV()}{CalcCustomRectUV()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Atlas\+::\+Calc\+Custom\+Rect\+UV (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_atlas_custom_rect}{Im\+Font\+Atlas\+Custom\+Rect}} \texorpdfstring{$\ast$}{*}}]{rect,  }\item[{\mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \texorpdfstring{$\ast$}{*}}]{out\+\_\+uv\+\_\+min,  }\item[{\mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \texorpdfstring{$\ast$}{*}}]{out\+\_\+uv\+\_\+max }\end{DoxyParamCaption}) const}
+
+\Hypertarget{struct_im_font_atlas_a142f4c3bf3c8909df256ddabd77739c4}\label{struct_im_font_atlas_a142f4c3bf3c8909df256ddabd77739c4} 
+\index{ImFontAtlas@{ImFontAtlas}!Clear@{Clear}}
+\index{Clear@{Clear}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Atlas\+::\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a71af651bcbeb423b06c9b56ab7dc9749}\label{struct_im_font_atlas_a71af651bcbeb423b06c9b56ab7dc9749} 
+\index{ImFontAtlas@{ImFontAtlas}!ClearFonts@{ClearFonts}}
+\index{ClearFonts@{ClearFonts}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{ClearFonts()}{ClearFonts()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Atlas\+::\+Clear\+Fonts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a53cc004ffd4bd989e227367eaeb0f142}\label{struct_im_font_atlas_a53cc004ffd4bd989e227367eaeb0f142} 
+\index{ImFontAtlas@{ImFontAtlas}!ClearInputData@{ClearInputData}}
+\index{ClearInputData@{ClearInputData}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{ClearInputData()}{ClearInputData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Atlas\+::\+Clear\+Input\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a97804b3ed2e54b4df70137c88a495d70}\label{struct_im_font_atlas_a97804b3ed2e54b4df70137c88a495d70} 
+\index{ImFontAtlas@{ImFontAtlas}!ClearTexData@{ClearTexData}}
+\index{ClearTexData@{ClearTexData}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{ClearTexData()}{ClearTexData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Atlas\+::\+Clear\+Tex\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a6a4c5f59c12c88a5c0429d6a6ec06481}\label{struct_im_font_atlas_a6a4c5f59c12c88a5c0429d6a6ec06481} 
+\index{ImFontAtlas@{ImFontAtlas}!GetCustomRectByIndex@{GetCustomRectByIndex}}
+\index{GetCustomRectByIndex@{GetCustomRectByIndex}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetCustomRectByIndex()}{GetCustomRectByIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_im_font_atlas_custom_rect}{Im\+Font\+Atlas\+Custom\+Rect}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Get\+Custom\+Rect\+By\+Index (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_im_font_atlas_a702c87e0ca4c1e003325efe479fecf28}\label{struct_im_font_atlas_a702c87e0ca4c1e003325efe479fecf28} 
+\index{ImFontAtlas@{ImFontAtlas}!GetGlyphRangesChineseFull@{GetGlyphRangesChineseFull}}
+\index{GetGlyphRangesChineseFull@{GetGlyphRangesChineseFull}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetGlyphRangesChineseFull()}{GetGlyphRangesChineseFull()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Get\+Glyph\+Ranges\+Chinese\+Full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a65dc2a1422fdc419f6cfc7b46f2b8d81}\label{struct_im_font_atlas_a65dc2a1422fdc419f6cfc7b46f2b8d81} 
+\index{ImFontAtlas@{ImFontAtlas}!GetGlyphRangesChineseSimplifiedCommon@{GetGlyphRangesChineseSimplifiedCommon}}
+\index{GetGlyphRangesChineseSimplifiedCommon@{GetGlyphRangesChineseSimplifiedCommon}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetGlyphRangesChineseSimplifiedCommon()}{GetGlyphRangesChineseSimplifiedCommon()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Get\+Glyph\+Ranges\+Chinese\+Simplified\+Common (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a09f5f97051819ce8d1870d04ca655667}\label{struct_im_font_atlas_a09f5f97051819ce8d1870d04ca655667} 
+\index{ImFontAtlas@{ImFontAtlas}!GetGlyphRangesCyrillic@{GetGlyphRangesCyrillic}}
+\index{GetGlyphRangesCyrillic@{GetGlyphRangesCyrillic}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetGlyphRangesCyrillic()}{GetGlyphRangesCyrillic()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Get\+Glyph\+Ranges\+Cyrillic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a17e2daa4dbc3deaee60c167fd07d804f}\label{struct_im_font_atlas_a17e2daa4dbc3deaee60c167fd07d804f} 
+\index{ImFontAtlas@{ImFontAtlas}!GetGlyphRangesDefault@{GetGlyphRangesDefault}}
+\index{GetGlyphRangesDefault@{GetGlyphRangesDefault}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetGlyphRangesDefault()}{GetGlyphRangesDefault()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Get\+Glyph\+Ranges\+Default (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a66b07bea4358972b6f226af42bd76b74}\label{struct_im_font_atlas_a66b07bea4358972b6f226af42bd76b74} 
+\index{ImFontAtlas@{ImFontAtlas}!GetGlyphRangesGreek@{GetGlyphRangesGreek}}
+\index{GetGlyphRangesGreek@{GetGlyphRangesGreek}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetGlyphRangesGreek()}{GetGlyphRangesGreek()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Get\+Glyph\+Ranges\+Greek (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_abccd80eb5bade650655aa3bfc10e4db8}\label{struct_im_font_atlas_abccd80eb5bade650655aa3bfc10e4db8} 
+\index{ImFontAtlas@{ImFontAtlas}!GetGlyphRangesJapanese@{GetGlyphRangesJapanese}}
+\index{GetGlyphRangesJapanese@{GetGlyphRangesJapanese}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetGlyphRangesJapanese()}{GetGlyphRangesJapanese()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Get\+Glyph\+Ranges\+Japanese (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_af94bb4d460ce32244e03b68c78b5491f}\label{struct_im_font_atlas_af94bb4d460ce32244e03b68c78b5491f} 
+\index{ImFontAtlas@{ImFontAtlas}!GetGlyphRangesKorean@{GetGlyphRangesKorean}}
+\index{GetGlyphRangesKorean@{GetGlyphRangesKorean}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetGlyphRangesKorean()}{GetGlyphRangesKorean()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Get\+Glyph\+Ranges\+Korean (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a7dab3350f054e3e75b37f58d6cf99acc}\label{struct_im_font_atlas_a7dab3350f054e3e75b37f58d6cf99acc} 
+\index{ImFontAtlas@{ImFontAtlas}!GetGlyphRangesThai@{GetGlyphRangesThai}}
+\index{GetGlyphRangesThai@{GetGlyphRangesThai}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetGlyphRangesThai()}{GetGlyphRangesThai()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Get\+Glyph\+Ranges\+Thai (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_aee619443d2a456737d8f39c17b783e4a}\label{struct_im_font_atlas_aee619443d2a456737d8f39c17b783e4a} 
+\index{ImFontAtlas@{ImFontAtlas}!GetGlyphRangesVietnamese@{GetGlyphRangesVietnamese}}
+\index{GetGlyphRangesVietnamese@{GetGlyphRangesVietnamese}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetGlyphRangesVietnamese()}{GetGlyphRangesVietnamese()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Get\+Glyph\+Ranges\+Vietnamese (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_af2b4253674bac44cf335c9a006fd680f}\label{struct_im_font_atlas_af2b4253674bac44cf335c9a006fd680f} 
+\index{ImFontAtlas@{ImFontAtlas}!GetMouseCursorTexData@{GetMouseCursorTexData}}
+\index{GetMouseCursorTexData@{GetMouseCursorTexData}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetMouseCursorTexData()}{GetMouseCursorTexData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} bool Im\+Font\+Atlas\+::\+Get\+Mouse\+Cursor\+Tex\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{imgui_8h_a9223d6c82bb5d12c2eab5f829ca520ef}{Im\+Gui\+Mouse\+Cursor}}}]{cursor,  }\item[{\mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \texorpdfstring{$\ast$}{*}}]{out\+\_\+offset,  }\item[{\mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \texorpdfstring{$\ast$}{*}}]{out\+\_\+size,  }\item[{\mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}}}]{out\+\_\+uv\+\_\+border\mbox{[}2\mbox{]},  }\item[{\mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}}}]{out\+\_\+uv\+\_\+fill\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_ae50261af7f9ba8c89f12814c8176afda}\label{struct_im_font_atlas_ae50261af7f9ba8c89f12814c8176afda} 
+\index{ImFontAtlas@{ImFontAtlas}!GetTexDataAsAlpha8@{GetTexDataAsAlpha8}}
+\index{GetTexDataAsAlpha8@{GetTexDataAsAlpha8}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetTexDataAsAlpha8()}{GetTexDataAsAlpha8()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Atlas\+::\+Get\+Tex\+Data\+As\+Alpha8 (\begin{DoxyParamCaption}\item[{unsigned char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{out\+\_\+pixels,  }\item[{int \texorpdfstring{$\ast$}{*}}]{out\+\_\+width,  }\item[{int \texorpdfstring{$\ast$}{*}}]{out\+\_\+height,  }\item[{int \texorpdfstring{$\ast$}{*}}]{out\+\_\+bytes\+\_\+per\+\_\+pixel = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_ac7d71e342139a37e58864075ae39c4f3}\label{struct_im_font_atlas_ac7d71e342139a37e58864075ae39c4f3} 
+\index{ImFontAtlas@{ImFontAtlas}!GetTexDataAsRGBA32@{GetTexDataAsRGBA32}}
+\index{GetTexDataAsRGBA32@{GetTexDataAsRGBA32}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{GetTexDataAsRGBA32()}{GetTexDataAsRGBA32()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Atlas\+::\+Get\+Tex\+Data\+As\+RGBA32 (\begin{DoxyParamCaption}\item[{unsigned char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{out\+\_\+pixels,  }\item[{int \texorpdfstring{$\ast$}{*}}]{out\+\_\+width,  }\item[{int \texorpdfstring{$\ast$}{*}}]{out\+\_\+height,  }\item[{int \texorpdfstring{$\ast$}{*}}]{out\+\_\+bytes\+\_\+per\+\_\+pixel = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_atlas_a142ba1470099bbd4b67bdb47be92d475}\label{struct_im_font_atlas_a142ba1470099bbd4b67bdb47be92d475} 
+\index{ImFontAtlas@{ImFontAtlas}!IsBuilt@{IsBuilt}}
+\index{IsBuilt@{IsBuilt}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{IsBuilt()}{IsBuilt()}}
+{\footnotesize\ttfamily bool Im\+Font\+Atlas\+::\+Is\+Built (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_im_font_atlas_a96ffd1956c11dac4f79b43c095828445}\label{struct_im_font_atlas_a96ffd1956c11dac4f79b43c095828445} 
+\index{ImFontAtlas@{ImFontAtlas}!SetTexID@{SetTexID}}
+\index{SetTexID@{SetTexID}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{SetTexID()}{SetTexID()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Atlas\+::\+Set\+Tex\+ID (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{imgui_8h_a364f4447ecbc4ca176145ccff9db6286}{Im\+Texture\+ID}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_im_font_atlas_afa4f7459807763d032fe2d0022fc0823}\label{struct_im_font_atlas_afa4f7459807763d032fe2d0022fc0823} 
+\index{ImFontAtlas@{ImFontAtlas}!ConfigData@{ConfigData}}
+\index{ConfigData@{ConfigData}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{ConfigData}{ConfigData}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_im_vector}{Im\+Vector}}$<$\mbox{\hyperlink{struct_im_font_config}{Im\+Font\+Config}}$>$ Im\+Font\+Atlas\+::\+Config\+Data}
+
+\Hypertarget{struct_im_font_atlas_ae3752e66f7454a42e5ae5ec052af537c}\label{struct_im_font_atlas_ae3752e66f7454a42e5ae5ec052af537c} 
+\index{ImFontAtlas@{ImFontAtlas}!CustomRects@{CustomRects}}
+\index{CustomRects@{CustomRects}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{CustomRects}{CustomRects}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_im_vector}{Im\+Vector}}$<$\mbox{\hyperlink{struct_im_font_atlas_custom_rect}{Im\+Font\+Atlas\+Custom\+Rect}}$>$ Im\+Font\+Atlas\+::\+Custom\+Rects}
+
+\Hypertarget{struct_im_font_atlas_adf2f2d04b46911ad01cfbef0f59e1f11}\label{struct_im_font_atlas_adf2f2d04b46911ad01cfbef0f59e1f11} 
+\index{ImFontAtlas@{ImFontAtlas}!Flags@{Flags}}
+\index{Flags@{Flags}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{Flags}{Flags}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a6ac370f8e39385273ab2d0fcc644db6f}{Im\+Font\+Atlas\+Flags}} Im\+Font\+Atlas\+::\+Flags}
+
+\Hypertarget{struct_im_font_atlas_ad149b9a00b3dd033c0568abaf45256c3}\label{struct_im_font_atlas_ad149b9a00b3dd033c0568abaf45256c3} 
+\index{ImFontAtlas@{ImFontAtlas}!FontBuilderFlags@{FontBuilderFlags}}
+\index{FontBuilderFlags@{FontBuilderFlags}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{FontBuilderFlags}{FontBuilderFlags}}
+{\footnotesize\ttfamily unsigned int Im\+Font\+Atlas\+::\+Font\+Builder\+Flags}
+
+\Hypertarget{struct_im_font_atlas_a43337693a61cd40ec0110c83da628f09}\label{struct_im_font_atlas_a43337693a61cd40ec0110c83da628f09} 
+\index{ImFontAtlas@{ImFontAtlas}!FontBuilderIO@{FontBuilderIO}}
+\index{FontBuilderIO@{FontBuilderIO}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{FontBuilderIO}{FontBuilderIO}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{struct_im_font_builder_i_o}{Im\+Font\+Builder\+IO}}\texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Font\+Builder\+IO}
+
+\Hypertarget{struct_im_font_atlas_a0198aeb17ef8bb810ccc8db103b93b1f}\label{struct_im_font_atlas_a0198aeb17ef8bb810ccc8db103b93b1f} 
+\index{ImFontAtlas@{ImFontAtlas}!Fonts@{Fonts}}
+\index{Fonts@{Fonts}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{Fonts}{Fonts}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_im_vector}{Im\+Vector}}$<$\mbox{\hyperlink{struct_im_font}{Im\+Font}}\texorpdfstring{$\ast$}{*}$>$ Im\+Font\+Atlas\+::\+Fonts}
+
+\Hypertarget{struct_im_font_atlas_a2222ff64ba974a8ee7a286617f879f9b}\label{struct_im_font_atlas_a2222ff64ba974a8ee7a286617f879f9b} 
+\index{ImFontAtlas@{ImFontAtlas}!Locked@{Locked}}
+\index{Locked@{Locked}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{Locked}{Locked}}
+{\footnotesize\ttfamily bool Im\+Font\+Atlas\+::\+Locked}
+
+\Hypertarget{struct_im_font_atlas_a0964aa42e665dbd423066309b3c7461b}\label{struct_im_font_atlas_a0964aa42e665dbd423066309b3c7461b} 
+\index{ImFontAtlas@{ImFontAtlas}!PackIdLines@{PackIdLines}}
+\index{PackIdLines@{PackIdLines}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{PackIdLines}{PackIdLines}}
+{\footnotesize\ttfamily int Im\+Font\+Atlas\+::\+Pack\+Id\+Lines}
+
+\Hypertarget{struct_im_font_atlas_afc92fd54d52cab4fe787e364e7e4f652}\label{struct_im_font_atlas_afc92fd54d52cab4fe787e364e7e4f652} 
+\index{ImFontAtlas@{ImFontAtlas}!PackIdMouseCursors@{PackIdMouseCursors}}
+\index{PackIdMouseCursors@{PackIdMouseCursors}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{PackIdMouseCursors}{PackIdMouseCursors}}
+{\footnotesize\ttfamily int Im\+Font\+Atlas\+::\+Pack\+Id\+Mouse\+Cursors}
+
+\Hypertarget{struct_im_font_atlas_aa1d62d7da5633f894dbe881547e9de7c}\label{struct_im_font_atlas_aa1d62d7da5633f894dbe881547e9de7c} 
+\index{ImFontAtlas@{ImFontAtlas}!TexDesiredWidth@{TexDesiredWidth}}
+\index{TexDesiredWidth@{TexDesiredWidth}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{TexDesiredWidth}{TexDesiredWidth}}
+{\footnotesize\ttfamily int Im\+Font\+Atlas\+::\+Tex\+Desired\+Width}
+
+\Hypertarget{struct_im_font_atlas_a32034b2aac4616d8c27ee666a1fd1b62}\label{struct_im_font_atlas_a32034b2aac4616d8c27ee666a1fd1b62} 
+\index{ImFontAtlas@{ImFontAtlas}!TexGlyphPadding@{TexGlyphPadding}}
+\index{TexGlyphPadding@{TexGlyphPadding}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{TexGlyphPadding}{TexGlyphPadding}}
+{\footnotesize\ttfamily int Im\+Font\+Atlas\+::\+Tex\+Glyph\+Padding}
+
+\Hypertarget{struct_im_font_atlas_a5ef74d37ec01d9e8aac5c57433296ce3}\label{struct_im_font_atlas_a5ef74d37ec01d9e8aac5c57433296ce3} 
+\index{ImFontAtlas@{ImFontAtlas}!TexHeight@{TexHeight}}
+\index{TexHeight@{TexHeight}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{TexHeight}{TexHeight}}
+{\footnotesize\ttfamily int Im\+Font\+Atlas\+::\+Tex\+Height}
+
+\Hypertarget{struct_im_font_atlas_a1d7be9a6190c75706f80bda16c87f28e}\label{struct_im_font_atlas_a1d7be9a6190c75706f80bda16c87f28e} 
+\index{ImFontAtlas@{ImFontAtlas}!TexID@{TexID}}
+\index{TexID@{TexID}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{TexID}{TexID}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a364f4447ecbc4ca176145ccff9db6286}{Im\+Texture\+ID}} Im\+Font\+Atlas\+::\+Tex\+ID}
+
+\Hypertarget{struct_im_font_atlas_a443ea9e7c4cf85ee791ffe891280eff3}\label{struct_im_font_atlas_a443ea9e7c4cf85ee791ffe891280eff3} 
+\index{ImFontAtlas@{ImFontAtlas}!TexPixelsAlpha8@{TexPixelsAlpha8}}
+\index{TexPixelsAlpha8@{TexPixelsAlpha8}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{TexPixelsAlpha8}{TexPixelsAlpha8}}
+{\footnotesize\ttfamily unsigned char\texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Tex\+Pixels\+Alpha8}
+
+\Hypertarget{struct_im_font_atlas_a41163489a5b8060f405c56e22590cba5}\label{struct_im_font_atlas_a41163489a5b8060f405c56e22590cba5} 
+\index{ImFontAtlas@{ImFontAtlas}!TexPixelsRGBA32@{TexPixelsRGBA32}}
+\index{TexPixelsRGBA32@{TexPixelsRGBA32}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{TexPixelsRGBA32}{TexPixelsRGBA32}}
+{\footnotesize\ttfamily unsigned int\texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+Tex\+Pixels\+RGBA32}
+
+\Hypertarget{struct_im_font_atlas_a4bc426a6a9c2fd3ab1ad3893142613ff}\label{struct_im_font_atlas_a4bc426a6a9c2fd3ab1ad3893142613ff} 
+\index{ImFontAtlas@{ImFontAtlas}!TexPixelsUseColors@{TexPixelsUseColors}}
+\index{TexPixelsUseColors@{TexPixelsUseColors}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{TexPixelsUseColors}{TexPixelsUseColors}}
+{\footnotesize\ttfamily bool Im\+Font\+Atlas\+::\+Tex\+Pixels\+Use\+Colors}
+
+\Hypertarget{struct_im_font_atlas_a9d28236e71f9a21a21d8f4f7eac39299}\label{struct_im_font_atlas_a9d28236e71f9a21a21d8f4f7eac39299} 
+\index{ImFontAtlas@{ImFontAtlas}!TexReady@{TexReady}}
+\index{TexReady@{TexReady}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{TexReady}{TexReady}}
+{\footnotesize\ttfamily bool Im\+Font\+Atlas\+::\+Tex\+Ready}
+
+\Hypertarget{struct_im_font_atlas_abf794895d5fb9597bf2a96ab68eb7048}\label{struct_im_font_atlas_abf794895d5fb9597bf2a96ab68eb7048} 
+\index{ImFontAtlas@{ImFontAtlas}!TexUvLines@{TexUvLines}}
+\index{TexUvLines@{TexUvLines}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{TexUvLines}{TexUvLines}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_im_vec4}{Im\+Vec4}} Im\+Font\+Atlas\+::\+Tex\+Uv\+Lines\mbox{[}\mbox{\hyperlink{imgui_8h_a2e0fd3c4182b90dfde08210254eaeccf}{IM\+\_\+\+DRAWLIST\+\_\+\+TEX\+\_\+\+LINES\+\_\+\+WIDTH\+\_\+\+MAX}}+1\mbox{]}}
+
+\Hypertarget{struct_im_font_atlas_adbe3a6b1fd501108649fe04f882b8664}\label{struct_im_font_atlas_adbe3a6b1fd501108649fe04f882b8664} 
+\index{ImFontAtlas@{ImFontAtlas}!TexUvScale@{TexUvScale}}
+\index{TexUvScale@{TexUvScale}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{TexUvScale}{TexUvScale}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} Im\+Font\+Atlas\+::\+Tex\+Uv\+Scale}
+
+\Hypertarget{struct_im_font_atlas_af1d05221e9a1607d7f625df92a4f9b7e}\label{struct_im_font_atlas_af1d05221e9a1607d7f625df92a4f9b7e} 
+\index{ImFontAtlas@{ImFontAtlas}!TexUvWhitePixel@{TexUvWhitePixel}}
+\index{TexUvWhitePixel@{TexUvWhitePixel}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{TexUvWhitePixel}{TexUvWhitePixel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} Im\+Font\+Atlas\+::\+Tex\+Uv\+White\+Pixel}
+
+\Hypertarget{struct_im_font_atlas_a2d0662502433e7a87b3aa4681ba17aa3}\label{struct_im_font_atlas_a2d0662502433e7a87b3aa4681ba17aa3} 
+\index{ImFontAtlas@{ImFontAtlas}!TexWidth@{TexWidth}}
+\index{TexWidth@{TexWidth}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{TexWidth}{TexWidth}}
+{\footnotesize\ttfamily int Im\+Font\+Atlas\+::\+Tex\+Width}
+
+\Hypertarget{struct_im_font_atlas_ac848a29825d36edf8629b31b419dc21e}\label{struct_im_font_atlas_ac848a29825d36edf8629b31b419dc21e} 
+\index{ImFontAtlas@{ImFontAtlas}!UserData@{UserData}}
+\index{UserData@{UserData}!ImFontAtlas@{ImFontAtlas}}
+\doxysubsubsection{\texorpdfstring{UserData}{UserData}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}\texorpdfstring{$\ast$}{*} Im\+Font\+Atlas\+::\+User\+Data}
+

@@ -1,0 +1,156 @@
+\doxysection{build/vcpkg\+\_\+installed/x64-\/mingw-\/static/include/brotli/types.h File Reference}
+\hypertarget{types_8h}{}\label{types_8h}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/types.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/types.h}}
+
+
+Common types used in decoder and encoder API.  
+
+
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}}~int
+\begin{DoxyCompactList}\small\item\em A portable {\ttfamily bool} replacement. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE}}~1
+\begin{DoxyCompactList}\small\item\em Portable {\ttfamily true} replacement. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE}}~0
+\begin{DoxyCompactList}\small\item\em Portable {\ttfamily false} replacement. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{types_8h_ad51301c5f2ca2c74283884ee6f590b6b}{TO\+\_\+\+BROTLI\+\_\+\+BOOL}}(X)~(!!(X) ? \mbox{\hyperlink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE}} \+: \mbox{\hyperlink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE}})
+\begin{DoxyCompactList}\small\item\em {\ttfamily bool} to \doxylink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL} conversion macros. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{types_8h_a7ac88dcb74e113c2929a73edd1b7f0a8}{BROTLI\+\_\+\+MAKE\+\_\+\+UINT64\+\_\+T}}(high,  low)~((((uint64\+\_\+t)(high)) $<$$<$ 32) \texorpdfstring{$\vert$}{|} low)
+\item 
+\#define \mbox{\hyperlink{types_8h_a2cc15937fb9bdb3e2a13cbbc703000ee}{BROTLI\+\_\+\+UINT32\+\_\+\+MAX}}~(\texorpdfstring{$\sim$}{\string~}((uint32\+\_\+t)0))
+\item 
+\#define \mbox{\hyperlink{types_8h_ace13667464047a50904c378b82531bae}{BROTLI\+\_\+\+SIZE\+\_\+\+MAX}}~(\texorpdfstring{$\sim$}{\string~}((size\+\_\+t)0))
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}{brotli\+\_\+alloc\+\_\+func}}) (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque, size\+\_\+t \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}})
+\begin{DoxyCompactList}\small\item\em Allocating function pointer type. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{types_8h_a5e19dc1ca789ea76db7167289c442d32}{brotli\+\_\+free\+\_\+func}}) (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}address)
+\begin{DoxyCompactList}\small\item\em Deallocating function pointer type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Common types used in decoder and encoder API. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{types_8h_ae8e1d352fb674019729cd9e7d0c27159}\label{types_8h_ae8e1d352fb674019729cd9e7d0c27159} 
+\index{types.h@{types.h}!BROTLI\_BOOL@{BROTLI\_BOOL}}
+\index{BROTLI\_BOOL@{BROTLI\_BOOL}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_BOOL}{BROTLI\_BOOL}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+BOOL~int}
+
+
+
+A portable {\ttfamily bool} replacement. 
+
+\doxylink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL} is a \"{}documentation\"{} type\+: actually it is {\ttfamily int}, but in API it denotes a type, whose only values are \doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE} and \doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE}.
+
+\doxylink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL} values passed to Brotli should either be \doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE} or \doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE}, or be a result of \doxylink{types_8h_ad51301c5f2ca2c74283884ee6f590b6b}{TO\+\_\+\+BROTLI\+\_\+\+BOOL} macros.
+
+\doxylink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL} values returned by Brotli should not be tested for equality with {\ttfamily true}, {\ttfamily false}, \doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE}, \doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE}, but rather should be evaluated, for example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (SomeBrotliFunction(encoder,\ \mbox{\hyperlink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\_TRUE}})\ \&\&}
+\DoxyCodeLine{\ \ \ \ !OtherBrotliFunction(decoder,\ \mbox{\hyperlink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\_FALSE}}))\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ x\ =\ !!YetAnotherBrotliFunction(encoder,\ TO\_BROLTI\_BOOL(2\ *\ 2\ ==\ 4));}
+\DoxyCodeLine{\ \ DoSomething(x);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \Hypertarget{types_8h_ac506138cd10f0b21daee6491213d36c5}\label{types_8h_ac506138cd10f0b21daee6491213d36c5} 
+\index{types.h@{types.h}!BROTLI\_FALSE@{BROTLI\_FALSE}}
+\index{BROTLI\_FALSE@{BROTLI\_FALSE}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_FALSE}{BROTLI\_FALSE}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+FALSE~0}
+
+
+
+Portable {\ttfamily false} replacement. 
+
+\Hypertarget{types_8h_a7ac88dcb74e113c2929a73edd1b7f0a8}\label{types_8h_a7ac88dcb74e113c2929a73edd1b7f0a8} 
+\index{types.h@{types.h}!BROTLI\_MAKE\_UINT64\_T@{BROTLI\_MAKE\_UINT64\_T}}
+\index{BROTLI\_MAKE\_UINT64\_T@{BROTLI\_MAKE\_UINT64\_T}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_MAKE\_UINT64\_T}{BROTLI\_MAKE\_UINT64\_T}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+MAKE\+\_\+\+UINT64\+\_\+T(\begin{DoxyParamCaption}\item[{}]{high,  }\item[{}]{low }\end{DoxyParamCaption})~((((uint64\+\_\+t)(high)) $<$$<$ 32) \texorpdfstring{$\vert$}{|} low)}
+
+\Hypertarget{types_8h_ace13667464047a50904c378b82531bae}\label{types_8h_ace13667464047a50904c378b82531bae} 
+\index{types.h@{types.h}!BROTLI\_SIZE\_MAX@{BROTLI\_SIZE\_MAX}}
+\index{BROTLI\_SIZE\_MAX@{BROTLI\_SIZE\_MAX}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_SIZE\_MAX}{BROTLI\_SIZE\_MAX}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+SIZE\+\_\+\+MAX~(\texorpdfstring{$\sim$}{\string~}((size\+\_\+t)0))}
+
+\Hypertarget{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}\label{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60} 
+\index{types.h@{types.h}!BROTLI\_TRUE@{BROTLI\_TRUE}}
+\index{BROTLI\_TRUE@{BROTLI\_TRUE}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_TRUE}{BROTLI\_TRUE}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+TRUE~1}
+
+
+
+Portable {\ttfamily true} replacement. 
+
+\Hypertarget{types_8h_a2cc15937fb9bdb3e2a13cbbc703000ee}\label{types_8h_a2cc15937fb9bdb3e2a13cbbc703000ee} 
+\index{types.h@{types.h}!BROTLI\_UINT32\_MAX@{BROTLI\_UINT32\_MAX}}
+\index{BROTLI\_UINT32\_MAX@{BROTLI\_UINT32\_MAX}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_UINT32\_MAX}{BROTLI\_UINT32\_MAX}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+UINT32\+\_\+\+MAX~(\texorpdfstring{$\sim$}{\string~}((uint32\+\_\+t)0))}
+
+\Hypertarget{types_8h_ad51301c5f2ca2c74283884ee6f590b6b}\label{types_8h_ad51301c5f2ca2c74283884ee6f590b6b} 
+\index{types.h@{types.h}!TO\_BROTLI\_BOOL@{TO\_BROTLI\_BOOL}}
+\index{TO\_BROTLI\_BOOL@{TO\_BROTLI\_BOOL}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{TO\_BROTLI\_BOOL}{TO\_BROTLI\_BOOL}}
+{\footnotesize\ttfamily \#define TO\+\_\+\+BROTLI\+\_\+\+BOOL(\begin{DoxyParamCaption}\item[{}]{X }\end{DoxyParamCaption})~(!!(X) ? \mbox{\hyperlink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE}} \+: \mbox{\hyperlink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE}})}
+
+
+
+{\ttfamily bool} to \doxylink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL} conversion macros. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}\label{types_8h_a53996dfbcbcee79dadb83c56933b9f1b} 
+\index{types.h@{types.h}!brotli\_alloc\_func@{brotli\_alloc\_func}}
+\index{brotli\_alloc\_func@{brotli\_alloc\_func}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{brotli\_alloc\_func}{brotli\_alloc\_func}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} brotli\+\_\+alloc\+\_\+func) (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque, size\+\_\+t \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}})}
+
+
+
+Allocating function pointer type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opaque} & custom memory manager handle provided by client \\
+\hline
+{\em size} & requested memory region size; can not be {\ttfamily 0} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily 0} in the case of failure 
+
+a valid pointer to a memory region of at least {\ttfamily size} bytes long otherwise 
+\end{DoxyReturn}
+\Hypertarget{types_8h_a5e19dc1ca789ea76db7167289c442d32}\label{types_8h_a5e19dc1ca789ea76db7167289c442d32} 
+\index{types.h@{types.h}!brotli\_free\_func@{brotli\_free\_func}}
+\index{brotli\_free\_func@{brotli\_free\_func}!types.h@{types.h}}
+\doxysubsubsection{\texorpdfstring{brotli\_free\_func}{brotli\_free\_func}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}(\texorpdfstring{$\ast$}{*} brotli\+\_\+free\+\_\+func) (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}address)}
+
+
+
+Deallocating function pointer type. 
+
+This function {\bfseries{SHOULD}} do nothing if {\ttfamily address} is {\ttfamily 0}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em opaque} & custom memory manager handle provided by client \\
+\hline
+{\em address} & memory region pointer returned by \doxylink{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}{brotli\+\_\+alloc\+\_\+func}, or {\ttfamily 0} \\
+\hline
+\end{DoxyParams}

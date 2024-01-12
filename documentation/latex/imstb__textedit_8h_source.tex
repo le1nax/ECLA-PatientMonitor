@@ -1,0 +1,1424 @@
+\doxysection{imstb\+\_\+textedit.\+h}
+\hypertarget{imstb__textedit_8h_source}{}\label{imstb__textedit_8h_source}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/imstb\_textedit.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/imstb\_textedit.h}}
+\mbox{\hyperlink{imstb__textedit_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ This\ is\ a\ slightly\ modified\ version\ of\ stb\_textedit.h\ 1.14.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Those\ changes\ would\ need\ to\ be\ pushed\ into\ nothings/stb:}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ -\/\ Fix\ in\ stb\_textedit\_discard\_redo\ (see\ https://github.com/nothings/stb/issues/321)}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ -\/\ Fix\ in\ stb\_textedit\_find\_charpos\ to\ handle\ last\ line\ (see\ https://github.com/ocornut/imgui/issues/6000)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Grep\ for\ [DEAR\ IMGUI]\ to\ find\ the\ changes.}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ stb\_textedit.h\ -\/\ v1.14\ \ -\/\ public\ domain\ -\/\ Sean\ Barrett}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Development\ of\ this\ library\ was\ sponsored\ by\ RAD\ Game\ Tools}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ This\ C\ header\ file\ implements\ the\ guts\ of\ a\ multi-\/line\ text-\/editing}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ widget;\ you\ implement\ display,\ word-\/wrapping,\ and\ low-\/level\ string}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ insertion/deletion,\ and\ stb\_textedit\ will\ map\ user\ inputs\ into}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ insertions\ \&\ deletions,\ plus\ updates\ to\ the\ cursor\ position,}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ selection\ state,\ and\ undo\ state.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ It\ is\ intended\ for\ use\ in\ games\ and\ other\ systems\ that\ need\ to\ build}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ their\ own\ custom\ widgets\ and\ which\ do\ not\ have\ heavy\ text-\/editing}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ requirements\ (this\ library\ is\ not\ recommended\ for\ use\ for\ editing\ large}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ texts,\ as\ its\ performance\ does\ not\ scale\ and\ it\ has\ limited\ undo).}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ Non-\/trivial\ behaviors\ are\ modelled\ after\ Windows\ text\ controls.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ LICENSE}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ See\ end\ of\ file\ for\ license\ information.}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ DEPENDENCIES}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ Uses\ the\ C\ runtime\ function\ 'memmove',\ which\ you\ can\ override}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ by\ defining\ STB\_TEXTEDIT\_memmove\ before\ the\ implementation.}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Uses\ no\ other\ functions.\ Performs\ no\ runtime\ allocations.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ VERSION\ HISTORY}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ \ \ 1.14\ (2021-\/07-\/11)\ page\ up/down,\ various\ fixes}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ \ \ 1.13\ (2019-\/02-\/07)\ fix\ bug\ in\ undo\ size\ management}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ \ \ 1.12\ (2018-\/01-\/29)\ user\ can\ change\ STB\_TEXTEDIT\_KEYTYPE,\ fix\ redo\ to\ avoid\ crash}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ \ \ 1.11\ (2017-\/03-\/03)\ fix\ HOME\ on\ last\ line,\ dragging\ off\ single-\/line\ textfield}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ \ \ 1.10\ (2016-\/10-\/25)\ supress\ warnings\ about\ casting\ away\ const\ with\ -\/Wcast-\/qual}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ \ \ 1.9\ \ (2016-\/08-\/27)\ customizable\ move-\/by-\/word}}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ \ \ 1.8\ \ (2016-\/04-\/02)\ better\ keyboard\ handling\ when\ mouse\ button\ is\ down}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ \ \ 1.7\ \ (2015-\/09-\/13)\ change\ y\ range\ handling\ in\ case\ baseline\ is\ non-\/0}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ \ \ 1.6\ \ (2015-\/04-\/15)\ allow\ STB\_TEXTEDIT\_memmove}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ \ \ 1.5\ \ (2014-\/09-\/10)\ add\ support\ for\ secondary\ keys\ for\ OS\ X}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ \ \ 1.4\ \ (2014-\/08-\/17)\ fix\ signed/unsigned\ warnings}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ \ \ 1.3\ \ (2014-\/06-\/19)\ fix\ mouse\ clicking\ to\ round\ to\ nearest\ char\ boundary}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ \ \ 1.2\ \ (2014-\/05-\/27)\ fix\ some\ RAD\ types\ that\ had\ crept\ into\ the\ new\ code}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ \ \ 1.1\ \ (2013-\/12-\/15)\ move-\/by-\/word\ (requires\ STB\_TEXTEDIT\_IS\_SPACE\ )}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ \ \ 1.0\ \ (2012-\/07-\/26)\ improve\ documentation,\ initial\ public\ release}}
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ \ \ 0.3\ \ (2012-\/02-\/24)\ bugfixes,\ single-\/line\ mode;\ insert\ mode}}
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ \ \ 0.2\ \ (2011-\/11-\/28)\ fixes\ to\ undo/redo}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ \ \ 0.1\ \ (2010-\/07-\/08)\ initial\ version}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//}}
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ ADDITIONAL\ CONTRIBUTORS}}
+\DoxyCodeLine{00059\ \textcolor{comment}{//}}
+\DoxyCodeLine{00060\ \textcolor{comment}{//\ \ \ Ulf\ Winklemann:\ move-\/by-\/word\ in\ 1.1}}
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ \ \ Fabian\ Giesen:\ secondary\ key\ inputs\ in\ 1.5}}
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ \ \ Martins\ Mozeiko:\ STB\_TEXTEDIT\_memmove\ in\ 1.6}}
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ \ \ Louis\ Schnellbach:\ page\ up/down\ in\ 1.14}}
+\DoxyCodeLine{00064\ \textcolor{comment}{//}}
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ \ \ Bugfixes:}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//\ \ \ \ \ \ Scott\ Graham}}
+\DoxyCodeLine{00067\ \textcolor{comment}{//\ \ \ \ \ \ Daniel\ Keller}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ \ \ \ \ \ Omar\ Cornut}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ \ \ \ \ \ Dan\ Thompson}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ USAGE}}
+\DoxyCodeLine{00072\ \textcolor{comment}{//}}
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ This\ file\ behaves\ differently\ depending\ on\ what\ symbols\ you\ define}}
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ before\ including\ it.}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//}}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ Header-\/file\ mode:}}
+\DoxyCodeLine{00078\ \textcolor{comment}{//}}
+\DoxyCodeLine{00079\ \textcolor{comment}{//\ \ \ If\ you\ do\ not\ define\ STB\_TEXTEDIT\_IMPLEMENTATION\ before\ including\ this,}}
+\DoxyCodeLine{00080\ \textcolor{comment}{//\ \ \ it\ will\ operate\ in\ "{}header\ file"{}\ mode.\ In\ this\ mode,\ it\ declares\ a}}
+\DoxyCodeLine{00081\ \textcolor{comment}{//\ \ \ single\ public\ symbol,\ STB\_TexteditState,\ which\ encapsulates\ the\ current}}
+\DoxyCodeLine{00082\ \textcolor{comment}{//\ \ \ state\ of\ a\ text\ widget\ (except\ for\ the\ string,\ which\ you\ will\ store}}
+\DoxyCodeLine{00083\ \textcolor{comment}{//\ \ \ separately).}}
+\DoxyCodeLine{00084\ \textcolor{comment}{//}}
+\DoxyCodeLine{00085\ \textcolor{comment}{//\ \ \ To\ compile\ in\ this\ mode,\ you\ must\ define\ STB\_TEXTEDIT\_CHARTYPE\ to\ a}}
+\DoxyCodeLine{00086\ \textcolor{comment}{//\ \ \ primitive\ type\ that\ defines\ a\ single\ character\ (e.g.\ char,\ wchar\_t,\ etc).}}
+\DoxyCodeLine{00087\ \textcolor{comment}{//}}
+\DoxyCodeLine{00088\ \textcolor{comment}{//\ \ \ To\ save\ space\ or\ increase\ undo-\/ability,\ you\ can\ optionally\ define\ the}}
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ \ \ following\ things\ that\ are\ used\ by\ the\ undo\ system:}}
+\DoxyCodeLine{00090\ \textcolor{comment}{//}}
+\DoxyCodeLine{00091\ \textcolor{comment}{//\ \ \ \ \ \ STB\_TEXTEDIT\_POSITIONTYPE\ \ \ \ \ \ \ \ \ small\ int\ type\ encoding\ a\ valid\ cursor\ position}}
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ \ \ \ \ \ STB\_TEXTEDIT\_UNDOSTATECOUNT\ \ \ \ \ \ \ the\ number\ of\ undo\ states\ to\ allow}}
+\DoxyCodeLine{00093\ \textcolor{comment}{//\ \ \ \ \ \ STB\_TEXTEDIT\_UNDOCHARCOUNT\ \ \ \ \ \ \ \ the\ number\ of\ characters\ to\ store\ in\ the\ undo\ buffer}}
+\DoxyCodeLine{00094\ \textcolor{comment}{//}}
+\DoxyCodeLine{00095\ \textcolor{comment}{//\ \ \ If\ you\ don't\ define\ these,\ they\ are\ set\ to\ permissive\ types\ and}}
+\DoxyCodeLine{00096\ \textcolor{comment}{//\ \ \ moderate\ sizes.\ The\ undo\ system\ does\ no\ memory\ allocations,\ so}}
+\DoxyCodeLine{00097\ \textcolor{comment}{//\ \ \ it\ grows\ STB\_TexteditState\ by\ the\ worst-\/case\ storage\ which\ is\ (in\ bytes):}}
+\DoxyCodeLine{00098\ \textcolor{comment}{//}}
+\DoxyCodeLine{00099\ \textcolor{comment}{//\ \ \ \ \ \ \ \ [4\ +\ 3\ *\ sizeof(STB\_TEXTEDIT\_POSITIONTYPE)]\ *\ STB\_TEXTEDIT\_UNDOSTATECOUNT}}
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ \ \ \ \ \ +\ \ \ \ \ \ \ \ \ \ sizeof(STB\_TEXTEDIT\_CHARTYPE)\ \ \ \ \ \ *\ STB\_TEXTEDIT\_UNDOCHARCOUNT}}
+\DoxyCodeLine{00101\ \textcolor{comment}{//}}
+\DoxyCodeLine{00102\ \textcolor{comment}{//}}
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ Implementation\ mode:}}
+\DoxyCodeLine{00104\ \textcolor{comment}{//}}
+\DoxyCodeLine{00105\ \textcolor{comment}{//\ \ \ If\ you\ define\ STB\_TEXTEDIT\_IMPLEMENTATION\ before\ including\ this,\ it}}
+\DoxyCodeLine{00106\ \textcolor{comment}{//\ \ \ will\ compile\ the\ implementation\ of\ the\ text\ edit\ widget,\ depending}}
+\DoxyCodeLine{00107\ \textcolor{comment}{//\ \ \ on\ a\ large\ number\ of\ symbols\ which\ must\ be\ defined\ before\ the\ include.}}
+\DoxyCodeLine{00108\ \textcolor{comment}{//}}
+\DoxyCodeLine{00109\ \textcolor{comment}{//\ \ \ The\ implementation\ is\ defined\ only\ as\ static\ functions.\ You\ will\ then}}
+\DoxyCodeLine{00110\ \textcolor{comment}{//\ \ \ need\ to\ provide\ your\ own\ APIs\ in\ the\ same\ file\ which\ will\ access\ the}}
+\DoxyCodeLine{00111\ \textcolor{comment}{//\ \ \ static\ functions.}}
+\DoxyCodeLine{00112\ \textcolor{comment}{//}}
+\DoxyCodeLine{00113\ \textcolor{comment}{//\ \ \ The\ basic\ concept\ is\ that\ you\ provide\ a\ "{}string"{}\ object\ which}}
+\DoxyCodeLine{00114\ \textcolor{comment}{//\ \ \ behaves\ like\ an\ array\ of\ characters.\ stb\_textedit\ uses\ indices\ to}}
+\DoxyCodeLine{00115\ \textcolor{comment}{//\ \ \ refer\ to\ positions\ in\ the\ string,\ implicitly\ representing\ positions}}
+\DoxyCodeLine{00116\ \textcolor{comment}{//\ \ \ in\ the\ displayed\ textedit.\ This\ is\ true\ for\ both\ plain\ text\ and}}
+\DoxyCodeLine{00117\ \textcolor{comment}{//\ \ \ rich\ text;\ even\ with\ rich\ text\ stb\_truetype\ interacts\ with\ your}}
+\DoxyCodeLine{00118\ \textcolor{comment}{//\ \ \ code\ as\ if\ there\ was\ an\ array\ of\ all\ the\ displayed\ characters.}}
+\DoxyCodeLine{00119\ \textcolor{comment}{//}}
+\DoxyCodeLine{00120\ \textcolor{comment}{//\ Symbols\ that\ must\ be\ the\ same\ in\ header-\/file\ and\ implementation\ mode:}}
+\DoxyCodeLine{00121\ \textcolor{comment}{//}}
+\DoxyCodeLine{00122\ \textcolor{comment}{//\ \ \ \ \ STB\_TEXTEDIT\_CHARTYPE\ \ \ \ \ \ \ \ \ \ \ \ \ the\ character\ type}}
+\DoxyCodeLine{00123\ \textcolor{comment}{//\ \ \ \ \ STB\_TEXTEDIT\_POSITIONTYPE\ \ \ \ \ \ \ \ \ small\ type\ that\ is\ a\ valid\ cursor\ position}}
+\DoxyCodeLine{00124\ \textcolor{comment}{//\ \ \ \ \ STB\_TEXTEDIT\_UNDOSTATECOUNT\ \ \ \ \ \ \ the\ number\ of\ undo\ states\ to\ allow}}
+\DoxyCodeLine{00125\ \textcolor{comment}{//\ \ \ \ \ STB\_TEXTEDIT\_UNDOCHARCOUNT\ \ \ \ \ \ \ \ the\ number\ of\ characters\ to\ store\ in\ the\ undo\ buffer}}
+\DoxyCodeLine{00126\ \textcolor{comment}{//}}
+\DoxyCodeLine{00127\ \textcolor{comment}{//\ Symbols\ you\ must\ define\ for\ implementation\ mode:}}
+\DoxyCodeLine{00128\ \textcolor{comment}{//}}
+\DoxyCodeLine{00129\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_STRING\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ type\ of\ object\ representing\ a\ string\ being\ edited,}}
+\DoxyCodeLine{00130\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ typically\ this\ is\ a\ wrapper\ object\ with\ other\ data\ you\ need}}
+\DoxyCodeLine{00131\ \textcolor{comment}{//}}
+\DoxyCodeLine{00132\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_STRINGLEN(obj)\ \ \ \ \ \ \ the\ length\ of\ the\ string\ (ideally\ O(1))}}
+\DoxyCodeLine{00133\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&r,obj,n)\ \ returns\ the\ results\ of\ laying\ out\ a\ line\ of\ characters}}
+\DoxyCodeLine{00134\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ starting\ from\ character\ \#n\ (see\ discussion\ below)}}
+\DoxyCodeLine{00135\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_GETWIDTH(obj,n,i)\ \ \ \ returns\ the\ pixel\ delta\ from\ the\ xpos\ of\ the\ i'th\ character}}
+\DoxyCodeLine{00136\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ to\ the\ xpos\ of\ the\ i+1'th\ char\ for\ a\ line\ of\ characters}}
+\DoxyCodeLine{00137\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ starting\ at\ character\ \#n\ (i.e.\ accounts\ for\ kerning}}
+\DoxyCodeLine{00138\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ with\ previous\ char)}}
+\DoxyCodeLine{00139\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_KEYTOTEXT(k)\ \ \ \ \ \ \ \ \ maps\ a\ keyboard\ input\ to\ an\ insertable\ character}}
+\DoxyCodeLine{00140\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (return\ type\ is\ int,\ -\/1\ means\ not\ valid\ to\ insert)}}
+\DoxyCodeLine{00141\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_GETCHAR(obj,i)\ \ \ \ \ \ \ returns\ the\ i'th\ character\ of\ obj,\ 0-\/based}}
+\DoxyCodeLine{00142\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_NEWLINE\ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ character\ returned\ by\ \_GETCHAR()\ we\ recognize}}
+\DoxyCodeLine{00143\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ as\ manually\ wordwrapping\ for\ end-\/of-\/line\ positioning}}
+\DoxyCodeLine{00144\ \textcolor{comment}{//}}
+\DoxyCodeLine{00145\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_DELETECHARS(obj,i,n)\ \ \ \ \ \ delete\ n\ characters\ starting\ at\ i}}
+\DoxyCodeLine{00146\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_INSERTCHARS(obj,i,c*,n)\ \ \ insert\ n\ characters\ at\ i\ (pointed\ to\ by\ STB\_TEXTEDIT\_CHARTYPE*)}}
+\DoxyCodeLine{00147\ \textcolor{comment}{//}}
+\DoxyCodeLine{00148\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_SHIFT\ \ \ \ \ \ \ a\ power\ of\ two\ that\ is\ or'd\ in\ to\ a\ keyboard\ input\ to\ represent\ the\ shift\ key}}
+\DoxyCodeLine{00149\ \textcolor{comment}{//}}
+\DoxyCodeLine{00150\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_LEFT\ \ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ left}}
+\DoxyCodeLine{00151\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_RIGHT\ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ right}}
+\DoxyCodeLine{00152\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_UP\ \ \ \ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ up}}
+\DoxyCodeLine{00153\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_DOWN\ \ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ down}}
+\DoxyCodeLine{00154\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_PGUP\ \ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ up\ a\ page}}
+\DoxyCodeLine{00155\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_PGDOWN\ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ down\ a\ page}}
+\DoxyCodeLine{00156\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_LINESTART\ \ \ keyboard\ input\ to\ move\ cursor\ to\ start\ of\ line\ \ //\ e.g.\ HOME}}
+\DoxyCodeLine{00157\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_LINEEND\ \ \ \ \ keyboard\ input\ to\ move\ cursor\ to\ end\ of\ line\ \ \ \ //\ e.g.\ END}}
+\DoxyCodeLine{00158\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_TEXTSTART\ \ \ keyboard\ input\ to\ move\ cursor\ to\ start\ of\ text\ \ //\ e.g.\ ctrl-\/HOME}}
+\DoxyCodeLine{00159\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_TEXTEND\ \ \ \ \ keyboard\ input\ to\ move\ cursor\ to\ end\ of\ text\ \ \ \ //\ e.g.\ ctrl-\/END}}
+\DoxyCodeLine{00160\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_DELETE\ \ \ \ \ \ keyboard\ input\ to\ delete\ selection\ or\ character\ under\ cursor}}
+\DoxyCodeLine{00161\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_BACKSPACE\ \ \ keyboard\ input\ to\ delete\ selection\ or\ character\ left\ of\ cursor}}
+\DoxyCodeLine{00162\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_UNDO\ \ \ \ \ \ \ \ keyboard\ input\ to\ perform\ undo}}
+\DoxyCodeLine{00163\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_REDO\ \ \ \ \ \ \ \ keyboard\ input\ to\ perform\ redo}}
+\DoxyCodeLine{00164\ \textcolor{comment}{//}}
+\DoxyCodeLine{00165\ \textcolor{comment}{//\ Optional:}}
+\DoxyCodeLine{00166\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_INSERT\ \ \ \ \ \ \ \ \ \ \ \ \ \ keyboard\ input\ to\ toggle\ insert\ mode}}
+\DoxyCodeLine{00167\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_IS\_SPACE(ch)\ \ \ \ \ \ \ \ \ \ true\ if\ character\ is\ whitespace\ (e.g.\ 'isspace'),}}
+\DoxyCodeLine{00168\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ required\ for\ default\ WORDLEFT/WORDRIGHT\ handlers}}
+\DoxyCodeLine{00169\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_MOVEWORDLEFT(obj,i)\ \ \ custom\ handler\ for\ WORDLEFT,\ returns\ index\ to\ move\ cursor\ to}}
+\DoxyCodeLine{00170\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_MOVEWORDRIGHT(obj,i)\ \ custom\ handler\ for\ WORDRIGHT,\ returns\ index\ to\ move\ cursor\ to}}
+\DoxyCodeLine{00171\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_WORDLEFT\ \ \ \ \ \ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ left\ one\ word\ //\ e.g.\ ctrl-\/LEFT}}
+\DoxyCodeLine{00172\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_WORDRIGHT\ \ \ \ \ \ \ \ \ \ \ keyboard\ input\ to\ move\ cursor\ right\ one\ word\ //\ e.g.\ ctrl-\/RIGHT}}
+\DoxyCodeLine{00173\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_LINESTART2\ \ \ \ \ \ \ \ \ \ secondary\ keyboard\ input\ to\ move\ cursor\ to\ start\ of\ line}}
+\DoxyCodeLine{00174\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_LINEEND2\ \ \ \ \ \ \ \ \ \ \ \ secondary\ keyboard\ input\ to\ move\ cursor\ to\ end\ of\ line}}
+\DoxyCodeLine{00175\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_TEXTSTART2\ \ \ \ \ \ \ \ \ \ secondary\ keyboard\ input\ to\ move\ cursor\ to\ start\ of\ text}}
+\DoxyCodeLine{00176\ \textcolor{comment}{//\ \ \ \ STB\_TEXTEDIT\_K\_TEXTEND2\ \ \ \ \ \ \ \ \ \ \ \ secondary\ keyboard\ input\ to\ move\ cursor\ to\ end\ of\ text}}
+\DoxyCodeLine{00177\ \textcolor{comment}{//}}
+\DoxyCodeLine{00178\ \textcolor{comment}{//\ Keyboard\ input\ must\ be\ encoded\ as\ a\ single\ integer\ value;\ e.g.\ a\ character\ code}}
+\DoxyCodeLine{00179\ \textcolor{comment}{//\ and\ some\ bitflags\ that\ represent\ shift\ states.\ to\ simplify\ the\ interface,\ SHIFT\ must}}
+\DoxyCodeLine{00180\ \textcolor{comment}{//\ be\ a\ bitflag,\ so\ we\ can\ test\ the\ shifted\ state\ of\ cursor\ movements\ to\ allow\ selection,}}
+\DoxyCodeLine{00181\ \textcolor{comment}{//\ i.e.\ (STB\_TEXTEDIT\_K\_RIGHT|STB\_TEXTEDIT\_K\_SHIFT)\ should\ be\ shifted\ right-\/arrow.}}
+\DoxyCodeLine{00182\ \textcolor{comment}{//}}
+\DoxyCodeLine{00183\ \textcolor{comment}{//\ You\ can\ encode\ other\ things,\ such\ as\ CONTROL\ or\ ALT,\ in\ additional\ bits,\ and}}
+\DoxyCodeLine{00184\ \textcolor{comment}{//\ then\ test\ for\ their\ presence\ in\ e.g.\ STB\_TEXTEDIT\_K\_WORDLEFT.\ For\ example,}}
+\DoxyCodeLine{00185\ \textcolor{comment}{//\ my\ Windows\ implementations\ add\ an\ additional\ CONTROL\ bit,\ and\ an\ additional\ KEYDOWN}}
+\DoxyCodeLine{00186\ \textcolor{comment}{//\ bit.\ Then\ all\ of\ the\ STB\_TEXTEDIT\_K\_\ values\ bitwise-\/or\ in\ the\ KEYDOWN\ bit,}}
+\DoxyCodeLine{00187\ \textcolor{comment}{//\ and\ I\ pass\ both\ WM\_KEYDOWN\ and\ WM\_CHAR\ events\ to\ the\ "{}key"{}\ function\ in\ the}}
+\DoxyCodeLine{00188\ \textcolor{comment}{//\ API\ below.\ The\ control\ keys\ will\ only\ match\ WM\_KEYDOWN\ events\ because\ of\ the}}
+\DoxyCodeLine{00189\ \textcolor{comment}{//\ keydown\ bit\ I\ add,\ and\ STB\_TEXTEDIT\_KEYTOTEXT\ only\ tests\ for\ the\ KEYDOWN}}
+\DoxyCodeLine{00190\ \textcolor{comment}{//\ bit\ so\ it\ only\ decodes\ WM\_CHAR\ events.}}
+\DoxyCodeLine{00191\ \textcolor{comment}{//}}
+\DoxyCodeLine{00192\ \textcolor{comment}{//\ STB\_TEXTEDIT\_LAYOUTROW\ returns\ information\ about\ the\ shape\ of\ one\ displayed}}
+\DoxyCodeLine{00193\ \textcolor{comment}{//\ row\ of\ characters\ assuming\ they\ start\ on\ the\ i'th\ character-\/-\/the\ width\ and}}
+\DoxyCodeLine{00194\ \textcolor{comment}{//\ the\ height\ and\ the\ number\ of\ characters\ consumed.\ This\ allows\ this\ library}}
+\DoxyCodeLine{00195\ \textcolor{comment}{//\ to\ traverse\ the\ entire\ layout\ incrementally.\ You\ need\ to\ compute\ word-\/wrapping}}
+\DoxyCodeLine{00196\ \textcolor{comment}{//\ here.}}
+\DoxyCodeLine{00197\ \textcolor{comment}{//}}
+\DoxyCodeLine{00198\ \textcolor{comment}{//\ Each\ textfield\ keeps\ its\ own\ insert\ mode\ state,\ which\ is\ not\ how\ normal}}
+\DoxyCodeLine{00199\ \textcolor{comment}{//\ applications\ work.\ To\ keep\ an\ app-\/wide\ insert\ mode,\ update/copy\ the}}
+\DoxyCodeLine{00200\ \textcolor{comment}{//\ "{}insert\_mode"{}\ field\ of\ STB\_TexteditState\ before/after\ calling\ API\ functions.}}
+\DoxyCodeLine{00201\ \textcolor{comment}{//}}
+\DoxyCodeLine{00202\ \textcolor{comment}{//\ API}}
+\DoxyCodeLine{00203\ \textcolor{comment}{//}}
+\DoxyCodeLine{00204\ \textcolor{comment}{//\ \ \ \ void\ stb\_textedit\_initialize\_state(STB\_TexteditState\ *state,\ int\ is\_single\_line)}}
+\DoxyCodeLine{00205\ \textcolor{comment}{//}}
+\DoxyCodeLine{00206\ \textcolor{comment}{//\ \ \ \ void\ stb\_textedit\_click(STB\_TEXTEDIT\_STRING\ *str,\ STB\_TexteditState\ *state,\ float\ x,\ float\ y)}}
+\DoxyCodeLine{00207\ \textcolor{comment}{//\ \ \ \ void\ stb\_textedit\_drag(STB\_TEXTEDIT\_STRING\ *str,\ STB\_TexteditState\ *state,\ float\ x,\ float\ y)}}
+\DoxyCodeLine{00208\ \textcolor{comment}{//\ \ \ \ int\ \ stb\_textedit\_cut(STB\_TEXTEDIT\_STRING\ *str,\ STB\_TexteditState\ *state)}}
+\DoxyCodeLine{00209\ \textcolor{comment}{//\ \ \ \ int\ \ stb\_textedit\_paste(STB\_TEXTEDIT\_STRING\ *str,\ STB\_TexteditState\ *state,\ STB\_TEXTEDIT\_CHARTYPE\ *text,\ int\ len)}}
+\DoxyCodeLine{00210\ \textcolor{comment}{//\ \ \ \ void\ stb\_textedit\_key(STB\_TEXTEDIT\_STRING\ *str,\ STB\_TexteditState\ *state,\ STB\_TEXEDIT\_KEYTYPE\ key)}}
+\DoxyCodeLine{00211\ \textcolor{comment}{//}}
+\DoxyCodeLine{00212\ \textcolor{comment}{//\ \ \ \ Each\ of\ these\ functions\ potentially\ updates\ the\ string\ and\ updates\ the}}
+\DoxyCodeLine{00213\ \textcolor{comment}{//\ \ \ \ state.}}
+\DoxyCodeLine{00214\ \textcolor{comment}{//}}
+\DoxyCodeLine{00215\ \textcolor{comment}{//\ \ \ \ \ \ initialize\_state:}}
+\DoxyCodeLine{00216\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ set\ the\ textedit\ state\ to\ a\ known\ good\ default\ state\ when\ initially}}
+\DoxyCodeLine{00217\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ constructing\ the\ textedit.}}
+\DoxyCodeLine{00218\ \textcolor{comment}{//}}
+\DoxyCodeLine{00219\ \textcolor{comment}{//\ \ \ \ \ \ click:}}
+\DoxyCodeLine{00220\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ call\ this\ with\ the\ mouse\ x,y\ on\ a\ mouse\ down;\ it\ will\ update\ the\ cursor}}
+\DoxyCodeLine{00221\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ and\ reset\ the\ selection\ start/end\ to\ the\ cursor\ point.\ the\ x,y\ must}}
+\DoxyCodeLine{00222\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ be\ relative\ to\ the\ text\ widget,\ with\ (0,0)\ being\ the\ top\ left.}}
+\DoxyCodeLine{00223\ \textcolor{comment}{//}}
+\DoxyCodeLine{00224\ \textcolor{comment}{//\ \ \ \ \ \ drag:}}
+\DoxyCodeLine{00225\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ call\ this\ with\ the\ mouse\ x,y\ on\ a\ mouse\ drag/up;\ it\ will\ update\ the}}
+\DoxyCodeLine{00226\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ cursor\ and\ the\ selection\ end\ point}}
+\DoxyCodeLine{00227\ \textcolor{comment}{//}}
+\DoxyCodeLine{00228\ \textcolor{comment}{//\ \ \ \ \ \ cut:}}
+\DoxyCodeLine{00229\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ call\ this\ to\ delete\ the\ current\ selection;\ returns\ true\ if\ there\ was}}
+\DoxyCodeLine{00230\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ one.\ you\ should\ FIRST\ copy\ the\ current\ selection\ to\ the\ system\ paste\ buffer.}}
+\DoxyCodeLine{00231\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ (To\ copy,\ just\ copy\ the\ current\ selection\ out\ of\ the\ string\ yourself.)}}
+\DoxyCodeLine{00232\ \textcolor{comment}{//}}
+\DoxyCodeLine{00233\ \textcolor{comment}{//\ \ \ \ \ \ paste:}}
+\DoxyCodeLine{00234\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ call\ this\ to\ paste\ text\ at\ the\ current\ cursor\ point\ or\ over\ the\ current}}
+\DoxyCodeLine{00235\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ selection\ if\ there\ is\ one.}}
+\DoxyCodeLine{00236\ \textcolor{comment}{//}}
+\DoxyCodeLine{00237\ \textcolor{comment}{//\ \ \ \ \ \ key:}}
+\DoxyCodeLine{00238\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ call\ this\ for\ keyboard\ inputs\ sent\ to\ the\ textfield.\ you\ can\ use\ it}}
+\DoxyCodeLine{00239\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ for\ "{}key\ down"{}\ events\ or\ for\ "{}translated"{}\ key\ events.\ if\ you\ need\ to}}
+\DoxyCodeLine{00240\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ do\ both\ (as\ in\ Win32),\ or\ distinguish\ Unicode\ characters\ from\ control}}
+\DoxyCodeLine{00241\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ inputs,\ set\ a\ high\ bit\ to\ distinguish\ the\ two;\ then\ you\ can\ define\ the}}
+\DoxyCodeLine{00242\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ various\ definitions\ like\ STB\_TEXTEDIT\_K\_LEFT\ have\ the\ is-\/key-\/event\ bit}}
+\DoxyCodeLine{00243\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ set,\ and\ make\ STB\_TEXTEDIT\_KEYTOCHAR\ check\ that\ the\ is-\/key-\/event\ bit\ is}}
+\DoxyCodeLine{00244\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ clear.\ STB\_TEXTEDIT\_KEYTYPE\ defaults\ to\ int,\ but\ you\ can\ \#define\ it\ to}}
+\DoxyCodeLine{00245\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ anything\ other\ type\ you\ wante\ before\ including.}}
+\DoxyCodeLine{00246\ \textcolor{comment}{//}}
+\DoxyCodeLine{00247\ \textcolor{comment}{//}}
+\DoxyCodeLine{00248\ \textcolor{comment}{//\ \ \ When\ rendering,\ you\ can\ read\ the\ cursor\ position\ and\ selection\ state\ from}}
+\DoxyCodeLine{00249\ \textcolor{comment}{//\ \ \ the\ STB\_TexteditState.}}
+\DoxyCodeLine{00250\ \textcolor{comment}{//}}
+\DoxyCodeLine{00251\ \textcolor{comment}{//}}
+\DoxyCodeLine{00252\ \textcolor{comment}{//\ Notes:}}
+\DoxyCodeLine{00253\ \textcolor{comment}{//}}
+\DoxyCodeLine{00254\ \textcolor{comment}{//\ This\ is\ designed\ to\ be\ usable\ in\ IMGUI,\ so\ it\ allows\ for\ the\ possibility\ of}}
+\DoxyCodeLine{00255\ \textcolor{comment}{//\ running\ in\ an\ IMGUI\ that\ has\ NOT\ cached\ the\ multi-\/line\ layout.\ For\ this}}
+\DoxyCodeLine{00256\ \textcolor{comment}{//\ reason,\ it\ provides\ an\ interface\ that\ is\ compatible\ with\ computing\ the}}
+\DoxyCodeLine{00257\ \textcolor{comment}{//\ layout\ incrementally-\/-\/we\ try\ to\ make\ sure\ we\ make\ as\ few\ passes\ through}}
+\DoxyCodeLine{00258\ \textcolor{comment}{//\ as\ possible.\ (For\ example,\ to\ locate\ the\ mouse\ pointer\ in\ the\ text,\ we}}
+\DoxyCodeLine{00259\ \textcolor{comment}{//\ could\ define\ functions\ that\ return\ the\ X\ and\ Y\ positions\ of\ characters}}
+\DoxyCodeLine{00260\ \textcolor{comment}{//\ and\ binary\ search\ Y\ and\ then\ X,\ but\ if\ we're\ doing\ dynamic\ layout\ this}}
+\DoxyCodeLine{00261\ \textcolor{comment}{//\ will\ run\ the\ layout\ algorithm\ many\ times,\ so\ instead\ we\ manually\ search}}
+\DoxyCodeLine{00262\ \textcolor{comment}{//\ forward\ in\ one\ pass.\ Similar\ logic\ applies\ to\ e.g.\ up-\/arrow\ and}}
+\DoxyCodeLine{00263\ \textcolor{comment}{//\ down-\/arrow\ movement.)}}
+\DoxyCodeLine{00264\ \textcolor{comment}{//}}
+\DoxyCodeLine{00265\ \textcolor{comment}{//\ If\ it's\ run\ in\ a\ widget\ that\ *has*\ cached\ the\ layout,\ then\ this\ is\ less}}
+\DoxyCodeLine{00266\ \textcolor{comment}{//\ efficient,\ but\ it's\ not\ horrible\ on\ modern\ computers.\ But\ you\ wouldn't}}
+\DoxyCodeLine{00267\ \textcolor{comment}{//\ want\ to\ edit\ million-\/line\ files\ with\ it.}}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \textcolor{preprocessor}{\#ifndef\ INCLUDE\_STB\_TEXTEDIT\_H}}
+\DoxyCodeLine{00278\ \textcolor{preprocessor}{\#define\ INCLUDE\_STB\_TEXTEDIT\_H}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00281\ \textcolor{comment}{//}}
+\DoxyCodeLine{00282\ \textcolor{comment}{//\ \ \ \ \ STB\_TexteditState}}
+\DoxyCodeLine{00283\ \textcolor{comment}{//}}
+\DoxyCodeLine{00284\ \textcolor{comment}{//\ Definition\ of\ STB\_TexteditState\ which\ you\ should\ store}}
+\DoxyCodeLine{00285\ \textcolor{comment}{//\ per-\/textfield;\ it\ includes\ cursor\ position,\ selection\ state,}}
+\DoxyCodeLine{00286\ \textcolor{comment}{//\ and\ undo\ state.}}
+\DoxyCodeLine{00287\ \textcolor{comment}{//}}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \textcolor{preprocessor}{\#ifndef\ STB\_TEXTEDIT\_UNDOSTATECOUNT}}
+\DoxyCodeLine{00290\ \textcolor{preprocessor}{\#define\ STB\_TEXTEDIT\_UNDOSTATECOUNT\ \ \ 99}}
+\DoxyCodeLine{00291\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00292\ \textcolor{preprocessor}{\#ifndef\ STB\_TEXTEDIT\_UNDOCHARCOUNT}}
+\DoxyCodeLine{00293\ \textcolor{preprocessor}{\#define\ STB\_TEXTEDIT\_UNDOCHARCOUNT\ \ \ 999}}
+\DoxyCodeLine{00294\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00295\ \textcolor{preprocessor}{\#ifndef\ STB\_TEXTEDIT\_CHARTYPE}}
+\DoxyCodeLine{00296\ \textcolor{preprocessor}{\#define\ STB\_TEXTEDIT\_CHARTYPE\ \ \ \ \ \ \ \ int}}
+\DoxyCodeLine{00297\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00298\ \textcolor{preprocessor}{\#ifndef\ STB\_TEXTEDIT\_POSITIONTYPE}}
+\DoxyCodeLine{00299\ \textcolor{preprocessor}{\#define\ STB\_TEXTEDIT\_POSITIONTYPE\ \ \ \ int}}
+\DoxyCodeLine{00300\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00303\ \{}
+\DoxyCodeLine{00304\ \ \ \ \textcolor{comment}{//\ private\ data}}
+\DoxyCodeLine{00305\ \ \ \ \mbox{\hyperlink{imstb__textedit_8h_a5d0c1b8751b6517e3d817f2a025ed654}{STB\_TEXTEDIT\_POSITIONTYPE}}\ \ \mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}};}
+\DoxyCodeLine{00306\ \ \ \ \mbox{\hyperlink{imstb__textedit_8h_a5d0c1b8751b6517e3d817f2a025ed654}{STB\_TEXTEDIT\_POSITIONTYPE}}\ \ \mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}};}
+\DoxyCodeLine{00307\ \ \ \ \mbox{\hyperlink{imstb__textedit_8h_a5d0c1b8751b6517e3d817f2a025ed654}{STB\_TEXTEDIT\_POSITIONTYPE}}\ \ \mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}};}
+\DoxyCodeLine{00308\ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}};}
+\DoxyCodeLine{00309\ \}\ \mbox{\hyperlink{struct_stb_undo_record}{StbUndoRecord}};}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00312\ \{}
+\DoxyCodeLine{00313\ \ \ \ \textcolor{comment}{//\ private\ data}}
+\DoxyCodeLine{00314\ \ \ \ \mbox{\hyperlink{struct_stb_undo_record}{StbUndoRecord}}\ \ \ \ \ \ \ \ \ \ undo\_rec\ [\mbox{\hyperlink{imstb__textedit_8h_afa79483143df87a1497010712b3dfaf9}{STB\_TEXTEDIT\_UNDOSTATECOUNT}}];}
+\DoxyCodeLine{00315\ \ \ \ \mbox{\hyperlink{imstb__textedit_8h_a6e64031a061922e3a48d88fd8623f4c3}{STB\_TEXTEDIT\_CHARTYPE}}\ \ undo\_char[\mbox{\hyperlink{imstb__textedit_8h_a15cbcac55cf92003c28c44734422756a}{STB\_TEXTEDIT\_UNDOCHARCOUNT}}];}
+\DoxyCodeLine{00316\ \ \ \ \textcolor{keywordtype}{short}\ undo\_point,\ \mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}};}
+\DoxyCodeLine{00317\ \ \ \ \textcolor{keywordtype}{int}\ undo\_char\_point,\ \mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}};}
+\DoxyCodeLine{00318\ \}\ \mbox{\hyperlink{struct_stb_undo_state}{StbUndoState}};}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00321\ \{}
+\DoxyCodeLine{00323\ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00324\ \ \ \ \textcolor{comment}{//\ public\ data}}
+\DoxyCodeLine{00325\ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00327\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00328\ \ \ \ \textcolor{comment}{//\ position\ of\ the\ text\ cursor\ within\ the\ string}}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ selection\ start\ point}}
+\DoxyCodeLine{00331\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}};}
+\DoxyCodeLine{00332\ \ \ \ \textcolor{comment}{//\ selection\ start\ and\ end\ point\ in\ characters;\ if\ equal,\ no\ selection.}}
+\DoxyCodeLine{00333\ \ \ \ \textcolor{comment}{//\ note\ that\ start\ may\ be\ less\ than\ or\ greater\ than\ end\ (e.g.\ when}}
+\DoxyCodeLine{00334\ \ \ \ \textcolor{comment}{//\ dragging\ the\ mouse,\ start\ is\ where\ the\ initial\ click\ was,\ and\ you}}
+\DoxyCodeLine{00335\ \ \ \ \textcolor{comment}{//\ can\ drag\ in\ either\ direction)}}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00337\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_s_t_b___textedit_state_af26029a4f1f76d043afd35072fabcb4b}{insert\_mode}};}
+\DoxyCodeLine{00338\ \ \ \ \textcolor{comment}{//\ each\ textfield\ keeps\ its\ own\ insert\ mode\ state.\ to\ keep\ an\ app-\/wide}}
+\DoxyCodeLine{00339\ \ \ \ \textcolor{comment}{//\ insert\ mode,\ copy\ this\ value\ in/out\ of\ the\ app\ state}}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_t_b___textedit_state_a352add1502f8e2f4e9043ab7114da61c}{row\_count\_per\_page}};}
+\DoxyCodeLine{00342\ \ \ \ \textcolor{comment}{//\ page\ size\ in\ number\ of\ row.}}
+\DoxyCodeLine{00343\ \ \ \ \textcolor{comment}{//\ this\ value\ MUST\ be\ set\ to\ >0\ for\ pageup\ or\ pagedown\ in\ multilines\ documents.}}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00346\ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00347\ \ \ \ \textcolor{comment}{//\ private\ data}}
+\DoxyCodeLine{00348\ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00349\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_s_t_b___textedit_state_a0e7ba5f610f5dc2d643bef0f223ada9c}{cursor\_at\_end\_of\_line}};\ \textcolor{comment}{//\ not\ implemented\ yet}}
+\DoxyCodeLine{00350\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_s_t_b___textedit_state_a11a63150e95225aacd204d6ef160c0c0}{initialized}};}
+\DoxyCodeLine{00351\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}};}
+\DoxyCodeLine{00352\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}};}
+\DoxyCodeLine{00353\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_s_t_b___textedit_state_a1e43e8ac88a8c7f2bba645b333a8bdc7}{padding1}},\ padding2,\ padding3;}
+\DoxyCodeLine{00354\ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_t_b___textedit_state_a527319df94e0fe262548fb48bebf3dea}{preferred\_x}};\ \textcolor{comment}{//\ this\ determines\ where\ the\ cursor\ up/down\ tries\ to\ seek\ to\ along\ x}}
+\DoxyCodeLine{00355\ \ \ \ \mbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ \mbox{\hyperlink{struct_s_t_b___textedit_state_a7e1f0366bbd57e01a4f49a720beb9ead}{undostate}};}
+\DoxyCodeLine{00356\ \}\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}};}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00360\ \textcolor{comment}{//}}
+\DoxyCodeLine{00361\ \textcolor{comment}{//\ \ \ \ \ StbTexteditRow}}
+\DoxyCodeLine{00362\ \textcolor{comment}{//}}
+\DoxyCodeLine{00363\ \textcolor{comment}{//\ Result\ of\ layout\ query,\ used\ by\ stb\_textedit\ to\ determine\ where}}
+\DoxyCodeLine{00364\ \textcolor{comment}{//\ the\ text\ in\ each\ row\ is.}}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00366\ \textcolor{comment}{//\ result\ of\ layout\ query}}
+\DoxyCodeLine{00367\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00368\ \{}
+\DoxyCodeLine{00369\ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_stb_textedit_row_af30b3e1d61d1acea26d3e0ebec2cb81d}{x0}},x1;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ starting\ x\ location,\ end\ x\ location\ (allows\ for\ align=right,\ etc)}}
+\DoxyCodeLine{00370\ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_stb_textedit_row_ad2d72b74b1a61e331949c7f7ec311880}{baseline\_y\_delta}};\ \ \textcolor{comment}{//\ position\ of\ baseline\ relative\ to\ previous\ row's\ baseline}}
+\DoxyCodeLine{00371\ \ \ \ \textcolor{keywordtype}{float}\ ymin,\mbox{\hyperlink{struct_stb_textedit_row_aab290e15f6a3b4a96ab2c2472cc8a7a5}{ymax}};\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ height\ of\ row\ above\ and\ below\ baseline}}
+\DoxyCodeLine{00372\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}};}
+\DoxyCodeLine{00373\ \}\ \mbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}};}
+\DoxyCodeLine{00374\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//INCLUDE\_STB\_TEXTEDIT\_H}}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00383\ }
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00385\ \textcolor{comment}{//\ implementation\ isn't\ include-\/guarded,\ since\ it\ might\ have\ indirectly}}
+\DoxyCodeLine{00386\ \textcolor{comment}{//\ included\ just\ the\ "{}header"{}\ portion}}
+\DoxyCodeLine{00387\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_IMPLEMENTATION}}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00389\ \textcolor{preprocessor}{\#ifndef\ STB\_TEXTEDIT\_memmove}}
+\DoxyCodeLine{00390\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00391\ \textcolor{preprocessor}{\#define\ STB\_TEXTEDIT\_memmove\ memmove}}
+\DoxyCodeLine{00392\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00396\ \textcolor{comment}{//}}
+\DoxyCodeLine{00397\ \textcolor{comment}{//\ \ \ \ \ \ Mouse\ input\ handling}}
+\DoxyCodeLine{00398\ \textcolor{comment}{//}}
+\DoxyCodeLine{00399\ }
+\DoxyCodeLine{00400\ \textcolor{comment}{//\ traverse\ the\ layout\ to\ locate\ the\ nearest\ character\ to\ a\ display\ position}}
+\DoxyCodeLine{00401\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ stb\_text\_locate\_coord(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a5e247fc24ceb70d83f6ad59149b8910a}{y}})}
+\DoxyCodeLine{00402\ \{}
+\DoxyCodeLine{00403\ \ \ \ \mbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}}\ r;}
+\DoxyCodeLine{00404\ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{00405\ \ \ \ \textcolor{keywordtype}{float}\ base\_y\ =\ 0,\ prev\_x;}
+\DoxyCodeLine{00406\ \ \ \ \textcolor{keywordtype}{int}\ i=0,\ k;}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00408\ \ \ \ r.\mbox{\hyperlink{struct_stb_textedit_row_af30b3e1d61d1acea26d3e0ebec2cb81d}{x0}}\ =\ r.\mbox{\hyperlink{struct_stb_textedit_row_a3a3e1a506030c871a1b3d09bf26e341f}{x1}}\ =\ 0;}
+\DoxyCodeLine{00409\ \ \ \ r.\mbox{\hyperlink{struct_stb_textedit_row_a707d331bd9dc99d64c81f71106b75eed}{ymin}}\ =\ r.\mbox{\hyperlink{struct_stb_textedit_row_aab290e15f6a3b4a96ab2c2472cc8a7a5}{ymax}}\ =\ 0;}
+\DoxyCodeLine{00410\ \ \ \ r.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}}\ =\ 0;}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00412\ \ \ \ \textcolor{comment}{//\ search\ rows\ to\ find\ one\ that\ straddles\ 'y'}}
+\DoxyCodeLine{00413\ \ \ \ \textcolor{keywordflow}{while}\ (i\ <\ n)\ \{}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&r,\ str,\ i);}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}}\ <=\ 0)}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ n;}
+\DoxyCodeLine{00417\ }
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i==0\ \&\&\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a5e247fc24ceb70d83f6ad59149b8910a}{y}}\ <\ base\_y\ +\ r.\mbox{\hyperlink{struct_stb_textedit_row_a707d331bd9dc99d64c81f71106b75eed}{ymin}})}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a5e247fc24ceb70d83f6ad59149b8910a}{y}}\ <\ base\_y\ +\ r.\mbox{\hyperlink{struct_stb_textedit_row_aab290e15f6a3b4a96ab2c2472cc8a7a5}{ymax}})}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00423\ }
+\DoxyCodeLine{00424\ \ \ \ \ \ \ i\ +=\ r.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}};}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ base\_y\ +=\ r.\mbox{\hyperlink{struct_stb_textedit_row_ad2d72b74b1a61e331949c7f7ec311880}{baseline\_y\_delta}};}
+\DoxyCodeLine{00426\ \ \ \ \}}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \ \ \ \textcolor{comment}{//\ below\ all\ text,\ return\ 'after'\ last\ character}}
+\DoxyCodeLine{00429\ \ \ \ \textcolor{keywordflow}{if}\ (i\ >=\ n)}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ n;}
+\DoxyCodeLine{00431\ }
+\DoxyCodeLine{00432\ \ \ \ \textcolor{comment}{//\ check\ if\ it's\ before\ the\ beginning\ of\ the\ line}}
+\DoxyCodeLine{00433\ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ r.\mbox{\hyperlink{struct_stb_textedit_row_af30b3e1d61d1acea26d3e0ebec2cb81d}{x0}})}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i;}
+\DoxyCodeLine{00435\ }
+\DoxyCodeLine{00436\ \ \ \ \textcolor{comment}{//\ check\ if\ it's\ before\ the\ end\ of\ the\ line}}
+\DoxyCodeLine{00437\ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ r.\mbox{\hyperlink{struct_stb_textedit_row_a3a3e1a506030c871a1b3d09bf26e341f}{x1}})\ \{}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \textcolor{comment}{//\ search\ characters\ in\ row\ for\ one\ that\ straddles\ 'x'}}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ prev\_x\ =\ r.\mbox{\hyperlink{struct_stb_textedit_row_af30b3e1d61d1acea26d3e0ebec2cb81d}{x0}};}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (k=0;\ k\ <\ r.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}};\ ++k)\ \{}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ STB\_TEXTEDIT\_GETWIDTH(str,\ i,\ k);}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ prev\_x+w)\ \{}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ prev\_x+w/2)}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ k+i;}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ k+i+1;}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ prev\_x\ +=\ w;}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \textcolor{comment}{//\ shouldn't\ happen,\ but\ if\ it\ does,\ fall\ through\ to\ end-\/of-\/line\ case}}
+\DoxyCodeLine{00451\ \ \ \ \}}
+\DoxyCodeLine{00452\ }
+\DoxyCodeLine{00453\ \ \ \ \textcolor{comment}{//\ if\ the\ last\ character\ is\ a\ newline,\ return\ that.\ otherwise\ return\ 'after'\ the\ last\ character}}
+\DoxyCodeLine{00454\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXTEDIT\_GETCHAR(str,\ i+r.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}}-\/1)\ ==\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i+r.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}}-\/1;}
+\DoxyCodeLine{00456\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i+r.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}};}
+\DoxyCodeLine{00458\ \}}
+\DoxyCodeLine{00459\ }
+\DoxyCodeLine{00460\ \textcolor{comment}{//\ API\ click:\ on\ mouse\ down,\ move\ the\ cursor\ to\ the\ clicked\ location,\ and\ reset\ the\ selection}}
+\DoxyCodeLine{00461\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_click(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a5e247fc24ceb70d83f6ad59149b8910a}{y}})}
+\DoxyCodeLine{00462\ \{}
+\DoxyCodeLine{00463\ \ \ \ \textcolor{comment}{//\ In\ single-\/line\ mode,\ just\ always\ make\ y\ =\ 0.\ This\ lets\ the\ drag\ keep\ working\ if\ the\ mouse}}
+\DoxyCodeLine{00464\ \ \ \ \textcolor{comment}{//\ goes\ off\ the\ top\ or\ bottom\ of\ the\ text}}
+\DoxyCodeLine{00465\ \ \ \ \textcolor{keywordflow}{if}(\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}}\ )}
+\DoxyCodeLine{00466\ \ \ \ \{}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \mbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}}\ r;}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&r,\ str,\ 0);}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a5e247fc24ceb70d83f6ad59149b8910a}{y}}\ =\ r.\mbox{\hyperlink{struct_stb_textedit_row_a707d331bd9dc99d64c81f71106b75eed}{ymin}};}
+\DoxyCodeLine{00470\ \ \ \ \}}
+\DoxyCodeLine{00471\ }
+\DoxyCodeLine{00472\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ stb\_text\_locate\_coord(str,\ x,\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a5e247fc24ceb70d83f6ad59149b8910a}{y}});}
+\DoxyCodeLine{00473\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00474\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00475\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00476\ \}}
+\DoxyCodeLine{00477\ }
+\DoxyCodeLine{00478\ \textcolor{comment}{//\ API\ drag:\ on\ mouse\ drag,\ move\ the\ cursor\ and\ selection\ endpoint\ to\ the\ clicked\ location}}
+\DoxyCodeLine{00479\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_drag(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a5e247fc24ceb70d83f6ad59149b8910a}{y}})}
+\DoxyCodeLine{00480\ \{}
+\DoxyCodeLine{00481\ \ \ \ \textcolor{keywordtype}{int}\ p\ =\ 0;}
+\DoxyCodeLine{00482\ }
+\DoxyCodeLine{00483\ \ \ \ \textcolor{comment}{//\ In\ single-\/line\ mode,\ just\ always\ make\ y\ =\ 0.\ This\ lets\ the\ drag\ keep\ working\ if\ the\ mouse}}
+\DoxyCodeLine{00484\ \ \ \ \textcolor{comment}{//\ goes\ off\ the\ top\ or\ bottom\ of\ the\ text}}
+\DoxyCodeLine{00485\ \ \ \ \textcolor{keywordflow}{if}(\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}}\ )}
+\DoxyCodeLine{00486\ \ \ \ \{}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \mbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}}\ r;}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&r,\ str,\ 0);}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a5e247fc24ceb70d83f6ad59149b8910a}{y}}\ =\ r.\mbox{\hyperlink{struct_stb_textedit_row_a707d331bd9dc99d64c81f71106b75eed}{ymin}};}
+\DoxyCodeLine{00490\ \ \ \ \}}
+\DoxyCodeLine{00491\ }
+\DoxyCodeLine{00492\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ ==\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}})}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00494\ }
+\DoxyCodeLine{00495\ \ \ \ p\ =\ stb\_text\_locate\_coord(str,\ x,\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a5e247fc24ceb70d83f6ad59149b8910a}{y}});}
+\DoxyCodeLine{00496\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ p;}
+\DoxyCodeLine{00497\ \}}
+\DoxyCodeLine{00498\ }
+\DoxyCodeLine{00500\ \textcolor{comment}{//}}
+\DoxyCodeLine{00501\ \textcolor{comment}{//\ \ \ \ \ \ Keyboard\ input\ handling}}
+\DoxyCodeLine{00502\ \textcolor{comment}{//}}
+\DoxyCodeLine{00503\ }
+\DoxyCodeLine{00504\ \textcolor{comment}{//\ forward\ declarations}}
+\DoxyCodeLine{00505\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_undo(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state);}
+\DoxyCodeLine{00506\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_redo(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state);}
+\DoxyCodeLine{00507\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_makeundo\_delete(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a011fc24f10426c01349e94a4edd4b0d5}{length}});}
+\DoxyCodeLine{00508\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_makeundo\_insert(\mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a011fc24f10426c01349e94a4edd4b0d5}{length}});}
+\DoxyCodeLine{00509\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_makeundo\_replace(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ old\_length,\ \textcolor{keywordtype}{int}\ new\_length);}
+\DoxyCodeLine{00510\ }
+\DoxyCodeLine{00511\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00512\ \{}
+\DoxyCodeLine{00513\ \ \ \ \textcolor{keywordtype}{float}\ x,\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a5e247fc24ceb70d83f6ad59149b8910a}{y}};\ \ \ \ \textcolor{comment}{//\ position\ of\ n'th\ character}}
+\DoxyCodeLine{00514\ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a60075de22f90a1223dc0bea98d2ee4d5}{height}};\ \textcolor{comment}{//\ height\ of\ line}}
+\DoxyCodeLine{00515\ \ \ \ \textcolor{keywordtype}{int}\ first\_char,\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a011fc24f10426c01349e94a4edd4b0d5}{length}};\ \textcolor{comment}{//\ first\ char\ of\ row,\ and\ length}}
+\DoxyCodeLine{00516\ \ \ \ \textcolor{keywordtype}{int}\ prev\_first;\ \ \textcolor{comment}{//\ first\ char\ of\ previous\ row}}
+\DoxyCodeLine{00517\ \}\ StbFindState;}
+\DoxyCodeLine{00518\ }
+\DoxyCodeLine{00519\ \textcolor{comment}{//\ find\ the\ x/y\ location\ of\ a\ character,\ and\ remember\ info\ about\ the\ previous\ row\ in}}
+\DoxyCodeLine{00520\ \textcolor{comment}{//\ case\ we\ get\ a\ move-\/up\ event\ (for\ page\ up,\ we'll\ have\ to\ rescan)}}
+\DoxyCodeLine{00521\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_find\_charpos(StbFindState\ *find,\ \mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \textcolor{keywordtype}{int}\ n,\ \textcolor{keywordtype}{int}\ single\_line)}
+\DoxyCodeLine{00522\ \{}
+\DoxyCodeLine{00523\ \ \ \ \mbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}}\ r;}
+\DoxyCodeLine{00524\ \ \ \ \textcolor{keywordtype}{int}\ prev\_start\ =\ 0;}
+\DoxyCodeLine{00525\ \ \ \ \textcolor{keywordtype}{int}\ z\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{00526\ \ \ \ \textcolor{keywordtype}{int}\ i=0,\ first;}
+\DoxyCodeLine{00527\ }
+\DoxyCodeLine{00528\ \ \ \ \textcolor{keywordflow}{if}\ (n\ ==\ z\ \&\&\ single\_line)\ \{}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \textcolor{comment}{//\ special\ case\ if\ it's\ at\ the\ end\ (may\ not\ be\ needed?)}}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&r,\ str,\ 0);}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ find-\/>y\ =\ 0;}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ find-\/>first\_char\ =\ 0;}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ find-\/>length\ =\ z;}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ find-\/>height\ =\ r.\mbox{\hyperlink{struct_stb_textedit_row_aab290e15f6a3b4a96ab2c2472cc8a7a5}{ymax}}\ -\/\ r.\mbox{\hyperlink{struct_stb_textedit_row_a707d331bd9dc99d64c81f71106b75eed}{ymin}};}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ find-\/>x\ =\ r.\mbox{\hyperlink{struct_stb_textedit_row_a3a3e1a506030c871a1b3d09bf26e341f}{x1}};}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00537\ \ \ \ \}}
+\DoxyCodeLine{00538\ }
+\DoxyCodeLine{00539\ \ \ \ \textcolor{comment}{//\ search\ rows\ to\ find\ the\ one\ that\ straddles\ character\ n}}
+\DoxyCodeLine{00540\ \ \ \ find-\/>y\ =\ 0;}
+\DoxyCodeLine{00541\ }
+\DoxyCodeLine{00542\ \ \ \ \textcolor{keywordflow}{for}(;;)\ \{}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&r,\ str,\ i);}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ i\ +\ r.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}})}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ +\ r.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}}\ ==\ z\ \&\&\ z\ >\ 0\ \&\&\ STB\_TEXTEDIT\_GETCHAR(str,\ z\ -\/\ 1)\ !=\ STB\_TEXTEDIT\_NEWLINE)\ \ \textcolor{comment}{//\ [DEAR\ IMGUI]\ special\ handling\ for\ last\ line}}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ prev\_start\ =\ i;}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ i\ +=\ r.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}};}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ find-\/>y\ +=\ r.\mbox{\hyperlink{struct_stb_textedit_row_ad2d72b74b1a61e331949c7f7ec311880}{baseline\_y\_delta}};}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ z)\ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{00553\ \ \ \ \}}
+\DoxyCodeLine{00554\ }
+\DoxyCodeLine{00555\ \ \ \ find-\/>first\_char\ =\ first\ =\ i;}
+\DoxyCodeLine{00556\ \ \ \ find-\/>length\ =\ r.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}};}
+\DoxyCodeLine{00557\ \ \ \ find-\/>height\ =\ r.\mbox{\hyperlink{struct_stb_textedit_row_aab290e15f6a3b4a96ab2c2472cc8a7a5}{ymax}}\ -\/\ r.\mbox{\hyperlink{struct_stb_textedit_row_a707d331bd9dc99d64c81f71106b75eed}{ymin}};}
+\DoxyCodeLine{00558\ \ \ \ find-\/>prev\_first\ =\ prev\_start;}
+\DoxyCodeLine{00559\ }
+\DoxyCodeLine{00560\ \ \ \ \textcolor{comment}{//\ now\ scan\ to\ find\ xpos}}
+\DoxyCodeLine{00561\ \ \ \ find-\/>x\ =\ r.\mbox{\hyperlink{struct_stb_textedit_row_af30b3e1d61d1acea26d3e0ebec2cb81d}{x0}};}
+\DoxyCodeLine{00562\ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ first+i\ <\ n;\ ++i)}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ find-\/>x\ +=\ STB\_TEXTEDIT\_GETWIDTH(str,\ first,\ i);}
+\DoxyCodeLine{00564\ \}}
+\DoxyCodeLine{00565\ }
+\DoxyCodeLine{00566\ \textcolor{preprocessor}{\#define\ STB\_TEXT\_HAS\_SELECTION(s)\ \ \ ((s)-\/>select\_start\ !=\ (s)-\/>select\_end)}}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00568\ \textcolor{comment}{//\ make\ the\ selection/cursor\ state\ valid\ if\ client\ altered\ the\ string}}
+\DoxyCodeLine{00569\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_clamp(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00570\ \{}
+\DoxyCodeLine{00571\ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{00572\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))\ \{}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ >\ n)\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ =\ n;}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ \ \ >\ n)\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ n;}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ clamping\ forced\ them\ to\ be\ equal,\ move\ the\ cursor\ to\ match}}
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ ==\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}})}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}};}
+\DoxyCodeLine{00578\ \ \ \ \}}
+\DoxyCodeLine{00579\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ >\ n)\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ n;}
+\DoxyCodeLine{00580\ \}}
+\DoxyCodeLine{00581\ }
+\DoxyCodeLine{00582\ \textcolor{comment}{//\ delete\ characters\ while\ updating\ undo}}
+\DoxyCodeLine{00583\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_delete(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ len)}
+\DoxyCodeLine{00584\ \{}
+\DoxyCodeLine{00585\ \ \ \ stb\_text\_makeundo\_delete(str,\ state,\ where,\ len);}
+\DoxyCodeLine{00586\ \ \ \ STB\_TEXTEDIT\_DELETECHARS(str,\ where,\ len);}
+\DoxyCodeLine{00587\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00588\ \}}
+\DoxyCodeLine{00589\ }
+\DoxyCodeLine{00590\ \textcolor{comment}{//\ delete\ the\ section}}
+\DoxyCodeLine{00591\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_delete\_selection(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00592\ \{}
+\DoxyCodeLine{00593\ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00594\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))\ \{}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ <\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}})\ \{}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete(str,\ state,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}},\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ -\/\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}});}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}};}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete(str,\ state,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}},\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ -\/\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}});}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}};}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00603\ \ \ \ \}}
+\DoxyCodeLine{00604\ \}}
+\DoxyCodeLine{00605\ }
+\DoxyCodeLine{00606\ \textcolor{comment}{//\ canoncialize\ the\ selection\ so\ start\ <=\ end}}
+\DoxyCodeLine{00607\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_sortselection(\mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00608\ \{}
+\DoxyCodeLine{00609\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ <\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}})\ \{}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ temp\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}};}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}};}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ =\ temp;}
+\DoxyCodeLine{00613\ \ \ \ \}}
+\DoxyCodeLine{00614\ \}}
+\DoxyCodeLine{00615\ }
+\DoxyCodeLine{00616\ \textcolor{comment}{//\ move\ cursor\ to\ first\ character\ of\ selection}}
+\DoxyCodeLine{00617\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_move\_to\_first(\mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00618\ \{}
+\DoxyCodeLine{00619\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))\ \{}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ stb\_textedit\_sortselection(state);}
+\DoxyCodeLine{00621\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}};}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}};}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00624\ \ \ \ \}}
+\DoxyCodeLine{00625\ \}}
+\DoxyCodeLine{00626\ }
+\DoxyCodeLine{00627\ \textcolor{comment}{//\ move\ cursor\ to\ last\ character\ of\ selection}}
+\DoxyCodeLine{00628\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_move\_to\_last(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00629\ \{}
+\DoxyCodeLine{00630\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))\ \{}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ stb\_textedit\_sortselection(state);}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}};}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}};}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00636\ \ \ \ \}}
+\DoxyCodeLine{00637\ \}}
+\DoxyCodeLine{00638\ }
+\DoxyCodeLine{00639\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_IS\_SPACE}}
+\DoxyCodeLine{00640\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ is\_word\_boundary(\ \mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \textcolor{keywordtype}{int}\ idx\ )}
+\DoxyCodeLine{00641\ \{}
+\DoxyCodeLine{00642\ \ \ \ \textcolor{keywordflow}{return}\ idx\ >\ 0\ ?\ (STB\_TEXTEDIT\_IS\_SPACE(\ STB\_TEXTEDIT\_GETCHAR(str,idx-\/1)\ )\ \&\&\ !STB\_TEXTEDIT\_IS\_SPACE(\ STB\_TEXTEDIT\_GETCHAR(str,\ idx)\ )\ )\ :\ 1;}
+\DoxyCodeLine{00643\ \}}
+\DoxyCodeLine{00644\ }
+\DoxyCodeLine{00645\ \textcolor{preprocessor}{\#ifndef\ STB\_TEXTEDIT\_MOVEWORDLEFT}}
+\DoxyCodeLine{00646\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ stb\_textedit\_move\_to\_word\_previous(\ \mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \textcolor{keywordtype}{int}\ c\ )}
+\DoxyCodeLine{00647\ \{}
+\DoxyCodeLine{00648\ \ \ \ -\/-\/c;\ \textcolor{comment}{//\ always\ move\ at\ least\ one\ character}}
+\DoxyCodeLine{00649\ \ \ \ \textcolor{keywordflow}{while}(\ c\ >=\ 0\ \&\&\ !is\_word\_boundary(\ str,\ c\ )\ )}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ -\/-\/c;}
+\DoxyCodeLine{00651\ }
+\DoxyCodeLine{00652\ \ \ \ \textcolor{keywordflow}{if}(\ c\ <\ 0\ )}
+\DoxyCodeLine{00653\ \ \ \ \ \ \ c\ =\ 0;}
+\DoxyCodeLine{00654\ }
+\DoxyCodeLine{00655\ \ \ \ \textcolor{keywordflow}{return}\ c;}
+\DoxyCodeLine{00656\ \}}
+\DoxyCodeLine{00657\ \textcolor{preprocessor}{\#define\ STB\_TEXTEDIT\_MOVEWORDLEFT\ stb\_textedit\_move\_to\_word\_previous}}
+\DoxyCodeLine{00658\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00659\ }
+\DoxyCodeLine{00660\ \textcolor{preprocessor}{\#ifndef\ STB\_TEXTEDIT\_MOVEWORDRIGHT}}
+\DoxyCodeLine{00661\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ stb\_textedit\_move\_to\_word\_next(\ \mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \textcolor{keywordtype}{int}\ c\ )}
+\DoxyCodeLine{00662\ \{}
+\DoxyCodeLine{00663\ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ len\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{00664\ \ \ \ ++c;\ \textcolor{comment}{//\ always\ move\ at\ least\ one\ character}}
+\DoxyCodeLine{00665\ \ \ \ \textcolor{keywordflow}{while}(\ c\ <\ len\ \&\&\ !is\_word\_boundary(\ str,\ c\ )\ )}
+\DoxyCodeLine{00666\ \ \ \ \ \ \ ++c;}
+\DoxyCodeLine{00667\ }
+\DoxyCodeLine{00668\ \ \ \ \textcolor{keywordflow}{if}(\ c\ >\ len\ )}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ c\ =\ len;}
+\DoxyCodeLine{00670\ }
+\DoxyCodeLine{00671\ \ \ \ \textcolor{keywordflow}{return}\ c;}
+\DoxyCodeLine{00672\ \}}
+\DoxyCodeLine{00673\ \textcolor{preprocessor}{\#define\ STB\_TEXTEDIT\_MOVEWORDRIGHT\ stb\_textedit\_move\_to\_word\_next}}
+\DoxyCodeLine{00674\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00675\ }
+\DoxyCodeLine{00676\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00677\ }
+\DoxyCodeLine{00678\ \textcolor{comment}{//\ update\ selection\ and\ cursor\ to\ match\ each\ other}}
+\DoxyCodeLine{00679\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_prep\_selection\_at\_cursor(\mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00680\ \{}
+\DoxyCodeLine{00681\ \ \ \ \textcolor{keywordflow}{if}\ (!STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00682\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00683\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00684\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}};}
+\DoxyCodeLine{00685\ \}}
+\DoxyCodeLine{00686\ }
+\DoxyCodeLine{00687\ \textcolor{comment}{//\ API\ cut:\ delete\ selection}}
+\DoxyCodeLine{00688\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ stb\_textedit\_cut(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{00689\ \{}
+\DoxyCodeLine{00690\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))\ \{}
+\DoxyCodeLine{00691\ \ \ \ \ \ \ stb\_textedit\_delete\_selection(str,state);\ \textcolor{comment}{//\ implicitly\ clamps}}
+\DoxyCodeLine{00692\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00693\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00694\ \ \ \ \}}
+\DoxyCodeLine{00695\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00696\ \}}
+\DoxyCodeLine{00697\ }
+\DoxyCodeLine{00698\ \textcolor{comment}{//\ API\ paste:\ replace\ existing\ selection\ with\ passed-\/in\ text}}
+\DoxyCodeLine{00699\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ stb\_textedit\_paste\_internal(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \mbox{\hyperlink{imstb__textedit_8h_a6e64031a061922e3a48d88fd8623f4c3}{STB\_TEXTEDIT\_CHARTYPE}}\ *text,\ \textcolor{keywordtype}{int}\ len)}
+\DoxyCodeLine{00700\ \{}
+\DoxyCodeLine{00701\ \ \ \ \textcolor{comment}{//\ if\ there's\ a\ selection,\ the\ paste\ should\ delete\ it}}
+\DoxyCodeLine{00702\ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00703\ \ \ \ stb\_textedit\_delete\_selection(str,state);}
+\DoxyCodeLine{00704\ \ \ \ \textcolor{comment}{//\ try\ to\ insert\ the\ characters}}
+\DoxyCodeLine{00705\ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXTEDIT\_INSERTCHARS(str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}},\ text,\ len))\ \{}
+\DoxyCodeLine{00706\ \ \ \ \ \ \ stb\_text\_makeundo\_insert(state,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}},\ len);}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ +=\ len;}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00710\ \ \ \ \}}
+\DoxyCodeLine{00711\ \ \ \ \textcolor{comment}{//\ note:\ paste\ failure\ will\ leave\ deleted\ selection,\ may\ be\ restored\ with\ an\ undo\ (see\ https://github.com/nothings/stb/issues/734\ for\ details)}}
+\DoxyCodeLine{00712\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00713\ \}}
+\DoxyCodeLine{00714\ }
+\DoxyCodeLine{00715\ \textcolor{preprocessor}{\#ifndef\ STB\_TEXTEDIT\_KEYTYPE}}
+\DoxyCodeLine{00716\ \textcolor{preprocessor}{\#define\ STB\_TEXTEDIT\_KEYTYPE\ int}}
+\DoxyCodeLine{00717\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00718\ }
+\DoxyCodeLine{00719\ \textcolor{comment}{//\ API\ key:\ process\ a\ keyboard\ input}}
+\DoxyCodeLine{00720\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_key(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ STB\_TEXTEDIT\_KEYTYPE\ key)}
+\DoxyCodeLine{00721\ \{}
+\DoxyCodeLine{00722\ retry:}
+\DoxyCodeLine{00723\ \ \ \ \textcolor{keywordflow}{switch}\ (key)\ \{}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \{}
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ c\ =\ STB\_TEXTEDIT\_KEYTOTEXT(key);}
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ >\ 0)\ \{}
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{imstb__textedit_8h_a6e64031a061922e3a48d88fd8623f4c3}{STB\_TEXTEDIT\_CHARTYPE}}\ ch\ =\ (\mbox{\hyperlink{imstb__textedit_8h_a6e64031a061922e3a48d88fd8623f4c3}{STB\_TEXTEDIT\_CHARTYPE}})\ c;}
+\DoxyCodeLine{00728\ }
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ can't\ add\ newline\ in\ single-\/line\ mode}}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ ==\ \textcolor{charliteral}{'\(\backslash\)n'}\ \&\&\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}})}
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00732\ }
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_af26029a4f1f76d043afd35072fabcb4b}{insert\_mode}}\ \&\&\ !STB\_TEXT\_HAS\_SELECTION(state)\ \&\&\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ <\ STB\_TEXTEDIT\_STRINGLEN(str))\ \{}
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stb\_text\_makeundo\_replace(str,\ state,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}},\ 1,\ 1);}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ STB\_TEXTEDIT\_DELETECHARS(str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}},\ 1);}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXTEDIT\_INSERTCHARS(str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}},\ \&ch,\ 1))\ \{}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete\_selection(str,state);\ \textcolor{comment}{//\ implicitly\ clamps}}
+\DoxyCodeLine{00742\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXTEDIT\_INSERTCHARS(str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}},\ \&ch,\ 1))\ \{}
+\DoxyCodeLine{00743\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stb\_text\_makeundo\_insert(state,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}},\ 1);}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00751\ }
+\DoxyCodeLine{00752\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_INSERT}}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_INSERT:}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_af26029a4f1f76d043afd35072fabcb4b}{insert\_mode}}\ =\ !state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_af26029a4f1f76d043afd35072fabcb4b}{insert\_mode}};}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00756\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00757\ }
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_UNDO:}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \ stb\_text\_undo(str,\ state);}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00762\ }
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_REDO:}
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \ stb\_text\_redo(str,\ state);}
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00767\ }
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LEFT:}
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ currently\ there's\ a\ selection,\ move\ cursor\ to\ start\ of\ selection}}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_first(state);}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ >\ 0)}
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00777\ }
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_RIGHT:}
+\DoxyCodeLine{00779\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ currently\ there's\ a\ selection,\ move\ cursor\ to\ end\ of\ selection}}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00781\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_last(str,\ state);}
+\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ \ \ \ \ ++state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00787\ }
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LEFT\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ selection\ left}}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ >\ 0)}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}};}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}};}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00797\ }
+\DoxyCodeLine{00798\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_MOVEWORDLEFT}}
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_WORDLEFT:}
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_first(state);}
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ STB\_TEXTEDIT\_MOVEWORDLEFT(str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}});}
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(\ str,\ state\ );}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00807\ }
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_WORDLEFT\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ !STB\_TEXT\_HAS\_SELECTION(\ state\ )\ )}
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{00811\ }
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ STB\_TEXTEDIT\_MOVEWORDLEFT(str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}});}
+\DoxyCodeLine{00813\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00814\ }
+\DoxyCodeLine{00815\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(\ str,\ state\ );}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00817\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00818\ }
+\DoxyCodeLine{00819\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_MOVEWORDRIGHT}}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_WORDRIGHT:}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00822\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_last(str,\ state);}
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ STB\_TEXTEDIT\_MOVEWORDRIGHT(str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}});}
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(\ str,\ state\ );}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00828\ }
+\DoxyCodeLine{00829\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_WORDRIGHT\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00830\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ !STB\_TEXT\_HAS\_SELECTION(\ state\ )\ )}
+\DoxyCodeLine{00831\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{00832\ }
+\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ STB\_TEXTEDIT\_MOVEWORDRIGHT(str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}});}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00835\ }
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(\ str,\ state\ );}
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00838\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00839\ }
+\DoxyCodeLine{00840\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_RIGHT\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00841\ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ selection\ right}}
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \ ++state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}};}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}};}
+\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00848\ }
+\DoxyCodeLine{00849\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_DOWN:}
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_DOWN\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00851\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_PGDOWN:}
+\DoxyCodeLine{00852\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_PGDOWN\ |\ STB\_TEXTEDIT\_K\_SHIFT:\ \{}
+\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ \ StbFindState\ find;}
+\DoxyCodeLine{00854\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}}\ row;}
+\DoxyCodeLine{00855\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j,\ sel\ =\ (key\ \&\ STB\_TEXTEDIT\_K\_SHIFT)\ !=\ 0;}
+\DoxyCodeLine{00856\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ is\_page\ =\ (key\ \&\ \string~STB\_TEXTEDIT\_K\_SHIFT)\ ==\ STB\_TEXTEDIT\_K\_PGDOWN;}
+\DoxyCodeLine{00857\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\_count\ =\ is\_page\ ?\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a352add1502f8e2f4e9043ab7114da61c}{row\_count\_per\_page}}\ :\ 1;}
+\DoxyCodeLine{00858\ }
+\DoxyCodeLine{00859\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is\_page\ \&\&\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}})\ \{}
+\DoxyCodeLine{00860\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ on\ windows,\ up\&down\ in\ single-\/line\ behave\ like\ left\&right}}
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ STB\_TEXTEDIT\_K\_RIGHT\ |\ (key\ \&\ STB\_TEXTEDIT\_K\_SHIFT);}
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ retry;}
+\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00864\ }
+\DoxyCodeLine{00865\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sel)}
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_last(str,\ state);}
+\DoxyCodeLine{00869\ }
+\DoxyCodeLine{00870\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ compute\ current\ position\ of\ cursor\ point}}
+\DoxyCodeLine{00871\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ \ stb\_textedit\_find\_charpos(\&find,\ str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}},\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}});}
+\DoxyCodeLine{00873\ }
+\DoxyCodeLine{00874\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <\ row\_count;\ ++j)\ \{}
+\DoxyCodeLine{00875\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x,\ goal\_x\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ ?\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a527319df94e0fe262548fb48bebf3dea}{preferred\_x}}\ :\ find.x;}
+\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start\ =\ find.first\_char\ +\ find.length;}
+\DoxyCodeLine{00877\ }
+\DoxyCodeLine{00878\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (find.length\ ==\ 0)}
+\DoxyCodeLine{00879\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00880\ }
+\DoxyCodeLine{00881\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{00882\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ going\ down\ while\ being\ on\ the\ last\ line\ shouldn't\ bring\ us\ to\ that\ line\ end}}
+\DoxyCodeLine{00883\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXTEDIT\_GETCHAR(str,\ find.first\_char\ +\ find.length\ -\/\ 1)\ !=\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00885\ }
+\DoxyCodeLine{00886\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ find\ character\ position\ down\ a\ row}}
+\DoxyCodeLine{00887\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ start;}
+\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&row,\ str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}});}
+\DoxyCodeLine{00889\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ row.\mbox{\hyperlink{struct_stb_textedit_row_af30b3e1d61d1acea26d3e0ebec2cb81d}{x0}};}
+\DoxyCodeLine{00890\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ row.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}};\ ++i)\ \{}
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ STB\_TEXTEDIT\_GETWIDTH(str,\ start,\ i);}
+\DoxyCodeLine{00892\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ STB\_TEXTEDIT\_GETWIDTH\_NEWLINE}}
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dx\ ==\ \mbox{\hyperlink{imgui__internal_8h_ab109eb512ec8d9ad1973e58b367fec22}{STB\_TEXTEDIT\_GETWIDTH\_NEWLINE}})}
+\DoxyCodeLine{00894\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00895\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00896\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ +=\ dx;}
+\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ >\ goal\_x)}
+\DoxyCodeLine{00898\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00899\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00900\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00902\ }
+\DoxyCodeLine{00903\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 1;}
+\DoxyCodeLine{00904\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a527319df94e0fe262548fb48bebf3dea}{preferred\_x}}\ =\ goal\_x;}
+\DoxyCodeLine{00905\ }
+\DoxyCodeLine{00906\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sel)}
+\DoxyCodeLine{00907\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00908\ }
+\DoxyCodeLine{00909\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ go\ to\ next\ line}}
+\DoxyCodeLine{00910\ \ \ \ \ \ \ \ \ \ \ \ \ find.first\_char\ =\ find.first\_char\ +\ find.length;}
+\DoxyCodeLine{00911\ \ \ \ \ \ \ \ \ \ \ \ \ find.length\ =\ row.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}};}
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00915\ }
+\DoxyCodeLine{00916\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_UP:}
+\DoxyCodeLine{00917\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_UP\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00918\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_PGUP:}
+\DoxyCodeLine{00919\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_PGUP\ |\ STB\_TEXTEDIT\_K\_SHIFT:\ \{}
+\DoxyCodeLine{00920\ \ \ \ \ \ \ \ \ \ StbFindState\ find;}
+\DoxyCodeLine{00921\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_stb_textedit_row}{StbTexteditRow}}\ row;}
+\DoxyCodeLine{00922\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j,\ prev\_scan,\ sel\ =\ (key\ \&\ STB\_TEXTEDIT\_K\_SHIFT)\ !=\ 0;}
+\DoxyCodeLine{00923\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ is\_page\ =\ (key\ \&\ \string~STB\_TEXTEDIT\_K\_SHIFT)\ ==\ STB\_TEXTEDIT\_K\_PGUP;}
+\DoxyCodeLine{00924\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\_count\ =\ is\_page\ ?\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a352add1502f8e2f4e9043ab7114da61c}{row\_count\_per\_page}}\ :\ 1;}
+\DoxyCodeLine{00925\ }
+\DoxyCodeLine{00926\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is\_page\ \&\&\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}})\ \{}
+\DoxyCodeLine{00927\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ on\ windows,\ up\&down\ become\ left\&right}}
+\DoxyCodeLine{00928\ \ \ \ \ \ \ \ \ \ \ \ \ key\ =\ STB\_TEXTEDIT\_K\_LEFT\ |\ (key\ \&\ STB\_TEXTEDIT\_K\_SHIFT);}
+\DoxyCodeLine{00929\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ retry;}
+\DoxyCodeLine{00930\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00931\ }
+\DoxyCodeLine{00932\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sel)}
+\DoxyCodeLine{00933\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{00934\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00935\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_first(state);}
+\DoxyCodeLine{00936\ }
+\DoxyCodeLine{00937\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ compute\ current\ position\ of\ cursor\ point}}
+\DoxyCodeLine{00938\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00939\ \ \ \ \ \ \ \ \ \ stb\_textedit\_find\_charpos(\&find,\ str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}},\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}});}
+\DoxyCodeLine{00940\ }
+\DoxyCodeLine{00941\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <\ row\_count;\ ++j)\ \{}
+\DoxyCodeLine{00942\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ x,\ goal\_x\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ ?\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a527319df94e0fe262548fb48bebf3dea}{preferred\_x}}\ :\ find.x;}
+\DoxyCodeLine{00943\ }
+\DoxyCodeLine{00944\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ can\ only\ go\ up\ if\ there's\ a\ previous\ row}}
+\DoxyCodeLine{00945\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (find.prev\_first\ ==\ find.first\_char)}
+\DoxyCodeLine{00946\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00947\ }
+\DoxyCodeLine{00948\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ find\ character\ position\ up\ a\ row}}
+\DoxyCodeLine{00949\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ find.prev\_first;}
+\DoxyCodeLine{00950\ \ \ \ \ \ \ \ \ \ \ \ \ STB\_TEXTEDIT\_LAYOUTROW(\&row,\ str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}});}
+\DoxyCodeLine{00951\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ row.\mbox{\hyperlink{struct_stb_textedit_row_af30b3e1d61d1acea26d3e0ebec2cb81d}{x0}};}
+\DoxyCodeLine{00952\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ row.\mbox{\hyperlink{struct_stb_textedit_row_a1a19bebadb3f82b4f86ea29698d77084}{num\_chars}};\ ++i)\ \{}
+\DoxyCodeLine{00953\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ STB\_TEXTEDIT\_GETWIDTH(str,\ find.prev\_first,\ i);}
+\DoxyCodeLine{00954\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ STB\_TEXTEDIT\_GETWIDTH\_NEWLINE}}
+\DoxyCodeLine{00955\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dx\ ==\ \mbox{\hyperlink{imgui__internal_8h_ab109eb512ec8d9ad1973e58b367fec22}{STB\_TEXTEDIT\_GETWIDTH\_NEWLINE}})}
+\DoxyCodeLine{00956\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00957\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00958\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ +=\ dx;}
+\DoxyCodeLine{00959\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ >\ goal\_x)}
+\DoxyCodeLine{00960\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00961\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00962\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00963\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{00964\ }
+\DoxyCodeLine{00965\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 1;}
+\DoxyCodeLine{00966\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a527319df94e0fe262548fb48bebf3dea}{preferred\_x}}\ =\ goal\_x;}
+\DoxyCodeLine{00967\ }
+\DoxyCodeLine{00968\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sel)}
+\DoxyCodeLine{00969\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{00970\ }
+\DoxyCodeLine{00971\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ go\ to\ previous\ line}}
+\DoxyCodeLine{00972\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (we\ need\ to\ scan\ previous\ line\ the\ hard\ way.\ maybe\ we\ could\ expose\ this\ as\ a\ new\ API\ function?)}}
+\DoxyCodeLine{00973\ \ \ \ \ \ \ \ \ \ \ \ \ prev\_scan\ =\ find.prev\_first\ >\ 0\ ?\ find.prev\_first\ -\/\ 1\ :\ 0;}
+\DoxyCodeLine{00974\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (prev\_scan\ >\ 0\ \&\&\ STB\_TEXTEDIT\_GETCHAR(str,\ prev\_scan\ -\/\ 1)\ !=\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{00975\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/prev\_scan;}
+\DoxyCodeLine{00976\ \ \ \ \ \ \ \ \ \ \ \ \ find.first\_char\ =\ find.prev\_first;}
+\DoxyCodeLine{00977\ \ \ \ \ \ \ \ \ \ \ \ \ find.prev\_first\ =\ prev\_scan;}
+\DoxyCodeLine{00978\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00979\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00980\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00981\ }
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_DELETE:}
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_DELETE\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00984\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00985\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete\_selection(str,\ state);}
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ <\ n)}
+\DoxyCodeLine{00989\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete(str,\ state,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}},\ 1);}
+\DoxyCodeLine{00990\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00991\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{00992\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00993\ }
+\DoxyCodeLine{00994\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_BACKSPACE:}
+\DoxyCodeLine{00995\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_BACKSPACE\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{00996\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (STB\_TEXT\_HAS\_SELECTION(state))}
+\DoxyCodeLine{00997\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete\_selection(str,\ state);}
+\DoxyCodeLine{00998\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00999\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{01000\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ >\ 0)\ \{}
+\DoxyCodeLine{01001\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_delete(str,\ state,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}-\/1,\ 1);}
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{01003\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01007\ }
+\DoxyCodeLine{01008\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_TEXTSTART2}}
+\DoxyCodeLine{01009\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTSTART2:}
+\DoxyCodeLine{01010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01011\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTSTART:}
+\DoxyCodeLine{01012\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ 0;}
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{01014\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01015\ }
+\DoxyCodeLine{01016\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_TEXTEND2}}
+\DoxyCodeLine{01017\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTEND2:}
+\DoxyCodeLine{01018\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01019\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTEND:}
+\DoxyCodeLine{01020\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{01021\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ 0;}
+\DoxyCodeLine{01022\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{01023\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01024\ }
+\DoxyCodeLine{01025\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_TEXTSTART2}}
+\DoxyCodeLine{01026\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTSTART2\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01027\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01028\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTSTART\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01029\ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{01030\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ 0;}
+\DoxyCodeLine{01031\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{01032\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01033\ }
+\DoxyCodeLine{01034\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_TEXTEND2}}
+\DoxyCodeLine{01035\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTEND2\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01036\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01037\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_TEXTEND\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01038\ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{01039\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{01040\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{01041\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01042\ }
+\DoxyCodeLine{01043\ }
+\DoxyCodeLine{01044\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_LINESTART2}}
+\DoxyCodeLine{01045\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINESTART2:}
+\DoxyCodeLine{01046\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01047\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINESTART:}
+\DoxyCodeLine{01048\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{01049\ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_first(state);}
+\DoxyCodeLine{01050\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}})}
+\DoxyCodeLine{01051\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ 0;}
+\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{while}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ >\ 0\ \&\&\ STB\_TEXTEDIT\_GETCHAR(str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}-\/1)\ !=\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{01053\ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{01054\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01056\ }
+\DoxyCodeLine{01057\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_LINEEND2}}
+\DoxyCodeLine{01058\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINEEND2:}
+\DoxyCodeLine{01059\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01060\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINEEND:\ \{}
+\DoxyCodeLine{01061\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{01062\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{01063\ \ \ \ \ \ \ \ \ \ stb\_textedit\_move\_to\_first(state);}
+\DoxyCodeLine{01064\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}})}
+\DoxyCodeLine{01065\ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ n;}
+\DoxyCodeLine{01066\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{while}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ <\ n\ \&\&\ STB\_TEXTEDIT\_GETCHAR(str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}})\ !=\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{01067\ \ \ \ \ \ \ \ \ \ \ \ \ \ ++state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{01068\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{01069\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01070\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01071\ }
+\DoxyCodeLine{01072\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_LINESTART2}}
+\DoxyCodeLine{01073\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINESTART2\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01074\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01075\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINESTART\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01076\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{01077\ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{01078\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}})}
+\DoxyCodeLine{01079\ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ 0;}
+\DoxyCodeLine{01080\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{while}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ >\ 0\ \&\&\ STB\_TEXTEDIT\_GETCHAR(str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}-\/1)\ !=\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{01081\ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{01082\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{01083\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{01084\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01085\ }
+\DoxyCodeLine{01086\ \textcolor{preprocessor}{\#ifdef\ STB\_TEXTEDIT\_K\_LINEEND2}}
+\DoxyCodeLine{01087\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINEEND2\ |\ STB\_TEXTEDIT\_K\_SHIFT:}
+\DoxyCodeLine{01088\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01089\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ STB\_TEXTEDIT\_K\_LINEEND\ |\ STB\_TEXTEDIT\_K\_SHIFT:\ \{}
+\DoxyCodeLine{01090\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ STB\_TEXTEDIT\_STRINGLEN(str);}
+\DoxyCodeLine{01091\ \ \ \ \ \ \ \ \ \ stb\_textedit\_clamp(str,\ state);}
+\DoxyCodeLine{01092\ \ \ \ \ \ \ \ \ \ stb\_textedit\_prep\_selection\_at\_cursor(state);}
+\DoxyCodeLine{01093\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}})}
+\DoxyCodeLine{01094\ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ n;}
+\DoxyCodeLine{01095\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{while}\ (state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ <\ n\ \&\&\ STB\_TEXTEDIT\_GETCHAR(str,\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}})\ !=\ STB\_TEXTEDIT\_NEWLINE)}
+\DoxyCodeLine{01096\ \ \ \ \ \ \ \ \ \ \ \ \ ++state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{01097\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}};}
+\DoxyCodeLine{01098\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{01099\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01100\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01101\ \ \ \ \}}
+\DoxyCodeLine{01102\ \}}
+\DoxyCodeLine{01103\ }
+\DoxyCodeLine{01105\ \textcolor{comment}{//}}
+\DoxyCodeLine{01106\ \textcolor{comment}{//\ \ \ \ \ \ Undo\ processing}}
+\DoxyCodeLine{01107\ \textcolor{comment}{//}}
+\DoxyCodeLine{01108\ \textcolor{comment}{//\ @OPTIMIZE:\ the\ undo/redo\ buffer\ should\ be\ circular}}
+\DoxyCodeLine{01109\ }
+\DoxyCodeLine{01110\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_flush\_redo(\mbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *state)}
+\DoxyCodeLine{01111\ \{}
+\DoxyCodeLine{01112\ \ \ \ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}\ =\ \mbox{\hyperlink{imstb__textedit_8h_afa79483143df87a1497010712b3dfaf9}{STB\_TEXTEDIT\_UNDOSTATECOUNT}};}
+\DoxyCodeLine{01113\ \ \ \ state-\/>\mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}}\ =\ \mbox{\hyperlink{imstb__textedit_8h_a15cbcac55cf92003c28c44734422756a}{STB\_TEXTEDIT\_UNDOCHARCOUNT}};}
+\DoxyCodeLine{01114\ \}}
+\DoxyCodeLine{01115\ }
+\DoxyCodeLine{01116\ \textcolor{comment}{//\ discard\ the\ oldest\ entry\ in\ the\ undo\ list}}
+\DoxyCodeLine{01117\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_discard\_undo(\mbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *state)}
+\DoxyCodeLine{01118\ \{}
+\DoxyCodeLine{01119\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}}\ >\ 0)\ \{}
+\DoxyCodeLine{01120\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ 0th\ undo\ state\ has\ characters,\ clean\ those\ up}}
+\DoxyCodeLine{01121\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[0].\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ >=\ 0)\ \{}
+\DoxyCodeLine{01122\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[0].\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}},\ i;}
+\DoxyCodeLine{01123\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ delete\ n\ characters\ from\ all\ other\ records}}
+\DoxyCodeLine{01124\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}}\ -\/=\ n;}
+\DoxyCodeLine{01125\ \ \ \ \ \ \ \ \ \ STB\_TEXTEDIT\_memmove(state-\/>\mbox{\hyperlink{struct_stb_undo_state_a88320a054aaf18ca122c2b23903a8677}{undo\_char}},\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a88320a054aaf18ca122c2b23903a8677}{undo\_char}}\ +\ n,\ (\textcolor{keywordtype}{size\_t})\ (state-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}}*\textcolor{keyword}{sizeof}(\mbox{\hyperlink{imstb__textedit_8h_a6e64031a061922e3a48d88fd8623f4c3}{STB\_TEXTEDIT\_CHARTYPE}})));}
+\DoxyCodeLine{01126\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}};\ ++i)}
+\DoxyCodeLine{01127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[i].\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ >=\ 0)}
+\DoxyCodeLine{01128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[i].\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ -\/=\ n;\ \textcolor{comment}{//\ @OPTIMIZE:\ get\ rid\ of\ char\_storage\ and\ infer\ it}}
+\DoxyCodeLine{01129\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01130\ \ \ \ \ \ \ -\/-\/state-\/>\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}};}
+\DoxyCodeLine{01131\ \ \ \ \ \ \ STB\_TEXTEDIT\_memmove(state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}},\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}+1,\ (\textcolor{keywordtype}{size\_t})\ (state-\/>\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}}*\textcolor{keyword}{sizeof}(state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[0])));}
+\DoxyCodeLine{01132\ \ \ \ \}}
+\DoxyCodeLine{01133\ \}}
+\DoxyCodeLine{01134\ }
+\DoxyCodeLine{01135\ \textcolor{comment}{//\ discard\ the\ oldest\ entry\ in\ the\ redo\ list-\/-\/it's\ bad\ if\ this}}
+\DoxyCodeLine{01136\ \textcolor{comment}{//\ ever\ happens,\ but\ because\ undo\ \&\ redo\ have\ to\ store\ the\ actual}}
+\DoxyCodeLine{01137\ \textcolor{comment}{//\ characters\ in\ different\ cases,\ the\ redo\ character\ buffer\ can}}
+\DoxyCodeLine{01138\ \textcolor{comment}{//\ fill\ up\ even\ though\ the\ undo\ buffer\ didn't}}
+\DoxyCodeLine{01139\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_discard\_redo(\mbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *state)}
+\DoxyCodeLine{01140\ \{}
+\DoxyCodeLine{01141\ \ \ \ \textcolor{keywordtype}{int}\ k\ =\ \mbox{\hyperlink{imstb__textedit_8h_afa79483143df87a1497010712b3dfaf9}{STB\_TEXTEDIT\_UNDOSTATECOUNT}}-\/1;}
+\DoxyCodeLine{01142\ }
+\DoxyCodeLine{01143\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}\ <=\ k)\ \{}
+\DoxyCodeLine{01144\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ k'th\ undo\ state\ has\ characters,\ clean\ those\ up}}
+\DoxyCodeLine{01145\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[k].\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ >=\ 0)\ \{}
+\DoxyCodeLine{01146\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[k].\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}},\ i;}
+\DoxyCodeLine{01147\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ the\ remaining\ redo\ character\ data\ to\ the\ end\ of\ the\ buffer}}
+\DoxyCodeLine{01148\ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}}\ +=\ n;}
+\DoxyCodeLine{01149\ \ \ \ \ \ \ \ \ \ STB\_TEXTEDIT\_memmove(state-\/>\mbox{\hyperlink{struct_stb_undo_state_a88320a054aaf18ca122c2b23903a8677}{undo\_char}}\ +\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}},\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a88320a054aaf18ca122c2b23903a8677}{undo\_char}}\ +\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}}-\/n,\ (\textcolor{keywordtype}{size\_t})\ ((\mbox{\hyperlink{imstb__textedit_8h_a15cbcac55cf92003c28c44734422756a}{STB\_TEXTEDIT\_UNDOCHARCOUNT}}\ -\/\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}})*\textcolor{keyword}{sizeof}(\mbox{\hyperlink{imstb__textedit_8h_a6e64031a061922e3a48d88fd8623f4c3}{STB\_TEXTEDIT\_CHARTYPE}})));}
+\DoxyCodeLine{01150\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ adjust\ the\ position\ of\ all\ the\ other\ records\ to\ account\ for\ above\ memmove}}
+\DoxyCodeLine{01151\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=state-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}};\ i\ <\ k;\ ++i)}
+\DoxyCodeLine{01152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[i].\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ >=\ 0)}
+\DoxyCodeLine{01153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[i].\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ +=\ n;}
+\DoxyCodeLine{01154\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01155\ \ \ \ \ \ \ \textcolor{comment}{//\ now\ move\ all\ the\ redo\ records\ towards\ the\ end\ of\ the\ buffer;\ the\ first\ one\ is\ at\ 'redo\_point'}}
+\DoxyCodeLine{01156\ \ \ \ \ \ \ \textcolor{comment}{//\ [DEAR\ IMGUI]}}
+\DoxyCodeLine{01157\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ move\_size\ =\ (size\_t)((\mbox{\hyperlink{imstb__textedit_8h_afa79483143df87a1497010712b3dfaf9}{STB\_TEXTEDIT\_UNDOSTATECOUNT}}\ -\/\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}\ -\/\ 1)\ *\ \textcolor{keyword}{sizeof}(state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[0]));}
+\DoxyCodeLine{01158\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ buf\_begin\ =\ (\textcolor{keywordtype}{char}*)state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}};\ (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}})buf\_begin;}
+\DoxyCodeLine{01159\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ buf\_end\ \ \ =\ (\textcolor{keywordtype}{char}*)state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}\ +\ \textcolor{keyword}{sizeof}(state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}});\ (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}})buf\_end;}
+\DoxyCodeLine{01160\ \ \ \ \ \ \ \mbox{\hyperlink{imgui_8h_acb09e7dc42e8e3cefb0ecaa197978920}{IM\_ASSERT}}(((\textcolor{keywordtype}{char}*)(state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}\ +\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}))\ >=\ buf\_begin);}
+\DoxyCodeLine{01161\ \ \ \ \ \ \ \mbox{\hyperlink{imgui_8h_acb09e7dc42e8e3cefb0ecaa197978920}{IM\_ASSERT}}(((\textcolor{keywordtype}{char}*)(state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}\ +\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}\ +\ 1)\ +\ move\_size)\ <=\ buf\_end);}
+\DoxyCodeLine{01162\ \ \ \ \ \ \ STB\_TEXTEDIT\_memmove(state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}\ +\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}+1,\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}\ +\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}},\ move\_size);}
+\DoxyCodeLine{01163\ }
+\DoxyCodeLine{01164\ \ \ \ \ \ \ \textcolor{comment}{//\ now\ move\ redo\_point\ to\ point\ to\ the\ new\ one}}
+\DoxyCodeLine{01165\ \ \ \ \ \ \ ++state-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}};}
+\DoxyCodeLine{01166\ \ \ \ \}}
+\DoxyCodeLine{01167\ \}}
+\DoxyCodeLine{01168\ }
+\DoxyCodeLine{01169\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_stb_undo_record}{StbUndoRecord}}\ *stb\_text\_create\_undo\_record(\mbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *state,\ \textcolor{keywordtype}{int}\ numchars)}
+\DoxyCodeLine{01170\ \{}
+\DoxyCodeLine{01171\ \ \ \ \textcolor{comment}{//\ any\ time\ we\ create\ a\ new\ undo\ record,\ we\ discard\ redo}}
+\DoxyCodeLine{01172\ \ \ \ stb\_textedit\_flush\_redo(state);}
+\DoxyCodeLine{01173\ }
+\DoxyCodeLine{01174\ \ \ \ \textcolor{comment}{//\ if\ we\ have\ no\ free\ records,\ we\ have\ to\ make\ room,\ by\ sliding\ the}}
+\DoxyCodeLine{01175\ \ \ \ \textcolor{comment}{//\ existing\ records\ down}}
+\DoxyCodeLine{01176\ \ \ \ \textcolor{keywordflow}{if}\ (state-\/>\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}}\ ==\ \mbox{\hyperlink{imstb__textedit_8h_afa79483143df87a1497010712b3dfaf9}{STB\_TEXTEDIT\_UNDOSTATECOUNT}})}
+\DoxyCodeLine{01177\ \ \ \ \ \ \ stb\_textedit\_discard\_undo(state);}
+\DoxyCodeLine{01178\ }
+\DoxyCodeLine{01179\ \ \ \ \textcolor{comment}{//\ if\ the\ characters\ to\ store\ won't\ possibly\ fit\ in\ the\ buffer,\ we\ can't\ undo}}
+\DoxyCodeLine{01180\ \ \ \ \textcolor{keywordflow}{if}\ (numchars\ >\ \mbox{\hyperlink{imstb__textedit_8h_a15cbcac55cf92003c28c44734422756a}{STB\_TEXTEDIT\_UNDOCHARCOUNT}})\ \{}
+\DoxyCodeLine{01181\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}}\ =\ 0;}
+\DoxyCodeLine{01182\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}}\ =\ 0;}
+\DoxyCodeLine{01183\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{01184\ \ \ \ \}}
+\DoxyCodeLine{01185\ }
+\DoxyCodeLine{01186\ \ \ \ \textcolor{comment}{//\ if\ we\ don't\ have\ enough\ free\ characters\ in\ the\ buffer,\ we\ have\ to\ make\ room}}
+\DoxyCodeLine{01187\ \ \ \ \textcolor{keywordflow}{while}\ (state-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}}\ +\ numchars\ >\ \mbox{\hyperlink{imstb__textedit_8h_a15cbcac55cf92003c28c44734422756a}{STB\_TEXTEDIT\_UNDOCHARCOUNT}})}
+\DoxyCodeLine{01188\ \ \ \ \ \ \ stb\_textedit\_discard\_undo(state);}
+\DoxyCodeLine{01189\ }
+\DoxyCodeLine{01190\ \ \ \ \textcolor{keywordflow}{return}\ \&state-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[state-\/>\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}}++];}
+\DoxyCodeLine{01191\ \}}
+\DoxyCodeLine{01192\ }
+\DoxyCodeLine{01193\ \textcolor{keyword}{static}\ \mbox{\hyperlink{imstb__textedit_8h_a6e64031a061922e3a48d88fd8623f4c3}{STB\_TEXTEDIT\_CHARTYPE}}\ *stb\_text\_createundo(\mbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *state,\ \textcolor{keywordtype}{int}\ pos,\ \textcolor{keywordtype}{int}\ insert\_len,\ \textcolor{keywordtype}{int}\ delete\_len)}
+\DoxyCodeLine{01194\ \{}
+\DoxyCodeLine{01195\ \ \ \ \mbox{\hyperlink{struct_stb_undo_record}{StbUndoRecord}}\ *r\ =\ stb\_text\_create\_undo\_record(state,\ insert\_len);}
+\DoxyCodeLine{01196\ \ \ \ \textcolor{keywordflow}{if}\ (r\ ==\ NULL)}
+\DoxyCodeLine{01197\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{01198\ }
+\DoxyCodeLine{01199\ \ \ \ r-\/>\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}}\ =\ pos;}
+\DoxyCodeLine{01200\ \ \ \ r-\/>\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}}\ =\ (\mbox{\hyperlink{imstb__textedit_8h_a5d0c1b8751b6517e3d817f2a025ed654}{STB\_TEXTEDIT\_POSITIONTYPE}})\ insert\_len;}
+\DoxyCodeLine{01201\ \ \ \ r-\/>\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}}\ =\ (\mbox{\hyperlink{imstb__textedit_8h_a5d0c1b8751b6517e3d817f2a025ed654}{STB\_TEXTEDIT\_POSITIONTYPE}})\ delete\_len;}
+\DoxyCodeLine{01202\ }
+\DoxyCodeLine{01203\ \ \ \ \textcolor{keywordflow}{if}\ (insert\_len\ ==\ 0)\ \{}
+\DoxyCodeLine{01204\ \ \ \ \ \ \ r-\/>\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ =\ -\/1;}
+\DoxyCodeLine{01205\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{01206\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01207\ \ \ \ \ \ \ r-\/>\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ =\ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}};}
+\DoxyCodeLine{01208\ \ \ \ \ \ \ state-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}}\ +=\ insert\_len;}
+\DoxyCodeLine{01209\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&state-\/>\mbox{\hyperlink{struct_stb_undo_state_a88320a054aaf18ca122c2b23903a8677}{undo\_char}}[r-\/>\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}];}
+\DoxyCodeLine{01210\ \ \ \ \}}
+\DoxyCodeLine{01211\ \}}
+\DoxyCodeLine{01212\ }
+\DoxyCodeLine{01213\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_undo(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{01214\ \{}
+\DoxyCodeLine{01215\ \ \ \ \mbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *s\ =\ \&state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7e1f0366bbd57e01a4f49a720beb9ead}{undostate}};}
+\DoxyCodeLine{01216\ \ \ \ \mbox{\hyperlink{struct_stb_undo_record}{StbUndoRecord}}\ u,\ *r;}
+\DoxyCodeLine{01217\ \ \ \ \textcolor{keywordflow}{if}\ (s-\/>\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}}\ ==\ 0)}
+\DoxyCodeLine{01218\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01219\ }
+\DoxyCodeLine{01220\ \ \ \ \textcolor{comment}{//\ we\ need\ to\ do\ two\ things:\ apply\ the\ undo\ record,\ and\ create\ a\ redo\ record}}
+\DoxyCodeLine{01221\ \ \ \ u\ =\ s-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[s-\/>\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}}-\/1];}
+\DoxyCodeLine{01222\ \ \ \ r\ =\ \&s-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[s-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}-\/1];}
+\DoxyCodeLine{01223\ \ \ \ r-\/>\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ =\ -\/1;}
+\DoxyCodeLine{01224\ }
+\DoxyCodeLine{01225\ \ \ \ r-\/>\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}}\ =\ u.\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}};}
+\DoxyCodeLine{01226\ \ \ \ r-\/>\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}}\ =\ u.\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}};}
+\DoxyCodeLine{01227\ \ \ \ r-\/>\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}}\ =\ u.\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}};}
+\DoxyCodeLine{01228\ }
+\DoxyCodeLine{01229\ \ \ \ \textcolor{keywordflow}{if}\ (u.\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}})\ \{}
+\DoxyCodeLine{01230\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ undo\ record\ says\ to\ delete\ characters,\ then\ the\ redo\ record\ will}}
+\DoxyCodeLine{01231\ \ \ \ \ \ \ \textcolor{comment}{//\ need\ to\ re-\/insert\ the\ characters\ that\ get\ deleted,\ so\ we\ need\ to\ store}}
+\DoxyCodeLine{01232\ \ \ \ \ \ \ \textcolor{comment}{//\ them.}}
+\DoxyCodeLine{01233\ }
+\DoxyCodeLine{01234\ \ \ \ \ \ \ \textcolor{comment}{//\ there\ are\ three\ cases:}}
+\DoxyCodeLine{01235\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ there's\ enough\ room\ to\ store\ the\ characters}}
+\DoxyCodeLine{01236\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ characters\ stored\ for\ *redoing*\ don't\ leave\ room\ for\ redo}}
+\DoxyCodeLine{01237\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ characters\ stored\ for\ *undoing*\ don't\ leave\ room\ for\ redo}}
+\DoxyCodeLine{01238\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ last\ is\ true,\ we\ have\ to\ bail}}
+\DoxyCodeLine{01239\ }
+\DoxyCodeLine{01240\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}}\ +\ u.\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}}\ >=\ \mbox{\hyperlink{imstb__textedit_8h_a15cbcac55cf92003c28c44734422756a}{STB\_TEXTEDIT\_UNDOCHARCOUNT}})\ \{}
+\DoxyCodeLine{01241\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ undo\ records\ take\ up\ too\ much\ character\ space;\ there's\ no\ space\ to\ store\ the\ redo\ characters}}
+\DoxyCodeLine{01242\ \ \ \ \ \ \ \ \ \ r-\/>\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}}\ =\ 0;}
+\DoxyCodeLine{01243\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01244\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{01245\ }
+\DoxyCodeLine{01246\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ there's\ definitely\ room\ to\ store\ the\ characters\ eventually}}
+\DoxyCodeLine{01247\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (s-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}}\ +\ u.\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}}\ >\ s-\/>\mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}})\ \{}
+\DoxyCodeLine{01248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ should\ never\ happen:}}
+\DoxyCodeLine{01249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}\ ==\ \mbox{\hyperlink{imstb__textedit_8h_afa79483143df87a1497010712b3dfaf9}{STB\_TEXTEDIT\_UNDOSTATECOUNT}})}
+\DoxyCodeLine{01250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ there's\ currently\ not\ enough\ room,\ so\ discard\ a\ redo\ record}}
+\DoxyCodeLine{01252\ \ \ \ \ \ \ \ \ \ \ \ \ stb\_textedit\_discard\_redo(s);}
+\DoxyCodeLine{01253\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01254\ \ \ \ \ \ \ \ \ \ r\ =\ \&s-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[s-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}-\/1];}
+\DoxyCodeLine{01255\ }
+\DoxyCodeLine{01256\ \ \ \ \ \ \ \ \ \ r-\/>\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ =\ s-\/>\mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}}\ -\/\ u.\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}};}
+\DoxyCodeLine{01257\ \ \ \ \ \ \ \ \ \ s-\/>\mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}}\ =\ s-\/>\mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}}\ -\/\ u.\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}};}
+\DoxyCodeLine{01258\ }
+\DoxyCodeLine{01259\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ save\ the\ characters}}
+\DoxyCodeLine{01260\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ u.\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}};\ ++i)}
+\DoxyCodeLine{01261\ \ \ \ \ \ \ \ \ \ \ \ \ s-\/>\mbox{\hyperlink{struct_stb_undo_state_a88320a054aaf18ca122c2b23903a8677}{undo\_char}}[r-\/>\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ +\ i]\ =\ STB\_TEXTEDIT\_GETCHAR(str,\ u.\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}}\ +\ i);}
+\DoxyCodeLine{01262\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01263\ }
+\DoxyCodeLine{01264\ \ \ \ \ \ \ \textcolor{comment}{//\ now\ we\ can\ carry\ out\ the\ deletion}}
+\DoxyCodeLine{01265\ \ \ \ \ \ \ STB\_TEXTEDIT\_DELETECHARS(str,\ u.\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}},\ u.\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}});}
+\DoxyCodeLine{01266\ \ \ \ \}}
+\DoxyCodeLine{01267\ }
+\DoxyCodeLine{01268\ \ \ \ \textcolor{comment}{//\ check\ type\ of\ recorded\ action:}}
+\DoxyCodeLine{01269\ \ \ \ \textcolor{keywordflow}{if}\ (u.\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}})\ \{}
+\DoxyCodeLine{01270\ \ \ \ \ \ \ \textcolor{comment}{//\ easy\ case:\ was\ a\ deletion,\ so\ we\ need\ to\ insert\ n\ characters}}
+\DoxyCodeLine{01271\ \ \ \ \ \ \ STB\_TEXTEDIT\_INSERTCHARS(str,\ u.\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}},\ \&s-\/>\mbox{\hyperlink{struct_stb_undo_state_a88320a054aaf18ca122c2b23903a8677}{undo\_char}}[u.\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}],\ u.\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}});}
+\DoxyCodeLine{01272\ \ \ \ \ \ \ s-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}}\ -\/=\ u.\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}};}
+\DoxyCodeLine{01273\ \ \ \ \}}
+\DoxyCodeLine{01274\ }
+\DoxyCodeLine{01275\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ u.\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}}\ +\ u.\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}};}
+\DoxyCodeLine{01276\ }
+\DoxyCodeLine{01277\ \ \ \ s-\/>\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}}-\/-\/;}
+\DoxyCodeLine{01278\ \ \ \ s-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}-\/-\/;}
+\DoxyCodeLine{01279\ \}}
+\DoxyCodeLine{01280\ }
+\DoxyCodeLine{01281\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_redo(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state)}
+\DoxyCodeLine{01282\ \{}
+\DoxyCodeLine{01283\ \ \ \ \mbox{\hyperlink{struct_stb_undo_state}{StbUndoState}}\ *s\ =\ \&state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7e1f0366bbd57e01a4f49a720beb9ead}{undostate}};}
+\DoxyCodeLine{01284\ \ \ \ \mbox{\hyperlink{struct_stb_undo_record}{StbUndoRecord}}\ *u,\ r;}
+\DoxyCodeLine{01285\ \ \ \ \textcolor{keywordflow}{if}\ (s-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}\ ==\ \mbox{\hyperlink{imstb__textedit_8h_afa79483143df87a1497010712b3dfaf9}{STB\_TEXTEDIT\_UNDOSTATECOUNT}})}
+\DoxyCodeLine{01286\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01287\ }
+\DoxyCodeLine{01288\ \ \ \ \textcolor{comment}{//\ we\ need\ to\ do\ two\ things:\ apply\ the\ redo\ record,\ and\ create\ an\ undo\ record}}
+\DoxyCodeLine{01289\ \ \ \ u\ =\ \&s-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[s-\/>\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}}];}
+\DoxyCodeLine{01290\ \ \ \ r\ =\ s-\/>\mbox{\hyperlink{struct_stb_undo_state_a8cb07be8f304d1620b50bd024709023f}{undo\_rec}}[s-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}];}
+\DoxyCodeLine{01291\ }
+\DoxyCodeLine{01292\ \ \ \ \textcolor{comment}{//\ we\ KNOW\ there\ must\ be\ room\ for\ the\ undo\ record,\ because\ the\ redo\ record}}
+\DoxyCodeLine{01293\ \ \ \ \textcolor{comment}{//\ was\ derived\ from\ an\ undo\ record}}
+\DoxyCodeLine{01294\ }
+\DoxyCodeLine{01295\ \ \ \ u-\/>\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}}\ =\ r.\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}};}
+\DoxyCodeLine{01296\ \ \ \ u-\/>\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}}\ =\ r.\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}};}
+\DoxyCodeLine{01297\ \ \ \ u-\/>\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}}\ =\ r.\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}};}
+\DoxyCodeLine{01298\ \ \ \ u-\/>\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ =\ -\/1;}
+\DoxyCodeLine{01299\ }
+\DoxyCodeLine{01300\ \ \ \ \textcolor{keywordflow}{if}\ (r.\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}})\ \{}
+\DoxyCodeLine{01301\ \ \ \ \ \ \ \textcolor{comment}{//\ the\ redo\ record\ requires\ us\ to\ delete\ characters,\ so\ the\ undo\ record}}
+\DoxyCodeLine{01302\ \ \ \ \ \ \ \textcolor{comment}{//\ needs\ to\ store\ the\ characters}}
+\DoxyCodeLine{01303\ }
+\DoxyCodeLine{01304\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}}\ +\ u-\/>\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}}\ >\ s-\/>\mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}})\ \{}
+\DoxyCodeLine{01305\ \ \ \ \ \ \ \ \ \ u-\/>\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}}\ =\ 0;}
+\DoxyCodeLine{01306\ \ \ \ \ \ \ \ \ \ u-\/>\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}}\ =\ 0;}
+\DoxyCodeLine{01307\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01308\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{01309\ \ \ \ \ \ \ \ \ \ u-\/>\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ =\ s-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}};}
+\DoxyCodeLine{01310\ \ \ \ \ \ \ \ \ \ s-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}}\ =\ s-\/>\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}}\ +\ u-\/>\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}};}
+\DoxyCodeLine{01311\ }
+\DoxyCodeLine{01312\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ save\ the\ characters}}
+\DoxyCodeLine{01313\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ u-\/>\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}};\ ++i)}
+\DoxyCodeLine{01314\ \ \ \ \ \ \ \ \ \ \ \ \ s-\/>\mbox{\hyperlink{struct_stb_undo_state_a88320a054aaf18ca122c2b23903a8677}{undo\_char}}[u-\/>\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}\ +\ i]\ =\ STB\_TEXTEDIT\_GETCHAR(str,\ u-\/>\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}}\ +\ i);}
+\DoxyCodeLine{01315\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01316\ }
+\DoxyCodeLine{01317\ \ \ \ \ \ \ STB\_TEXTEDIT\_DELETECHARS(str,\ r.\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}},\ r.\mbox{\hyperlink{struct_stb_undo_record_a39c1e6f00368b5120114256a17b859cd}{delete\_length}});}
+\DoxyCodeLine{01318\ \ \ \ \}}
+\DoxyCodeLine{01319\ }
+\DoxyCodeLine{01320\ \ \ \ \textcolor{keywordflow}{if}\ (r.\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}})\ \{}
+\DoxyCodeLine{01321\ \ \ \ \ \ \ \textcolor{comment}{//\ easy\ case:\ need\ to\ insert\ n\ characters}}
+\DoxyCodeLine{01322\ \ \ \ \ \ \ STB\_TEXTEDIT\_INSERTCHARS(str,\ r.\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}},\ \&s-\/>\mbox{\hyperlink{struct_stb_undo_state_a88320a054aaf18ca122c2b23903a8677}{undo\_char}}[r.\mbox{\hyperlink{struct_stb_undo_record_ab317aa50c7a222ece13840a4b65167c0}{char\_storage}}],\ r.\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}});}
+\DoxyCodeLine{01323\ \ \ \ \ \ \ s-\/>\mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}}\ +=\ r.\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}};}
+\DoxyCodeLine{01324\ \ \ \ \}}
+\DoxyCodeLine{01325\ }
+\DoxyCodeLine{01326\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ r.\mbox{\hyperlink{struct_stb_undo_record_a49e87adbb75a18ffba1f853ac974b31d}{where}}\ +\ r.\mbox{\hyperlink{struct_stb_undo_record_a1916780aa21b7be61be2492fda2df9cc}{insert\_length}};}
+\DoxyCodeLine{01327\ }
+\DoxyCodeLine{01328\ \ \ \ s-\/>\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}}++;}
+\DoxyCodeLine{01329\ \ \ \ s-\/>\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}++;}
+\DoxyCodeLine{01330\ \}}
+\DoxyCodeLine{01331\ }
+\DoxyCodeLine{01332\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_makeundo\_insert(\mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a011fc24f10426c01349e94a4edd4b0d5}{length}})}
+\DoxyCodeLine{01333\ \{}
+\DoxyCodeLine{01334\ \ \ \ stb\_text\_createundo(\&state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7e1f0366bbd57e01a4f49a720beb9ead}{undostate}},\ where,\ 0,\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a011fc24f10426c01349e94a4edd4b0d5}{length}});}
+\DoxyCodeLine{01335\ \}}
+\DoxyCodeLine{01336\ }
+\DoxyCodeLine{01337\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_makeundo\_delete(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a011fc24f10426c01349e94a4edd4b0d5}{length}})}
+\DoxyCodeLine{01338\ \{}
+\DoxyCodeLine{01339\ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{01340\ \ \ \ \mbox{\hyperlink{imstb__textedit_8h_a6e64031a061922e3a48d88fd8623f4c3}{STB\_TEXTEDIT\_CHARTYPE}}\ *p\ =\ stb\_text\_createundo(\&state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7e1f0366bbd57e01a4f49a720beb9ead}{undostate}},\ where,\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a011fc24f10426c01349e94a4edd4b0d5}{length}},\ 0);}
+\DoxyCodeLine{01341\ \ \ \ \textcolor{keywordflow}{if}\ (p)\ \{}
+\DoxyCodeLine{01342\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a011fc24f10426c01349e94a4edd4b0d5}{length}};\ ++i)}
+\DoxyCodeLine{01343\ \ \ \ \ \ \ \ \ \ p[i]\ =\ STB\_TEXTEDIT\_GETCHAR(str,\ where+i);}
+\DoxyCodeLine{01344\ \ \ \ \}}
+\DoxyCodeLine{01345\ \}}
+\DoxyCodeLine{01346\ }
+\DoxyCodeLine{01347\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_text\_makeundo\_replace(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ where,\ \textcolor{keywordtype}{int}\ old\_length,\ \textcolor{keywordtype}{int}\ new\_length)}
+\DoxyCodeLine{01348\ \{}
+\DoxyCodeLine{01349\ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{01350\ \ \ \ \mbox{\hyperlink{imstb__textedit_8h_a6e64031a061922e3a48d88fd8623f4c3}{STB\_TEXTEDIT\_CHARTYPE}}\ *p\ =\ stb\_text\_createundo(\&state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7e1f0366bbd57e01a4f49a720beb9ead}{undostate}},\ where,\ old\_length,\ new\_length);}
+\DoxyCodeLine{01351\ \ \ \ \textcolor{keywordflow}{if}\ (p)\ \{}
+\DoxyCodeLine{01352\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ <\ old\_length;\ ++i)}
+\DoxyCodeLine{01353\ \ \ \ \ \ \ \ \ \ p[i]\ =\ STB\_TEXTEDIT\_GETCHAR(str,\ where+i);}
+\DoxyCodeLine{01354\ \ \ \ \}}
+\DoxyCodeLine{01355\ \}}
+\DoxyCodeLine{01356\ }
+\DoxyCodeLine{01357\ \textcolor{comment}{//\ reset\ the\ state\ to\ default}}
+\DoxyCodeLine{01358\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_clear\_state(\mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ is\_single\_line)}
+\DoxyCodeLine{01359\ \{}
+\DoxyCodeLine{01360\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7e1f0366bbd57e01a4f49a720beb9ead}{undostate}}.\mbox{\hyperlink{struct_stb_undo_state_ad29a8695b3e8252ac164d0c2d0be7d7c}{undo\_point}}\ =\ 0;}
+\DoxyCodeLine{01361\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7e1f0366bbd57e01a4f49a720beb9ead}{undostate}}.\mbox{\hyperlink{struct_stb_undo_state_a1e93b8c26a8a23536921d125aceacd06}{undo\_char\_point}}\ =\ 0;}
+\DoxyCodeLine{01362\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7e1f0366bbd57e01a4f49a720beb9ead}{undostate}}.\mbox{\hyperlink{struct_stb_undo_state_a719ba014b2db8a8ea55739664b445af0}{redo\_point}}\ =\ \mbox{\hyperlink{imstb__textedit_8h_afa79483143df87a1497010712b3dfaf9}{STB\_TEXTEDIT\_UNDOSTATECOUNT}};}
+\DoxyCodeLine{01363\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7e1f0366bbd57e01a4f49a720beb9ead}{undostate}}.\mbox{\hyperlink{struct_stb_undo_state_aab6e5eeb964882e6d9f5d2952b7352e3}{redo\_char\_point}}\ =\ \mbox{\hyperlink{imstb__textedit_8h_a15cbcac55cf92003c28c44734422756a}{STB\_TEXTEDIT\_UNDOCHARCOUNT}};}
+\DoxyCodeLine{01364\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_abf8b1b1064770e4579c5bb8c4a41d8f0}{select\_end}}\ =\ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a74d595403e0b6f99cd0163ee87f4344d}{select\_start}}\ =\ 0;}
+\DoxyCodeLine{01365\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a7a1414f3286070306a5184f9473ccf9f}{cursor}}\ =\ 0;}
+\DoxyCodeLine{01366\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_aaca2d581ed565f86288038816274e007}{has\_preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{01367\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a527319df94e0fe262548fb48bebf3dea}{preferred\_x}}\ =\ 0;}
+\DoxyCodeLine{01368\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a0e7ba5f610f5dc2d643bef0f223ada9c}{cursor\_at\_end\_of\_line}}\ =\ 0;}
+\DoxyCodeLine{01369\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a11a63150e95225aacd204d6ef160c0c0}{initialized}}\ =\ 1;}
+\DoxyCodeLine{01370\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a63299aca2cb4e009dfa41cda5e651316}{single\_line}}\ =\ (\textcolor{keywordtype}{unsigned}\ char)\ is\_single\_line;}
+\DoxyCodeLine{01371\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_af26029a4f1f76d043afd35072fabcb4b}{insert\_mode}}\ =\ 0;}
+\DoxyCodeLine{01372\ \ \ \ state-\/>\mbox{\hyperlink{struct_s_t_b___textedit_state_a352add1502f8e2f4e9043ab7114da61c}{row\_count\_per\_page}}\ =\ 0;}
+\DoxyCodeLine{01373\ \}}
+\DoxyCodeLine{01374\ }
+\DoxyCodeLine{01375\ \textcolor{comment}{//\ API\ initialize}}
+\DoxyCodeLine{01376\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stb\_textedit\_initialize\_state(\mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \textcolor{keywordtype}{int}\ is\_single\_line)}
+\DoxyCodeLine{01377\ \{}
+\DoxyCodeLine{01378\ \ \ \ stb\_textedit\_clear\_state(state,\ is\_single\_line);}
+\DoxyCodeLine{01379\ \}}
+\DoxyCodeLine{01380\ }
+\DoxyCodeLine{01381\ \textcolor{preprocessor}{\#if\ defined(\_\_GNUC\_\_)\ ||\ defined(\_\_clang\_\_)}}
+\DoxyCodeLine{01382\ \textcolor{preprocessor}{\#pragma\ GCC\ diagnostic\ push}}
+\DoxyCodeLine{01383\ \textcolor{preprocessor}{\#pragma\ GCC\ diagnostic\ ignored\ "{}-\/Wcast-\/qual"{}}}
+\DoxyCodeLine{01384\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01385\ }
+\DoxyCodeLine{01386\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ stb\_textedit\_paste(\mbox{\hyperlink{imgui__internal_8h_ab58b961887715e3f06f0a60a773c6de1}{STB\_TEXTEDIT\_STRING}}\ *str,\ \mbox{\hyperlink{struct_s_t_b___textedit_state}{STB\_TexteditState}}\ *state,\ \mbox{\hyperlink{imstb__textedit_8h_a6e64031a061922e3a48d88fd8623f4c3}{STB\_TEXTEDIT\_CHARTYPE}}\ \textcolor{keyword}{const}\ *ctext,\ \textcolor{keywordtype}{int}\ len)}
+\DoxyCodeLine{01387\ \{}
+\DoxyCodeLine{01388\ \ \ \ \textcolor{keywordflow}{return}\ stb\_textedit\_paste\_internal(str,\ state,\ (\mbox{\hyperlink{imstb__textedit_8h_a6e64031a061922e3a48d88fd8623f4c3}{STB\_TEXTEDIT\_CHARTYPE}}\ *)\ ctext,\ len);}
+\DoxyCodeLine{01389\ \}}
+\DoxyCodeLine{01390\ }
+\DoxyCodeLine{01391\ \textcolor{preprocessor}{\#if\ defined(\_\_GNUC\_\_)\ ||\ defined(\_\_clang\_\_)}}
+\DoxyCodeLine{01392\ \textcolor{preprocessor}{\#pragma\ GCC\ diagnostic\ pop}}
+\DoxyCodeLine{01393\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01394\ }
+\DoxyCodeLine{01395\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//STB\_TEXTEDIT\_IMPLEMENTATION}}
+\DoxyCodeLine{01396\ }
+\DoxyCodeLine{01397\ \textcolor{comment}{/*}}
+\DoxyCodeLine{01398\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01399\ \textcolor{comment}{This\ software\ is\ available\ under\ 2\ licenses\ -\/-\/\ choose\ whichever\ you\ prefer.}}
+\DoxyCodeLine{01400\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01401\ \textcolor{comment}{ALTERNATIVE\ A\ -\/\ MIT\ License}}
+\DoxyCodeLine{01402\ \textcolor{comment}{Copyright\ (c)\ 2017\ Sean\ Barrett}}
+\DoxyCodeLine{01403\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy\ of}}
+\DoxyCodeLine{01404\ \textcolor{comment}{this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal\ in}}
+\DoxyCodeLine{01405\ \textcolor{comment}{the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights\ to}}
+\DoxyCodeLine{01406\ \textcolor{comment}{use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell\ copies}}
+\DoxyCodeLine{01407\ \textcolor{comment}{of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do}}
+\DoxyCodeLine{01408\ \textcolor{comment}{so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{01409\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{01410\ \textcolor{comment}{copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{01411\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{01412\ \textcolor{comment}{IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{01413\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{01414\ \textcolor{comment}{AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{01415\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{01416\ \textcolor{comment}{OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{01417\ \textcolor{comment}{SOFTWARE.}}
+\DoxyCodeLine{01418\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01419\ \textcolor{comment}{ALTERNATIVE\ B\ -\/\ Public\ Domain\ (www.unlicense.org)}}
+\DoxyCodeLine{01420\ \textcolor{comment}{This\ is\ free\ and\ unencumbered\ software\ released\ into\ the\ public\ domain.}}
+\DoxyCodeLine{01421\ \textcolor{comment}{Anyone\ is\ free\ to\ copy,\ modify,\ publish,\ use,\ compile,\ sell,\ or\ distribute\ this}}
+\DoxyCodeLine{01422\ \textcolor{comment}{software,\ either\ in\ source\ code\ form\ or\ as\ a\ compiled\ binary,\ for\ any\ purpose,}}
+\DoxyCodeLine{01423\ \textcolor{comment}{commercial\ or\ non-\/commercial,\ and\ by\ any\ means.}}
+\DoxyCodeLine{01424\ \textcolor{comment}{In\ jurisdictions\ that\ recognize\ copyright\ laws,\ the\ author\ or\ authors\ of\ this}}
+\DoxyCodeLine{01425\ \textcolor{comment}{software\ dedicate\ any\ and\ all\ copyright\ interest\ in\ the\ software\ to\ the\ public}}
+\DoxyCodeLine{01426\ \textcolor{comment}{domain.\ We\ make\ this\ dedication\ for\ the\ benefit\ of\ the\ public\ at\ large\ and\ to}}
+\DoxyCodeLine{01427\ \textcolor{comment}{the\ detriment\ of\ our\ heirs\ and\ successors.\ We\ intend\ this\ dedication\ to\ be\ an}}
+\DoxyCodeLine{01428\ \textcolor{comment}{overt\ act\ of\ relinquishment\ in\ perpetuity\ of\ all\ present\ and\ future\ rights\ to}}
+\DoxyCodeLine{01429\ \textcolor{comment}{this\ software\ under\ copyright\ law.}}
+\DoxyCodeLine{01430\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{01431\ \textcolor{comment}{IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{01432\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{01433\ \textcolor{comment}{AUTHORS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER\ LIABILITY,\ WHETHER\ IN\ AN}}
+\DoxyCodeLine{01434\ \textcolor{comment}{ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION}}
+\DoxyCodeLine{01435\ \textcolor{comment}{WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE\ SOFTWARE.}}
+\DoxyCodeLine{01436\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01437\ \textcolor{comment}{*/}}
+
+\end{DoxyCode}

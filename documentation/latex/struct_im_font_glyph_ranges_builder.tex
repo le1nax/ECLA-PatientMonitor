@@ -1,0 +1,93 @@
+\doxysection{Im\+Font\+Glyph\+Ranges\+Builder Struct Reference}
+\hypertarget{struct_im_font_glyph_ranges_builder}{}\label{struct_im_font_glyph_ranges_builder}\index{ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}}
+
+
+{\ttfamily \#include $<$imgui.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_im_font_glyph_ranges_builder_aaee7673423cb7e29d43ea3901628c870}{Im\+Font\+Glyph\+Ranges\+Builder}} ()
+\item 
+\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_glyph_ranges_builder_a918c20b2291c13acd86b5fbbf6097b7f}{Clear}} ()
+\item 
+bool \mbox{\hyperlink{struct_im_font_glyph_ranges_builder_a6b1480f843b82db098205872b1309f47}{Get\+Bit}} (size\+\_\+t n) \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}}
+\item 
+\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_glyph_ranges_builder_a12474f5e042b7097a515db0abb71e3e6}{Set\+Bit}} (size\+\_\+t n)
+\item 
+\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_glyph_ranges_builder_a6d3f5e3e377a73f4f4324c4cf98600dd}{Add\+Char}} (\mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} c)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_glyph_ranges_builder_a623813f4043d2e7bb432d6db8b6e5d98}{Add\+Text}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}text, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}text\+\_\+end=NULL)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_glyph_ranges_builder_aedcfe2d20ef29ff5151429c224f1f11b}{Add\+Ranges}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*}ranges)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_font_glyph_ranges_builder_afc7a186ddf0e2b5e208015ff098512bb}{Build\+Ranges}} (\mbox{\hyperlink{struct_im_vector}{Im\+Vector}}$<$ \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} $>$ \texorpdfstring{$\ast$}{*}out\+\_\+ranges)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_im_vector}{Im\+Vector}}$<$ \mbox{\hyperlink{imgui_8h_a118cff4eeb8d00e7d07ce3d6460eed36}{Im\+U32}} $>$ \mbox{\hyperlink{struct_im_font_glyph_ranges_builder_af83d63600e78e2454a78f0d736ba8ee4}{Used\+Chars}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_im_font_glyph_ranges_builder_aaee7673423cb7e29d43ea3901628c870}\label{struct_im_font_glyph_ranges_builder_aaee7673423cb7e29d43ea3901628c870} 
+\index{ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}!ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}}
+\index{ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}!ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}}
+\doxysubsubsection{\texorpdfstring{ImFontGlyphRangesBuilder()}{ImFontGlyphRangesBuilder()}}
+{\footnotesize\ttfamily Im\+Font\+Glyph\+Ranges\+Builder\+::\+Im\+Font\+Glyph\+Ranges\+Builder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_im_font_glyph_ranges_builder_a6d3f5e3e377a73f4f4324c4cf98600dd}\label{struct_im_font_glyph_ranges_builder_a6d3f5e3e377a73f4f4324c4cf98600dd} 
+\index{ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}!AddChar@{AddChar}}
+\index{AddChar@{AddChar}!ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}}
+\doxysubsubsection{\texorpdfstring{AddChar()}{AddChar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Glyph\+Ranges\+Builder\+::\+Add\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}}}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_im_font_glyph_ranges_builder_aedcfe2d20ef29ff5151429c224f1f11b}\label{struct_im_font_glyph_ranges_builder_aedcfe2d20ef29ff5151429c224f1f11b} 
+\index{ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}!AddRanges@{AddRanges}}
+\index{AddRanges@{AddRanges}!ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}}
+\doxysubsubsection{\texorpdfstring{AddRanges()}{AddRanges()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Glyph\+Ranges\+Builder\+::\+Add\+Ranges (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} \texorpdfstring{$\ast$}{*}}]{ranges }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_glyph_ranges_builder_a623813f4043d2e7bb432d6db8b6e5d98}\label{struct_im_font_glyph_ranges_builder_a623813f4043d2e7bb432d6db8b6e5d98} 
+\index{ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}!AddText@{AddText}}
+\index{AddText@{AddText}!ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}}
+\doxysubsubsection{\texorpdfstring{AddText()}{AddText()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Glyph\+Ranges\+Builder\+::\+Add\+Text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}}]{text\+\_\+end = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_glyph_ranges_builder_afc7a186ddf0e2b5e208015ff098512bb}\label{struct_im_font_glyph_ranges_builder_afc7a186ddf0e2b5e208015ff098512bb} 
+\index{ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}!BuildRanges@{BuildRanges}}
+\index{BuildRanges@{BuildRanges}!ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}}
+\doxysubsubsection{\texorpdfstring{BuildRanges()}{BuildRanges()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Glyph\+Ranges\+Builder\+::\+Build\+Ranges (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_im_vector}{Im\+Vector}}$<$ \mbox{\hyperlink{imgui_8h_a1ecb49ee827c39a982f1e1467910d020}{Im\+Wchar}} $>$ \texorpdfstring{$\ast$}{*}}]{out\+\_\+ranges }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_font_glyph_ranges_builder_a918c20b2291c13acd86b5fbbf6097b7f}\label{struct_im_font_glyph_ranges_builder_a918c20b2291c13acd86b5fbbf6097b7f} 
+\index{ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}!Clear@{Clear}}
+\index{Clear@{Clear}!ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Glyph\+Ranges\+Builder\+::\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_im_font_glyph_ranges_builder_a6b1480f843b82db098205872b1309f47}\label{struct_im_font_glyph_ranges_builder_a6b1480f843b82db098205872b1309f47} 
+\index{ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}!GetBit@{GetBit}}
+\index{GetBit@{GetBit}!ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}}
+\doxysubsubsection{\texorpdfstring{GetBit()}{GetBit()}}
+{\footnotesize\ttfamily bool Im\+Font\+Glyph\+Ranges\+Builder\+::\+Get\+Bit (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_im_font_glyph_ranges_builder_a12474f5e042b7097a515db0abb71e3e6}\label{struct_im_font_glyph_ranges_builder_a12474f5e042b7097a515db0abb71e3e6} 
+\index{ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}!SetBit@{SetBit}}
+\index{SetBit@{SetBit}!ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}}
+\doxysubsubsection{\texorpdfstring{SetBit()}{SetBit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Font\+Glyph\+Ranges\+Builder\+::\+Set\+Bit (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_im_font_glyph_ranges_builder_af83d63600e78e2454a78f0d736ba8ee4}\label{struct_im_font_glyph_ranges_builder_af83d63600e78e2454a78f0d736ba8ee4} 
+\index{ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}!UsedChars@{UsedChars}}
+\index{UsedChars@{UsedChars}!ImFontGlyphRangesBuilder@{ImFontGlyphRangesBuilder}}
+\doxysubsubsection{\texorpdfstring{UsedChars}{UsedChars}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_im_vector}{Im\+Vector}}$<$\mbox{\hyperlink{imgui_8h_a118cff4eeb8d00e7d07ce3d6460eed36}{Im\+U32}}$>$ Im\+Font\+Glyph\+Ranges\+Builder\+::\+Used\+Chars}
+

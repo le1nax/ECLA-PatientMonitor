@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['objecttype_0',['ObjectType',['../struct_object_type.html',1,'']]],
-  ['observationpoll_1',['ObservationPoll',['../struct_observation_poll.html',1,'']]]
+  ['wsasession_0',['WSASession',['../class_w_s_a_session.html',1,'']]]
 ];

@@ -1,0 +1,187 @@
+\doxysection{build/vcpkg\+\_\+installed/x64-\/mingw-\/static/include/brotli/shared\+\_\+dictionary.h File Reference}
+\hypertarget{shared__dictionary_8h}{}\label{shared__dictionary_8h}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/shared\_dictionary.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/shared\_dictionary.h}}
+{\ttfamily \#include $<$brotli/port.\+h$>$}\newline
+{\ttfamily \#include $<$brotli/types.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{shared__dictionary_8h_a3702c736e3957740ab8a6c03a62b2a5b}{SHARED\+\_\+\+BROTLI\+\_\+\+MIN\+\_\+\+DICTIONARY\+\_\+\+WORD\+\_\+\+LENGTH}}~4
+\item 
+\#define \mbox{\hyperlink{shared__dictionary_8h_a87390c83d92493a4a1b1ef0713920ebe}{SHARED\+\_\+\+BROTLI\+\_\+\+MAX\+\_\+\+DICTIONARY\+\_\+\+WORD\+\_\+\+LENGTH}}~31
+\item 
+\#define \mbox{\hyperlink{shared__dictionary_8h_ac8aabe34e7d59384626fe6ce7e9be636}{SHARED\+\_\+\+BROTLI\+\_\+\+NUM\+\_\+\+DICTIONARY\+\_\+\+CONTEXTS}}~64
+\item 
+\#define \mbox{\hyperlink{shared__dictionary_8h_af9edf850bfa38e0d409be183c8d540c0}{SHARED\+\_\+\+BROTLI\+\_\+\+MAX\+\_\+\+COMPOUND\+\_\+\+DICTS}}~15
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Brotli\+Shared\+Dictionary\+Struct \mbox{\hyperlink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary}}
+\begin{DoxyCompactList}\small\item\em Opaque structure that holds shared dictionary data. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{Brotli\+Shared\+Dictionary\+Type}} \mbox{\hyperlink{shared__dictionary_8h_a174f5d8dba99d2052eaa47f158a745f6}{Brotli\+Shared\+Dictionary\+Type}}
+\begin{DoxyCompactList}\small\item\em Input data type for \doxylink{shared__dictionary_8h_a4f15352e94243db0e80174751e036a6e}{Brotli\+Shared\+Dictionary\+Attach}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{Brotli\+Shared\+Dictionary\+Type}} \{ \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9af2a6bd22836cacc0b2cd5cf3eab51b22}{BROTLI\+\_\+\+SHARED\+\_\+\+DICTIONARY\+\_\+\+RAW}} = 0
+, \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9ae752cd7b6137c34daf17a3ae3951be75}{BROTLI\+\_\+\+SHARED\+\_\+\+DICTIONARY\+\_\+\+SERIALIZED}} = 1
+ \}
+\begin{DoxyCompactList}\small\item\em Input data type for \doxylink{shared__dictionary_8h_a4f15352e94243db0e80174751e036a6e}{Brotli\+Shared\+Dictionary\+Attach}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{port_8h_a402c46c6c29290398045d634536629bc}{BROTLI\+\_\+\+COMMON\+\_\+\+API}} \mbox{\hyperlink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{shared__dictionary_8h_a33fc9f44479cb815b994ffa2d9e0d7a1}{Brotli\+Shared\+Dictionary\+Create\+Instance}} (\mbox{\hyperlink{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}{brotli\+\_\+alloc\+\_\+func}} \mbox{\hyperlink{zlib_8h_a50aa48acceb621559596dfa8b7558321}{alloc\+\_\+func}}, \mbox{\hyperlink{types_8h_a5e19dc1ca789ea76db7167289c442d32}{brotli\+\_\+free\+\_\+func}} \mbox{\hyperlink{zlib_8h_a002a1cda9686d40117da69d61c2a6dda}{free\+\_\+func}}, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque)
+\begin{DoxyCompactList}\small\item\em Creates an instance of \doxylink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a402c46c6c29290398045d634536629bc}{BROTLI\+\_\+\+COMMON\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{shared__dictionary_8h_a00be19215d8171ae31a44c4d5446fc10}{Brotli\+Shared\+Dictionary\+Destroy\+Instance}} (\mbox{\hyperlink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary}} \texorpdfstring{$\ast$}{*}dict)
+\begin{DoxyCompactList}\small\item\em Deinitializes and frees \doxylink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary} instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a402c46c6c29290398045d634536629bc}{BROTLI\+\_\+\+COMMON\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} \mbox{\hyperlink{shared__dictionary_8h_a4f15352e94243db0e80174751e036a6e}{Brotli\+Shared\+Dictionary\+Attach}} (\mbox{\hyperlink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary}} \texorpdfstring{$\ast$}{*}dict, \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{Brotli\+Shared\+Dictionary\+Type}} \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a63267399cd2a2ee217572c11d2e54f07}{type}}, size\+\_\+t data\+\_\+size, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_abd87654504355b4c1bb002dcb1d4d16a}{data}}\mbox{[}\mbox{\hyperlink{port_8h_aa4b0af0d4de034f61827d71ce4f1e1eb}{BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM}}(data\+\_\+size)\mbox{]})
+\begin{DoxyCompactList}\small\item\em Attaches dictionary to a given instance of \doxylink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{shared__dictionary_8h_af9edf850bfa38e0d409be183c8d540c0}\label{shared__dictionary_8h_af9edf850bfa38e0d409be183c8d540c0} 
+\index{shared\_dictionary.h@{shared\_dictionary.h}!SHARED\_BROTLI\_MAX\_COMPOUND\_DICTS@{SHARED\_BROTLI\_MAX\_COMPOUND\_DICTS}}
+\index{SHARED\_BROTLI\_MAX\_COMPOUND\_DICTS@{SHARED\_BROTLI\_MAX\_COMPOUND\_DICTS}!shared\_dictionary.h@{shared\_dictionary.h}}
+\doxysubsubsection{\texorpdfstring{SHARED\_BROTLI\_MAX\_COMPOUND\_DICTS}{SHARED\_BROTLI\_MAX\_COMPOUND\_DICTS}}
+{\footnotesize\ttfamily \#define SHARED\+\_\+\+BROTLI\+\_\+\+MAX\+\_\+\+COMPOUND\+\_\+\+DICTS~15}
+
+\Hypertarget{shared__dictionary_8h_a87390c83d92493a4a1b1ef0713920ebe}\label{shared__dictionary_8h_a87390c83d92493a4a1b1ef0713920ebe} 
+\index{shared\_dictionary.h@{shared\_dictionary.h}!SHARED\_BROTLI\_MAX\_DICTIONARY\_WORD\_LENGTH@{SHARED\_BROTLI\_MAX\_DICTIONARY\_WORD\_LENGTH}}
+\index{SHARED\_BROTLI\_MAX\_DICTIONARY\_WORD\_LENGTH@{SHARED\_BROTLI\_MAX\_DICTIONARY\_WORD\_LENGTH}!shared\_dictionary.h@{shared\_dictionary.h}}
+\doxysubsubsection{\texorpdfstring{SHARED\_BROTLI\_MAX\_DICTIONARY\_WORD\_LENGTH}{SHARED\_BROTLI\_MAX\_DICTIONARY\_WORD\_LENGTH}}
+{\footnotesize\ttfamily \#define SHARED\+\_\+\+BROTLI\+\_\+\+MAX\+\_\+\+DICTIONARY\+\_\+\+WORD\+\_\+\+LENGTH~31}
+
+\Hypertarget{shared__dictionary_8h_a3702c736e3957740ab8a6c03a62b2a5b}\label{shared__dictionary_8h_a3702c736e3957740ab8a6c03a62b2a5b} 
+\index{shared\_dictionary.h@{shared\_dictionary.h}!SHARED\_BROTLI\_MIN\_DICTIONARY\_WORD\_LENGTH@{SHARED\_BROTLI\_MIN\_DICTIONARY\_WORD\_LENGTH}}
+\index{SHARED\_BROTLI\_MIN\_DICTIONARY\_WORD\_LENGTH@{SHARED\_BROTLI\_MIN\_DICTIONARY\_WORD\_LENGTH}!shared\_dictionary.h@{shared\_dictionary.h}}
+\doxysubsubsection{\texorpdfstring{SHARED\_BROTLI\_MIN\_DICTIONARY\_WORD\_LENGTH}{SHARED\_BROTLI\_MIN\_DICTIONARY\_WORD\_LENGTH}}
+{\footnotesize\ttfamily \#define SHARED\+\_\+\+BROTLI\+\_\+\+MIN\+\_\+\+DICTIONARY\+\_\+\+WORD\+\_\+\+LENGTH~4}
+
+\Hypertarget{shared__dictionary_8h_ac8aabe34e7d59384626fe6ce7e9be636}\label{shared__dictionary_8h_ac8aabe34e7d59384626fe6ce7e9be636} 
+\index{shared\_dictionary.h@{shared\_dictionary.h}!SHARED\_BROTLI\_NUM\_DICTIONARY\_CONTEXTS@{SHARED\_BROTLI\_NUM\_DICTIONARY\_CONTEXTS}}
+\index{SHARED\_BROTLI\_NUM\_DICTIONARY\_CONTEXTS@{SHARED\_BROTLI\_NUM\_DICTIONARY\_CONTEXTS}!shared\_dictionary.h@{shared\_dictionary.h}}
+\doxysubsubsection{\texorpdfstring{SHARED\_BROTLI\_NUM\_DICTIONARY\_CONTEXTS}{SHARED\_BROTLI\_NUM\_DICTIONARY\_CONTEXTS}}
+{\footnotesize\ttfamily \#define SHARED\+\_\+\+BROTLI\+\_\+\+NUM\+\_\+\+DICTIONARY\+\_\+\+CONTEXTS~64}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}\label{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98} 
+\index{shared\_dictionary.h@{shared\_dictionary.h}!BrotliSharedDictionary@{BrotliSharedDictionary}}
+\index{BrotliSharedDictionary@{BrotliSharedDictionary}!shared\_dictionary.h@{shared\_dictionary.h}}
+\doxysubsubsection{\texorpdfstring{BrotliSharedDictionary}{BrotliSharedDictionary}}
+{\footnotesize\ttfamily typedef struct Brotli\+Shared\+Dictionary\+Struct \mbox{\hyperlink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary}}}
+
+
+
+Opaque structure that holds shared dictionary data. 
+
+Allocated and initialized with \doxylink{shared__dictionary_8h_a33fc9f44479cb815b994ffa2d9e0d7a1}{Brotli\+Shared\+Dictionary\+Create\+Instance}. Cleaned up and deallocated with \doxylink{shared__dictionary_8h_a00be19215d8171ae31a44c4d5446fc10}{Brotli\+Shared\+Dictionary\+Destroy\+Instance}. \Hypertarget{shared__dictionary_8h_a174f5d8dba99d2052eaa47f158a745f6}\label{shared__dictionary_8h_a174f5d8dba99d2052eaa47f158a745f6} 
+\index{shared\_dictionary.h@{shared\_dictionary.h}!BrotliSharedDictionaryType@{BrotliSharedDictionaryType}}
+\index{BrotliSharedDictionaryType@{BrotliSharedDictionaryType}!shared\_dictionary.h@{shared\_dictionary.h}}
+\doxysubsubsection{\texorpdfstring{BrotliSharedDictionaryType}{BrotliSharedDictionaryType}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{Brotli\+Shared\+Dictionary\+Type}} \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{Brotli\+Shared\+Dictionary\+Type}}}
+
+
+
+Input data type for \doxylink{shared__dictionary_8h_a4f15352e94243db0e80174751e036a6e}{Brotli\+Shared\+Dictionary\+Attach}. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}\label{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9} 
+\index{shared\_dictionary.h@{shared\_dictionary.h}!BrotliSharedDictionaryType@{BrotliSharedDictionaryType}}
+\index{BrotliSharedDictionaryType@{BrotliSharedDictionaryType}!shared\_dictionary.h@{shared\_dictionary.h}}
+\doxysubsubsection{\texorpdfstring{BrotliSharedDictionaryType}{BrotliSharedDictionaryType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{Brotli\+Shared\+Dictionary\+Type}}}
+
+
+
+Input data type for \doxylink{shared__dictionary_8h_a4f15352e94243db0e80174751e036a6e}{Brotli\+Shared\+Dictionary\+Attach}. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_SHARED\_DICTIONARY\_RAW@{BROTLI\_SHARED\_DICTIONARY\_RAW}!shared\_dictionary.h@{shared\_dictionary.h}}\index{shared\_dictionary.h@{shared\_dictionary.h}!BROTLI\_SHARED\_DICTIONARY\_RAW@{BROTLI\_SHARED\_DICTIONARY\_RAW}}}\Hypertarget{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9af2a6bd22836cacc0b2cd5cf3eab51b22}\label{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9af2a6bd22836cacc0b2cd5cf3eab51b22} 
+BROTLI\+\_\+\+SHARED\+\_\+\+DICTIONARY\+\_\+\+RAW&Raw LZ77 prefix dictionary. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_SHARED\_DICTIONARY\_SERIALIZED@{BROTLI\_SHARED\_DICTIONARY\_SERIALIZED}!shared\_dictionary.h@{shared\_dictionary.h}}\index{shared\_dictionary.h@{shared\_dictionary.h}!BROTLI\_SHARED\_DICTIONARY\_SERIALIZED@{BROTLI\_SHARED\_DICTIONARY\_SERIALIZED}}}\Hypertarget{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9ae752cd7b6137c34daf17a3ae3951be75}\label{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9ae752cd7b6137c34daf17a3ae3951be75} 
+BROTLI\+\_\+\+SHARED\+\_\+\+DICTIONARY\+\_\+\+SERIALIZED&Serialized shared dictionary. DO NOT USE\+: methods accepting this value will fail. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{shared__dictionary_8h_a4f15352e94243db0e80174751e036a6e}\label{shared__dictionary_8h_a4f15352e94243db0e80174751e036a6e} 
+\index{shared\_dictionary.h@{shared\_dictionary.h}!BrotliSharedDictionaryAttach@{BrotliSharedDictionaryAttach}}
+\index{BrotliSharedDictionaryAttach@{BrotliSharedDictionaryAttach}!shared\_dictionary.h@{shared\_dictionary.h}}
+\doxysubsubsection{\texorpdfstring{BrotliSharedDictionaryAttach()}{BrotliSharedDictionaryAttach()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a402c46c6c29290398045d634536629bc}{BROTLI\+\_\+\+COMMON\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} Brotli\+Shared\+Dictionary\+Attach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary}} \texorpdfstring{$\ast$}{*}}]{dict,  }\item[{\mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{Brotli\+Shared\+Dictionary\+Type}}}]{type,  }\item[{size\+\_\+t}]{data\+\_\+size,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t}]{data\mbox{[}\+BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM(data\+\_\+size)\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Attaches dictionary to a given instance of \doxylink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary}. 
+
+Dictionary to be attached is represented in a serialized format as a region of memory.
+
+Provided data it partially referenced by a resulting (compound) dictionary, and should be kept untouched, while at least one compound dictionary uses it. This way memory overhead is kept minimal by the cost of additional resource management.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dict} & dictionary to extend \\
+\hline
+{\em type} & type of dictionary to attach \\
+\hline
+{\em data\+\_\+size} & size of {\ttfamily data} \\
+\hline
+{\em data} & serialized dictionary of type {\ttfamily type}, with at least {\ttfamily data\+\_\+size} addressable bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE} if provided dictionary is successfully attached 
+
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} otherwise 
+\end{DoxyReturn}
+\Hypertarget{shared__dictionary_8h_a33fc9f44479cb815b994ffa2d9e0d7a1}\label{shared__dictionary_8h_a33fc9f44479cb815b994ffa2d9e0d7a1} 
+\index{shared\_dictionary.h@{shared\_dictionary.h}!BrotliSharedDictionaryCreateInstance@{BrotliSharedDictionaryCreateInstance}}
+\index{BrotliSharedDictionaryCreateInstance@{BrotliSharedDictionaryCreateInstance}!shared\_dictionary.h@{shared\_dictionary.h}}
+\doxysubsubsection{\texorpdfstring{BrotliSharedDictionaryCreateInstance()}{BrotliSharedDictionaryCreateInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a402c46c6c29290398045d634536629bc}{BROTLI\+\_\+\+COMMON\+\_\+\+API}} \mbox{\hyperlink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary}} \texorpdfstring{$\ast$}{*} Brotli\+Shared\+Dictionary\+Create\+Instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}{brotli\+\_\+alloc\+\_\+func}}}]{alloc\+\_\+func,  }\item[{\mbox{\hyperlink{types_8h_a5e19dc1ca789ea76db7167289c442d32}{brotli\+\_\+free\+\_\+func}}}]{free\+\_\+func,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{opaque }\end{DoxyParamCaption})}
+
+
+
+Creates an instance of \doxylink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary}. 
+
+Fresh instance has default word dictionary and transforms and no LZ77 prefix dictionary.
+
+{\ttfamily alloc\+\_\+func} and {\ttfamily free\+\_\+func} {\bfseries{MUST}} be both zero or both non-\/zero. In the case they are both zero, default memory allocators are used. {\ttfamily opaque} is passed to {\ttfamily alloc\+\_\+func} and {\ttfamily free\+\_\+func} when they are called. {\ttfamily free\+\_\+func} has to return without doing anything when asked to free a NULL pointer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em alloc\+\_\+func} & custom memory allocation function \\
+\hline
+{\em free\+\_\+func} & custom memory free function \\
+\hline
+{\em opaque} & custom memory manager handle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily 0} if instance can not be allocated or initialized 
+
+pointer to initialized \doxylink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary} otherwise 
+\end{DoxyReturn}
+\Hypertarget{shared__dictionary_8h_a00be19215d8171ae31a44c4d5446fc10}\label{shared__dictionary_8h_a00be19215d8171ae31a44c4d5446fc10} 
+\index{shared\_dictionary.h@{shared\_dictionary.h}!BrotliSharedDictionaryDestroyInstance@{BrotliSharedDictionaryDestroyInstance}}
+\index{BrotliSharedDictionaryDestroyInstance@{BrotliSharedDictionaryDestroyInstance}!shared\_dictionary.h@{shared\_dictionary.h}}
+\doxysubsubsection{\texorpdfstring{BrotliSharedDictionaryDestroyInstance()}{BrotliSharedDictionaryDestroyInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a402c46c6c29290398045d634536629bc}{BROTLI\+\_\+\+COMMON\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Brotli\+Shared\+Dictionary\+Destroy\+Instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary}} \texorpdfstring{$\ast$}{*}}]{dict }\end{DoxyParamCaption})}
+
+
+
+Deinitializes and frees \doxylink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{Brotli\+Shared\+Dictionary} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dict} & shared dictionary instance to be cleaned up and deallocated \\
+\hline
+\end{DoxyParams}

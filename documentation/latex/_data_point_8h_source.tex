@@ -1,0 +1,50 @@
+\doxysection{Data\+Point.\+h}
+\hypertarget{_data_point_8h_source}{}\label{_data_point_8h_source}\index{PCANModule/DataPoint.h@{PCANModule/DataPoint.h}}
+\mbox{\hyperlink{_data_point_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <Windows.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../include/definitions.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_data_point_encoded}{DataPointEncoded}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_data_point_encoded_ac37f6ec44f718e2f4dd24042526bd9dc}{canID}};}
+\DoxyCodeLine{00012\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_data_point_encoded_a90004fee0286d2f69d31c0acf2f40e42}{timestamp}};}
+\DoxyCodeLine{00013\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_data_point_encoded_a9972058339598b1933956d45fe9fe144}{pcanTimestamp}};\ \textcolor{comment}{//milliseconds\ after\ pcanConnect;}}
+\DoxyCodeLine{00014\ \ \ \ \ int32\_t\ \mbox{\hyperlink{struct_data_point_encoded_a6fa1530550e1059247091c0b59aba7f1}{value}};\ }
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ size\_encoded\ =\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_data_point_encoded}{DataPointEncoded}});}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_data_point}{DataPoint}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_data_point}{DataPoint}}(uint32\_t\ canID,\ \textcolor{keywordtype}{char}*\ data,\ uint64\_t\ milliseconds,\ uint8\_t\ dataLength);}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_data_point_a6668d3c313cd3b34242458b73a333378}{DataPoint}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_data_point}{DataPoint}}\&\ other)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00023\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_data_point_ae784d1f271edb5786b8c33333e01b697}{m\_canID}};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_data_point_a6a5cf10bdefda178eea43b8032c7ba59}{m\_value}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_data_point_ad1fe39af28602e5e15569e3c2f453b1b}{m\_beacon}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_data_point_a0eb55dd39da137ab92207622f54a6a36}{m\_timestamp}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_data_point_ab221d56c5e1166d5b003d1a9be03577a}{m\_counter}};}
+\DoxyCodeLine{00028\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_data_point_a8ce91669c936ec88ab24956f5382ba5f}{m\_data\_lenght}};}
+\DoxyCodeLine{00029\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{class_data_point_a2efe1bb2ecc6800240839e0b82f861ab}{m\_pcanTimestamp}};}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{definitions_8h_aff16db020fb44f2bdb3bbae14560cadb}{DataPointType}}\ \mbox{\hyperlink{class_data_point_af2e4f0460cfd36cd202b258e93e21882}{m\_datatype}}\ =\ \mbox{\hyperlink{definitions_8h_aff16db020fb44f2bdb3bbae14560cadbadc30ec20708ef7b0f641ef78b7880a15}{DataPointType::DEBUG}};}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{struct_data_point_encoded}{DataPointEncoded}}\ \mbox{\hyperlink{class_data_point_a9f3252f6e1e51bfe903f7d4170aedef4}{encodedData}}\{\};}
+\DoxyCodeLine{00032\ \ \ \ \ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ uint32\_t\ m\_canID;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ char*\ m\_data;}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ uint8\_t\ dataLength;}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ double\ timestamp;}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ parseValuesFromDataString(\textcolor{keywordtype}{char}*\ data,\ uint64\_t\ milliseconds,\ uint8\_t\ dataLength);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \};}
+
+\end{DoxyCode}

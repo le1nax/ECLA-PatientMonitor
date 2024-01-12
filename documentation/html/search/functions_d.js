@@ -1,7 +1,19 @@
 var searchData=
 [
-  ['threadkeepconnectionalive_0',['ThreadKeepConnectionAlive',['../class_socket_client.html#a3eaea5b577cb9108239f7458c2fd6f78',1,'SocketClient']]],
-  ['threadreceive_1',['ThreadReceive',['../class_socket_client.html#aa73e2440f43a32c791e8faca08f3ee0c',1,'SocketClient']]],
-  ['threadrecheckmdsattributes_2',['ThreadRecheckMDSAttributes',['../class_socket_client.html#a99c031a8b2280d524245bd16e2ccdc05',1,'SocketClient']]],
-  ['trimstring_3',['TrimString',['../definitions_8h.html#a35de8c99d430876d7cadf616e0f2a7f6',1,'definitions.h']]]
+  ['navclearpreferredposforaxis_0',['NavClearPreferredPosForAxis',['../namespace_im_gui.html#a6ae4ac9bc0ede39a5014879fe90d51ef',1,'ImGui']]],
+  ['navinitrequestapplyresult_1',['NavInitRequestApplyResult',['../namespace_im_gui.html#af3f7bf2a9b0d63febd34dce7a05db318',1,'ImGui']]],
+  ['navinitwindow_2',['NavInitWindow',['../namespace_im_gui.html#a720fed3a989eb00670994e6e599c0318',1,'ImGui']]],
+  ['navmoverequestapplyresult_3',['NavMoveRequestApplyResult',['../namespace_im_gui.html#a2ab4d657bbea9c20ba1a01fce59c1901',1,'ImGui']]],
+  ['navmoverequestbutnoresultyet_4',['NavMoveRequestButNoResultYet',['../namespace_im_gui.html#a0cc6158861092f466b75d9f0d4c9909a',1,'ImGui']]],
+  ['navmoverequestcancel_5',['NavMoveRequestCancel',['../namespace_im_gui.html#a1b612df70f1fa83c535caddb8ba8c2b0',1,'ImGui']]],
+  ['navmoverequestforward_6',['NavMoveRequestForward',['../namespace_im_gui.html#a803092cb18f2fdb110acffcefb94ea95',1,'ImGui']]],
+  ['navmoverequestresolvewithlastitem_7',['NavMoveRequestResolveWithLastItem',['../namespace_im_gui.html#a04bbc8690eea6e6ace68c2aec93f6278',1,'ImGui']]],
+  ['navmoverequestresolvewithpasttreenode_8',['NavMoveRequestResolveWithPastTreeNode',['../namespace_im_gui.html#ade8bec4d0edc71e28b795eda30bc6c76',1,'ImGui']]],
+  ['navmoverequestsubmit_9',['NavMoveRequestSubmit',['../namespace_im_gui.html#a18e3d39a29bba82bf033a29e155bd621',1,'ImGui']]],
+  ['navmoverequesttrywrapping_10',['NavMoveRequestTryWrapping',['../namespace_im_gui.html#afbe6549d9a6cafbaade98bea08a04f83',1,'ImGui']]],
+  ['navupdatecurrentwindowisscrollpushablex_11',['NavUpdateCurrentWindowIsScrollPushableX',['../namespace_im_gui.html#a499a70d633f7c4077b3f4315093904e0',1,'ImGui']]],
+  ['newframe_12',['NewFrame',['../namespace_im_gui.html#a5da842f34f41967b7a554c49fcd507c4',1,'ImGui']]],
+  ['newline_13',['NewLine',['../namespace_im_gui.html#aca7a33e7f42b7ff21358a875d37249dd',1,'ImGui']]],
+  ['next_5fchunk_14',['next_chunk',['../struct_im_chunk_stream.html#a3a99f21ce1867d694104d740ac7ab133',1,'ImChunkStream']]],
+  ['nextcolumn_15',['NextColumn',['../namespace_im_gui.html#a48de6bbd3bf77af9614cc6e95e5d7275',1,'ImGui']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['eventreportargument_0',['EventReportArgument',['../struct_event_report_argument.html',1,'']]],
-  ['extpolllinkedpacketresult_1',['ExtPollLinkedPacketResult',['../struct_ext_poll_linked_packet_result.html',1,'']]]
+  ['datapoint_0',['DataPoint',['../class_data_point.html',1,'']]],
+  ['datapointencoded_1',['DataPointEncoded',['../struct_data_point_encoded.html',1,'']]],
+  ['datatransfer_2',['DataTransfer',['../class_data_transfer.html',1,'']]]
 ];

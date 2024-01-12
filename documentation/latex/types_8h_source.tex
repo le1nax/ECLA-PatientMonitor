@@ -1,0 +1,45 @@
+\doxysection{types.\+h}
+\hypertarget{types_8h_source}{}\label{types_8h_source}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/types.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/types.h}}
+\mbox{\hyperlink{types_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ 2013\ Google\ Inc.\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00002\ \textcolor{comment}{}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ Distributed\ under\ MIT\ license.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ See\ file\ LICENSE\ for\ detail\ or\ copy\ at\ https://opensource.org/licenses/MIT}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ BROTLI\_COMMON\_TYPES\_H\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ BROTLI\_COMMON\_TYPES\_H\_}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stddef.h>}\ \ \textcolor{comment}{/*\ for\ size\_t\ */}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#if\ defined(\_MSC\_VER)\ \&\&\ (\_MSC\_VER\ <\ 1600)}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ \_\_int8\ int8\_t;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int8\ uint8\_t;}
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \_\_int16\ int16\_t;}
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int16\ uint16\_t;}
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \_\_int32\ int32\_t;}
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int32\ uint32\_t;}
+\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int64\ uint64\_t;}
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \_\_int64\ int64\_t;}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ defined(\_MSC\_VER)\ \&\&\ (\_MSC\_VER\ <\ 1600)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ BROTLI\_BOOL\ int}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ BROTLI\_TRUE\ 1}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ BROTLI\_FALSE\ 0}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ TO\_BROTLI\_BOOL(X)\ (!!(X)\ ?\ BROTLI\_TRUE\ :\ BROTLI\_FALSE)}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ BROTLI\_MAKE\_UINT64\_T(high,\ low)\ ((((uint64\_t)(high))\ <<\ 32)\ |\ low)}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ BROTLI\_UINT32\_MAX\ (\string~((uint32\_t)0))}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ BROTLI\_SIZE\_MAX\ (\string~((size\_t)0))}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}*\ (*brotli\_alloc\_func)(\textcolor{keywordtype}{void}*\ opaque,\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}});}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}\ (*\mbox{\hyperlink{types_8h_a5e19dc1ca789ea76db7167289c442d32}{brotli\_free\_func}})(\textcolor{keywordtype}{void}*\ opaque,\ \textcolor{keywordtype}{void}*\ address);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ BROTLI\_COMMON\_TYPES\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

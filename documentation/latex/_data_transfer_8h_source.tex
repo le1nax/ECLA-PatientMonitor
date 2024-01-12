@@ -1,0 +1,45 @@
+\doxysection{Data\+Transfer.\+h}
+\hypertarget{_data_transfer_8h_source}{}\label{_data_transfer_8h_source}\index{include/DataTransfer.h@{include/DataTransfer.h}}
+\mbox{\hyperlink{_data_transfer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_socket_client_8h}{SocketClient.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../PCANModule/CanAdapter.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_data_transfer}{DataTransfer}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_data_transfer_a83cd70bf9ddb0e160ffec1b51e811752}{DataTransfer}}();}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_data_transfer_a2109904c577eef09cb3c416d30636d9a}{\string~DataTransfer}}();}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_data_transfer_a7b505f0d16b2457cd76ec4ab34a59972}{establishConnection}}();}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ serverSetup();}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ pollClientRequest();}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ pcanConnect();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ pcanSendData();}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ createPCANSendThread();}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ logData(\mbox{\hyperlink{class_data_point}{DataPoint}}\&\ data);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ std::vector<std::vector<float>*>\ measurementsVec\ =\ \{\};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ std::vector<float>\ m\_BPData\_mBar\ =\ \{\};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::vector<float>\ m\_TempData\_Celsius\ =\ \{\};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ std::vector<float>\ m\_FlowData\_mBar\ =\ \{\};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ std::vector<std::byte>\ init\_msg\_vec;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ init\_msg\_char;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ sockaddr\_in\ clientRecv\{\};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ SOCKET\ serverSocket;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//sockaddr\_in\ clientAddress\{\};}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ std::unique\_ptr<CanAdapter>\ m\_CanAdapter\{\};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ clientAddressSize;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ clientRecvLength;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ std::unique\_ptr<std::thread>\ pcanReadThread\ \{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ udp\_signal\_period;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ uint64\_t\ countMsgSend\ =\ 0;}
+\DoxyCodeLine{00063\ \};}
+
+\end{DoxyCode}

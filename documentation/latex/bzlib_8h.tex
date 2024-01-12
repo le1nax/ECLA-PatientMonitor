@@ -1,0 +1,386 @@
+\doxysection{build/vcpkg\+\_\+installed/x64-\/mingw-\/static/include/bzlib.h File Reference}
+\hypertarget{bzlib_8h}{}\label{bzlib_8h}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/bzlib.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/bzlib.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_ae5a377f72bf60dd72da6fb91958f8e8b}{BZ\+\_\+\+RUN}}~0
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_afd210357c010113ec9f576d8659cf6a6}{BZ\+\_\+\+FLUSH}}~1
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_ab9ba8de02273bf07cbef01355317db29}{BZ\+\_\+\+FINISH}}~2
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a61417364d1847b31d7edfb28ecda6971}{BZ\+\_\+\+OK}}~0
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a6f37dc6015be62b574e0017e7525c64e}{BZ\+\_\+\+RUN\+\_\+\+OK}}~1
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_aaa144c925006b886428bc0fb94499f9c}{BZ\+\_\+\+FLUSH\+\_\+\+OK}}~2
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a36160e975eacbd1ca390ebb3f30b6745}{BZ\+\_\+\+FINISH\+\_\+\+OK}}~3
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_adce56a552cd0045554dafba42405b1c0}{BZ\+\_\+\+STREAM\+\_\+\+END}}~4
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a9f1566b7072ec78f84a3f42607e7493e}{BZ\+\_\+\+SEQUENCE\+\_\+\+ERROR}}~(-\/1)
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a39bf723acf8cf1666f4dd62d4e17b916}{BZ\+\_\+\+PARAM\+\_\+\+ERROR}}~(-\/2)
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a514f1c6c17832fa33eb29704d5e58a34}{BZ\+\_\+\+MEM\+\_\+\+ERROR}}~(-\/3)
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a7a16281753e49ae475255c10d0b79c35}{BZ\+\_\+\+DATA\+\_\+\+ERROR}}~(-\/4)
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a60c5aa805b47502298579e4b5c29899e}{BZ\+\_\+\+DATA\+\_\+\+ERROR\+\_\+\+MAGIC}}~(-\/5)
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a2560c23be810e784802751acda09e5fb}{BZ\+\_\+\+IO\+\_\+\+ERROR}}~(-\/6)
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a9075b1c774d442fe896dc4213e5fb3c6}{BZ\+\_\+\+UNEXPECTED\+\_\+\+EOF}}~(-\/7)
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a0162cee123c00d4c5fa129f8c6d321d9}{BZ\+\_\+\+OUTBUFF\+\_\+\+FULL}}~(-\/8)
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_aa2b417bf3c4b564f821d03d438295e42}{BZ\+\_\+\+CONFIG\+\_\+\+ERROR}}~(-\/9)
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}(func)~func
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}}~extern
+\item 
+\#define \mbox{\hyperlink{bzlib_8h_a5c8d7bad2ccb820ab234d19f1a4c7bdc}{BZ\+\_\+\+MAX\+\_\+\+UNUSED}}~5000
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_a67ac389693db7cfe87b721bbc8c4eb65}{BZ2\+\_\+bz\+Compress\+Init}} (\mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}} \texorpdfstring{$\ast$}{*}strm, int block\+Size100k, int verbosity, int work\+Factor)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_a82a451e4cf97a110a8a2aaf5c0284d05}{BZ2\+\_\+bz\+Compress}} (\mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}} \texorpdfstring{$\ast$}{*}strm, int action)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_ad6bb27d00fb4bdd329b3234e9acf534d}{BZ2\+\_\+bz\+Compress\+End}} (\mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}} \texorpdfstring{$\ast$}{*}strm)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_a8d8f2f8f24a1916bbaa0d62ac7a7d7f5}{BZ2\+\_\+bz\+Decompress\+Init}} (\mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}} \texorpdfstring{$\ast$}{*}strm, int verbosity, int small)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_ac9ef23cf5fa665ebfa93fa8d0697da99}{BZ2\+\_\+bz\+Decompress}} (\mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}} \texorpdfstring{$\ast$}{*}strm)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_ae6fa41c1836d462e964183b3d2571be8}{BZ2\+\_\+bz\+Decompress\+End}} (\mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}} \texorpdfstring{$\ast$}{*}strm)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_afc3c14d4bfa0f252ccc920e3b0df4704}{BZ2\+\_\+bz\+Read\+Open}} (int \texorpdfstring{$\ast$}{*}bzerror, FILE \texorpdfstring{$\ast$}{*}f, int verbosity, int small, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}unused, int n\+Unused)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_a019cd4200e530c1850fba84a02fa73b5}{BZ2\+\_\+bz\+Read\+Close}} (int \texorpdfstring{$\ast$}{*}bzerror, \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}b)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_add3c2493d5a8ace977cb48bfd12bdbc8}{BZ2\+\_\+bz\+Read\+Get\+Unused}} (int \texorpdfstring{$\ast$}{*}bzerror, \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}b, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}unused, int \texorpdfstring{$\ast$}{*}n\+Unused)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_aa58d9438a59e466bb6d7a8a350981a28}{BZ2\+\_\+bz\+Read}} (int \texorpdfstring{$\ast$}{*}bzerror, \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}b, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}buf, int len)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_ac946b9494a2aa1e9eb9f6072970c07fe}{BZ2\+\_\+bz\+Write\+Open}} (int \texorpdfstring{$\ast$}{*}bzerror, FILE \texorpdfstring{$\ast$}{*}f, int block\+Size100k, int verbosity, int work\+Factor)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_ac0ee27cad70465618cdaac4dba76d32e}{BZ2\+\_\+bz\+Write}} (int \texorpdfstring{$\ast$}{*}bzerror, \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}b, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}buf, int len)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_a965bb896f11b4e0103ff252049723ee7}{BZ2\+\_\+bz\+Write\+Close}} (int \texorpdfstring{$\ast$}{*}bzerror, \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}b, int abandon, unsigned int \texorpdfstring{$\ast$}{*}nbytes\+\_\+in, unsigned int \texorpdfstring{$\ast$}{*}nbytes\+\_\+out)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_aa8f11aea0c222e2f019ec3fdf1c70bcc}{BZ2\+\_\+bz\+Write\+Close64}} (int \texorpdfstring{$\ast$}{*}bzerror, \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}b, int abandon, unsigned int \texorpdfstring{$\ast$}{*}nbytes\+\_\+in\+\_\+lo32, unsigned int \texorpdfstring{$\ast$}{*}nbytes\+\_\+in\+\_\+hi32, unsigned int \texorpdfstring{$\ast$}{*}nbytes\+\_\+out\+\_\+lo32, unsigned int \texorpdfstring{$\ast$}{*}nbytes\+\_\+out\+\_\+hi32)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_adceecf16fb855f77c7555e78527d2d89}{BZ2\+\_\+bz\+Buff\+To\+Buff\+Compress}} (char \texorpdfstring{$\ast$}{*}dest, unsigned int \texorpdfstring{$\ast$}{*}dest\+Len, char \texorpdfstring{$\ast$}{*}source, unsigned int source\+Len, int block\+Size100k, int verbosity, int work\+Factor)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_a7efea6f98c51ae16fd90dbb61db6df8c}{BZ2\+\_\+bz\+Buff\+To\+Buff\+Decompress}} (char \texorpdfstring{$\ast$}{*}dest, unsigned int \texorpdfstring{$\ast$}{*}dest\+Len, char \texorpdfstring{$\ast$}{*}source, unsigned int source\+Len, int small, int verbosity)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_a367695a3d1fdde55488de9c7b349718a}{BZ2\+\_\+bzlib\+Version}} (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}})
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_ac8c4ce51692447700845d332cdbe8bca}{BZ2\+\_\+bzopen}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1e71d9c196e4683cc06c4b54d53f7ef5}{mode}})
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_a885bab080a251319905f76162636cfcf}{BZ2\+\_\+bzdopen}} (int fd, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1e71d9c196e4683cc06c4b54d53f7ef5}{mode}})
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_ad9cd9fcce34563c4b6a9b529b87af194}{BZ2\+\_\+bzread}} (\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}b, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}buf, int len)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_aca6d8ba5da54603ea808baa90529af2e}{BZ2\+\_\+bzwrite}} (\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}b, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}buf, int len)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_a1c6ec455158122290467a0af07516fdb}{BZ2\+\_\+bzflush}} (\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}b)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_a62cfd6641b39114695baa90fe5ef2d25}{BZ2\+\_\+bzclose}} (\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}b)
+\item 
+\mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() \mbox{\hyperlink{bzlib_8h_aecd0c3ff950b5bcabb4a497cb090aa56}{BZ2\+\_\+bzerror}} (\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}b, int \texorpdfstring{$\ast$}{*}errnum)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}\label{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b} 
+\index{bzlib.h@{bzlib.h}!BZ\_API@{BZ\_API}}
+\index{BZ\_API@{BZ\_API}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_API}{BZ\_API}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+API(\begin{DoxyParamCaption}\item[{}]{func }\end{DoxyParamCaption})~func}
+
+\Hypertarget{bzlib_8h_aa2b417bf3c4b564f821d03d438295e42}\label{bzlib_8h_aa2b417bf3c4b564f821d03d438295e42} 
+\index{bzlib.h@{bzlib.h}!BZ\_CONFIG\_ERROR@{BZ\_CONFIG\_ERROR}}
+\index{BZ\_CONFIG\_ERROR@{BZ\_CONFIG\_ERROR}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_CONFIG\_ERROR}{BZ\_CONFIG\_ERROR}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+CONFIG\+\_\+\+ERROR~(-\/9)}
+
+\Hypertarget{bzlib_8h_a7a16281753e49ae475255c10d0b79c35}\label{bzlib_8h_a7a16281753e49ae475255c10d0b79c35} 
+\index{bzlib.h@{bzlib.h}!BZ\_DATA\_ERROR@{BZ\_DATA\_ERROR}}
+\index{BZ\_DATA\_ERROR@{BZ\_DATA\_ERROR}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_DATA\_ERROR}{BZ\_DATA\_ERROR}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+DATA\+\_\+\+ERROR~(-\/4)}
+
+\Hypertarget{bzlib_8h_a60c5aa805b47502298579e4b5c29899e}\label{bzlib_8h_a60c5aa805b47502298579e4b5c29899e} 
+\index{bzlib.h@{bzlib.h}!BZ\_DATA\_ERROR\_MAGIC@{BZ\_DATA\_ERROR\_MAGIC}}
+\index{BZ\_DATA\_ERROR\_MAGIC@{BZ\_DATA\_ERROR\_MAGIC}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_DATA\_ERROR\_MAGIC}{BZ\_DATA\_ERROR\_MAGIC}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+DATA\+\_\+\+ERROR\+\_\+\+MAGIC~(-\/5)}
+
+\Hypertarget{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}\label{bzlib_8h_a53a5c16572762e7adf339b99fde2179b} 
+\index{bzlib.h@{bzlib.h}!BZ\_EXTERN@{BZ\_EXTERN}}
+\index{BZ\_EXTERN@{BZ\_EXTERN}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_EXTERN}{BZ\_EXTERN}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+EXTERN~extern}
+
+\Hypertarget{bzlib_8h_ab9ba8de02273bf07cbef01355317db29}\label{bzlib_8h_ab9ba8de02273bf07cbef01355317db29} 
+\index{bzlib.h@{bzlib.h}!BZ\_FINISH@{BZ\_FINISH}}
+\index{BZ\_FINISH@{BZ\_FINISH}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_FINISH}{BZ\_FINISH}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+FINISH~2}
+
+\Hypertarget{bzlib_8h_a36160e975eacbd1ca390ebb3f30b6745}\label{bzlib_8h_a36160e975eacbd1ca390ebb3f30b6745} 
+\index{bzlib.h@{bzlib.h}!BZ\_FINISH\_OK@{BZ\_FINISH\_OK}}
+\index{BZ\_FINISH\_OK@{BZ\_FINISH\_OK}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_FINISH\_OK}{BZ\_FINISH\_OK}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+FINISH\+\_\+\+OK~3}
+
+\Hypertarget{bzlib_8h_afd210357c010113ec9f576d8659cf6a6}\label{bzlib_8h_afd210357c010113ec9f576d8659cf6a6} 
+\index{bzlib.h@{bzlib.h}!BZ\_FLUSH@{BZ\_FLUSH}}
+\index{BZ\_FLUSH@{BZ\_FLUSH}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_FLUSH}{BZ\_FLUSH}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+FLUSH~1}
+
+\Hypertarget{bzlib_8h_aaa144c925006b886428bc0fb94499f9c}\label{bzlib_8h_aaa144c925006b886428bc0fb94499f9c} 
+\index{bzlib.h@{bzlib.h}!BZ\_FLUSH\_OK@{BZ\_FLUSH\_OK}}
+\index{BZ\_FLUSH\_OK@{BZ\_FLUSH\_OK}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_FLUSH\_OK}{BZ\_FLUSH\_OK}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+FLUSH\+\_\+\+OK~2}
+
+\Hypertarget{bzlib_8h_a2560c23be810e784802751acda09e5fb}\label{bzlib_8h_a2560c23be810e784802751acda09e5fb} 
+\index{bzlib.h@{bzlib.h}!BZ\_IO\_ERROR@{BZ\_IO\_ERROR}}
+\index{BZ\_IO\_ERROR@{BZ\_IO\_ERROR}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_IO\_ERROR}{BZ\_IO\_ERROR}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+IO\+\_\+\+ERROR~(-\/6)}
+
+\Hypertarget{bzlib_8h_a5c8d7bad2ccb820ab234d19f1a4c7bdc}\label{bzlib_8h_a5c8d7bad2ccb820ab234d19f1a4c7bdc} 
+\index{bzlib.h@{bzlib.h}!BZ\_MAX\_UNUSED@{BZ\_MAX\_UNUSED}}
+\index{BZ\_MAX\_UNUSED@{BZ\_MAX\_UNUSED}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_MAX\_UNUSED}{BZ\_MAX\_UNUSED}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+MAX\+\_\+\+UNUSED~5000}
+
+\Hypertarget{bzlib_8h_a514f1c6c17832fa33eb29704d5e58a34}\label{bzlib_8h_a514f1c6c17832fa33eb29704d5e58a34} 
+\index{bzlib.h@{bzlib.h}!BZ\_MEM\_ERROR@{BZ\_MEM\_ERROR}}
+\index{BZ\_MEM\_ERROR@{BZ\_MEM\_ERROR}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_MEM\_ERROR}{BZ\_MEM\_ERROR}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+MEM\+\_\+\+ERROR~(-\/3)}
+
+\Hypertarget{bzlib_8h_a61417364d1847b31d7edfb28ecda6971}\label{bzlib_8h_a61417364d1847b31d7edfb28ecda6971} 
+\index{bzlib.h@{bzlib.h}!BZ\_OK@{BZ\_OK}}
+\index{BZ\_OK@{BZ\_OK}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_OK}{BZ\_OK}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+OK~0}
+
+\Hypertarget{bzlib_8h_a0162cee123c00d4c5fa129f8c6d321d9}\label{bzlib_8h_a0162cee123c00d4c5fa129f8c6d321d9} 
+\index{bzlib.h@{bzlib.h}!BZ\_OUTBUFF\_FULL@{BZ\_OUTBUFF\_FULL}}
+\index{BZ\_OUTBUFF\_FULL@{BZ\_OUTBUFF\_FULL}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_OUTBUFF\_FULL}{BZ\_OUTBUFF\_FULL}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+OUTBUFF\+\_\+\+FULL~(-\/8)}
+
+\Hypertarget{bzlib_8h_a39bf723acf8cf1666f4dd62d4e17b916}\label{bzlib_8h_a39bf723acf8cf1666f4dd62d4e17b916} 
+\index{bzlib.h@{bzlib.h}!BZ\_PARAM\_ERROR@{BZ\_PARAM\_ERROR}}
+\index{BZ\_PARAM\_ERROR@{BZ\_PARAM\_ERROR}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_PARAM\_ERROR}{BZ\_PARAM\_ERROR}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+PARAM\+\_\+\+ERROR~(-\/2)}
+
+\Hypertarget{bzlib_8h_ae5a377f72bf60dd72da6fb91958f8e8b}\label{bzlib_8h_ae5a377f72bf60dd72da6fb91958f8e8b} 
+\index{bzlib.h@{bzlib.h}!BZ\_RUN@{BZ\_RUN}}
+\index{BZ\_RUN@{BZ\_RUN}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_RUN}{BZ\_RUN}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+RUN~0}
+
+\Hypertarget{bzlib_8h_a6f37dc6015be62b574e0017e7525c64e}\label{bzlib_8h_a6f37dc6015be62b574e0017e7525c64e} 
+\index{bzlib.h@{bzlib.h}!BZ\_RUN\_OK@{BZ\_RUN\_OK}}
+\index{BZ\_RUN\_OK@{BZ\_RUN\_OK}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_RUN\_OK}{BZ\_RUN\_OK}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+RUN\+\_\+\+OK~1}
+
+\Hypertarget{bzlib_8h_a9f1566b7072ec78f84a3f42607e7493e}\label{bzlib_8h_a9f1566b7072ec78f84a3f42607e7493e} 
+\index{bzlib.h@{bzlib.h}!BZ\_SEQUENCE\_ERROR@{BZ\_SEQUENCE\_ERROR}}
+\index{BZ\_SEQUENCE\_ERROR@{BZ\_SEQUENCE\_ERROR}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_SEQUENCE\_ERROR}{BZ\_SEQUENCE\_ERROR}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+SEQUENCE\+\_\+\+ERROR~(-\/1)}
+
+\Hypertarget{bzlib_8h_adce56a552cd0045554dafba42405b1c0}\label{bzlib_8h_adce56a552cd0045554dafba42405b1c0} 
+\index{bzlib.h@{bzlib.h}!BZ\_STREAM\_END@{BZ\_STREAM\_END}}
+\index{BZ\_STREAM\_END@{BZ\_STREAM\_END}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_STREAM\_END}{BZ\_STREAM\_END}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+STREAM\+\_\+\+END~4}
+
+\Hypertarget{bzlib_8h_a9075b1c774d442fe896dc4213e5fb3c6}\label{bzlib_8h_a9075b1c774d442fe896dc4213e5fb3c6} 
+\index{bzlib.h@{bzlib.h}!BZ\_UNEXPECTED\_EOF@{BZ\_UNEXPECTED\_EOF}}
+\index{BZ\_UNEXPECTED\_EOF@{BZ\_UNEXPECTED\_EOF}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ\_UNEXPECTED\_EOF}{BZ\_UNEXPECTED\_EOF}}
+{\footnotesize\ttfamily \#define BZ\+\_\+\+UNEXPECTED\+\_\+\+EOF~(-\/7)}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}\label{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d} 
+\index{bzlib.h@{bzlib.h}!BZFILE@{BZFILE}}
+\index{BZFILE@{BZFILE}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZFILE}{BZFILE}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{bzlib_8h_adceecf16fb855f77c7555e78527d2d89}\label{bzlib_8h_adceecf16fb855f77c7555e78527d2d89} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzBuffToBuffCompress@{BZ2\_bzBuffToBuffCompress}}
+\index{BZ2\_bzBuffToBuffCompress@{BZ2\_bzBuffToBuffCompress}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzBuffToBuffCompress()}{BZ2\_bzBuffToBuffCompress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Buff\+To\+Buff\+Compress (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{unsigned int \texorpdfstring{$\ast$}{*}}]{dest\+Len,  }\item[{char \texorpdfstring{$\ast$}{*}}]{source,  }\item[{unsigned int}]{source\+Len,  }\item[{int}]{block\+Size100k,  }\item[{int}]{verbosity,  }\item[{int}]{work\+Factor }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_a7efea6f98c51ae16fd90dbb61db6df8c}\label{bzlib_8h_a7efea6f98c51ae16fd90dbb61db6df8c} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzBuffToBuffDecompress@{BZ2\_bzBuffToBuffDecompress}}
+\index{BZ2\_bzBuffToBuffDecompress@{BZ2\_bzBuffToBuffDecompress}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzBuffToBuffDecompress()}{BZ2\_bzBuffToBuffDecompress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Buff\+To\+Buff\+Decompress (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{unsigned int \texorpdfstring{$\ast$}{*}}]{dest\+Len,  }\item[{char \texorpdfstring{$\ast$}{*}}]{source,  }\item[{unsigned int}]{source\+Len,  }\item[{int}]{small,  }\item[{int}]{verbosity }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_a62cfd6641b39114695baa90fe5ef2d25}\label{bzlib_8h_a62cfd6641b39114695baa90fe5ef2d25} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzclose@{BZ2\_bzclose}}
+\index{BZ2\_bzclose@{BZ2\_bzclose}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzclose()}{BZ2\_bzclose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bzclose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_a82a451e4cf97a110a8a2aaf5c0284d05}\label{bzlib_8h_a82a451e4cf97a110a8a2aaf5c0284d05} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzCompress@{BZ2\_bzCompress}}
+\index{BZ2\_bzCompress@{BZ2\_bzCompress}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzCompress()}{BZ2\_bzCompress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Compress (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}} \texorpdfstring{$\ast$}{*}}]{strm,  }\item[{int}]{action }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_ad6bb27d00fb4bdd329b3234e9acf534d}\label{bzlib_8h_ad6bb27d00fb4bdd329b3234e9acf534d} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzCompressEnd@{BZ2\_bzCompressEnd}}
+\index{BZ2\_bzCompressEnd@{BZ2\_bzCompressEnd}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzCompressEnd()}{BZ2\_bzCompressEnd()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Compress\+End (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}} \texorpdfstring{$\ast$}{*}}]{strm }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_a67ac389693db7cfe87b721bbc8c4eb65}\label{bzlib_8h_a67ac389693db7cfe87b721bbc8c4eb65} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzCompressInit@{BZ2\_bzCompressInit}}
+\index{BZ2\_bzCompressInit@{BZ2\_bzCompressInit}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzCompressInit()}{BZ2\_bzCompressInit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Compress\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}} \texorpdfstring{$\ast$}{*}}]{strm,  }\item[{int}]{block\+Size100k,  }\item[{int}]{verbosity,  }\item[{int}]{work\+Factor }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_ac9ef23cf5fa665ebfa93fa8d0697da99}\label{bzlib_8h_ac9ef23cf5fa665ebfa93fa8d0697da99} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzDecompress@{BZ2\_bzDecompress}}
+\index{BZ2\_bzDecompress@{BZ2\_bzDecompress}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzDecompress()}{BZ2\_bzDecompress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Decompress (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}} \texorpdfstring{$\ast$}{*}}]{strm }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_ae6fa41c1836d462e964183b3d2571be8}\label{bzlib_8h_ae6fa41c1836d462e964183b3d2571be8} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzDecompressEnd@{BZ2\_bzDecompressEnd}}
+\index{BZ2\_bzDecompressEnd@{BZ2\_bzDecompressEnd}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzDecompressEnd()}{BZ2\_bzDecompressEnd()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Decompress\+End (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}} \texorpdfstring{$\ast$}{*}}]{strm }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_a8d8f2f8f24a1916bbaa0d62ac7a7d7f5}\label{bzlib_8h_a8d8f2f8f24a1916bbaa0d62ac7a7d7f5} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzDecompressInit@{BZ2\_bzDecompressInit}}
+\index{BZ2\_bzDecompressInit@{BZ2\_bzDecompressInit}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzDecompressInit()}{BZ2\_bzDecompressInit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Decompress\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbz__stream}{bz\+\_\+stream}} \texorpdfstring{$\ast$}{*}}]{strm,  }\item[{int}]{verbosity,  }\item[{int}]{small }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_a885bab080a251319905f76162636cfcf}\label{bzlib_8h_a885bab080a251319905f76162636cfcf} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzdopen@{BZ2\_bzdopen}}
+\index{BZ2\_bzdopen@{BZ2\_bzdopen}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzdopen()}{BZ2\_bzdopen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bzdopen (\begin{DoxyParamCaption}\item[{int}]{fd,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}}]{mode }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_aecd0c3ff950b5bcabb4a497cb090aa56}\label{bzlib_8h_aecd0c3ff950b5bcabb4a497cb090aa56} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzerror@{BZ2\_bzerror}}
+\index{BZ2\_bzerror@{BZ2\_bzerror}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzerror()}{BZ2\_bzerror()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bzerror (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{int \texorpdfstring{$\ast$}{*}}]{errnum }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_a1c6ec455158122290467a0af07516fdb}\label{bzlib_8h_a1c6ec455158122290467a0af07516fdb} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzflush@{BZ2\_bzflush}}
+\index{BZ2\_bzflush@{BZ2\_bzflush}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzflush()}{BZ2\_bzflush()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bzflush (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_a367695a3d1fdde55488de9c7b349718a}\label{bzlib_8h_a367695a3d1fdde55488de9c7b349718a} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzlibVersion@{BZ2\_bzlibVersion}}
+\index{BZ2\_bzlibVersion@{BZ2\_bzlibVersion}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzlibVersion()}{BZ2\_bzlibVersion()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bzlib\+Version (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_ac8c4ce51692447700845d332cdbe8bca}\label{bzlib_8h_ac8c4ce51692447700845d332cdbe8bca} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzopen@{BZ2\_bzopen}}
+\index{BZ2\_bzopen@{BZ2\_bzopen}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzopen()}{BZ2\_bzopen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bzopen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*}}]{mode }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_ad9cd9fcce34563c4b6a9b529b87af194}\label{bzlib_8h_ad9cd9fcce34563c4b6a9b529b87af194} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzread@{BZ2\_bzread}}
+\index{BZ2\_bzread@{BZ2\_bzread}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzread()}{BZ2\_bzread()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bzread (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_aa58d9438a59e466bb6d7a8a350981a28}\label{bzlib_8h_aa58d9438a59e466bb6d7a8a350981a28} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzRead@{BZ2\_bzRead}}
+\index{BZ2\_bzRead@{BZ2\_bzRead}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzRead()}{BZ2\_bzRead()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Read (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{bzerror,  }\item[{\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_a019cd4200e530c1850fba84a02fa73b5}\label{bzlib_8h_a019cd4200e530c1850fba84a02fa73b5} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzReadClose@{BZ2\_bzReadClose}}
+\index{BZ2\_bzReadClose@{BZ2\_bzReadClose}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzReadClose()}{BZ2\_bzReadClose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Read\+Close (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{bzerror,  }\item[{\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_add3c2493d5a8ace977cb48bfd12bdbc8}\label{bzlib_8h_add3c2493d5a8ace977cb48bfd12bdbc8} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzReadGetUnused@{BZ2\_bzReadGetUnused}}
+\index{BZ2\_bzReadGetUnused@{BZ2\_bzReadGetUnused}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzReadGetUnused()}{BZ2\_bzReadGetUnused()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Read\+Get\+Unused (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{bzerror,  }\item[{\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{unused,  }\item[{int \texorpdfstring{$\ast$}{*}}]{n\+Unused }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_afc3c14d4bfa0f252ccc920e3b0df4704}\label{bzlib_8h_afc3c14d4bfa0f252ccc920e3b0df4704} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzReadOpen@{BZ2\_bzReadOpen}}
+\index{BZ2\_bzReadOpen@{BZ2\_bzReadOpen}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzReadOpen()}{BZ2\_bzReadOpen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Read\+Open (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{bzerror,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{f,  }\item[{int}]{verbosity,  }\item[{int}]{small,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{unused,  }\item[{int}]{n\+Unused }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_aca6d8ba5da54603ea808baa90529af2e}\label{bzlib_8h_aca6d8ba5da54603ea808baa90529af2e} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzwrite@{BZ2\_bzwrite}}
+\index{BZ2\_bzwrite@{BZ2\_bzwrite}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzwrite()}{BZ2\_bzwrite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} int \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bzwrite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_ac0ee27cad70465618cdaac4dba76d32e}\label{bzlib_8h_ac0ee27cad70465618cdaac4dba76d32e} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzWrite@{BZ2\_bzWrite}}
+\index{BZ2\_bzWrite@{BZ2\_bzWrite}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzWrite()}{BZ2\_bzWrite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Write (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{bzerror,  }\item[{\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_a965bb896f11b4e0103ff252049723ee7}\label{bzlib_8h_a965bb896f11b4e0103ff252049723ee7} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzWriteClose@{BZ2\_bzWriteClose}}
+\index{BZ2\_bzWriteClose@{BZ2\_bzWriteClose}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzWriteClose()}{BZ2\_bzWriteClose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Write\+Close (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{bzerror,  }\item[{\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{int}]{abandon,  }\item[{unsigned int \texorpdfstring{$\ast$}{*}}]{nbytes\+\_\+in,  }\item[{unsigned int \texorpdfstring{$\ast$}{*}}]{nbytes\+\_\+out }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_aa8f11aea0c222e2f019ec3fdf1c70bcc}\label{bzlib_8h_aa8f11aea0c222e2f019ec3fdf1c70bcc} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzWriteClose64@{BZ2\_bzWriteClose64}}
+\index{BZ2\_bzWriteClose64@{BZ2\_bzWriteClose64}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzWriteClose64()}{BZ2\_bzWriteClose64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Write\+Close64 (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{bzerror,  }\item[{\mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{int}]{abandon,  }\item[{unsigned int \texorpdfstring{$\ast$}{*}}]{nbytes\+\_\+in\+\_\+lo32,  }\item[{unsigned int \texorpdfstring{$\ast$}{*}}]{nbytes\+\_\+in\+\_\+hi32,  }\item[{unsigned int \texorpdfstring{$\ast$}{*}}]{nbytes\+\_\+out\+\_\+lo32,  }\item[{unsigned int \texorpdfstring{$\ast$}{*}}]{nbytes\+\_\+out\+\_\+hi32 }\end{DoxyParamCaption})}
+
+\Hypertarget{bzlib_8h_ac946b9494a2aa1e9eb9f6072970c07fe}\label{bzlib_8h_ac946b9494a2aa1e9eb9f6072970c07fe} 
+\index{bzlib.h@{bzlib.h}!BZ2\_bzWriteOpen@{BZ2\_bzWriteOpen}}
+\index{BZ2\_bzWriteOpen@{BZ2\_bzWriteOpen}!bzlib.h@{bzlib.h}}
+\doxysubsubsection{\texorpdfstring{BZ2\_bzWriteOpen()}{BZ2\_bzWriteOpen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bzlib_8h_a53a5c16572762e7adf339b99fde2179b}{BZ\+\_\+\+EXTERN}} \mbox{\hyperlink{bzlib_8h_af7c3463d0b5b2ff00b5c6bbfecdbd66d}{BZFILE}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bzlib_8h_ade0c35489678e5a0b7aa41396526e30b}{BZ\+\_\+\+API}}() BZ2\+\_\+bz\+Write\+Open (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{bzerror,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{f,  }\item[{int}]{block\+Size100k,  }\item[{int}]{verbosity,  }\item[{int}]{work\+Factor }\end{DoxyParamCaption})}
+

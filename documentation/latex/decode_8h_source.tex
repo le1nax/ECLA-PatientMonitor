@@ -1,0 +1,149 @@
+\doxysection{decode.\+h}
+\hypertarget{decode_8h_source}{}\label{decode_8h_source}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/decode.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/decode.h}}
+\mbox{\hyperlink{decode_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ 2013\ Google\ Inc.\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00002\ \textcolor{comment}{}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ Distributed\ under\ MIT\ license.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ See\ file\ LICENSE\ for\ detail\ or\ copy\ at\ https://opensource.org/licenses/MIT}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ BROTLI\_DEC\_DECODE\_H\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ BROTLI\_DEC\_DECODE\_H\_}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{port_8h}{brotli/port.h}}>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{shared__dictionary_8h}{brotli/shared\_dictionary.h}}>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{types_8h}{brotli/types.h}}>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#if\ defined(\_\_cplusplus)\ ||\ defined(c\_plusplus)}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }BrotliDecoderStateStruct\ \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{BrotliDecoderState}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eadd6df16ccf47d89d71a0170acd452496}{BROTLI\_DECODER\_RESULT\_ERROR}}\ =\ 0,}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eaba3e4e586e974657ec2e72753a469823}{BROTLI\_DECODER\_RESULT\_SUCCESS}}\ =\ 1,}
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374ea0da57a2b50c1e65c6b55c095f88bff38}{BROTLI\_DECODER\_RESULT\_NEEDS\_MORE\_INPUT}}\ =\ 2,}
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eafa10e01bd2f25a3d8d4b22db6fe66ab1}{BROTLI\_DECODER\_RESULT\_NEEDS\_MORE\_OUTPUT}}\ =\ 3}
+\DoxyCodeLine{00044\ \}\ \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374e}{BrotliDecoderResult}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ BROTLI\_DECODER\_ERROR\_CODES\_LIST(BROTLI\_ERROR\_CODE,\ SEPARATOR)\ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_,\ NO\_ERROR,\ 0)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\ \ }\textcolor{comment}{/*\ Same\ as\ BrotliDecoderResult\ values\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_,\ SUCCESS,\ 1)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_,\ NEEDS\_MORE\_INPUT,\ 2)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_,\ NEEDS\_MORE\_OUTPUT,\ 3)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\ \ }\textcolor{comment}{/*\ Errors\ caused\ by\ invalid\ input\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ EXUBERANT\_NIBBLE,\ -\/1)\ SEPARATOR\ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ RESERVED,\ -\/2)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ EXUBERANT\_META\_NIBBLE,\ -\/3)\ SEPARATOR\ \ \ \(\backslash\)}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ SIMPLE\_HUFFMAN\_ALPHABET,\ -\/4)\ SEPARATOR\ \(\backslash\)}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ SIMPLE\_HUFFMAN\_SAME,\ -\/5)\ SEPARATOR\ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ CL\_SPACE,\ -\/6)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ HUFFMAN\_SPACE,\ -\/7)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ CONTEXT\_MAP\_REPEAT,\ -\/8)\ SEPARATOR\ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ BLOCK\_LENGTH\_1,\ -\/9)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ BLOCK\_LENGTH\_2,\ -\/10)\ SEPARATOR\ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ TRANSFORM,\ -\/11)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ DICTIONARY,\ -\/12)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ WINDOW\_BITS,\ -\/13)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ PADDING\_1,\ -\/14)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ PADDING\_2,\ -\/15)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_FORMAT\_,\ DISTANCE,\ -\/16)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\ \ }\textcolor{comment}{/*\ -\/17\ code\ is\ reserved\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_,\ COMPOUND\_DICTIONARY,\ -\/18)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_,\ DICTIONARY\_NOT\_SET,\ -\/19)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_,\ INVALID\_ARGUMENTS,\ -\/20)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\ \ }\textcolor{comment}{/*\ Memory\ allocation\ problems\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_ALLOC\_,\ CONTEXT\_MODES,\ -\/21)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\ \ }\textcolor{comment}{/*\ Literal,\ insert\ and\ distance\ trees\ together\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_ALLOC\_,\ TREE\_GROUPS,\ -\/22)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\ \ }\textcolor{comment}{/*\ -\/23..-\/24\ codes\ are\ reserved\ for\ distinct\ tree\ groups\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_ALLOC\_,\ CONTEXT\_MAP,\ -\/25)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_ALLOC\_,\ RING\_BUFFER\_1,\ -\/26)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_ALLOC\_,\ RING\_BUFFER\_2,\ -\/27)\ SEPARATOR\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\ \ }\textcolor{comment}{/*\ -\/28..-\/29\ codes\ are\ reserved\ for\ dynamic\ ring-\/buffer\ allocation\ */}\textcolor{preprocessor}{\ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_ALLOC\_,\ BLOCK\_TYPE\_TREES,\ -\/30)\ SEPARATOR\ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\ \ }\textcolor{comment}{/*\ "{}Impossible"{}\ states\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\ \ BROTLI\_ERROR\_CODE(\_ERROR\_,\ UNREACHABLE,\ -\/31)}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00114\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ BROTLI\_COMMA\_\ ,}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ BROTLI\_ERROR\_CODE\_ENUM\_ITEM\_(PREFIX,\ NAME,\ CODE)\ \(\backslash\)}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_DECODER\ \#\#\ PREFIX\ \#\#\ NAME\ =\ CODE}}
+\DoxyCodeLine{00118\ \ \ \mbox{\hyperlink{decode_8h_a687f5bac75f233b2c219659fbf17c0df}{BROTLI\_DECODER\_ERROR\_CODES\_LIST}}(\mbox{\hyperlink{decode_8h_ad51e5f83a25483f7a65067ba8f10c0c6}{BROTLI\_ERROR\_CODE\_ENUM\_ITEM\_}},\ \mbox{\hyperlink{decode_8h_ab8490e3035c5f3b8cc31790f69d2a173}{BROTLI\_COMMA\_}})}
+\DoxyCodeLine{00119\ \}\ \mbox{\hyperlink{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}{BrotliDecoderErrorCode}};}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#undef\ BROTLI\_ERROR\_CODE\_ENUM\_ITEM\_}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#undef\ BROTLI\_COMMA\_}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#define\ BROTLI\_LAST\_ERROR\_CODE\ BROTLI\_DECODER\_ERROR\_UNREACHABLE}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00133\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070}{BrotliDecoderParameter}}\ \{}
+\DoxyCodeLine{00140\ \ \ \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070ae1ab9b5b0188da1bc56b74c6fee1d1f7}{BROTLI\_DECODER\_PARAM\_DISABLE\_RING\_BUFFER\_REALLOCATION}}\ =\ 0,}
+\DoxyCodeLine{00144\ \ \ \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070a500b69dd614ca3ac79d79c486dc40908}{BROTLI\_DECODER\_PARAM\_LARGE\_WINDOW}}\ =\ 1}
+\DoxyCodeLine{00145\ \}\ \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070}{BrotliDecoderParameter}};}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00156\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\_BOOL}}\ \mbox{\hyperlink{decode_8h_adee376816d421c8588eebcc76e5156d6}{BrotliDecoderSetParameter}}(}
+\DoxyCodeLine{00157\ \ \ \ \ \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{BrotliDecoderState}}*\ state,\ \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070}{BrotliDecoderParameter}}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_aa18f5f638c58bcb864e367eacbb3380d}{param}},\ uint32\_t\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1b2be7bfa84f129a2690a62f3ad82d62}{value}});}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00177\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\_BOOL}}\ \mbox{\hyperlink{decode_8h_a0aa06736e46063293fef45d1161763fe}{BrotliDecoderAttachDictionary}}(}
+\DoxyCodeLine{00178\ \ \ \ \ \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{BrotliDecoderState}}*\ state,\ \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{BrotliSharedDictionaryType}}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a63267399cd2a2ee217572c11d2e54f07}{type}},}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ data\_size,\ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_abd87654504355b4c1bb002dcb1d4d16a}{data}}[\mbox{\hyperlink{port_8h_aa4b0af0d4de034f61827d71ce4f1e1eb}{BROTLI\_ARRAY\_PARAM}}(data\_size)]);}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00199\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{BrotliDecoderState}}*\ \mbox{\hyperlink{decode_8h_a287d2eb9348db276bccc5b30fbcfe904}{BrotliDecoderCreateInstance}}(}
+\DoxyCodeLine{00200\ \ \ \ \ \mbox{\hyperlink{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}{brotli\_alloc\_func}}\ \mbox{\hyperlink{zlib_8h_a50aa48acceb621559596dfa8b7558321}{alloc\_func}},\ \mbox{\hyperlink{types_8h_a5e19dc1ca789ea76db7167289c442d32}{brotli\_free\_func}}\ \mbox{\hyperlink{zlib_8h_a002a1cda9686d40117da69d61c2a6dda}{free\_func}},\ \textcolor{keywordtype}{void}*\ opaque);}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00207\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{decode_8h_ad0ef795ea9bf78ec62939e9e78e04a6c}{BrotliDecoderDestroyInstance}}(\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{BrotliDecoderState}}*\ state);}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00226\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374e}{BrotliDecoderResult}}\ \mbox{\hyperlink{decode_8h_aa82cc8638bebdc53205f9941eec41626}{BrotliDecoderDecompress}}(}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ encoded\_size,}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ encoded\_buffer[\mbox{\hyperlink{port_8h_aa4b0af0d4de034f61827d71ce4f1e1eb}{BROTLI\_ARRAY\_PARAM}}(encoded\_size)],}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keywordtype}{size\_t}*\ decoded\_size,}
+\DoxyCodeLine{00230\ \ \ \ \ uint8\_t\ decoded\_buffer[\mbox{\hyperlink{port_8h_aa4b0af0d4de034f61827d71ce4f1e1eb}{BROTLI\_ARRAY\_PARAM}}(*decoded\_size)]);}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00270\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374e}{BrotliDecoderResult}}\ \mbox{\hyperlink{decode_8h_accb83dd5dab11ad1260c6f961a2340b3}{BrotliDecoderDecompressStream}}(}
+\DoxyCodeLine{00271\ \ \ \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{BrotliDecoderState}}*\ state,\ \textcolor{keywordtype}{size\_t}*\ available\_in,\ \textcolor{keyword}{const}\ uint8\_t**\ next\_in,}
+\DoxyCodeLine{00272\ \ \ \textcolor{keywordtype}{size\_t}*\ available\_out,\ uint8\_t**\ next\_out,\ \textcolor{keywordtype}{size\_t}*\ total\_out);}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00281\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\_BOOL}}\ \mbox{\hyperlink{decode_8h_a6e5cf101d02794992b3df899e72676b5}{BrotliDecoderHasMoreOutput}}(}
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{BrotliDecoderState}}*\ state);}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00312\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \textcolor{keyword}{const}\ uint8\_t*\ \mbox{\hyperlink{decode_8h_a263c9ba2f3acb679fae4f8dc8bfdfb99}{BrotliDecoderTakeOutput}}(}
+\DoxyCodeLine{00313\ \ \ \ \ \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{BrotliDecoderState}}*\ state,\ \textcolor{keywordtype}{size\_t}*\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}});}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00325\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\_BOOL}}\ \mbox{\hyperlink{decode_8h_af50dac3548cd60d751a338f0e14ca5d7}{BrotliDecoderIsUsed}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{BrotliDecoderState}}*\ state);}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00335\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\_BOOL}}\ \mbox{\hyperlink{decode_8h_ad8ad8d53e24daefee547be01ff9758fb}{BrotliDecoderIsFinished}}(}
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{BrotliDecoderState}}*\ state);}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00349\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \mbox{\hyperlink{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}{BrotliDecoderErrorCode}}\ \mbox{\hyperlink{decode_8h_af5f7da7dbe778e603d0b5209eec212fc}{BrotliDecoderGetErrorCode}}(}
+\DoxyCodeLine{00350\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{BrotliDecoderState}}*\ state);}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00355\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{decode_8h_a2ad245159eee51647b1007c231b5c419}{BrotliDecoderErrorString}}(\mbox{\hyperlink{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}{BrotliDecoderErrorCode}}\ c);}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00362\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ uint32\_t\ \mbox{\hyperlink{decode_8h_a079c6b60993f16eb35dd9fa9e24eb922}{BrotliDecoderVersion}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00374\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}\ (*\mbox{\hyperlink{decode_8h_a58abcbf36bb082e83f23927e6fd71763}{brotli\_decoder\_metadata\_start\_func}})(\textcolor{keywordtype}{void}*\ opaque,\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}});}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00388\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}\ (*\mbox{\hyperlink{decode_8h_a40b34c3f064c4e97c497b0fe4b3c695e}{brotli\_decoder\_metadata\_chunk\_func}})(\textcolor{keywordtype}{void}*\ opaque,}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t*\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_abd87654504355b4c1bb002dcb1d4d16a}{data}},}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}});}
+\DoxyCodeLine{00391\ }
+\DoxyCodeLine{00400\ \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\_DEC\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{decode_8h_add27695b8d5428559777e4fcc3ab9370}{BrotliDecoderSetMetadataCallbacks}}(}
+\DoxyCodeLine{00401\ \ \ \ \ \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{BrotliDecoderState}}*\ state,}
+\DoxyCodeLine{00402\ \ \ \ \ \mbox{\hyperlink{decode_8h_a58abcbf36bb082e83f23927e6fd71763}{brotli\_decoder\_metadata\_start\_func}}\ start\_func,}
+\DoxyCodeLine{00403\ \ \ \ \ \mbox{\hyperlink{decode_8h_a40b34c3f064c4e97c497b0fe4b3c695e}{brotli\_decoder\_metadata\_chunk\_func}}\ chunk\_func,\ \textcolor{keywordtype}{void}*\ opaque);}
+\DoxyCodeLine{00404\ }
+\DoxyCodeLine{00405\ \textcolor{preprocessor}{\#if\ defined(\_\_cplusplus)\ ||\ defined(c\_plusplus)}}
+\DoxyCodeLine{00406\ \}\ \textcolor{comment}{/*\ extern\ "{}C"{}\ */}}
+\DoxyCodeLine{00407\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00409\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ BROTLI\_DEC\_DECODE\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

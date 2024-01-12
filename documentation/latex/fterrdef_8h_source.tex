@@ -1,0 +1,289 @@
+\doxysection{fterrdef.\+h}
+\hypertarget{fterrdef_8h_source}{}\label{fterrdef_8h_source}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/freetype/fterrdef.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/freetype/fterrdef.h}}
+\mbox{\hyperlink{fterrdef_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ fterrdef.h}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ FreeType\ error\ codes\ (specification).}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ Copyright\ (C)\ 2002-\/2022\ by}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ David\ Turner,\ Robert\ Wilhelm,\ and\ Werner\ Lemberg.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ the\ FreeType\ project,\ and\ may\ only\ be\ used,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ modified,\ and\ distributed\ under\ the\ terms\ of\ the\ FreeType\ project}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ license,\ LICENSE.TXT.\ \ By\ continuing\ to\ use,\ modify,\ or\ distribute}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ this\ file\ you\ indicate\ that\ you\ have\ read\ the\ license\ and}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ understand\ and\ accept\ it\ fully.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ *\ @section:}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ *\ \ error\_code\_values}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ *\ @title:}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ *\ \ Error\ Code\ Values}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ \ \ *\ @abstract:}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ \ \ *\ \ All\ possible\ error\ codes\ returned\ by\ FreeType\ functions.}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ \ \ *\ \ The\ list\ below\ is\ taken\ verbatim\ from\ the\ file\ \`{}fterrdef.h`\ (loaded}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ \ \ *\ \ automatically\ by\ including\ \`{}FT\_FREETYPE\_H`).\ \ The\ first\ argument\ of\ the}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ \ \ *\ \ \`{}FT\_ERROR\_DEF\_`\ macro\ is\ the\ error\ label;\ by\ default,\ the\ prefix}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \ \ *\ \ \`{}FT\_Err\_`\ gets\ added\ so\ that\ you\ get\ error\ names\ like}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ *\ \ \`{}FT\_Err\_Cannot\_Open\_Resource`.\ \ The\ second\ argument\ is\ the\ error\ code,}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ \ \ *\ \ and\ the\ last\ argument\ an\ error\ string,\ which\ is\ not\ used\ by\ FreeType.}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ \ *\ \ Within\ your\ application\ you\ should\ **only**\ use\ error\ names\ and}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ \ \ *\ \ **never**\ its\ numeric\ values!\ \ The\ latter\ might\ (and\ actually\ do)}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ *\ \ change\ in\ forthcoming\ FreeType\ versions.}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ *\ \ Macro\ \`{}FT\_NOERRORDEF\_`\ defines\ \`{}FT\_Err\_Ok`,\ which\ is\ always\ zero.\ \ See}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ *\ \ the\ 'Error\ Enumerations'\ subsection\ how\ to\ automatically\ generate\ a}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ *\ \ list\ of\ error\ strings.}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ *\ @enum:}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Err\_XXX}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{comment}{/*\ generic\ errors\ */}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \mbox{\hyperlink{fterrors_8h_a48f44adde7c075763aeba9d6efabcbd9}{FT\_NOERRORDEF\_}}(\ Ok,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}no\ error"{}}\ )}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Cannot\_Open\_Resource,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}cannot\ open\ resource"{}\ )}
+\DoxyCodeLine{00063\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Unknown\_File\_Format,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}unknown\ file\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1e3b09934060e9d373139c3557730d37}{format}}"{}\ )}
+\DoxyCodeLine{00065\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_File\_Format,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x03,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}broken\ file"{}\ )}
+\DoxyCodeLine{00067\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Version,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ FreeType\ version"{}\ )}
+\DoxyCodeLine{00069\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Lower\_Module\_Version,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x05,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}module\ version\ is\ too\ low"{}\ )}
+\DoxyCodeLine{00071\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Argument,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x06,}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ argument"{}\ )}
+\DoxyCodeLine{00073\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Unimplemented\_Feature,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x07,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}unimplemented\ feature"{}\ )}
+\DoxyCodeLine{00075\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Table,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}broken\ table"{}\ )}
+\DoxyCodeLine{00077\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Offset,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x09,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}broken\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_ae1b92ae085ddef4b1cdca7d749339fb0}{offset}}\ within\ table"{}\ )}
+\DoxyCodeLine{00079\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Array\_Too\_Large,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0A,}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}array\ allocation\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}}\ too\ large"{}\ )}
+\DoxyCodeLine{00081\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Missing\_Module,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0B,}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}missing\ module"{}\ )}
+\DoxyCodeLine{00083\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Missing\_Property,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0C,}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}missing\ property"{}\ )}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{comment}{/*\ glyph/character\ errors\ */}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Glyph\_Index,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10,}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ glyph\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a57f14e05b1900f16a2da82ade47d0c6d}{index}}"{}\ )}
+\DoxyCodeLine{00090\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Character\_Code,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x11,}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ character\ code"{}\ )}
+\DoxyCodeLine{00092\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Glyph\_Format,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x12,}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}unsupported\ glyph\ image\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1e3b09934060e9d373139c3557730d37}{format}}"{}\ )}
+\DoxyCodeLine{00094\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Cannot\_Render\_Glyph,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x13,}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}cannot\ render\ this\ glyph\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1e3b09934060e9d373139c3557730d37}{format}}"{}\ )}
+\DoxyCodeLine{00096\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Outline,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x14,}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ outline"{}\ )}
+\DoxyCodeLine{00098\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Composite,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x15,}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ composite\ glyph"{}\ )}
+\DoxyCodeLine{00100\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Too\_Many\_Hints,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x16,}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}too\ many\ hints"{}\ )}
+\DoxyCodeLine{00102\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Pixel\_Size,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x17,}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ pixel\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}}"{}\ )}
+\DoxyCodeLine{00104\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_SVG\_Document,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x18,}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ SVG\ document"{}\ )}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \textcolor{comment}{/*\ handle\ errors\ */}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Handle,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x20,}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ \textcolor{keywordtype}{object}\ handle"{}\ )}
+\DoxyCodeLine{00111\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Library\_Handle,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x21,}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ library\ handle"{}\ )}
+\DoxyCodeLine{00113\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Driver\_Handle,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x22,}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ module\ handle"{}\ )}
+\DoxyCodeLine{00115\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Face\_Handle,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x23,}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ face\ handle"{}\ )}
+\DoxyCodeLine{00117\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Size\_Handle,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x24,}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}}\ handle"{}\ )}
+\DoxyCodeLine{00119\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Slot\_Handle,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x25,}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ glyph\ slot\ handle"{}\ )}
+\DoxyCodeLine{00121\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_CharMap\_Handle,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x26,}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ charmap\ handle"{}\ )}
+\DoxyCodeLine{00123\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Cache\_Handle,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x27,}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ cache\ manager\ handle"{}\ )}
+\DoxyCodeLine{00125\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Stream\_Handle,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x28,}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ stream\ handle"{}\ )}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \textcolor{comment}{/*\ driver\ errors\ */}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Too\_Many\_Drivers,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x30,}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}too\ many\ modules"{}\ )}
+\DoxyCodeLine{00132\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Too\_Many\_Extensions,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x31,}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}too\ many\ extensions"{}\ )}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \textcolor{comment}{/*\ memory\ errors\ */}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Out\_Of\_Memory,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40,}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}out\ of\ memory"{}\ )}
+\DoxyCodeLine{00139\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Unlisted\_Object,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x41,}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}unlisted\ \textcolor{keywordtype}{object}"{}\ )}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \textcolor{comment}{/*\ stream\ errors\ */}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Cannot\_Open\_Stream,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x51,}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}cannot\ open\ stream"{}\ )}
+\DoxyCodeLine{00146\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Stream\_Seek,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x52,}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ stream\ seek"{}\ )}
+\DoxyCodeLine{00148\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Stream\_Skip,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x53,}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ stream\ skip"{}\ )}
+\DoxyCodeLine{00150\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Stream\_Read,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x54,}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ stream\ read"{}\ )}
+\DoxyCodeLine{00152\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Stream\_Operation,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x55,}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ stream\ operation"{}\ )}
+\DoxyCodeLine{00154\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Frame\_Operation,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x56,}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ frame\ operation"{}\ )}
+\DoxyCodeLine{00156\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Nested\_Frame\_Access,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x57,}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}nested\ frame\ access"{}\ )}
+\DoxyCodeLine{00158\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Frame\_Read,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x58,}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ frame\ read"{}\ )}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \textcolor{comment}{/*\ raster\ errors\ */}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Raster\_Uninitialized,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x60,}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}raster\ uninitialized"{}\ )}
+\DoxyCodeLine{00165\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Raster\_Corrupted,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x61,}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}raster\ corrupted"{}\ )}
+\DoxyCodeLine{00167\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Raster\_Overflow,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x62,}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}raster\ overflow"{}\ )}
+\DoxyCodeLine{00169\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Raster\_Negative\_Height,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x63,}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}negative\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a60075de22f90a1223dc0bea98d2ee4d5}{height}}\ while\ rastering"{}\ )}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \textcolor{comment}{/*\ cache\ errors\ */}}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Too\_Many\_Caches,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x70,}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}too\ many\ registered\ caches"{}\ )}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \textcolor{comment}{/*\ TrueType\ and\ SFNT\ errors\ */}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Opcode,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80,}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ opcode"{}\ )}
+\DoxyCodeLine{00181\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Too\_Few\_Arguments,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x81,}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}too\ few\ arguments"{}\ )}
+\DoxyCodeLine{00183\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Stack\_Overflow,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x82,}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}stack\ overflow"{}\ )}
+\DoxyCodeLine{00185\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Code\_Overflow,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x83,}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}code\ overflow"{}\ )}
+\DoxyCodeLine{00187\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Bad\_Argument,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x84,}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}bad\ argument"{}\ )}
+\DoxyCodeLine{00189\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Divide\_By\_Zero,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x85,}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}division\ by\ zero"{}\ )}
+\DoxyCodeLine{00191\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Reference,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x86,}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ reference"{}\ )}
+\DoxyCodeLine{00193\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Debug\_OpCode,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x87,}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}found\ debug\ opcode"{}\ )}
+\DoxyCodeLine{00195\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ ENDF\_In\_Exec\_Stream,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x88,}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}found\ ENDF\ opcode\ in\ execution\ stream"{}\ )}
+\DoxyCodeLine{00197\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Nested\_DEFS,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x89,}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}nested\ DEFS"{}\ )}
+\DoxyCodeLine{00199\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_CodeRange,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x8A,}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ code\ range"{}\ )}
+\DoxyCodeLine{00201\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Execution\_Too\_Long,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x8B,}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}execution\ context\ too\ \textcolor{keywordtype}{long}"{}\ )}
+\DoxyCodeLine{00203\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Too\_Many\_Function\_Defs,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x8C,}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}too\ many\ function\ definitions"{}\ )}
+\DoxyCodeLine{00205\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Too\_Many\_Instruction\_Defs,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x8D,}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}too\ many\ instruction\ definitions"{}\ )}
+\DoxyCodeLine{00207\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Table\_Missing,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x8E,}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}SFNT\ font\ table\ missing"{}\ )}
+\DoxyCodeLine{00209\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Horiz\_Header\_Missing,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x8F,}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}horizontal\ \mbox{\hyperlink{fterrdef_8h_a1314773ac41c0ccb8a95ba7afec1a5df}{header}}\ (hhea)\ table\ missing"{}\ )}
+\DoxyCodeLine{00211\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Locations\_Missing,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x90,}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}\mbox{\hyperlink{fterrdef_8h_a8362132c6348f879256e024866cfc266}{locations}}\ (loca)\ table\ missing"{}\ )}
+\DoxyCodeLine{00213\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Name\_Table\_Missing,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x91,}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a5c4947d4516dd7cfa3505ce3a648a4ef}{name}}\ table\ missing"{}\ )}
+\DoxyCodeLine{00215\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ CMap\_Table\_Missing,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x92,}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}character\ map\ (cmap)\ table\ missing"{}\ )}
+\DoxyCodeLine{00217\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Hmtx\_Table\_Missing,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x93,}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}horizontal\ \mbox{\hyperlink{fterrdef_8h_a5f2d31c29f77823c97a5c5566289b9a5}{metrics}}\ (hmtx)\ table\ missing"{}\ )}
+\DoxyCodeLine{00219\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Post\_Table\_Missing,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x94,}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}\mbox{\hyperlink{fterrdef_8h_a32aaeb4a0ba15d9915081cb154fc29db}{PostScript}}\ (post)\ table\ missing"{}\ )}
+\DoxyCodeLine{00221\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Horiz\_Metrics,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x95,}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ horizontal\ \mbox{\hyperlink{fterrdef_8h_a5f2d31c29f77823c97a5c5566289b9a5}{metrics}}"{}\ )}
+\DoxyCodeLine{00223\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_CharMap\_Format,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x96,}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ character\ map\ (cmap)\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1e3b09934060e9d373139c3557730d37}{format}}"{}\ )}
+\DoxyCodeLine{00225\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_PPem,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x97,}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ ppem\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1b2be7bfa84f129a2690a62f3ad82d62}{value}}"{}\ )}
+\DoxyCodeLine{00227\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Vert\_Metrics,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x98,}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ vertical\ \mbox{\hyperlink{fterrdef_8h_a5f2d31c29f77823c97a5c5566289b9a5}{metrics}}"{}\ )}
+\DoxyCodeLine{00229\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Could\_Not\_Find\_Context,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x99,}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}could\ not\ find\ context"{}\ )}
+\DoxyCodeLine{00231\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Post\_Table\_Format,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x9A,}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ \mbox{\hyperlink{fterrdef_8h_a32aaeb4a0ba15d9915081cb154fc29db}{PostScript}}\ (post)\ table\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1e3b09934060e9d373139c3557730d37}{format}}"{}\ )}
+\DoxyCodeLine{00233\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Invalid\_Post\_Table,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x9B,}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}invalid\ \mbox{\hyperlink{fterrdef_8h_a32aaeb4a0ba15d9915081cb154fc29db}{PostScript}}\ (post)\ table"{}\ )}
+\DoxyCodeLine{00235\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ DEF\_In\_Glyf\_Bytecode,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x9C,}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}found\ FDEF\ or\ IDEF\ opcode\ in\ glyf\ bytecode"{}\ )}
+\DoxyCodeLine{00237\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Missing\_Bitmap,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x9D,}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}missing\ bitmap\ in\ strike"{}\ )}
+\DoxyCodeLine{00239\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Missing\_SVG\_Hooks,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x9E,}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}SVG\ hooks\ have\ not\ been\ set"{}\ )}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \ \textcolor{comment}{/*\ CFF,\ CID,\ and\ Type\ 1\ errors\ */}}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Syntax\_Error,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xA0,}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}opcode\ syntax\ error"{}\ )}
+\DoxyCodeLine{00246\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Stack\_Underflow,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xA1,}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}argument\ stack\ underflow"{}\ )}
+\DoxyCodeLine{00248\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Ignore,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xA2,}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}ignore"{}\ )}
+\DoxyCodeLine{00250\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ No\_Unicode\_Glyph\_Name,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xA3,}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}no\ Unicode\ glyph\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a5c4947d4516dd7cfa3505ce3a648a4ef}{name}}\ found"{}\ )}
+\DoxyCodeLine{00252\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Glyph\_Too\_Big,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xA4,}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}glyph\ too\ big\ for\ hinting"{}\ )}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \textcolor{comment}{/*\ BDF\ errors\ */}}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Missing\_Startfont\_Field,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xB0,}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}\`{}STARTFONT'\ field\ missing"{}\ )}
+\DoxyCodeLine{00259\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Missing\_Font\_Field,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xB1,}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}\`{}FONT'\ field\ missing"{}\ )}
+\DoxyCodeLine{00261\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Missing\_Size\_Field,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xB2,}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}\`{}SIZE'\ field\ missing"{}\ )}
+\DoxyCodeLine{00263\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Missing\_Fontboundingbox\_Field,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xB3,}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}\`{}FONTBOUNDINGBOX'\ field\ missing"{}\ )}
+\DoxyCodeLine{00265\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Missing\_Chars\_Field,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xB4,}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}\`{}CHARS'\ field\ missing"{}\ )}
+\DoxyCodeLine{00267\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Missing\_Startchar\_Field,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xB5,}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}\`{}STARTCHAR'\ field\ missing"{}\ )}
+\DoxyCodeLine{00269\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Missing\_Encoding\_Field,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xB6,}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}\`{}ENCODING'\ field\ missing"{}\ )}
+\DoxyCodeLine{00271\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Missing\_Bbx\_Field,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xB7,}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}\`{}BBX'\ field\ missing"{}\ )}
+\DoxyCodeLine{00273\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Bbx\_Too\_Big,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xB8,}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}\`{}BBX'\ too\ big"{}\ )}
+\DoxyCodeLine{00275\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Corrupted\_Font\_Header,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xB9,}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}Font\ \mbox{\hyperlink{fterrdef_8h_a1314773ac41c0ccb8a95ba7afec1a5df}{header}}\ corrupted\ or\ missing\ fields"{}\ )}
+\DoxyCodeLine{00277\ \ \ \mbox{\hyperlink{fterrors_8h_a439ec9f420628098d7d874ef1b9cab49}{FT\_ERRORDEF\_}}(\ Corrupted\_Font\_Glyphs,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xBA,}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}Font\ glyphs\ corrupted\ or\ missing\ fields"{}\ )}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ \textcolor{comment}{/*\ */}}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \textcolor{comment}{/*\ END\ */}}
+
+\end{DoxyCode}

@@ -1,0 +1,595 @@
+\doxysection{build/vcpkg\+\_\+installed/x64-\/mingw-\/static/include/brotli/decode.h File Reference}
+\hypertarget{decode_8h}{}\label{decode_8h}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/decode.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/decode.h}}
+
+
+API for Brotli decompression.  
+
+
+{\ttfamily \#include $<$brotli/port.\+h$>$}\newline
+{\ttfamily \#include $<$brotli/shared\+\_\+dictionary.\+h$>$}\newline
+{\ttfamily \#include $<$brotli/types.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{decode_8h_a687f5bac75f233b2c219659fbf17c0df}{BROTLI\+\_\+\+DECODER\+\_\+\+ERROR\+\_\+\+CODES\+\_\+\+LIST}}(BROTLI\+\_\+\+ERROR\+\_\+\+CODE,  SEPARATOR)
+\begin{DoxyCompactList}\small\item\em Template that evaluates items of \doxylink{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}{Brotli\+Decoder\+Error\+Code}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{decode_8h_ab8490e3035c5f3b8cc31790f69d2a173}{BROTLI\+\_\+\+COMMA\+\_\+}}~,
+\item 
+\#define \mbox{\hyperlink{decode_8h_ad51e5f83a25483f7a65067ba8f10c0c6}{BROTLI\+\_\+\+ERROR\+\_\+\+CODE\+\_\+\+ENUM\+\_\+\+ITEM\+\_\+}}(PREFIX,  NAME,  CODE)~    BROTLI\+\_\+\+DECODER \#\# PREFIX \#\# NAME = CODE
+\item 
+\#define \mbox{\hyperlink{decode_8h_a828743953c0ee9972fd9ea884de9d3ad}{BROTLI\+\_\+\+LAST\+\_\+\+ERROR\+\_\+\+CODE}}~BROTLI\+\_\+\+DECODER\+\_\+\+ERROR\+\_\+\+UNREACHABLE
+\begin{DoxyCompactList}\small\item\em The value of the last error code, negative integer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Brotli\+Decoder\+State\+Struct \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}}
+\begin{DoxyCompactList}\small\item\em Opaque structure that holds decoder state. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070}{Brotli\+Decoder\+Parameter}} \mbox{\hyperlink{decode_8h_ae6d8c346ce0ce234336d678fba584c7a}{Brotli\+Decoder\+Parameter}}
+\begin{DoxyCompactList}\small\item\em Options to be used with \doxylink{decode_8h_adee376816d421c8588eebcc76e5156d6}{Brotli\+Decoder\+Set\+Parameter}. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{decode_8h_a58abcbf36bb082e83f23927e6fd71763}{brotli\+\_\+decoder\+\_\+metadata\+\_\+start\+\_\+func}}) (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque, size\+\_\+t \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}})
+\begin{DoxyCompactList}\small\item\em Callback to fire on metadata block start. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{decode_8h_a40b34c3f064c4e97c497b0fe4b3c695e}{brotli\+\_\+decoder\+\_\+metadata\+\_\+chunk\+\_\+func}}) (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_abd87654504355b4c1bb002dcb1d4d16a}{data}}, size\+\_\+t \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}})
+\begin{DoxyCompactList}\small\item\em Callback to fire on metadata block chunk becomes available. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374e}{Brotli\+Decoder\+Result}} \{ \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eadd6df16ccf47d89d71a0170acd452496}{BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+ERROR}} = 0
+, \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eaba3e4e586e974657ec2e72753a469823}{BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+SUCCESS}} = 1
+, \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374ea0da57a2b50c1e65c6b55c095f88bff38}{BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+NEEDS\+\_\+\+MORE\+\_\+\+INPUT}} = 2
+, \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eafa10e01bd2f25a3d8d4b22db6fe66ab1}{BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+NEEDS\+\_\+\+MORE\+\_\+\+OUTPUT}} = 3
+ \}
+\begin{DoxyCompactList}\small\item\em Result type for \doxylink{decode_8h_aa82cc8638bebdc53205f9941eec41626}{Brotli\+Decoder\+Decompress} and \doxylink{decode_8h_accb83dd5dab11ad1260c6f961a2340b3}{Brotli\+Decoder\+Decompress\+Stream} functions. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}{Brotli\+Decoder\+Error\+Code}} 
+\begin{DoxyCompactList}\small\item\em Error code for detailed logging / production debugging. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070}{Brotli\+Decoder\+Parameter}} \{ \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070ae1ab9b5b0188da1bc56b74c6fee1d1f7}{BROTLI\+\_\+\+DECODER\+\_\+\+PARAM\+\_\+\+DISABLE\+\_\+\+RING\+\_\+\+BUFFER\+\_\+\+REALLOCATION}} = 0
+, \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070a500b69dd614ca3ac79d79c486dc40908}{BROTLI\+\_\+\+DECODER\+\_\+\+PARAM\+\_\+\+LARGE\+\_\+\+WINDOW}} = 1
+ \}
+\begin{DoxyCompactList}\small\item\em Options to be used with \doxylink{decode_8h_adee376816d421c8588eebcc76e5156d6}{Brotli\+Decoder\+Set\+Parameter}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} \mbox{\hyperlink{decode_8h_adee376816d421c8588eebcc76e5156d6}{Brotli\+Decoder\+Set\+Parameter}} (\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070}{Brotli\+Decoder\+Parameter}} \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_aa18f5f638c58bcb864e367eacbb3380d}{param}}, uint32\+\_\+t \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1b2be7bfa84f129a2690a62f3ad82d62}{value}})
+\begin{DoxyCompactList}\small\item\em Sets the specified parameter to the given decoder instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} \mbox{\hyperlink{decode_8h_a0aa06736e46063293fef45d1161763fe}{Brotli\+Decoder\+Attach\+Dictionary}} (\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{Brotli\+Shared\+Dictionary\+Type}} \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a63267399cd2a2ee217572c11d2e54f07}{type}}, size\+\_\+t data\+\_\+size, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_abd87654504355b4c1bb002dcb1d4d16a}{data}}\mbox{[}\mbox{\hyperlink{port_8h_aa4b0af0d4de034f61827d71ce4f1e1eb}{BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM}}(data\+\_\+size)\mbox{]})
+\begin{DoxyCompactList}\small\item\em Adds LZ77 prefix dictionary, adds or replaces built-\/in static dictionary and transforms. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{decode_8h_a287d2eb9348db276bccc5b30fbcfe904}{Brotli\+Decoder\+Create\+Instance}} (\mbox{\hyperlink{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}{brotli\+\_\+alloc\+\_\+func}} \mbox{\hyperlink{zlib_8h_a50aa48acceb621559596dfa8b7558321}{alloc\+\_\+func}}, \mbox{\hyperlink{types_8h_a5e19dc1ca789ea76db7167289c442d32}{brotli\+\_\+free\+\_\+func}} \mbox{\hyperlink{zlib_8h_a002a1cda9686d40117da69d61c2a6dda}{free\+\_\+func}}, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque)
+\begin{DoxyCompactList}\small\item\em Creates an instance of \doxylink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State} and initializes it. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{decode_8h_ad0ef795ea9bf78ec62939e9e78e04a6c}{Brotli\+Decoder\+Destroy\+Instance}} (\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Deinitializes and frees \doxylink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State} instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374e}{Brotli\+Decoder\+Result}} \mbox{\hyperlink{decode_8h_aa82cc8638bebdc53205f9941eec41626}{Brotli\+Decoder\+Decompress}} (size\+\_\+t encoded\+\_\+size, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t encoded\+\_\+buffer\mbox{[}\mbox{\hyperlink{port_8h_aa4b0af0d4de034f61827d71ce4f1e1eb}{BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM}}(encoded\+\_\+size)\mbox{]}, size\+\_\+t \texorpdfstring{$\ast$}{*}decoded\+\_\+size, uint8\+\_\+t decoded\+\_\+buffer\mbox{[}\mbox{\hyperlink{port_8h_aa4b0af0d4de034f61827d71ce4f1e1eb}{BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM}}(\texorpdfstring{$\ast$}{*}decoded\+\_\+size)\mbox{]})
+\begin{DoxyCompactList}\small\item\em Performs one-\/shot memory-\/to-\/memory decompression. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374e}{Brotli\+Decoder\+Result}} \mbox{\hyperlink{decode_8h_accb83dd5dab11ad1260c6f961a2340b3}{Brotli\+Decoder\+Decompress\+Stream}} (\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}state, size\+\_\+t \texorpdfstring{$\ast$}{*}available\+\_\+in, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}next\+\_\+in, size\+\_\+t \texorpdfstring{$\ast$}{*}available\+\_\+out, uint8\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}next\+\_\+out, size\+\_\+t \texorpdfstring{$\ast$}{*}total\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Decompresses the input stream to the output stream. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} \mbox{\hyperlink{decode_8h_a6e5cf101d02794992b3df899e72676b5}{Brotli\+Decoder\+Has\+More\+Output}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Checks if decoder has more output. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{decode_8h_a263c9ba2f3acb679fae4f8dc8bfdfb99}{Brotli\+Decoder\+Take\+Output}} (\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}state, size\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}})
+\begin{DoxyCompactList}\small\item\em Acquires pointer to internal output buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} \mbox{\hyperlink{decode_8h_af50dac3548cd60d751a338f0e14ca5d7}{Brotli\+Decoder\+Is\+Used}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Checks if instance has already consumed input. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} \mbox{\hyperlink{decode_8h_ad8ad8d53e24daefee547be01ff9758fb}{Brotli\+Decoder\+Is\+Finished}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Checks if decoder instance reached the final state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}{Brotli\+Decoder\+Error\+Code}} \mbox{\hyperlink{decode_8h_af5f7da7dbe778e603d0b5209eec212fc}{Brotli\+Decoder\+Get\+Error\+Code}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Acquires a detailed error code. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{decode_8h_a2ad245159eee51647b1007c231b5c419}{Brotli\+Decoder\+Error\+String}} (\mbox{\hyperlink{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}{Brotli\+Decoder\+Error\+Code}} c)
+\begin{DoxyCompactList}\small\item\em Converts error code to a c-\/string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} uint32\+\_\+t \mbox{\hyperlink{decode_8h_a079c6b60993f16eb35dd9fa9e24eb922}{Brotli\+Decoder\+Version}} (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}})
+\begin{DoxyCompactList}\small\item\em Gets a decoder library version. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{decode_8h_add27695b8d5428559777e4fcc3ab9370}{Brotli\+Decoder\+Set\+Metadata\+Callbacks}} (\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{decode_8h_a58abcbf36bb082e83f23927e6fd71763}{brotli\+\_\+decoder\+\_\+metadata\+\_\+start\+\_\+func}} start\+\_\+func, \mbox{\hyperlink{decode_8h_a40b34c3f064c4e97c497b0fe4b3c695e}{brotli\+\_\+decoder\+\_\+metadata\+\_\+chunk\+\_\+func}} chunk\+\_\+func, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque)
+\begin{DoxyCompactList}\small\item\em Sets callback for receiving metadata blocks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+API for Brotli decompression. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{decode_8h_ab8490e3035c5f3b8cc31790f69d2a173}\label{decode_8h_ab8490e3035c5f3b8cc31790f69d2a173} 
+\index{decode.h@{decode.h}!BROTLI\_COMMA\_@{BROTLI\_COMMA\_}}
+\index{BROTLI\_COMMA\_@{BROTLI\_COMMA\_}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_COMMA\_}{BROTLI\_COMMA\_}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+COMMA\+\_\+~,}
+
+\Hypertarget{decode_8h_a687f5bac75f233b2c219659fbf17c0df}\label{decode_8h_a687f5bac75f233b2c219659fbf17c0df} 
+\index{decode.h@{decode.h}!BROTLI\_DECODER\_ERROR\_CODES\_LIST@{BROTLI\_DECODER\_ERROR\_CODES\_LIST}}
+\index{BROTLI\_DECODER\_ERROR\_CODES\_LIST@{BROTLI\_DECODER\_ERROR\_CODES\_LIST}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_DECODER\_ERROR\_CODES\_LIST}{BROTLI\_DECODER\_ERROR\_CODES\_LIST}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+DECODER\+\_\+\+ERROR\+\_\+\+CODES\+\_\+\+LIST(\begin{DoxyParamCaption}\item[{}]{BROTLI\+\_\+\+ERROR\+\_\+\+CODE,  }\item[{}]{SEPARATOR }\end{DoxyParamCaption})}
+
+
+
+Template that evaluates items of \doxylink{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}{Brotli\+Decoder\+Error\+Code}. 
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Log\ Brotli\ error\ code.}}
+\DoxyCodeLine{\textcolor{keywordflow}{switch}\ (brotliDecoderErrorCode)\ \{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ CASE\_(PREFIX,\ NAME,\ CODE)\ \(\backslash\)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ case\ BROTLI\_DECODER\ \#\#\ PREFIX\ \#\#\ NAME:\ \(\backslash\)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ LOG(INFO)\ <<\ "{}error\ code:"{}}\ <<\ \#NAME;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ break;}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ NEWLINE\_}}
+\DoxyCodeLine{\mbox{\hyperlink{decode_8h_a687f5bac75f233b2c219659fbf17c0df}{BROTLI\_DECODER\_ERROR\_CODES\_LIST}}(CASE\_,\ NEWLINE\_)}
+\DoxyCodeLine{\textcolor{preprocessor}{\#undef\ CASE\_}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#undef\ NEWLINE\_}}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{default}:\ LOG(FATAL)\ <<\ \textcolor{stringliteral}{"{}unknown\ brotli\ error\ code"{}};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \Hypertarget{decode_8h_ad51e5f83a25483f7a65067ba8f10c0c6}\label{decode_8h_ad51e5f83a25483f7a65067ba8f10c0c6} 
+\index{decode.h@{decode.h}!BROTLI\_ERROR\_CODE\_ENUM\_ITEM\_@{BROTLI\_ERROR\_CODE\_ENUM\_ITEM\_}}
+\index{BROTLI\_ERROR\_CODE\_ENUM\_ITEM\_@{BROTLI\_ERROR\_CODE\_ENUM\_ITEM\_}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_ERROR\_CODE\_ENUM\_ITEM\_}{BROTLI\_ERROR\_CODE\_ENUM\_ITEM\_}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+ERROR\+\_\+\+CODE\+\_\+\+ENUM\+\_\+\+ITEM\+\_\+(\begin{DoxyParamCaption}\item[{}]{PREFIX,  }\item[{}]{NAME,  }\item[{}]{CODE }\end{DoxyParamCaption})~    BROTLI\+\_\+\+DECODER \#\# PREFIX \#\# NAME = CODE}
+
+\Hypertarget{decode_8h_a828743953c0ee9972fd9ea884de9d3ad}\label{decode_8h_a828743953c0ee9972fd9ea884de9d3ad} 
+\index{decode.h@{decode.h}!BROTLI\_LAST\_ERROR\_CODE@{BROTLI\_LAST\_ERROR\_CODE}}
+\index{BROTLI\_LAST\_ERROR\_CODE@{BROTLI\_LAST\_ERROR\_CODE}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_LAST\_ERROR\_CODE}{BROTLI\_LAST\_ERROR\_CODE}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+LAST\+\_\+\+ERROR\+\_\+\+CODE~BROTLI\+\_\+\+DECODER\+\_\+\+ERROR\+\_\+\+UNREACHABLE}
+
+
+
+The value of the last error code, negative integer. 
+
+All other error code values are in the range from \doxylink{decode_8h_a828743953c0ee9972fd9ea884de9d3ad}{BROTLI\+\_\+\+LAST\+\_\+\+ERROR\+\_\+\+CODE} to {\ttfamily -\/1}. There are also 4 other possible non-\/error codes {\ttfamily 0} .. {\ttfamily 3} in \doxylink{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}{Brotli\+Decoder\+Error\+Code} enumeration. 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{decode_8h_a40b34c3f064c4e97c497b0fe4b3c695e}\label{decode_8h_a40b34c3f064c4e97c497b0fe4b3c695e} 
+\index{decode.h@{decode.h}!brotli\_decoder\_metadata\_chunk\_func@{brotli\_decoder\_metadata\_chunk\_func}}
+\index{brotli\_decoder\_metadata\_chunk\_func@{brotli\_decoder\_metadata\_chunk\_func}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{brotli\_decoder\_metadata\_chunk\_func}{brotli\_decoder\_metadata\_chunk\_func}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}(\texorpdfstring{$\ast$}{*} brotli\+\_\+decoder\+\_\+metadata\+\_\+chunk\+\_\+func) (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_abd87654504355b4c1bb002dcb1d4d16a}{data}}, size\+\_\+t \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}})}
+
+
+
+Callback to fire on metadata block chunk becomes available. 
+
+This function can be invoked multiple times per metadata block; block should be considered finished when sum of {\ttfamily size} matches the announced metadata block size. Chunks contents pointed by {\ttfamily data} are transient and shouln not be accessed after leaving the callback.
+
+
+\begin{DoxyParams}{Parameters}
+{\em opaque} & callback handle \\
+\hline
+{\em data} & pointer to metadata contents \\
+\hline
+{\em size} & size of metadata block chunk, at least {\ttfamily 1} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{decode_8h_a58abcbf36bb082e83f23927e6fd71763}\label{decode_8h_a58abcbf36bb082e83f23927e6fd71763} 
+\index{decode.h@{decode.h}!brotli\_decoder\_metadata\_start\_func@{brotli\_decoder\_metadata\_start\_func}}
+\index{brotli\_decoder\_metadata\_start\_func@{brotli\_decoder\_metadata\_start\_func}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{brotli\_decoder\_metadata\_start\_func}{brotli\_decoder\_metadata\_start\_func}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}(\texorpdfstring{$\ast$}{*} brotli\+\_\+decoder\+\_\+metadata\+\_\+start\+\_\+func) (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque, size\+\_\+t \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}})}
+
+
+
+Callback to fire on metadata block start. 
+
+After this callback is fired, if {\ttfamily size} is not {\ttfamily 0}, it is followed by \doxylink{decode_8h_a40b34c3f064c4e97c497b0fe4b3c695e}{brotli\+\_\+decoder\+\_\+metadata\+\_\+chunk\+\_\+func} as more metadata block contents become accessible.
+
+
+\begin{DoxyParams}{Parameters}
+{\em opaque} & callback handle \\
+\hline
+{\em size} & size of metadata block \\
+\hline
+\end{DoxyParams}
+\Hypertarget{decode_8h_ae6d8c346ce0ce234336d678fba584c7a}\label{decode_8h_ae6d8c346ce0ce234336d678fba584c7a} 
+\index{decode.h@{decode.h}!BrotliDecoderParameter@{BrotliDecoderParameter}}
+\index{BrotliDecoderParameter@{BrotliDecoderParameter}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderParameter}{BrotliDecoderParameter}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070}{Brotli\+Decoder\+Parameter}} \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070}{Brotli\+Decoder\+Parameter}}}
+
+
+
+Options to be used with \doxylink{decode_8h_adee376816d421c8588eebcc76e5156d6}{Brotli\+Decoder\+Set\+Parameter}. 
+
+\Hypertarget{decode_8h_a7065afee5269785561960891589ec6af}\label{decode_8h_a7065afee5269785561960891589ec6af} 
+\index{decode.h@{decode.h}!BrotliDecoderState@{BrotliDecoderState}}
+\index{BrotliDecoderState@{BrotliDecoderState}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderState}{BrotliDecoderState}}
+{\footnotesize\ttfamily typedef struct Brotli\+Decoder\+State\+Struct \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}}}
+
+
+
+Opaque structure that holds decoder state. 
+
+Allocated and initialized with \doxylink{decode_8h_a287d2eb9348db276bccc5b30fbcfe904}{Brotli\+Decoder\+Create\+Instance}. Cleaned up and deallocated with \doxylink{decode_8h_ad0ef795ea9bf78ec62939e9e78e04a6c}{Brotli\+Decoder\+Destroy\+Instance}. 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}\label{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013} 
+\index{decode.h@{decode.h}!BrotliDecoderErrorCode@{BrotliDecoderErrorCode}}
+\index{BrotliDecoderErrorCode@{BrotliDecoderErrorCode}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderErrorCode}{BrotliDecoderErrorCode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}{Brotli\+Decoder\+Error\+Code}}}
+
+
+
+Error code for detailed logging / production debugging. 
+
+See \doxylink{decode_8h_af5f7da7dbe778e603d0b5209eec212fc}{Brotli\+Decoder\+Get\+Error\+Code} and \doxylink{decode_8h_a828743953c0ee9972fd9ea884de9d3ad}{BROTLI\+\_\+\+LAST\+\_\+\+ERROR\+\_\+\+CODE}. \Hypertarget{decode_8h_a85a48e5725264efb4e36a3fb9e34c070}\label{decode_8h_a85a48e5725264efb4e36a3fb9e34c070} 
+\index{decode.h@{decode.h}!BrotliDecoderParameter@{BrotliDecoderParameter}}
+\index{BrotliDecoderParameter@{BrotliDecoderParameter}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderParameter}{BrotliDecoderParameter}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070}{Brotli\+Decoder\+Parameter}}}
+
+
+
+Options to be used with \doxylink{decode_8h_adee376816d421c8588eebcc76e5156d6}{Brotli\+Decoder\+Set\+Parameter}. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_DECODER\_PARAM\_DISABLE\_RING\_BUFFER\_REALLOCATION@{BROTLI\_DECODER\_PARAM\_DISABLE\_RING\_BUFFER\_REALLOCATION}!decode.h@{decode.h}}\index{decode.h@{decode.h}!BROTLI\_DECODER\_PARAM\_DISABLE\_RING\_BUFFER\_REALLOCATION@{BROTLI\_DECODER\_PARAM\_DISABLE\_RING\_BUFFER\_REALLOCATION}}}\Hypertarget{decode_8h_a85a48e5725264efb4e36a3fb9e34c070ae1ab9b5b0188da1bc56b74c6fee1d1f7}\label{decode_8h_a85a48e5725264efb4e36a3fb9e34c070ae1ab9b5b0188da1bc56b74c6fee1d1f7} 
+BROTLI\+\_\+\+DECODER\+\_\+\+PARAM\+\_\+\+DISABLE\+\_\+\+RING\+\_\+\+BUFFER\+\_\+\+REALLOCATION&Disable \"{}canny\"{} ring buffer allocation strategy. Ring buffer is allocated according to window size, despite the real size of the content. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_DECODER\_PARAM\_LARGE\_WINDOW@{BROTLI\_DECODER\_PARAM\_LARGE\_WINDOW}!decode.h@{decode.h}}\index{decode.h@{decode.h}!BROTLI\_DECODER\_PARAM\_LARGE\_WINDOW@{BROTLI\_DECODER\_PARAM\_LARGE\_WINDOW}}}\Hypertarget{decode_8h_a85a48e5725264efb4e36a3fb9e34c070a500b69dd614ca3ac79d79c486dc40908}\label{decode_8h_a85a48e5725264efb4e36a3fb9e34c070a500b69dd614ca3ac79d79c486dc40908} 
+BROTLI\+\_\+\+DECODER\+\_\+\+PARAM\+\_\+\+LARGE\+\_\+\+WINDOW&Flag that determines if \"{}\+Large Window Brotli\"{} is used. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{decode_8h_a87fd23715d225d1518eb7cd2a5cb374e}\label{decode_8h_a87fd23715d225d1518eb7cd2a5cb374e} 
+\index{decode.h@{decode.h}!BrotliDecoderResult@{BrotliDecoderResult}}
+\index{BrotliDecoderResult@{BrotliDecoderResult}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderResult}{BrotliDecoderResult}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374e}{Brotli\+Decoder\+Result}}}
+
+
+
+Result type for \doxylink{decode_8h_aa82cc8638bebdc53205f9941eec41626}{Brotli\+Decoder\+Decompress} and \doxylink{decode_8h_accb83dd5dab11ad1260c6f961a2340b3}{Brotli\+Decoder\+Decompress\+Stream} functions. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_DECODER\_RESULT\_ERROR@{BROTLI\_DECODER\_RESULT\_ERROR}!decode.h@{decode.h}}\index{decode.h@{decode.h}!BROTLI\_DECODER\_RESULT\_ERROR@{BROTLI\_DECODER\_RESULT\_ERROR}}}\Hypertarget{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eadd6df16ccf47d89d71a0170acd452496}\label{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eadd6df16ccf47d89d71a0170acd452496} 
+BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+ERROR&Decoding error, e.\+g. corrupted input or memory allocation problem. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_DECODER\_RESULT\_SUCCESS@{BROTLI\_DECODER\_RESULT\_SUCCESS}!decode.h@{decode.h}}\index{decode.h@{decode.h}!BROTLI\_DECODER\_RESULT\_SUCCESS@{BROTLI\_DECODER\_RESULT\_SUCCESS}}}\Hypertarget{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eaba3e4e586e974657ec2e72753a469823}\label{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eaba3e4e586e974657ec2e72753a469823} 
+BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+SUCCESS&Decoding successfully completed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_DECODER\_RESULT\_NEEDS\_MORE\_INPUT@{BROTLI\_DECODER\_RESULT\_NEEDS\_MORE\_INPUT}!decode.h@{decode.h}}\index{decode.h@{decode.h}!BROTLI\_DECODER\_RESULT\_NEEDS\_MORE\_INPUT@{BROTLI\_DECODER\_RESULT\_NEEDS\_MORE\_INPUT}}}\Hypertarget{decode_8h_a87fd23715d225d1518eb7cd2a5cb374ea0da57a2b50c1e65c6b55c095f88bff38}\label{decode_8h_a87fd23715d225d1518eb7cd2a5cb374ea0da57a2b50c1e65c6b55c095f88bff38} 
+BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+NEEDS\+\_\+\+MORE\+\_\+\+INPUT&Partially done; should be called again with more input. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_DECODER\_RESULT\_NEEDS\_MORE\_OUTPUT@{BROTLI\_DECODER\_RESULT\_NEEDS\_MORE\_OUTPUT}!decode.h@{decode.h}}\index{decode.h@{decode.h}!BROTLI\_DECODER\_RESULT\_NEEDS\_MORE\_OUTPUT@{BROTLI\_DECODER\_RESULT\_NEEDS\_MORE\_OUTPUT}}}\Hypertarget{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eafa10e01bd2f25a3d8d4b22db6fe66ab1}\label{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eafa10e01bd2f25a3d8d4b22db6fe66ab1} 
+BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+NEEDS\+\_\+\+MORE\+\_\+\+OUTPUT&Partially done; should be called again with more output. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{decode_8h_a0aa06736e46063293fef45d1161763fe}\label{decode_8h_a0aa06736e46063293fef45d1161763fe} 
+\index{decode.h@{decode.h}!BrotliDecoderAttachDictionary@{BrotliDecoderAttachDictionary}}
+\index{BrotliDecoderAttachDictionary@{BrotliDecoderAttachDictionary}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderAttachDictionary()}{BrotliDecoderAttachDictionary()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} Brotli\+Decoder\+Attach\+Dictionary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{Brotli\+Shared\+Dictionary\+Type}}}]{type,  }\item[{size\+\_\+t}]{data\+\_\+size,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t}]{data\mbox{[}\+BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM(data\+\_\+size)\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Adds LZ77 prefix dictionary, adds or replaces built-\/in static dictionary and transforms. 
+
+Attached dictionary ownership is not transferred. Data provided to this method should be kept accessible until decoding is finished and decoder instance is destroyed.
+
+\begin{DoxyNote}{Note}
+Dictionaries can NOT be attached after actual decoding is started.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em state} & decoder instance \\
+\hline
+{\em type} & dictionary data format \\
+\hline
+{\em data\+\_\+size} & length of memory region pointed by {\ttfamily data} \\
+\hline
+{\em data} & dictionary data in format corresponding to {\ttfamily type} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} if dictionary is corrupted, or dictionary count limit is reached 
+
+\doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE} if dictionary is accepted / attached 
+\end{DoxyReturn}
+\Hypertarget{decode_8h_a287d2eb9348db276bccc5b30fbcfe904}\label{decode_8h_a287d2eb9348db276bccc5b30fbcfe904} 
+\index{decode.h@{decode.h}!BrotliDecoderCreateInstance@{BrotliDecoderCreateInstance}}
+\index{BrotliDecoderCreateInstance@{BrotliDecoderCreateInstance}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderCreateInstance()}{BrotliDecoderCreateInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*} Brotli\+Decoder\+Create\+Instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}{brotli\+\_\+alloc\+\_\+func}}}]{alloc\+\_\+func,  }\item[{\mbox{\hyperlink{types_8h_a5e19dc1ca789ea76db7167289c442d32}{brotli\+\_\+free\+\_\+func}}}]{free\+\_\+func,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{opaque }\end{DoxyParamCaption})}
+
+
+
+Creates an instance of \doxylink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State} and initializes it. 
+
+The instance can be used once for decoding and should then be destroyed with \doxylink{decode_8h_ad0ef795ea9bf78ec62939e9e78e04a6c}{Brotli\+Decoder\+Destroy\+Instance}, it cannot be reused for a new decoding session.
+
+{\ttfamily alloc\+\_\+func} and {\ttfamily free\+\_\+func} {\bfseries{MUST}} be both zero or both non-\/zero. In the case they are both zero, default memory allocators are used. {\ttfamily opaque} is passed to {\ttfamily alloc\+\_\+func} and {\ttfamily free\+\_\+func} when they are called. {\ttfamily free\+\_\+func} has to return without doing anything when asked to free a NULL pointer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em alloc\+\_\+func} & custom memory allocation function \\
+\hline
+{\em free\+\_\+func} & custom memory free function \\
+\hline
+{\em opaque} & custom memory manager handle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily 0} if instance can not be allocated or initialized 
+
+pointer to initialized \doxylink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State} otherwise 
+\end{DoxyReturn}
+\Hypertarget{decode_8h_aa82cc8638bebdc53205f9941eec41626}\label{decode_8h_aa82cc8638bebdc53205f9941eec41626} 
+\index{decode.h@{decode.h}!BrotliDecoderDecompress@{BrotliDecoderDecompress}}
+\index{BrotliDecoderDecompress@{BrotliDecoderDecompress}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderDecompress()}{BrotliDecoderDecompress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374e}{Brotli\+Decoder\+Result}} Brotli\+Decoder\+Decompress (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{encoded\+\_\+size,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t}]{encoded\+\_\+buffer\mbox{[}\+BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM(encoded\+\_\+size)\mbox{]},  }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{decoded\+\_\+size,  }\item[{uint8\+\_\+t}]{decoded\+\_\+buffer\mbox{[}\+BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM(\texorpdfstring{$\ast$}{*}decoded\+\_\+size)\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Performs one-\/shot memory-\/to-\/memory decompression. 
+
+Decompresses the data in {\ttfamily encoded\+\_\+buffer} into {\ttfamily decoded\+\_\+buffer}, and sets {\ttfamily \texorpdfstring{$\ast$}{*}decoded\+\_\+size} to the decompressed length.
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em encoded\+\_\+size} & size of {\ttfamily encoded\+\_\+buffer} \\
+\hline
+ & {\em encoded\+\_\+buffer} & compressed data buffer with at least {\ttfamily encoded\+\_\+size} addressable bytes \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em decoded\+\_\+size} & {\bfseries{in\+:}} size of {\ttfamily decoded\+\_\+buffer}; ~\newline
+ {\bfseries{out\+:}} length of decompressed data written to {\ttfamily decoded\+\_\+buffer} \\
+\hline
+ & {\em decoded\+\_\+buffer} & decompressed data destination buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eadd6df16ccf47d89d71a0170acd452496}{BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+ERROR} if input is corrupted, memory allocation failed, or {\ttfamily decoded\+\_\+buffer} is not large enough; 
+
+\doxylink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eaba3e4e586e974657ec2e72753a469823}{BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+SUCCESS} otherwise 
+\end{DoxyReturn}
+\Hypertarget{decode_8h_accb83dd5dab11ad1260c6f961a2340b3}\label{decode_8h_accb83dd5dab11ad1260c6f961a2340b3} 
+\index{decode.h@{decode.h}!BrotliDecoderDecompressStream@{BrotliDecoderDecompressStream}}
+\index{BrotliDecoderDecompressStream@{BrotliDecoderDecompressStream}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderDecompressStream()}{BrotliDecoderDecompressStream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374e}{Brotli\+Decoder\+Result}} Brotli\+Decoder\+Decompress\+Stream (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{available\+\_\+in,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{next\+\_\+in,  }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{available\+\_\+out,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{next\+\_\+out,  }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{total\+\_\+out }\end{DoxyParamCaption})}
+
+
+
+Decompresses the input stream to the output stream. 
+
+The values {\ttfamily \texorpdfstring{$\ast$}{*}available\+\_\+in} and {\ttfamily \texorpdfstring{$\ast$}{*}available\+\_\+out} must specify the number of bytes addressable at {\ttfamily \texorpdfstring{$\ast$}{*}next\+\_\+in} and {\ttfamily \texorpdfstring{$\ast$}{*}next\+\_\+out} respectively. When {\ttfamily \texorpdfstring{$\ast$}{*}available\+\_\+out} is {\ttfamily 0}, {\ttfamily next\+\_\+out} is allowed to be {\ttfamily NULL}.
+
+After each call, {\ttfamily \texorpdfstring{$\ast$}{*}available\+\_\+in} will be decremented by the amount of input bytes consumed, and the {\ttfamily \texorpdfstring{$\ast$}{*}next\+\_\+in} pointer will be incremented by that amount. Similarly, {\ttfamily \texorpdfstring{$\ast$}{*}available\+\_\+out} will be decremented by the amount of output bytes written, and the {\ttfamily \texorpdfstring{$\ast$}{*}next\+\_\+out} pointer will be incremented by that amount.
+
+{\ttfamily total\+\_\+out}, if it is not a null-\/pointer, will be set to the number of bytes decompressed since the last {\ttfamily state} initialization.
+
+\begin{DoxyNote}{Note}
+Input is never overconsumed, so {\ttfamily next\+\_\+in} and {\ttfamily available\+\_\+in} could be passed to the next consumer after decoding is complete.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em state} & decoder instance \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em available\+\_\+in} & {\bfseries{in\+:}} amount of available input; ~\newline
+ {\bfseries{out\+:}} amount of unused input \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em next\+\_\+in} & pointer to the next compressed byte \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em available\+\_\+out} & {\bfseries{in\+:}} length of output buffer; ~\newline
+ {\bfseries{out\+:}} remaining size of output buffer \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em next\+\_\+out} & output buffer cursor; can be {\ttfamily NULL} if {\ttfamily available\+\_\+out} is {\ttfamily 0} \\
+\hline
+\mbox{\texttt{ out}}  & {\em total\+\_\+out} & number of bytes decompressed so far; can be {\ttfamily NULL} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eadd6df16ccf47d89d71a0170acd452496}{BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+ERROR} if input is corrupted, memory allocation failed, arguments were invalid, etc.; use \doxylink{decode_8h_af5f7da7dbe778e603d0b5209eec212fc}{Brotli\+Decoder\+Get\+Error\+Code} to get detailed error code 
+
+\doxylink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374ea0da57a2b50c1e65c6b55c095f88bff38}{BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+NEEDS\+\_\+\+MORE\+\_\+\+INPUT} decoding is blocked until more input data is provided 
+
+\doxylink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eafa10e01bd2f25a3d8d4b22db6fe66ab1}{BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+NEEDS\+\_\+\+MORE\+\_\+\+OUTPUT} decoding is blocked until more output space is provided 
+
+\doxylink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eaba3e4e586e974657ec2e72753a469823}{BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+SUCCESS} decoding is finished, no more input might be consumed and no more output will be produced 
+\end{DoxyReturn}
+\Hypertarget{decode_8h_ad0ef795ea9bf78ec62939e9e78e04a6c}\label{decode_8h_ad0ef795ea9bf78ec62939e9e78e04a6c} 
+\index{decode.h@{decode.h}!BrotliDecoderDestroyInstance@{BrotliDecoderDestroyInstance}}
+\index{BrotliDecoderDestroyInstance@{BrotliDecoderDestroyInstance}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderDestroyInstance()}{BrotliDecoderDestroyInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Brotli\+Decoder\+Destroy\+Instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Deinitializes and frees \doxylink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & decoder instance to be cleaned up and deallocated \\
+\hline
+\end{DoxyParams}
+\Hypertarget{decode_8h_a2ad245159eee51647b1007c231b5c419}\label{decode_8h_a2ad245159eee51647b1007c231b5c419} 
+\index{decode.h@{decode.h}!BrotliDecoderErrorString@{BrotliDecoderErrorString}}
+\index{BrotliDecoderErrorString@{BrotliDecoderErrorString}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderErrorString()}{BrotliDecoderErrorString()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} char \texorpdfstring{$\ast$}{*} Brotli\+Decoder\+Error\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}{Brotli\+Decoder\+Error\+Code}}}]{c }\end{DoxyParamCaption})}
+
+
+
+Converts error code to a c-\/string. 
+
+\Hypertarget{decode_8h_af5f7da7dbe778e603d0b5209eec212fc}\label{decode_8h_af5f7da7dbe778e603d0b5209eec212fc} 
+\index{decode.h@{decode.h}!BrotliDecoderGetErrorCode@{BrotliDecoderGetErrorCode}}
+\index{BrotliDecoderGetErrorCode@{BrotliDecoderGetErrorCode}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderGetErrorCode()}{BrotliDecoderGetErrorCode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{decode_8h_af0c845bca11751bdaaa05f1a6f8bd013}{Brotli\+Decoder\+Error\+Code}} Brotli\+Decoder\+Get\+Error\+Code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Acquires a detailed error code. 
+
+Should be used only after \doxylink{decode_8h_accb83dd5dab11ad1260c6f961a2340b3}{Brotli\+Decoder\+Decompress\+Stream} returns \doxylink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eadd6df16ccf47d89d71a0170acd452496}{BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+ERROR}.
+
+See also \doxylink{decode_8h_a2ad245159eee51647b1007c231b5c419}{Brotli\+Decoder\+Error\+String}
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & decoder instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+last saved error code 
+\end{DoxyReturn}
+\Hypertarget{decode_8h_a6e5cf101d02794992b3df899e72676b5}\label{decode_8h_a6e5cf101d02794992b3df899e72676b5} 
+\index{decode.h@{decode.h}!BrotliDecoderHasMoreOutput@{BrotliDecoderHasMoreOutput}}
+\index{BrotliDecoderHasMoreOutput@{BrotliDecoderHasMoreOutput}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderHasMoreOutput()}{BrotliDecoderHasMoreOutput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} Brotli\+Decoder\+Has\+More\+Output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Checks if decoder has more output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & decoder instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE}, if decoder has some unconsumed output 
+
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} otherwise 
+\end{DoxyReturn}
+\Hypertarget{decode_8h_ad8ad8d53e24daefee547be01ff9758fb}\label{decode_8h_ad8ad8d53e24daefee547be01ff9758fb} 
+\index{decode.h@{decode.h}!BrotliDecoderIsFinished@{BrotliDecoderIsFinished}}
+\index{BrotliDecoderIsFinished@{BrotliDecoderIsFinished}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderIsFinished()}{BrotliDecoderIsFinished()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} Brotli\+Decoder\+Is\+Finished (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Checks if decoder instance reached the final state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & decoder instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE} if decoder is in a state where it reached the end of the input and produced all of the output 
+
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} otherwise 
+\end{DoxyReturn}
+\Hypertarget{decode_8h_af50dac3548cd60d751a338f0e14ca5d7}\label{decode_8h_af50dac3548cd60d751a338f0e14ca5d7} 
+\index{decode.h@{decode.h}!BrotliDecoderIsUsed@{BrotliDecoderIsUsed}}
+\index{BrotliDecoderIsUsed@{BrotliDecoderIsUsed}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderIsUsed()}{BrotliDecoderIsUsed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} Brotli\+Decoder\+Is\+Used (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Checks if instance has already consumed input. 
+
+Instance that returns \doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} is considered \"{}fresh\"{} and could be reused.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & decoder instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE} if decoder has already used some input bytes 
+
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} otherwise 
+\end{DoxyReturn}
+\Hypertarget{decode_8h_add27695b8d5428559777e4fcc3ab9370}\label{decode_8h_add27695b8d5428559777e4fcc3ab9370} 
+\index{decode.h@{decode.h}!BrotliDecoderSetMetadataCallbacks@{BrotliDecoderSetMetadataCallbacks}}
+\index{BrotliDecoderSetMetadataCallbacks@{BrotliDecoderSetMetadataCallbacks}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderSetMetadataCallbacks()}{BrotliDecoderSetMetadataCallbacks()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Brotli\+Decoder\+Set\+Metadata\+Callbacks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{decode_8h_a58abcbf36bb082e83f23927e6fd71763}{brotli\+\_\+decoder\+\_\+metadata\+\_\+start\+\_\+func}}}]{start\+\_\+func,  }\item[{\mbox{\hyperlink{decode_8h_a40b34c3f064c4e97c497b0fe4b3c695e}{brotli\+\_\+decoder\+\_\+metadata\+\_\+chunk\+\_\+func}}}]{chunk\+\_\+func,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{opaque }\end{DoxyParamCaption})}
+
+
+
+Sets callback for receiving metadata blocks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & decoder instance \\
+\hline
+{\em start\+\_\+func} & callback on metadata block start \\
+\hline
+{\em chunk\+\_\+func} & callback on metadata block chunk \\
+\hline
+{\em opaque} & callback handle \\
+\hline
+\end{DoxyParams}
+\Hypertarget{decode_8h_adee376816d421c8588eebcc76e5156d6}\label{decode_8h_adee376816d421c8588eebcc76e5156d6} 
+\index{decode.h@{decode.h}!BrotliDecoderSetParameter@{BrotliDecoderSetParameter}}
+\index{BrotliDecoderSetParameter@{BrotliDecoderSetParameter}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderSetParameter()}{BrotliDecoderSetParameter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} Brotli\+Decoder\+Set\+Parameter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070}{Brotli\+Decoder\+Parameter}}}]{param,  }\item[{uint32\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets the specified parameter to the given decoder instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & decoder instance \\
+\hline
+{\em param} & parameter to set \\
+\hline
+{\em value} & new parameter value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} if parameter is unrecognized, or value is invalid 
+
+\doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE} if value is accepted 
+\end{DoxyReturn}
+\Hypertarget{decode_8h_a263c9ba2f3acb679fae4f8dc8bfdfb99}\label{decode_8h_a263c9ba2f3acb679fae4f8dc8bfdfb99} 
+\index{decode.h@{decode.h}!BrotliDecoderTakeOutput@{BrotliDecoderTakeOutput}}
+\index{BrotliDecoderTakeOutput@{BrotliDecoderTakeOutput}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderTakeOutput()}{BrotliDecoderTakeOutput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \texorpdfstring{$\ast$}{*} Brotli\+Decoder\+Take\+Output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{decode_8h_a7065afee5269785561960891589ec6af}{Brotli\+Decoder\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{size }\end{DoxyParamCaption})}
+
+
+
+Acquires pointer to internal output buffer. 
+
+This method is used to make language bindings easier and more efficient\+:
+\begin{DoxyEnumerate}
+\item push data to \doxylink{decode_8h_accb83dd5dab11ad1260c6f961a2340b3}{Brotli\+Decoder\+Decompress\+Stream}, until \doxylink{decode_8h_a87fd23715d225d1518eb7cd2a5cb374eafa10e01bd2f25a3d8d4b22db6fe66ab1}{BROTLI\+\_\+\+DECODER\+\_\+\+RESULT\+\_\+\+NEEDS\+\_\+\+MORE\+\_\+\+OUTPUT} is reported
+\item use \doxylink{decode_8h_a263c9ba2f3acb679fae4f8dc8bfdfb99}{Brotli\+Decoder\+Take\+Output} to peek bytes and copy to language-\/specific entity
+\end{DoxyEnumerate}
+
+Also this could be useful if there is an output stream that is able to consume all the provided data (e.\+g. when data is saved to file system).
+
+\begin{DoxyAttention}{Attention}
+After every call to \doxylink{decode_8h_a263c9ba2f3acb679fae4f8dc8bfdfb99}{Brotli\+Decoder\+Take\+Output} {\ttfamily \texorpdfstring{$\ast$}{*}size} bytes of output are considered consumed for all consecutive calls to the instance methods; returned pointer becomes invalidated as well.
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+Decoder output is not guaranteed to be contiguous. This means that after the size-\/unrestricted call to \doxylink{decode_8h_a263c9ba2f3acb679fae4f8dc8bfdfb99}{Brotli\+Decoder\+Take\+Output}, immediate next call to \doxylink{decode_8h_a263c9ba2f3acb679fae4f8dc8bfdfb99}{Brotli\+Decoder\+Take\+Output} may return more data.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em state} & decoder instance \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em size} & {\bfseries{in\+:}} number of bytes caller is ready to take, {\ttfamily 0} if any amount could be handled; ~\newline
+ {\bfseries{out\+:}} amount of data pointed by returned pointer and considered consumed; ~\newline
+ out value is never greater than in value, unless it is {\ttfamily 0} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to output data 
+\end{DoxyReturn}
+\Hypertarget{decode_8h_a079c6b60993f16eb35dd9fa9e24eb922}\label{decode_8h_a079c6b60993f16eb35dd9fa9e24eb922} 
+\index{decode.h@{decode.h}!BrotliDecoderVersion@{BrotliDecoderVersion}}
+\index{BrotliDecoderVersion@{BrotliDecoderVersion}!decode.h@{decode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliDecoderVersion()}{BrotliDecoderVersion()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a459316d532c0b1a2b1917bc529c87534}{BROTLI\+\_\+\+DEC\+\_\+\+API}} uint32\+\_\+t Brotli\+Decoder\+Version (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets a decoder library version. 
+
+Look at BROTLI\+\_\+\+MAKE\+\_\+\+HEX\+\_\+\+VERSION for more information. 

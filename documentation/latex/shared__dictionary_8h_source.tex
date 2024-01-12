@@ -1,0 +1,51 @@
+\doxysection{shared\+\_\+dictionary.\+h}
+\hypertarget{shared__dictionary_8h_source}{}\label{shared__dictionary_8h_source}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/shared\_dictionary.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/shared\_dictionary.h}}
+\mbox{\hyperlink{shared__dictionary_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ 2017\ Google\ Inc.\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00002\ \textcolor{comment}{}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ Distributed\ under\ MIT\ license.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ See\ file\ LICENSE\ for\ detail\ or\ copy\ at\ https://opensource.org/licenses/MIT}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{/*\ (Opaque)\ Shared\ Dictionary\ definition\ and\ utilities.\ */}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ BROTLI\_COMMON\_SHARED\_DICTIONARY\_H\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ BROTLI\_COMMON\_SHARED\_DICTIONARY\_H\_}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{port_8h}{brotli/port.h}}>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{types_8h}{brotli/types.h}}>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#if\ defined(\_\_cplusplus)\ ||\ defined(c\_plusplus)}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ SHARED\_BROTLI\_MIN\_DICTIONARY\_WORD\_LENGTH\ 4}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ SHARED\_BROTLI\_MAX\_DICTIONARY\_WORD\_LENGTH\ 31}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ SHARED\_BROTLI\_NUM\_DICTIONARY\_CONTEXTS\ 64}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ SHARED\_BROTLI\_MAX\_COMPOUND\_DICTS\ 15}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }BrotliSharedDictionaryStruct\ \mbox{\hyperlink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{BrotliSharedDictionary}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{BrotliSharedDictionaryType}}\ \{}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9af2a6bd22836cacc0b2cd5cf3eab51b22}{BROTLI\_SHARED\_DICTIONARY\_RAW}}\ =\ 0,}
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9ae752cd7b6137c34daf17a3ae3951be75}{BROTLI\_SHARED\_DICTIONARY\_SERIALIZED}}\ =\ 1}
+\DoxyCodeLine{00043\ \}\ \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{BrotliSharedDictionaryType}};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00062\ \mbox{\hyperlink{port_8h_a402c46c6c29290398045d634536629bc}{BROTLI\_COMMON\_API}}\ \mbox{\hyperlink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{BrotliSharedDictionary}}*\ \mbox{\hyperlink{shared__dictionary_8h_a33fc9f44479cb815b994ffa2d9e0d7a1}{BrotliSharedDictionaryCreateInstance}}(}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}{brotli\_alloc\_func}}\ \mbox{\hyperlink{zlib_8h_a50aa48acceb621559596dfa8b7558321}{alloc\_func}},\ \mbox{\hyperlink{types_8h_a5e19dc1ca789ea76db7167289c442d32}{brotli\_free\_func}}\ \mbox{\hyperlink{zlib_8h_a002a1cda9686d40117da69d61c2a6dda}{free\_func}},\ \textcolor{keywordtype}{void}*\ opaque);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \mbox{\hyperlink{port_8h_a402c46c6c29290398045d634536629bc}{BROTLI\_COMMON\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shared__dictionary_8h_a00be19215d8171ae31a44c4d5446fc10}{BrotliSharedDictionaryDestroyInstance}}(}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{BrotliSharedDictionary}}*\ dict);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00092\ \mbox{\hyperlink{port_8h_a402c46c6c29290398045d634536629bc}{BROTLI\_COMMON\_API}}\ \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\_BOOL}}\ \mbox{\hyperlink{shared__dictionary_8h_a4f15352e94243db0e80174751e036a6e}{BrotliSharedDictionaryAttach}}(}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{shared__dictionary_8h_a39e8173a1b1cce9bf1a5657fea511f98}{BrotliSharedDictionary}}*\ dict,\ \mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{BrotliSharedDictionaryType}}\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a63267399cd2a2ee217572c11d2e54f07}{type}},}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ data\_size,\ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_abd87654504355b4c1bb002dcb1d4d16a}{data}}[\mbox{\hyperlink{port_8h_aa4b0af0d4de034f61827d71ce4f1e1eb}{BROTLI\_ARRAY\_PARAM}}(data\_size)]);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#if\ defined(\_\_cplusplus)\ ||\ defined(c\_plusplus)}}
+\DoxyCodeLine{00097\ \}\ \ \textcolor{comment}{/*\ extern\ "{}C"{}\ */}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ BROTLI\_COMMON\_SHARED\_DICTIONARY\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,763 @@
+\doxysection{build/vcpkg\+\_\+installed/x64-\/mingw-\/static/include/brotli/encode.h File Reference}
+\hypertarget{encode_8h}{}\label{encode_8h}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/encode.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/brotli/encode.h}}
+
+
+API for Brotli compression.  
+
+
+{\ttfamily \#include $<$brotli/port.\+h$>$}\newline
+{\ttfamily \#include $<$brotli/shared\+\_\+dictionary.\+h$>$}\newline
+{\ttfamily \#include $<$brotli/types.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{encode_8h_ab152537842374c78cce31064d2c4f0c5}{BROTLI\+\_\+\+MIN\+\_\+\+WINDOW\+\_\+\+BITS}}~10
+\begin{DoxyCompactList}\small\item\em Minimal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabae3d363e61b30ea4ae9e08db2d0dfa3d4}{BROTLI\+\_\+\+PARAM\+\_\+\+LGWIN} parameter. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{encode_8h_a5a8f8b31992980fdf1e34ad8a2e822e8}{BROTLI\+\_\+\+MAX\+\_\+\+WINDOW\+\_\+\+BITS}}~24
+\begin{DoxyCompactList}\small\item\em Maximal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabae3d363e61b30ea4ae9e08db2d0dfa3d4}{BROTLI\+\_\+\+PARAM\+\_\+\+LGWIN} parameter. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{encode_8h_af46c9c1a6488507af0fb7ab2232dc9ee}{BROTLI\+\_\+\+LARGE\+\_\+\+MAX\+\_\+\+WINDOW\+\_\+\+BITS}}~30
+\begin{DoxyCompactList}\small\item\em Maximal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabae3d363e61b30ea4ae9e08db2d0dfa3d4}{BROTLI\+\_\+\+PARAM\+\_\+\+LGWIN} parameter in \"{}\+Large Window Brotli\"{} (32-\/bit). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{encode_8h_a0d235077d87601d89ef51aa09eb907d3}{BROTLI\+\_\+\+MIN\+\_\+\+INPUT\+\_\+\+BLOCK\+\_\+\+BITS}}~16
+\begin{DoxyCompactList}\small\item\em Minimal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaa2a5a09ba4fe98841bb0c8f844f9cf78}{BROTLI\+\_\+\+PARAM\+\_\+\+LGBLOCK} parameter. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{encode_8h_ac4fa7009ad322063e2c6975a1b9cb9d7}{BROTLI\+\_\+\+MAX\+\_\+\+INPUT\+\_\+\+BLOCK\+\_\+\+BITS}}~24
+\begin{DoxyCompactList}\small\item\em Maximal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaa2a5a09ba4fe98841bb0c8f844f9cf78}{BROTLI\+\_\+\+PARAM\+\_\+\+LGBLOCK} parameter. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{encode_8h_a94ffc03fed43e8491e998fe74ce42a40}{BROTLI\+\_\+\+MIN\+\_\+\+QUALITY}}~0
+\begin{DoxyCompactList}\small\item\em Minimal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba11e8c7def1638f8f31676d233c7c64d6}{BROTLI\+\_\+\+PARAM\+\_\+\+QUALITY} parameter. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{encode_8h_ac4582a47de1127136ffe7e7d2b1a6b05}{BROTLI\+\_\+\+MAX\+\_\+\+QUALITY}}~11
+\begin{DoxyCompactList}\small\item\em Maximal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba11e8c7def1638f8f31676d233c7c64d6}{BROTLI\+\_\+\+PARAM\+\_\+\+QUALITY} parameter. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{encode_8h_a8d015487f9401ec430a5c9356e773e66}{BROTLI\+\_\+\+DEFAULT\+\_\+\+QUALITY}}~11
+\begin{DoxyCompactList}\small\item\em Default value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba11e8c7def1638f8f31676d233c7c64d6}{BROTLI\+\_\+\+PARAM\+\_\+\+QUALITY} parameter. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{encode_8h_a46cf52a4bb642771f753dbec48cc2477}{BROTLI\+\_\+\+DEFAULT\+\_\+\+WINDOW}}~22
+\begin{DoxyCompactList}\small\item\em Default value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabae3d363e61b30ea4ae9e08db2d0dfa3d4}{BROTLI\+\_\+\+PARAM\+\_\+\+LGWIN} parameter. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{encode_8h_a9b18180a611bd32872cfb0e80b567830}{BROTLI\+\_\+\+DEFAULT\+\_\+\+MODE}}~\mbox{\hyperlink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7a7f53c9c953e88702ed8c7eb8da1a846d}{BROTLI\+\_\+\+MODE\+\_\+\+GENERIC}}
+\begin{DoxyCompactList}\small\item\em Default value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaee22e9368dfa5382dc3c8fb07c129f92}{BROTLI\+\_\+\+PARAM\+\_\+\+MODE} parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7}{Brotli\+Encoder\+Mode}} \mbox{\hyperlink{encode_8h_a6a9a2294e88a30769440872b147d27c9}{Brotli\+Encoder\+Mode}}
+\begin{DoxyCompactList}\small\item\em Options for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaee22e9368dfa5382dc3c8fb07c129f92}{BROTLI\+\_\+\+PARAM\+\_\+\+MODE} parameter. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cb}{Brotli\+Encoder\+Operation}} \mbox{\hyperlink{encode_8h_a1bd662f137583d5949e2ac9d5a177e19}{Brotli\+Encoder\+Operation}}
+\begin{DoxyCompactList}\small\item\em Operations that can be performed by streaming encoder. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fab}{Brotli\+Encoder\+Parameter}} \mbox{\hyperlink{encode_8h_a93608bf1e1ffa4024f110405fdb2c94f}{Brotli\+Encoder\+Parameter}}
+\begin{DoxyCompactList}\small\item\em Options to be used with \doxylink{encode_8h_a068874cc94e7b3563c4791a9bc5894bd}{Brotli\+Encoder\+Set\+Parameter}. \end{DoxyCompactList}\item 
+typedef struct Brotli\+Encoder\+State\+Struct \mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}}
+\begin{DoxyCompactList}\small\item\em Opaque structure that holds encoder state. \end{DoxyCompactList}\item 
+typedef struct Brotli\+Encoder\+Prepared\+Dictionary\+Struct \mbox{\hyperlink{encode_8h_a6bad5cd4b3dd2f5d290450f8d69e3cfd}{Brotli\+Encoder\+Prepared\+Dictionary}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7}{Brotli\+Encoder\+Mode}} \{ \mbox{\hyperlink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7a7f53c9c953e88702ed8c7eb8da1a846d}{BROTLI\+\_\+\+MODE\+\_\+\+GENERIC}} = 0
+, \mbox{\hyperlink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7a05c92692faa0f316f09f73411d4c9b45}{BROTLI\+\_\+\+MODE\+\_\+\+TEXT}} = 1
+, \mbox{\hyperlink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7ad780936a708a653ebf1c4543b7249a34}{BROTLI\+\_\+\+MODE\+\_\+\+FONT}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Options for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaee22e9368dfa5382dc3c8fb07c129f92}{BROTLI\+\_\+\+PARAM\+\_\+\+MODE} parameter. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cb}{Brotli\+Encoder\+Operation}} \{ \mbox{\hyperlink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cbab2e4f33caf69a01084bdb1db7fb8c356}{BROTLI\+\_\+\+OPERATION\+\_\+\+PROCESS}} = 0
+, \mbox{\hyperlink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba35d9c34839f1171ecb715de795e47664}{BROTLI\+\_\+\+OPERATION\+\_\+\+FLUSH}} = 1
+, \mbox{\hyperlink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba9e7ec104794a42c7a14e3bec4753be18}{BROTLI\+\_\+\+OPERATION\+\_\+\+FINISH}} = 2
+, \mbox{\hyperlink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba3b5108b267793993e6f6decd8ebc438a}{BROTLI\+\_\+\+OPERATION\+\_\+\+EMIT\+\_\+\+METADATA}} = 3
+ \}
+\begin{DoxyCompactList}\small\item\em Operations that can be performed by streaming encoder. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fab}{Brotli\+Encoder\+Parameter}} \{ \newline
+\mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaee22e9368dfa5382dc3c8fb07c129f92}{BROTLI\+\_\+\+PARAM\+\_\+\+MODE}} = 0
+, \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba11e8c7def1638f8f31676d233c7c64d6}{BROTLI\+\_\+\+PARAM\+\_\+\+QUALITY}} = 1
+, \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabae3d363e61b30ea4ae9e08db2d0dfa3d4}{BROTLI\+\_\+\+PARAM\+\_\+\+LGWIN}} = 2
+, \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaa2a5a09ba4fe98841bb0c8f844f9cf78}{BROTLI\+\_\+\+PARAM\+\_\+\+LGBLOCK}} = 3
+, \newline
+\mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba1dbafb6915376ab20fb2a87c721d0f45}{BROTLI\+\_\+\+PARAM\+\_\+\+DISABLE\+\_\+\+LITERAL\+\_\+\+CONTEXT\+\_\+\+MODELING}} = 4
+, \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fababcac7ab9aca3be47a9476528201152e7}{BROTLI\+\_\+\+PARAM\+\_\+\+SIZE\+\_\+\+HINT}} = 5
+, \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba4b364d6f74149853fa147d3f4d6db580}{BROTLI\+\_\+\+PARAM\+\_\+\+LARGE\+\_\+\+WINDOW}} = 6
+, \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba579cc2c55788b70a0bd37efcdf73ea50}{BROTLI\+\_\+\+PARAM\+\_\+\+NPOSTFIX}} = 7
+, \newline
+\mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba1cbd778644a1306982bf55fb229d6dc9}{BROTLI\+\_\+\+PARAM\+\_\+\+NDIRECT}} = 8
+, \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba3bacc3f5f55a2f4bd1f53a7bd6dcc587}{BROTLI\+\_\+\+PARAM\+\_\+\+STREAM\+\_\+\+OFFSET}} = 9
+ \}
+\begin{DoxyCompactList}\small\item\em Options to be used with \doxylink{encode_8h_a068874cc94e7b3563c4791a9bc5894bd}{Brotli\+Encoder\+Set\+Parameter}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} \mbox{\hyperlink{encode_8h_a068874cc94e7b3563c4791a9bc5894bd}{Brotli\+Encoder\+Set\+Parameter}} (\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fab}{Brotli\+Encoder\+Parameter}} \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_aa18f5f638c58bcb864e367eacbb3380d}{param}}, uint32\+\_\+t \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1b2be7bfa84f129a2690a62f3ad82d62}{value}})
+\begin{DoxyCompactList}\small\item\em Sets the specified parameter to the given encoder instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{encode_8h_a28c1682997d6836cf2bc014916d5aeee}{Brotli\+Encoder\+Create\+Instance}} (\mbox{\hyperlink{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}{brotli\+\_\+alloc\+\_\+func}} \mbox{\hyperlink{zlib_8h_a50aa48acceb621559596dfa8b7558321}{alloc\+\_\+func}}, \mbox{\hyperlink{types_8h_a5e19dc1ca789ea76db7167289c442d32}{brotli\+\_\+free\+\_\+func}} \mbox{\hyperlink{zlib_8h_a002a1cda9686d40117da69d61c2a6dda}{free\+\_\+func}}, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque)
+\begin{DoxyCompactList}\small\item\em Creates an instance of \doxylink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State} and initializes it. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{encode_8h_a530cb7ed15ad6b79fdd77c5d7ef3bc2f}{Brotli\+Encoder\+Destroy\+Instance}} (\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Deinitializes and frees \doxylink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State} instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{encode_8h_a6bad5cd4b3dd2f5d290450f8d69e3cfd}{Brotli\+Encoder\+Prepared\+Dictionary}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{encode_8h_ad37e094cabda2bbc0192958f49234432}{Brotli\+Encoder\+Prepare\+Dictionary}} (\mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{Brotli\+Shared\+Dictionary\+Type}} \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a63267399cd2a2ee217572c11d2e54f07}{type}}, size\+\_\+t data\+\_\+size, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_abd87654504355b4c1bb002dcb1d4d16a}{data}}\mbox{[}\mbox{\hyperlink{port_8h_aa4b0af0d4de034f61827d71ce4f1e1eb}{BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM}}(data\+\_\+size)\mbox{]}, int quality, \mbox{\hyperlink{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}{brotli\+\_\+alloc\+\_\+func}} \mbox{\hyperlink{zlib_8h_a50aa48acceb621559596dfa8b7558321}{alloc\+\_\+func}}, \mbox{\hyperlink{types_8h_a5e19dc1ca789ea76db7167289c442d32}{brotli\+\_\+free\+\_\+func}} \mbox{\hyperlink{zlib_8h_a002a1cda9686d40117da69d61c2a6dda}{free\+\_\+func}}, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}opaque)
+\begin{DoxyCompactList}\small\item\em Prepares a shared dictionary from the given file format for the encoder. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{encode_8h_a6ce9421267c33f329e4050ea6f181d3f}{Brotli\+Encoder\+Destroy\+Prepared\+Dictionary}} (\mbox{\hyperlink{encode_8h_a6bad5cd4b3dd2f5d290450f8d69e3cfd}{Brotli\+Encoder\+Prepared\+Dictionary}} \texorpdfstring{$\ast$}{*}dictionary)
+\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} \mbox{\hyperlink{encode_8h_acdff5f8802f56a773cf957fbf3817ae4}{Brotli\+Encoder\+Attach\+Prepared\+Dictionary}} (\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{encode_8h_a6bad5cd4b3dd2f5d290450f8d69e3cfd}{Brotli\+Encoder\+Prepared\+Dictionary}} \texorpdfstring{$\ast$}{*}dictionary)
+\begin{DoxyCompactList}\small\item\em Attaches a prepared dictionary of any type to the encoder. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} size\+\_\+t \mbox{\hyperlink{encode_8h_a288fda6f67776ee205902166d2981c88}{Brotli\+Encoder\+Max\+Compressed\+Size}} (size\+\_\+t input\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Calculates the output size bound for the given {\ttfamily input\+\_\+size}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} \mbox{\hyperlink{encode_8h_a2e6de45c430b52088ce27aa58dd64884}{Brotli\+Encoder\+Compress}} (int quality, int lgwin, \mbox{\hyperlink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7}{Brotli\+Encoder\+Mode}} \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a1e71d9c196e4683cc06c4b54d53f7ef5}{mode}}, size\+\_\+t input\+\_\+size, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t input\+\_\+buffer\mbox{[}\mbox{\hyperlink{port_8h_aa4b0af0d4de034f61827d71ce4f1e1eb}{BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM}}(input\+\_\+size)\mbox{]}, size\+\_\+t \texorpdfstring{$\ast$}{*}encoded\+\_\+size, uint8\+\_\+t encoded\+\_\+buffer\mbox{[}\mbox{\hyperlink{port_8h_aa4b0af0d4de034f61827d71ce4f1e1eb}{BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM}}(\texorpdfstring{$\ast$}{*}encoded\+\_\+size)\mbox{]})
+\begin{DoxyCompactList}\small\item\em Performs one-\/shot memory-\/to-\/memory compression. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} \mbox{\hyperlink{encode_8h_ac94b211d362a1a3d4f208a5736cc41a5}{Brotli\+Encoder\+Compress\+Stream}} (\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cb}{Brotli\+Encoder\+Operation}} op, size\+\_\+t \texorpdfstring{$\ast$}{*}available\+\_\+in, \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}next\+\_\+in, size\+\_\+t \texorpdfstring{$\ast$}{*}available\+\_\+out, uint8\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}next\+\_\+out, size\+\_\+t \texorpdfstring{$\ast$}{*}total\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Compresses input stream to output stream. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} \mbox{\hyperlink{encode_8h_a25f930a23bf92ecd33f361083bc1e90a}{Brotli\+Encoder\+Is\+Finished}} (\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Checks if encoder instance reached the final state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} \mbox{\hyperlink{encode_8h_a122ad712b0987e513af6ce9ad90fc65f}{Brotli\+Encoder\+Has\+More\+Output}} (\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Checks if encoder has more output. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{encode_8h_a2bda817fc6d2bbd9740115590ea93aa5}{Brotli\+Encoder\+Take\+Output}} (\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}state, size\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}})
+\begin{DoxyCompactList}\small\item\em Acquires pointer to internal output buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{port_8h_aace003f04b5461f890a5bdd16c3f6315}{BROTLI\+\_\+\+ENC\+\_\+\+EXTRA\+\_\+\+API}} size\+\_\+t \mbox{\hyperlink{encode_8h_a866643d57d6803b3d429b8a9027cce74}{Brotli\+Encoder\+Estimate\+Peak\+Memory\+Usage}} (int quality, int lgwin, size\+\_\+t input\+\_\+size)
+\item 
+\mbox{\hyperlink{port_8h_aace003f04b5461f890a5bdd16c3f6315}{BROTLI\+\_\+\+ENC\+\_\+\+EXTRA\+\_\+\+API}} size\+\_\+t \mbox{\hyperlink{encode_8h_adbfa2f0ceab3fb35f444bd3ff5f49ecd}{Brotli\+Encoder\+Get\+Prepared\+Dictionary\+Size}} (\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{encode_8h_a6bad5cd4b3dd2f5d290450f8d69e3cfd}{Brotli\+Encoder\+Prepared\+Dictionary}} \texorpdfstring{$\ast$}{*}dictionary)
+\item 
+\mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} uint32\+\_\+t \mbox{\hyperlink{encode_8h_a98b93f770c11522c2edcb9425afcd0d6}{Brotli\+Encoder\+Version}} (\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}})
+\begin{DoxyCompactList}\small\item\em Gets an encoder library version. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+API for Brotli compression. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{encode_8h_a9b18180a611bd32872cfb0e80b567830}\label{encode_8h_a9b18180a611bd32872cfb0e80b567830} 
+\index{encode.h@{encode.h}!BROTLI\_DEFAULT\_MODE@{BROTLI\_DEFAULT\_MODE}}
+\index{BROTLI\_DEFAULT\_MODE@{BROTLI\_DEFAULT\_MODE}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_DEFAULT\_MODE}{BROTLI\_DEFAULT\_MODE}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+DEFAULT\+\_\+\+MODE~\mbox{\hyperlink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7a7f53c9c953e88702ed8c7eb8da1a846d}{BROTLI\+\_\+\+MODE\+\_\+\+GENERIC}}}
+
+
+
+Default value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaee22e9368dfa5382dc3c8fb07c129f92}{BROTLI\+\_\+\+PARAM\+\_\+\+MODE} parameter. 
+
+\Hypertarget{encode_8h_a8d015487f9401ec430a5c9356e773e66}\label{encode_8h_a8d015487f9401ec430a5c9356e773e66} 
+\index{encode.h@{encode.h}!BROTLI\_DEFAULT\_QUALITY@{BROTLI\_DEFAULT\_QUALITY}}
+\index{BROTLI\_DEFAULT\_QUALITY@{BROTLI\_DEFAULT\_QUALITY}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_DEFAULT\_QUALITY}{BROTLI\_DEFAULT\_QUALITY}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+DEFAULT\+\_\+\+QUALITY~11}
+
+
+
+Default value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba11e8c7def1638f8f31676d233c7c64d6}{BROTLI\+\_\+\+PARAM\+\_\+\+QUALITY} parameter. 
+
+\Hypertarget{encode_8h_a46cf52a4bb642771f753dbec48cc2477}\label{encode_8h_a46cf52a4bb642771f753dbec48cc2477} 
+\index{encode.h@{encode.h}!BROTLI\_DEFAULT\_WINDOW@{BROTLI\_DEFAULT\_WINDOW}}
+\index{BROTLI\_DEFAULT\_WINDOW@{BROTLI\_DEFAULT\_WINDOW}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_DEFAULT\_WINDOW}{BROTLI\_DEFAULT\_WINDOW}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+DEFAULT\+\_\+\+WINDOW~22}
+
+
+
+Default value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabae3d363e61b30ea4ae9e08db2d0dfa3d4}{BROTLI\+\_\+\+PARAM\+\_\+\+LGWIN} parameter. 
+
+\Hypertarget{encode_8h_af46c9c1a6488507af0fb7ab2232dc9ee}\label{encode_8h_af46c9c1a6488507af0fb7ab2232dc9ee} 
+\index{encode.h@{encode.h}!BROTLI\_LARGE\_MAX\_WINDOW\_BITS@{BROTLI\_LARGE\_MAX\_WINDOW\_BITS}}
+\index{BROTLI\_LARGE\_MAX\_WINDOW\_BITS@{BROTLI\_LARGE\_MAX\_WINDOW\_BITS}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_LARGE\_MAX\_WINDOW\_BITS}{BROTLI\_LARGE\_MAX\_WINDOW\_BITS}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+LARGE\+\_\+\+MAX\+\_\+\+WINDOW\+\_\+\+BITS~30}
+
+
+
+Maximal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabae3d363e61b30ea4ae9e08db2d0dfa3d4}{BROTLI\+\_\+\+PARAM\+\_\+\+LGWIN} parameter in \"{}\+Large Window Brotli\"{} (32-\/bit). 
+
+\Hypertarget{encode_8h_ac4fa7009ad322063e2c6975a1b9cb9d7}\label{encode_8h_ac4fa7009ad322063e2c6975a1b9cb9d7} 
+\index{encode.h@{encode.h}!BROTLI\_MAX\_INPUT\_BLOCK\_BITS@{BROTLI\_MAX\_INPUT\_BLOCK\_BITS}}
+\index{BROTLI\_MAX\_INPUT\_BLOCK\_BITS@{BROTLI\_MAX\_INPUT\_BLOCK\_BITS}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_MAX\_INPUT\_BLOCK\_BITS}{BROTLI\_MAX\_INPUT\_BLOCK\_BITS}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+MAX\+\_\+\+INPUT\+\_\+\+BLOCK\+\_\+\+BITS~24}
+
+
+
+Maximal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaa2a5a09ba4fe98841bb0c8f844f9cf78}{BROTLI\+\_\+\+PARAM\+\_\+\+LGBLOCK} parameter. 
+
+\Hypertarget{encode_8h_ac4582a47de1127136ffe7e7d2b1a6b05}\label{encode_8h_ac4582a47de1127136ffe7e7d2b1a6b05} 
+\index{encode.h@{encode.h}!BROTLI\_MAX\_QUALITY@{BROTLI\_MAX\_QUALITY}}
+\index{BROTLI\_MAX\_QUALITY@{BROTLI\_MAX\_QUALITY}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_MAX\_QUALITY}{BROTLI\_MAX\_QUALITY}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+MAX\+\_\+\+QUALITY~11}
+
+
+
+Maximal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba11e8c7def1638f8f31676d233c7c64d6}{BROTLI\+\_\+\+PARAM\+\_\+\+QUALITY} parameter. 
+
+\Hypertarget{encode_8h_a5a8f8b31992980fdf1e34ad8a2e822e8}\label{encode_8h_a5a8f8b31992980fdf1e34ad8a2e822e8} 
+\index{encode.h@{encode.h}!BROTLI\_MAX\_WINDOW\_BITS@{BROTLI\_MAX\_WINDOW\_BITS}}
+\index{BROTLI\_MAX\_WINDOW\_BITS@{BROTLI\_MAX\_WINDOW\_BITS}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_MAX\_WINDOW\_BITS}{BROTLI\_MAX\_WINDOW\_BITS}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+MAX\+\_\+\+WINDOW\+\_\+\+BITS~24}
+
+
+
+Maximal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabae3d363e61b30ea4ae9e08db2d0dfa3d4}{BROTLI\+\_\+\+PARAM\+\_\+\+LGWIN} parameter. 
+
+\begin{DoxyNote}{Note}
+equal to {\ttfamily BROTLI\+\_\+\+MAX\+\_\+\+DISTANCE\+\_\+\+BITS} constant. 
+\end{DoxyNote}
+\Hypertarget{encode_8h_a0d235077d87601d89ef51aa09eb907d3}\label{encode_8h_a0d235077d87601d89ef51aa09eb907d3} 
+\index{encode.h@{encode.h}!BROTLI\_MIN\_INPUT\_BLOCK\_BITS@{BROTLI\_MIN\_INPUT\_BLOCK\_BITS}}
+\index{BROTLI\_MIN\_INPUT\_BLOCK\_BITS@{BROTLI\_MIN\_INPUT\_BLOCK\_BITS}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_MIN\_INPUT\_BLOCK\_BITS}{BROTLI\_MIN\_INPUT\_BLOCK\_BITS}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+MIN\+\_\+\+INPUT\+\_\+\+BLOCK\+\_\+\+BITS~16}
+
+
+
+Minimal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaa2a5a09ba4fe98841bb0c8f844f9cf78}{BROTLI\+\_\+\+PARAM\+\_\+\+LGBLOCK} parameter. 
+
+\Hypertarget{encode_8h_a94ffc03fed43e8491e998fe74ce42a40}\label{encode_8h_a94ffc03fed43e8491e998fe74ce42a40} 
+\index{encode.h@{encode.h}!BROTLI\_MIN\_QUALITY@{BROTLI\_MIN\_QUALITY}}
+\index{BROTLI\_MIN\_QUALITY@{BROTLI\_MIN\_QUALITY}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_MIN\_QUALITY}{BROTLI\_MIN\_QUALITY}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+MIN\+\_\+\+QUALITY~0}
+
+
+
+Minimal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba11e8c7def1638f8f31676d233c7c64d6}{BROTLI\+\_\+\+PARAM\+\_\+\+QUALITY} parameter. 
+
+\Hypertarget{encode_8h_ab152537842374c78cce31064d2c4f0c5}\label{encode_8h_ab152537842374c78cce31064d2c4f0c5} 
+\index{encode.h@{encode.h}!BROTLI\_MIN\_WINDOW\_BITS@{BROTLI\_MIN\_WINDOW\_BITS}}
+\index{BROTLI\_MIN\_WINDOW\_BITS@{BROTLI\_MIN\_WINDOW\_BITS}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BROTLI\_MIN\_WINDOW\_BITS}{BROTLI\_MIN\_WINDOW\_BITS}}
+{\footnotesize\ttfamily \#define BROTLI\+\_\+\+MIN\+\_\+\+WINDOW\+\_\+\+BITS~10}
+
+
+
+Minimal value for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabae3d363e61b30ea4ae9e08db2d0dfa3d4}{BROTLI\+\_\+\+PARAM\+\_\+\+LGWIN} parameter. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{encode_8h_a6a9a2294e88a30769440872b147d27c9}\label{encode_8h_a6a9a2294e88a30769440872b147d27c9} 
+\index{encode.h@{encode.h}!BrotliEncoderMode@{BrotliEncoderMode}}
+\index{BrotliEncoderMode@{BrotliEncoderMode}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderMode}{BrotliEncoderMode}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7}{Brotli\+Encoder\+Mode}} \mbox{\hyperlink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7}{Brotli\+Encoder\+Mode}}}
+
+
+
+Options for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaee22e9368dfa5382dc3c8fb07c129f92}{BROTLI\+\_\+\+PARAM\+\_\+\+MODE} parameter. 
+
+\Hypertarget{encode_8h_a1bd662f137583d5949e2ac9d5a177e19}\label{encode_8h_a1bd662f137583d5949e2ac9d5a177e19} 
+\index{encode.h@{encode.h}!BrotliEncoderOperation@{BrotliEncoderOperation}}
+\index{BrotliEncoderOperation@{BrotliEncoderOperation}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderOperation}{BrotliEncoderOperation}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cb}{Brotli\+Encoder\+Operation}} \mbox{\hyperlink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cb}{Brotli\+Encoder\+Operation}}}
+
+
+
+Operations that can be performed by streaming encoder. 
+
+\Hypertarget{encode_8h_a93608bf1e1ffa4024f110405fdb2c94f}\label{encode_8h_a93608bf1e1ffa4024f110405fdb2c94f} 
+\index{encode.h@{encode.h}!BrotliEncoderParameter@{BrotliEncoderParameter}}
+\index{BrotliEncoderParameter@{BrotliEncoderParameter}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderParameter}{BrotliEncoderParameter}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fab}{Brotli\+Encoder\+Parameter}} \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fab}{Brotli\+Encoder\+Parameter}}}
+
+
+
+Options to be used with \doxylink{encode_8h_a068874cc94e7b3563c4791a9bc5894bd}{Brotli\+Encoder\+Set\+Parameter}. 
+
+\Hypertarget{encode_8h_a6bad5cd4b3dd2f5d290450f8d69e3cfd}\label{encode_8h_a6bad5cd4b3dd2f5d290450f8d69e3cfd} 
+\index{encode.h@{encode.h}!BrotliEncoderPreparedDictionary@{BrotliEncoderPreparedDictionary}}
+\index{BrotliEncoderPreparedDictionary@{BrotliEncoderPreparedDictionary}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderPreparedDictionary}{BrotliEncoderPreparedDictionary}}
+{\footnotesize\ttfamily typedef struct Brotli\+Encoder\+Prepared\+Dictionary\+Struct \mbox{\hyperlink{encode_8h_a6bad5cd4b3dd2f5d290450f8d69e3cfd}{Brotli\+Encoder\+Prepared\+Dictionary}}}
+
+\Hypertarget{encode_8h_ab14c96477af86d34cdc1de48d233b74f}\label{encode_8h_ab14c96477af86d34cdc1de48d233b74f} 
+\index{encode.h@{encode.h}!BrotliEncoderState@{BrotliEncoderState}}
+\index{BrotliEncoderState@{BrotliEncoderState}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderState}{BrotliEncoderState}}
+{\footnotesize\ttfamily typedef struct Brotli\+Encoder\+State\+Struct \mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}}}
+
+
+
+Opaque structure that holds encoder state. 
+
+Allocated and initialized with \doxylink{encode_8h_a28c1682997d6836cf2bc014916d5aeee}{Brotli\+Encoder\+Create\+Instance}. Cleaned up and deallocated with \doxylink{encode_8h_a530cb7ed15ad6b79fdd77c5d7ef3bc2f}{Brotli\+Encoder\+Destroy\+Instance}. 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7}\label{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7} 
+\index{encode.h@{encode.h}!BrotliEncoderMode@{BrotliEncoderMode}}
+\index{BrotliEncoderMode@{BrotliEncoderMode}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderMode}{BrotliEncoderMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7}{Brotli\+Encoder\+Mode}}}
+
+
+
+Options for \doxylink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaee22e9368dfa5382dc3c8fb07c129f92}{BROTLI\+\_\+\+PARAM\+\_\+\+MODE} parameter. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_MODE\_GENERIC@{BROTLI\_MODE\_GENERIC}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_MODE\_GENERIC@{BROTLI\_MODE\_GENERIC}}}\Hypertarget{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7a7f53c9c953e88702ed8c7eb8da1a846d}\label{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7a7f53c9c953e88702ed8c7eb8da1a846d} 
+BROTLI\+\_\+\+MODE\+\_\+\+GENERIC&Default compression mode. In this mode compressor does not know anything in advance about the properties of the input. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_MODE\_TEXT@{BROTLI\_MODE\_TEXT}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_MODE\_TEXT@{BROTLI\_MODE\_TEXT}}}\Hypertarget{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7a05c92692faa0f316f09f73411d4c9b45}\label{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7a05c92692faa0f316f09f73411d4c9b45} 
+BROTLI\+\_\+\+MODE\+\_\+\+TEXT&Compression mode for UTF-\/8 formatted text input. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_MODE\_FONT@{BROTLI\_MODE\_FONT}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_MODE\_FONT@{BROTLI\_MODE\_FONT}}}\Hypertarget{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7ad780936a708a653ebf1c4543b7249a34}\label{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7ad780936a708a653ebf1c4543b7249a34} 
+BROTLI\+\_\+\+MODE\+\_\+\+FONT&Compression mode used in WOFF 2.\+0. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cb}\label{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cb} 
+\index{encode.h@{encode.h}!BrotliEncoderOperation@{BrotliEncoderOperation}}
+\index{BrotliEncoderOperation@{BrotliEncoderOperation}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderOperation}{BrotliEncoderOperation}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cb}{Brotli\+Encoder\+Operation}}}
+
+
+
+Operations that can be performed by streaming encoder. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_OPERATION\_PROCESS@{BROTLI\_OPERATION\_PROCESS}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_OPERATION\_PROCESS@{BROTLI\_OPERATION\_PROCESS}}}\Hypertarget{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cbab2e4f33caf69a01084bdb1db7fb8c356}\label{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cbab2e4f33caf69a01084bdb1db7fb8c356} 
+BROTLI\+\_\+\+OPERATION\+\_\+\+PROCESS&Process input. Encoder may postpone producing output, until it has processed enough input. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_OPERATION\_FLUSH@{BROTLI\_OPERATION\_FLUSH}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_OPERATION\_FLUSH@{BROTLI\_OPERATION\_FLUSH}}}\Hypertarget{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba35d9c34839f1171ecb715de795e47664}\label{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba35d9c34839f1171ecb715de795e47664} 
+BROTLI\+\_\+\+OPERATION\+\_\+\+FLUSH&Produce output for all processed input. Actual flush is performed when input stream is depleted and there is enough space in output stream. This means that client should repeat \doxylink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba35d9c34839f1171ecb715de795e47664}{BROTLI\+\_\+\+OPERATION\+\_\+\+FLUSH} operation until {\ttfamily available\+\_\+in} becomes {\ttfamily 0}, and \doxylink{encode_8h_a122ad712b0987e513af6ce9ad90fc65f}{Brotli\+Encoder\+Has\+More\+Output} returns \doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE}. If output is acquired via \doxylink{encode_8h_a2bda817fc6d2bbd9740115590ea93aa5}{Brotli\+Encoder\+Take\+Output}, then operation should be repeated after output buffer is drained.
+
+\begin{DoxyWarning}{Warning}
+Until flush is complete, client {\bfseries{SHOULD}} {\bfseries{NOT}} swap, reduce or extend input stream.
+\end{DoxyWarning}
+When flush is complete, output data will be sufficient for decoder to reproduce all the given input. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_OPERATION\_FINISH@{BROTLI\_OPERATION\_FINISH}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_OPERATION\_FINISH@{BROTLI\_OPERATION\_FINISH}}}\Hypertarget{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba9e7ec104794a42c7a14e3bec4753be18}\label{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba9e7ec104794a42c7a14e3bec4753be18} 
+BROTLI\+\_\+\+OPERATION\+\_\+\+FINISH&Finalize the stream. Actual finalization is performed when input stream is depleted and there is enough space in output stream. This means that client should repeat \doxylink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba9e7ec104794a42c7a14e3bec4753be18}{BROTLI\+\_\+\+OPERATION\+\_\+\+FINISH} operation until {\ttfamily available\+\_\+in} becomes {\ttfamily 0}, and \doxylink{encode_8h_a122ad712b0987e513af6ce9ad90fc65f}{Brotli\+Encoder\+Has\+More\+Output} returns \doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE}. If output is acquired via \doxylink{encode_8h_a2bda817fc6d2bbd9740115590ea93aa5}{Brotli\+Encoder\+Take\+Output}, then operation should be repeated after output buffer is drained.
+
+\begin{DoxyWarning}{Warning}
+Until finalization is complete, client {\bfseries{SHOULD}} {\bfseries{NOT}} swap, reduce or extend input stream.
+\end{DoxyWarning}
+Helper function \doxylink{encode_8h_a25f930a23bf92ecd33f361083bc1e90a}{Brotli\+Encoder\+Is\+Finished} checks if stream is finalized and output fully dumped.
+
+Adding more input data to finalized stream is impossible. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_OPERATION\_EMIT\_METADATA@{BROTLI\_OPERATION\_EMIT\_METADATA}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_OPERATION\_EMIT\_METADATA@{BROTLI\_OPERATION\_EMIT\_METADATA}}}\Hypertarget{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba3b5108b267793993e6f6decd8ebc438a}\label{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba3b5108b267793993e6f6decd8ebc438a} 
+BROTLI\+\_\+\+OPERATION\+\_\+\+EMIT\+\_\+\+METADATA&Emit metadata block to stream. Metadata is opaque to Brotli\+: neither encoder, nor decoder processes this data or relies on it. It may be used to pass some extra information from encoder client to decoder client without interfering with main data stream.
+
+\begin{DoxyNote}{Note}
+Encoder may emit empty metadata blocks internally, to pad encoded stream to byte boundary.
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+Until emitting metadata is complete client {\bfseries{SHOULD}} {\bfseries{NOT}} swap, reduce or extend input stream.
+
+The whole content of input buffer is considered to be the content of metadata block. Do {\bfseries{NOT}} {\itshape append} metadata to input stream, before it is depleted with other operations.
+\end{DoxyWarning}
+Stream is soft-\/flushed before metadata block is emitted. Metadata block {\bfseries{MUST}} be no longer than than 16MiB. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fab}\label{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fab} 
+\index{encode.h@{encode.h}!BrotliEncoderParameter@{BrotliEncoderParameter}}
+\index{BrotliEncoderParameter@{BrotliEncoderParameter}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderParameter}{BrotliEncoderParameter}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fab}{Brotli\+Encoder\+Parameter}}}
+
+
+
+Options to be used with \doxylink{encode_8h_a068874cc94e7b3563c4791a9bc5894bd}{Brotli\+Encoder\+Set\+Parameter}. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_PARAM\_MODE@{BROTLI\_PARAM\_MODE}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_PARAM\_MODE@{BROTLI\_PARAM\_MODE}}}\Hypertarget{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaee22e9368dfa5382dc3c8fb07c129f92}\label{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaee22e9368dfa5382dc3c8fb07c129f92} 
+BROTLI\+\_\+\+PARAM\+\_\+\+MODE&Tune encoder for specific input. \doxylink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7}{Brotli\+Encoder\+Mode} enumerates all available values. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_PARAM\_QUALITY@{BROTLI\_PARAM\_QUALITY}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_PARAM\_QUALITY@{BROTLI\_PARAM\_QUALITY}}}\Hypertarget{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba11e8c7def1638f8f31676d233c7c64d6}\label{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba11e8c7def1638f8f31676d233c7c64d6} 
+BROTLI\+\_\+\+PARAM\+\_\+\+QUALITY&The main compression speed-\/density lever. The higher the quality, the slower the compression. Range is from \doxylink{encode_8h_a94ffc03fed43e8491e998fe74ce42a40}{BROTLI\+\_\+\+MIN\+\_\+\+QUALITY} to \doxylink{encode_8h_ac4582a47de1127136ffe7e7d2b1a6b05}{BROTLI\+\_\+\+MAX\+\_\+\+QUALITY}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_PARAM\_LGWIN@{BROTLI\_PARAM\_LGWIN}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_PARAM\_LGWIN@{BROTLI\_PARAM\_LGWIN}}}\Hypertarget{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabae3d363e61b30ea4ae9e08db2d0dfa3d4}\label{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabae3d363e61b30ea4ae9e08db2d0dfa3d4} 
+BROTLI\+\_\+\+PARAM\+\_\+\+LGWIN&Recommended sliding LZ77 window size. Encoder may reduce this value, e.\+g. if input is much smaller than window size.
+
+Window size is {\ttfamily (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} value) -\/ 16}.
+
+Range is from \doxylink{encode_8h_ab152537842374c78cce31064d2c4f0c5}{BROTLI\+\_\+\+MIN\+\_\+\+WINDOW\+\_\+\+BITS} to \doxylink{encode_8h_a5a8f8b31992980fdf1e34ad8a2e822e8}{BROTLI\+\_\+\+MAX\+\_\+\+WINDOW\+\_\+\+BITS}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_PARAM\_LGBLOCK@{BROTLI\_PARAM\_LGBLOCK}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_PARAM\_LGBLOCK@{BROTLI\_PARAM\_LGBLOCK}}}\Hypertarget{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaa2a5a09ba4fe98841bb0c8f844f9cf78}\label{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fabaa2a5a09ba4fe98841bb0c8f844f9cf78} 
+BROTLI\+\_\+\+PARAM\+\_\+\+LGBLOCK&Recommended input block size. Encoder may reduce this value, e.\+g. if input is much smaller than input block size.
+
+Range is from \doxylink{encode_8h_a0d235077d87601d89ef51aa09eb907d3}{BROTLI\+\_\+\+MIN\+\_\+\+INPUT\+\_\+\+BLOCK\+\_\+\+BITS} to \doxylink{encode_8h_ac4fa7009ad322063e2c6975a1b9cb9d7}{BROTLI\+\_\+\+MAX\+\_\+\+INPUT\+\_\+\+BLOCK\+\_\+\+BITS}.
+
+\begin{DoxyNote}{Note}
+Bigger input block size allows better compression, but consumes more memory. ~\newline
+ The rough formula of memory used for temporary input storage is {\ttfamily 3 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} lg\+Block}. 
+\end{DoxyNote}
+\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_PARAM\_DISABLE\_LITERAL\_CONTEXT\_MODELING@{BROTLI\_PARAM\_DISABLE\_LITERAL\_CONTEXT\_MODELING}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_PARAM\_DISABLE\_LITERAL\_CONTEXT\_MODELING@{BROTLI\_PARAM\_DISABLE\_LITERAL\_CONTEXT\_MODELING}}}\Hypertarget{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba1dbafb6915376ab20fb2a87c721d0f45}\label{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba1dbafb6915376ab20fb2a87c721d0f45} 
+BROTLI\+\_\+\+PARAM\+\_\+\+DISABLE\+\_\+\+LITERAL\+\_\+\+CONTEXT\+\_\+\+MODELING&Flag that affects usage of \"{}literal context modeling\"{} format feature. This flag is a \"{}decoding-\/speed vs compression ratio\"{} trade-\/off. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_PARAM\_SIZE\_HINT@{BROTLI\_PARAM\_SIZE\_HINT}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_PARAM\_SIZE\_HINT@{BROTLI\_PARAM\_SIZE\_HINT}}}\Hypertarget{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fababcac7ab9aca3be47a9476528201152e7}\label{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fababcac7ab9aca3be47a9476528201152e7} 
+BROTLI\+\_\+\+PARAM\+\_\+\+SIZE\+\_\+\+HINT&Estimated total input size for all \doxylink{encode_8h_ac94b211d362a1a3d4f208a5736cc41a5}{Brotli\+Encoder\+Compress\+Stream} calls. The default value is 0, which means that the total input size is unknown. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_PARAM\_LARGE\_WINDOW@{BROTLI\_PARAM\_LARGE\_WINDOW}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_PARAM\_LARGE\_WINDOW@{BROTLI\_PARAM\_LARGE\_WINDOW}}}\Hypertarget{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba4b364d6f74149853fa147d3f4d6db580}\label{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba4b364d6f74149853fa147d3f4d6db580} 
+BROTLI\+\_\+\+PARAM\+\_\+\+LARGE\+\_\+\+WINDOW&Flag that determines if \"{}\+Large Window Brotli\"{} is used. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_PARAM\_NPOSTFIX@{BROTLI\_PARAM\_NPOSTFIX}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_PARAM\_NPOSTFIX@{BROTLI\_PARAM\_NPOSTFIX}}}\Hypertarget{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba579cc2c55788b70a0bd37efcdf73ea50}\label{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba579cc2c55788b70a0bd37efcdf73ea50} 
+BROTLI\+\_\+\+PARAM\+\_\+\+NPOSTFIX&Recommended number of postfix bits (NPOSTFIX). Encoder may change this value.
+
+Range is from 0 to \+::\+BROTLI\+\_\+\+MAX\+\_\+\+NPOSTFIX. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_PARAM\_NDIRECT@{BROTLI\_PARAM\_NDIRECT}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_PARAM\_NDIRECT@{BROTLI\_PARAM\_NDIRECT}}}\Hypertarget{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba1cbd778644a1306982bf55fb229d6dc9}\label{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba1cbd778644a1306982bf55fb229d6dc9} 
+BROTLI\+\_\+\+PARAM\+\_\+\+NDIRECT&Recommended number of direct distance codes (NDIRECT). Encoder may change this value.
+
+Range is from 0 to (15 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} NPOSTFIX) in steps of (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} NPOSTFIX). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROTLI\_PARAM\_STREAM\_OFFSET@{BROTLI\_PARAM\_STREAM\_OFFSET}!encode.h@{encode.h}}\index{encode.h@{encode.h}!BROTLI\_PARAM\_STREAM\_OFFSET@{BROTLI\_PARAM\_STREAM\_OFFSET}}}\Hypertarget{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba3bacc3f5f55a2f4bd1f53a7bd6dcc587}\label{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12faba3bacc3f5f55a2f4bd1f53a7bd6dcc587} 
+BROTLI\+\_\+\+PARAM\+\_\+\+STREAM\+\_\+\+OFFSET&Number of bytes of input stream already processed by a different instance. \begin{DoxyNote}{Note}
+It is important to configure all the encoder instances with same parameters (except this one) in order to allow all the encoded parts obey the same restrictions implied by header.
+\end{DoxyNote}
+If offset is not 0, then stream header is omitted. In any case output start is byte aligned, so for proper streams stitching \"{}predecessor\"{} stream must be flushed.
+
+Range is not artificially limited, but all the values greater or equal to maximal window size have the same effect. Values greater than 2\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}30 are not allowed. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{encode_8h_acdff5f8802f56a773cf957fbf3817ae4}\label{encode_8h_acdff5f8802f56a773cf957fbf3817ae4} 
+\index{encode.h@{encode.h}!BrotliEncoderAttachPreparedDictionary@{BrotliEncoderAttachPreparedDictionary}}
+\index{BrotliEncoderAttachPreparedDictionary@{BrotliEncoderAttachPreparedDictionary}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderAttachPreparedDictionary()}{BrotliEncoderAttachPreparedDictionary()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} Brotli\+Encoder\+Attach\+Prepared\+Dictionary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{encode_8h_a6bad5cd4b3dd2f5d290450f8d69e3cfd}{Brotli\+Encoder\+Prepared\+Dictionary}} \texorpdfstring{$\ast$}{*}}]{dictionary }\end{DoxyParamCaption})}
+
+
+
+Attaches a prepared dictionary of any type to the encoder. 
+
+Can be used multiple times to attach multiple dictionaries. The dictionary type was determined by Brotli\+Encoder\+Prepare\+Dictionary. Multiple raw prefix dictionaries and/or max 1 serialized dictionary with custom words can be attached.
+
+\begin{DoxyReturn}{Returns}
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} in case of error 
+
+\doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE} otherwise 
+\end{DoxyReturn}
+\Hypertarget{encode_8h_a2e6de45c430b52088ce27aa58dd64884}\label{encode_8h_a2e6de45c430b52088ce27aa58dd64884} 
+\index{encode.h@{encode.h}!BrotliEncoderCompress@{BrotliEncoderCompress}}
+\index{BrotliEncoderCompress@{BrotliEncoderCompress}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderCompress()}{BrotliEncoderCompress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} Brotli\+Encoder\+Compress (\begin{DoxyParamCaption}\item[{int}]{quality,  }\item[{int}]{lgwin,  }\item[{\mbox{\hyperlink{encode_8h_aa6fdd56b234eddc40cd8b79a0ecc70a7}{Brotli\+Encoder\+Mode}}}]{mode,  }\item[{size\+\_\+t}]{input\+\_\+size,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t}]{input\+\_\+buffer\mbox{[}\+BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM(input\+\_\+size)\mbox{]},  }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{encoded\+\_\+size,  }\item[{uint8\+\_\+t}]{encoded\+\_\+buffer\mbox{[}\+BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM(\texorpdfstring{$\ast$}{*}encoded\+\_\+size)\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Performs one-\/shot memory-\/to-\/memory compression. 
+
+Compresses the data in {\ttfamily input\+\_\+buffer} into {\ttfamily encoded\+\_\+buffer}, and sets {\ttfamily \texorpdfstring{$\ast$}{*}encoded\+\_\+size} to the compressed length.
+
+\begin{DoxyNote}{Note}
+If \doxylink{encode_8h_a288fda6f67776ee205902166d2981c88}{Brotli\+Encoder\+Max\+Compressed\+Size}({\ttfamily input\+\_\+size}) returns non-\/zero value, then output is guaranteed to be no longer than that.
+
+If {\ttfamily lgwin} is greater than \doxylink{encode_8h_a5a8f8b31992980fdf1e34ad8a2e822e8}{BROTLI\+\_\+\+MAX\+\_\+\+WINDOW\+\_\+\+BITS} then resulting stream might be incompatible with RFC 7932; to decode such streams, decoder should be configured with \doxylink{decode_8h_a85a48e5725264efb4e36a3fb9e34c070a500b69dd614ca3ac79d79c486dc40908}{BROTLI\+\_\+\+DECODER\+\_\+\+PARAM\+\_\+\+LARGE\+\_\+\+WINDOW} = {\ttfamily 1} 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em quality} & quality parameter value, e.\+g. \doxylink{encode_8h_a8d015487f9401ec430a5c9356e773e66}{BROTLI\+\_\+\+DEFAULT\+\_\+\+QUALITY} \\
+\hline
+ & {\em lgwin} & lgwin parameter value, e.\+g. \doxylink{encode_8h_a46cf52a4bb642771f753dbec48cc2477}{BROTLI\+\_\+\+DEFAULT\+\_\+\+WINDOW} \\
+\hline
+ & {\em mode} & mode parameter value, e.\+g. \doxylink{encode_8h_a9b18180a611bd32872cfb0e80b567830}{BROTLI\+\_\+\+DEFAULT\+\_\+\+MODE} \\
+\hline
+ & {\em input\+\_\+size} & size of {\ttfamily input\+\_\+buffer} \\
+\hline
+ & {\em input\+\_\+buffer} & input data buffer with at least {\ttfamily input\+\_\+size} addressable bytes \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em encoded\+\_\+size} & {\bfseries{in\+:}} size of {\ttfamily encoded\+\_\+buffer}; ~\newline
+ {\bfseries{out\+:}} length of compressed data written to {\ttfamily encoded\+\_\+buffer}, or {\ttfamily 0} if compression fails \\
+\hline
+ & {\em encoded\+\_\+buffer} & compressed data destination buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} in case of compression error 
+
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} if output buffer is too small 
+
+\doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE} otherwise 
+\end{DoxyReturn}
+\Hypertarget{encode_8h_ac94b211d362a1a3d4f208a5736cc41a5}\label{encode_8h_ac94b211d362a1a3d4f208a5736cc41a5} 
+\index{encode.h@{encode.h}!BrotliEncoderCompressStream@{BrotliEncoderCompressStream}}
+\index{BrotliEncoderCompressStream@{BrotliEncoderCompressStream}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderCompressStream()}{BrotliEncoderCompressStream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} Brotli\+Encoder\+Compress\+Stream (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cb}{Brotli\+Encoder\+Operation}}}]{op,  }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{available\+\_\+in,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{next\+\_\+in,  }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{available\+\_\+out,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{next\+\_\+out,  }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{total\+\_\+out }\end{DoxyParamCaption})}
+
+
+
+Compresses input stream to output stream. 
+
+The values {\ttfamily \texorpdfstring{$\ast$}{*}available\+\_\+in} and {\ttfamily \texorpdfstring{$\ast$}{*}available\+\_\+out} must specify the number of bytes addressable at {\ttfamily \texorpdfstring{$\ast$}{*}next\+\_\+in} and {\ttfamily \texorpdfstring{$\ast$}{*}next\+\_\+out} respectively. When {\ttfamily \texorpdfstring{$\ast$}{*}available\+\_\+out} is {\ttfamily 0}, {\ttfamily next\+\_\+out} is allowed to be {\ttfamily NULL}.
+
+After each call, {\ttfamily \texorpdfstring{$\ast$}{*}available\+\_\+in} will be decremented by the amount of input bytes consumed, and the {\ttfamily \texorpdfstring{$\ast$}{*}next\+\_\+in} pointer will be incremented by that amount. Similarly, {\ttfamily \texorpdfstring{$\ast$}{*}available\+\_\+out} will be decremented by the amount of output bytes written, and the {\ttfamily \texorpdfstring{$\ast$}{*}next\+\_\+out} pointer will be incremented by that amount.
+
+{\ttfamily total\+\_\+out}, if it is not a null-\/pointer, will be set to the number of bytes compressed since the last {\ttfamily state} initialization.
+
+Internally workflow consists of 3 tasks\+:
+\begin{DoxyEnumerate}
+\item (optionally) copy input data to internal buffer
+\item actually compress data and (optionally) store it to internal buffer
+\item (optionally) copy compressed bytes from internal buffer to output stream
+\end{DoxyEnumerate}
+
+Whenever all 3 tasks can\textquotesingle{}t move forward anymore, or error occurs, this method returns the control flow to caller.
+
+{\ttfamily op} is used to perform flush, finish the stream, or inject metadata block. See \doxylink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cb}{Brotli\+Encoder\+Operation} for more information.
+
+Flushing the stream means forcing encoding of all input passed to encoder and completing the current output block, so it could be fully decoded by stream decoder. To perform flush set {\ttfamily op} to \doxylink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba35d9c34839f1171ecb715de795e47664}{BROTLI\+\_\+\+OPERATION\+\_\+\+FLUSH}. Under some circumstances (e.\+g. lack of output stream capacity) this operation would require several calls to \doxylink{encode_8h_ac94b211d362a1a3d4f208a5736cc41a5}{Brotli\+Encoder\+Compress\+Stream}. The method must be called again until both input stream is depleted and encoder has no more output (see \doxylink{encode_8h_a122ad712b0987e513af6ce9ad90fc65f}{Brotli\+Encoder\+Has\+More\+Output}) after the method is called.
+
+Finishing the stream means encoding of all input passed to encoder and adding specific \"{}final\"{} marks, so stream decoder could determine that stream is complete. To perform finish set {\ttfamily op} to \doxylink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba9e7ec104794a42c7a14e3bec4753be18}{BROTLI\+\_\+\+OPERATION\+\_\+\+FINISH}. Under some circumstances (e.\+g. lack of output stream capacity) this operation would require several calls to \doxylink{encode_8h_ac94b211d362a1a3d4f208a5736cc41a5}{Brotli\+Encoder\+Compress\+Stream}. The method must be called again until both input stream is depleted and encoder has no more output (see \doxylink{encode_8h_a122ad712b0987e513af6ce9ad90fc65f}{Brotli\+Encoder\+Has\+More\+Output}) after the method is called.
+
+\begin{DoxyWarning}{Warning}
+When flushing and finishing, {\ttfamily op} should not change until operation is complete; input stream should not be swapped, reduced or extended as well.
+\end{DoxyWarning}
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em state} & encoder instance \\
+\hline
+ & {\em op} & requested operation \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em available\+\_\+in} & {\bfseries{in\+:}} amount of available input; ~\newline
+ {\bfseries{out\+:}} amount of unused input \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em next\+\_\+in} & pointer to the next input byte \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em available\+\_\+out} & {\bfseries{in\+:}} length of output buffer; ~\newline
+ {\bfseries{out\+:}} remaining size of output buffer \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em next\+\_\+out} & compressed output buffer cursor; can be {\ttfamily NULL} if {\ttfamily available\+\_\+out} is {\ttfamily 0} \\
+\hline
+\mbox{\texttt{ out}}  & {\em total\+\_\+out} & number of bytes produced so far; can be {\ttfamily NULL} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} if there was an error 
+
+\doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE} otherwise 
+\end{DoxyReturn}
+\Hypertarget{encode_8h_a28c1682997d6836cf2bc014916d5aeee}\label{encode_8h_a28c1682997d6836cf2bc014916d5aeee} 
+\index{encode.h@{encode.h}!BrotliEncoderCreateInstance@{BrotliEncoderCreateInstance}}
+\index{BrotliEncoderCreateInstance@{BrotliEncoderCreateInstance}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderCreateInstance()}{BrotliEncoderCreateInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*} Brotli\+Encoder\+Create\+Instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}{brotli\+\_\+alloc\+\_\+func}}}]{alloc\+\_\+func,  }\item[{\mbox{\hyperlink{types_8h_a5e19dc1ca789ea76db7167289c442d32}{brotli\+\_\+free\+\_\+func}}}]{free\+\_\+func,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{opaque }\end{DoxyParamCaption})}
+
+
+
+Creates an instance of \doxylink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State} and initializes it. 
+
+{\ttfamily alloc\+\_\+func} and {\ttfamily free\+\_\+func} {\bfseries{MUST}} be both zero or both non-\/zero. In the case they are both zero, default memory allocators are used. {\ttfamily opaque} is passed to {\ttfamily alloc\+\_\+func} and {\ttfamily free\+\_\+func} when they are called. {\ttfamily free\+\_\+func} has to return without doing anything when asked to free a NULL pointer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em alloc\+\_\+func} & custom memory allocation function \\
+\hline
+{\em free\+\_\+func} & custom memory free function \\
+\hline
+{\em opaque} & custom memory manager handle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily 0} if instance can not be allocated or initialized 
+
+pointer to initialized \doxylink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State} otherwise 
+\end{DoxyReturn}
+\Hypertarget{encode_8h_a530cb7ed15ad6b79fdd77c5d7ef3bc2f}\label{encode_8h_a530cb7ed15ad6b79fdd77c5d7ef3bc2f} 
+\index{encode.h@{encode.h}!BrotliEncoderDestroyInstance@{BrotliEncoderDestroyInstance}}
+\index{BrotliEncoderDestroyInstance@{BrotliEncoderDestroyInstance}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderDestroyInstance()}{BrotliEncoderDestroyInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Brotli\+Encoder\+Destroy\+Instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Deinitializes and frees \doxylink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & decoder instance to be cleaned up and deallocated \\
+\hline
+\end{DoxyParams}
+\Hypertarget{encode_8h_a6ce9421267c33f329e4050ea6f181d3f}\label{encode_8h_a6ce9421267c33f329e4050ea6f181d3f} 
+\index{encode.h@{encode.h}!BrotliEncoderDestroyPreparedDictionary@{BrotliEncoderDestroyPreparedDictionary}}
+\index{BrotliEncoderDestroyPreparedDictionary@{BrotliEncoderDestroyPreparedDictionary}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderDestroyPreparedDictionary()}{BrotliEncoderDestroyPreparedDictionary()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Brotli\+Encoder\+Destroy\+Prepared\+Dictionary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{encode_8h_a6bad5cd4b3dd2f5d290450f8d69e3cfd}{Brotli\+Encoder\+Prepared\+Dictionary}} \texorpdfstring{$\ast$}{*}}]{dictionary }\end{DoxyParamCaption})}
+
+\Hypertarget{encode_8h_a866643d57d6803b3d429b8a9027cce74}\label{encode_8h_a866643d57d6803b3d429b8a9027cce74} 
+\index{encode.h@{encode.h}!BrotliEncoderEstimatePeakMemoryUsage@{BrotliEncoderEstimatePeakMemoryUsage}}
+\index{BrotliEncoderEstimatePeakMemoryUsage@{BrotliEncoderEstimatePeakMemoryUsage}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderEstimatePeakMemoryUsage()}{BrotliEncoderEstimatePeakMemoryUsage()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_aace003f04b5461f890a5bdd16c3f6315}{BROTLI\+\_\+\+ENC\+\_\+\+EXTRA\+\_\+\+API}} size\+\_\+t Brotli\+Encoder\+Estimate\+Peak\+Memory\+Usage (\begin{DoxyParamCaption}\item[{int}]{quality,  }\item[{int}]{lgwin,  }\item[{size\+\_\+t}]{input\+\_\+size }\end{DoxyParamCaption})}
+
+\Hypertarget{encode_8h_adbfa2f0ceab3fb35f444bd3ff5f49ecd}\label{encode_8h_adbfa2f0ceab3fb35f444bd3ff5f49ecd} 
+\index{encode.h@{encode.h}!BrotliEncoderGetPreparedDictionarySize@{BrotliEncoderGetPreparedDictionarySize}}
+\index{BrotliEncoderGetPreparedDictionarySize@{BrotliEncoderGetPreparedDictionarySize}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderGetPreparedDictionarySize()}{BrotliEncoderGetPreparedDictionarySize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_aace003f04b5461f890a5bdd16c3f6315}{BROTLI\+\_\+\+ENC\+\_\+\+EXTRA\+\_\+\+API}} size\+\_\+t Brotli\+Encoder\+Get\+Prepared\+Dictionary\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} \mbox{\hyperlink{encode_8h_a6bad5cd4b3dd2f5d290450f8d69e3cfd}{Brotli\+Encoder\+Prepared\+Dictionary}} \texorpdfstring{$\ast$}{*}}]{dictionary }\end{DoxyParamCaption})}
+
+\Hypertarget{encode_8h_a122ad712b0987e513af6ce9ad90fc65f}\label{encode_8h_a122ad712b0987e513af6ce9ad90fc65f} 
+\index{encode.h@{encode.h}!BrotliEncoderHasMoreOutput@{BrotliEncoderHasMoreOutput}}
+\index{BrotliEncoderHasMoreOutput@{BrotliEncoderHasMoreOutput}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderHasMoreOutput()}{BrotliEncoderHasMoreOutput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} Brotli\+Encoder\+Has\+More\+Output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Checks if encoder has more output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & encoder instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE}, if encoder has some unconsumed output 
+
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} otherwise 
+\end{DoxyReturn}
+\Hypertarget{encode_8h_a25f930a23bf92ecd33f361083bc1e90a}\label{encode_8h_a25f930a23bf92ecd33f361083bc1e90a} 
+\index{encode.h@{encode.h}!BrotliEncoderIsFinished@{BrotliEncoderIsFinished}}
+\index{BrotliEncoderIsFinished@{BrotliEncoderIsFinished}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderIsFinished()}{BrotliEncoderIsFinished()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} Brotli\+Encoder\+Is\+Finished (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Checks if encoder instance reached the final state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & encoder instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE} if encoder is in a state where it reached the end of the input and produced all of the output 
+
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} otherwise 
+\end{DoxyReturn}
+\Hypertarget{encode_8h_a288fda6f67776ee205902166d2981c88}\label{encode_8h_a288fda6f67776ee205902166d2981c88} 
+\index{encode.h@{encode.h}!BrotliEncoderMaxCompressedSize@{BrotliEncoderMaxCompressedSize}}
+\index{BrotliEncoderMaxCompressedSize@{BrotliEncoderMaxCompressedSize}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderMaxCompressedSize()}{BrotliEncoderMaxCompressedSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} size\+\_\+t Brotli\+Encoder\+Max\+Compressed\+Size (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{input\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Calculates the output size bound for the given {\ttfamily input\+\_\+size}. 
+
+\begin{DoxyWarning}{Warning}
+Result is only valid if quality is at least {\ttfamily 2} and, in case \doxylink{encode_8h_ac94b211d362a1a3d4f208a5736cc41a5}{Brotli\+Encoder\+Compress\+Stream} was used, no flushes (\doxylink{encode_8h_aed29c96cccbe4dc2aed53a2f1e2d04cba35d9c34839f1171ecb715de795e47664}{BROTLI\+\_\+\+OPERATION\+\_\+\+FLUSH}) were performed.
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+size} & size of projected input \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily 0} if result does not fit {\ttfamily size\+\_\+t} 
+\end{DoxyReturn}
+\Hypertarget{encode_8h_ad37e094cabda2bbc0192958f49234432}\label{encode_8h_ad37e094cabda2bbc0192958f49234432} 
+\index{encode.h@{encode.h}!BrotliEncoderPrepareDictionary@{BrotliEncoderPrepareDictionary}}
+\index{BrotliEncoderPrepareDictionary@{BrotliEncoderPrepareDictionary}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderPrepareDictionary()}{BrotliEncoderPrepareDictionary()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{encode_8h_a6bad5cd4b3dd2f5d290450f8d69e3cfd}{Brotli\+Encoder\+Prepared\+Dictionary}} \texorpdfstring{$\ast$}{*} Brotli\+Encoder\+Prepare\+Dictionary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{shared__dictionary_8h_a88086d2057367b4c6e5350b1aa8a0fc9}{Brotli\+Shared\+Dictionary\+Type}}}]{type,  }\item[{size\+\_\+t}]{data\+\_\+size,  }\item[{\mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t}]{data\mbox{[}\+BROTLI\+\_\+\+ARRAY\+\_\+\+PARAM(data\+\_\+size)\mbox{]},  }\item[{int}]{quality,  }\item[{\mbox{\hyperlink{types_8h_a53996dfbcbcee79dadb83c56933b9f1b}{brotli\+\_\+alloc\+\_\+func}}}]{alloc\+\_\+func,  }\item[{\mbox{\hyperlink{types_8h_a5e19dc1ca789ea76db7167289c442d32}{brotli\+\_\+free\+\_\+func}}}]{free\+\_\+func,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{opaque }\end{DoxyParamCaption})}
+
+
+
+Prepares a shared dictionary from the given file format for the encoder. 
+
+{\ttfamily alloc\+\_\+func} and {\ttfamily free\+\_\+func} {\bfseries{MUST}} be both zero or both non-\/zero. In the case they are both zero, default memory allocators are used. {\ttfamily opaque} is passed to {\ttfamily alloc\+\_\+func} and {\ttfamily free\+\_\+func} when they are called. {\ttfamily free\+\_\+func} has to return without doing anything when asked to free a NULL pointer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & type of dictionary stored in data \\
+\hline
+{\em data\+\_\+size} & size of {\ttfamily data} buffer \\
+\hline
+{\em data} & pointer to the dictionary data \\
+\hline
+{\em quality} & the maximum Brotli quality to prepare the dictionary for, use BROTLI\+\_\+\+MAX\+\_\+\+QUALITY by default \\
+\hline
+{\em alloc\+\_\+func} & custom memory allocation function \\
+\hline
+{\em free\+\_\+func} & custom memory free function \\
+\hline
+{\em opaque} & custom memory manager handle \\
+\hline
+\end{DoxyParams}
+\Hypertarget{encode_8h_a068874cc94e7b3563c4791a9bc5894bd}\label{encode_8h_a068874cc94e7b3563c4791a9bc5894bd} 
+\index{encode.h@{encode.h}!BrotliEncoderSetParameter@{BrotliEncoderSetParameter}}
+\index{BrotliEncoderSetParameter@{BrotliEncoderSetParameter}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderSetParameter()}{BrotliEncoderSetParameter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{types_8h_ae8e1d352fb674019729cd9e7d0c27159}{BROTLI\+\_\+\+BOOL}} Brotli\+Encoder\+Set\+Parameter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{encode_8h_a9a8f89a2fd7678ae0cfca1dee4b12fab}{Brotli\+Encoder\+Parameter}}}]{param,  }\item[{uint32\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets the specified parameter to the given encoder instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & encoder instance \\
+\hline
+{\em param} & parameter to set \\
+\hline
+{\em value} & new parameter value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} if parameter is unrecognized, or value is invalid 
+
+\doxylink{types_8h_ac506138cd10f0b21daee6491213d36c5}{BROTLI\+\_\+\+FALSE} if value of parameter can not be changed at current encoder state (e.\+g. when encoding is started, window size might be already encoded and therefore it is impossible to change it) 
+
+\doxylink{types_8h_a2f2490f572e3ddaa8e45b9f4e947ce60}{BROTLI\+\_\+\+TRUE} if value is accepted 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+invalid values might be accepted in case they would not break encoding process. 
+\end{DoxyWarning}
+\Hypertarget{encode_8h_a2bda817fc6d2bbd9740115590ea93aa5}\label{encode_8h_a2bda817fc6d2bbd9740115590ea93aa5} 
+\index{encode.h@{encode.h}!BrotliEncoderTakeOutput@{BrotliEncoderTakeOutput}}
+\index{BrotliEncoderTakeOutput@{BrotliEncoderTakeOutput}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderTakeOutput()}{BrotliEncoderTakeOutput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} \mbox{\hyperlink{zconf_8h_a2c212835823e3c54a8ab6d95c652660e}{const}} uint8\+\_\+t \texorpdfstring{$\ast$}{*} Brotli\+Encoder\+Take\+Output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{encode_8h_ab14c96477af86d34cdc1de48d233b74f}{Brotli\+Encoder\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{size }\end{DoxyParamCaption})}
+
+
+
+Acquires pointer to internal output buffer. 
+
+This method is used to make language bindings easier and more efficient\+:
+\begin{DoxyEnumerate}
+\item push data to \doxylink{encode_8h_ac94b211d362a1a3d4f208a5736cc41a5}{Brotli\+Encoder\+Compress\+Stream}, until \doxylink{encode_8h_a122ad712b0987e513af6ce9ad90fc65f}{Brotli\+Encoder\+Has\+More\+Output} returns BROTLI\+\_\+\+TRUE
+\item use \doxylink{encode_8h_a2bda817fc6d2bbd9740115590ea93aa5}{Brotli\+Encoder\+Take\+Output} to peek bytes and copy to language-\/specific entity
+\end{DoxyEnumerate}
+
+Also this could be useful if there is an output stream that is able to consume all the provided data (e.\+g. when data is saved to file system).
+
+\begin{DoxyAttention}{Attention}
+After every call to \doxylink{encode_8h_a2bda817fc6d2bbd9740115590ea93aa5}{Brotli\+Encoder\+Take\+Output} {\ttfamily \texorpdfstring{$\ast$}{*}size} bytes of output are considered consumed for all consecutive calls to the instance methods; returned pointer becomes invalidated as well.
+\end{DoxyAttention}
+\begin{DoxyNote}{Note}
+Encoder output is not guaranteed to be contiguous. This means that after the size-\/unrestricted call to \doxylink{encode_8h_a2bda817fc6d2bbd9740115590ea93aa5}{Brotli\+Encoder\+Take\+Output}, immediate next call to \doxylink{encode_8h_a2bda817fc6d2bbd9740115590ea93aa5}{Brotli\+Encoder\+Take\+Output} may return more data.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em state} & encoder instance \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em size} & {\bfseries{in\+:}} number of bytes caller is ready to take, {\ttfamily 0} if any amount could be handled; ~\newline
+ {\bfseries{out\+:}} amount of data pointed by returned pointer and considered consumed; ~\newline
+ out value is never greater than in value, unless it is {\ttfamily 0} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to output data 
+\end{DoxyReturn}
+\Hypertarget{encode_8h_a98b93f770c11522c2edcb9425afcd0d6}\label{encode_8h_a98b93f770c11522c2edcb9425afcd0d6} 
+\index{encode.h@{encode.h}!BrotliEncoderVersion@{BrotliEncoderVersion}}
+\index{BrotliEncoderVersion@{BrotliEncoderVersion}!encode.h@{encode.h}}
+\doxysubsubsection{\texorpdfstring{BrotliEncoderVersion()}{BrotliEncoderVersion()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{port_8h_a383839ebfa20aca9ce6a5754d4f4f662}{BROTLI\+\_\+\+ENC\+\_\+\+API}} uint32\+\_\+t Brotli\+Encoder\+Version (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets an encoder library version. 
+
+Look at BROTLI\+\_\+\+MAKE\+\_\+\+HEX\+\_\+\+VERSION for more information. 

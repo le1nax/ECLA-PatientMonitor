@@ -1,0 +1,2274 @@
+\doxysection{build/vcpkg\+\_\+installed/x64-\/mingw-\/static/include/\+PCANBasic.h File Reference}
+\hypertarget{_p_c_a_n_basic_8h}{}\label{_p_c_a_n_basic_8h}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/PCANBasic.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/PCANBasic.h}}
+{\ttfamily \#include $<$windows.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtag_t_p_c_a_n_msg}{tag\+TPCANMsg}}
+\item 
+struct \mbox{\hyperlink{structtag_t_p_c_a_n_timestamp}{tag\+TPCANTimestamp}}
+\item 
+struct \mbox{\hyperlink{structtag_t_p_c_a_n_msg_f_d}{tag\+TPCANMsg\+FD}}
+\item 
+struct \mbox{\hyperlink{structtag_t_p_c_a_n_channel_information}{tag\+TPCANChannel\+Information}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_af6d29016a2e53a596f23f08fa9066ee7}{\+\_\+\+DEF\+\_\+\+ARG}}
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a4a3fd26be40cfb9953ce78d73649ac07}{PCAN\+\_\+\+NONEBUS}}~0x00U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a6dcd91c8d1f74d9fa1cff4a6ce181829}{PCAN\+\_\+\+ISABUS1}}~0x21U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a48bb8e9d285bae66a6cb96b09925f8e1}{PCAN\+\_\+\+ISABUS2}}~0x22U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a964c846744572a6cd3a656062ea2b263}{PCAN\+\_\+\+ISABUS3}}~0x23U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a0d80174c1f3d7bb187d78dcedd8be0f8}{PCAN\+\_\+\+ISABUS4}}~0x24U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aa0e417f4ef5697b594fdb8ff89118b2c}{PCAN\+\_\+\+ISABUS5}}~0x25U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aca953dbb471d5afdf36970172440e099}{PCAN\+\_\+\+ISABUS6}}~0x26U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ae5f49cb9d0f98a3ae6441aa380e042b1}{PCAN\+\_\+\+ISABUS7}}~0x27U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_afefc3463a816cb6aa34a90c78b4d2690}{PCAN\+\_\+\+ISABUS8}}~0x28U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_adc1603ace4b14d23bd4e95a31c2f8530}{PCAN\+\_\+\+DNGBUS1}}~0x31U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a5d4525f5813ebe5f649316f08e4bd2b2}{PCAN\+\_\+\+PCIBUS1}}~0x41U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_acf4c97b73acf7d081fc0b31007d53932}{PCAN\+\_\+\+PCIBUS2}}~0x42U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a21781c62d15812b4e7ad7a743be804c3}{PCAN\+\_\+\+PCIBUS3}}~0x43U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a6a0420849501c59ae3af2c3ce6ce3e1f}{PCAN\+\_\+\+PCIBUS4}}~0x44U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ad1c3546efd1f0831ecdab5bbe5f585ba}{PCAN\+\_\+\+PCIBUS5}}~0x45U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a7e2027bd863102ec36c913174fed867d}{PCAN\+\_\+\+PCIBUS6}}~0x46U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ab900f246895850c6650ab022e34313e7}{PCAN\+\_\+\+PCIBUS7}}~0x47U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_adab491e8c7d8831426ceb81dec9d1c29}{PCAN\+\_\+\+PCIBUS8}}~0x48U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ac52b5e2d613d1a0fd729c70601b76148}{PCAN\+\_\+\+PCIBUS9}}~0x409U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a91fb840d1c5f701e1b29ac7adccf1a3e}{PCAN\+\_\+\+PCIBUS10}}~0x40\+AU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_abcd6dbb65530ade8dc1aee6fa16dba84}{PCAN\+\_\+\+PCIBUS11}}~0x40\+BU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ad60a54251a08f673649b5d2c845a10b7}{PCAN\+\_\+\+PCIBUS12}}~0x40\+CU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a0d56a48b3462635877d378a9b3c7fae2}{PCAN\+\_\+\+PCIBUS13}}~0x40\+DU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ae0e0252208c7f0740f6a86b4bb191d6b}{PCAN\+\_\+\+PCIBUS14}}~0x40\+EU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a2a71a0b30c6d39e55d3ef30432c8107b}{PCAN\+\_\+\+PCIBUS15}}~0x40\+FU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a41e79da9bc50fd5580db4374138799ec}{PCAN\+\_\+\+PCIBUS16}}~0x410U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a53d2c4be575d319ca42993059abb376a}{PCAN\+\_\+\+USBBUS1}}~0x51U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a17a852f2ac4dc8dcaadaa91788f8af7e}{PCAN\+\_\+\+USBBUS2}}~0x52U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ad14c1ad22d1b65bc907980ab1c6617a8}{PCAN\+\_\+\+USBBUS3}}~0x53U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a2904a67f624c3a536cc131013f81b2bd}{PCAN\+\_\+\+USBBUS4}}~0x54U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_afe829b051eb5332b6858fa9da7639b8c}{PCAN\+\_\+\+USBBUS5}}~0x55U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a5a69196e6b208155d3a1c8a9373cd564}{PCAN\+\_\+\+USBBUS6}}~0x56U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a72f1a283dc2eb095a06e7618337b6673}{PCAN\+\_\+\+USBBUS7}}~0x57U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8c7a701b684eb0d0e3c49eac511cab41}{PCAN\+\_\+\+USBBUS8}}~0x58U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a5de5f5fb76787aa745f9e5ba301712a8}{PCAN\+\_\+\+USBBUS9}}~0x509U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a48ab0834ecfccc11e1aec84d1540d878}{PCAN\+\_\+\+USBBUS10}}~0x50\+AU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aafc791ddb9a13cdd2b2b34dc2aea1406}{PCAN\+\_\+\+USBBUS11}}~0x50\+BU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a00525b52b01a31dced82676a08c3d511}{PCAN\+\_\+\+USBBUS12}}~0x50\+CU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_af5d38bd7571e0db547b5a27ab2824c2b}{PCAN\+\_\+\+USBBUS13}}~0x50\+DU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ad3bb9bccdaa912a232f6d572987c93bd}{PCAN\+\_\+\+USBBUS14}}~0x50\+EU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a28725f8c116174680fdac1455f123193}{PCAN\+\_\+\+USBBUS15}}~0x50\+FU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a9751966a11d1b4b72d58c6aa1fbe7af4}{PCAN\+\_\+\+USBBUS16}}~0x510U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8939817a7fb75dc010ed46a6dced0240}{PCAN\+\_\+\+PCCBUS1}}~0x61U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aae64ed4b729070ea317b3f76e51bb61e}{PCAN\+\_\+\+PCCBUS2}}~0x62U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ae7f6f4cdf22215e6125f82c25e43ef2a}{PCAN\+\_\+\+LANBUS1}}~0x801U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8a904b4ce7159a56f2b8b7eb78eadaa0}{PCAN\+\_\+\+LANBUS2}}~0x802U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a26945377128955367be488c8a18495a6}{PCAN\+\_\+\+LANBUS3}}~0x803U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ab1a3a677aac6f0f6e0557930f612f8cf}{PCAN\+\_\+\+LANBUS4}}~0x804U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a0b1ba41da7d26a0b498e424728f0fda2}{PCAN\+\_\+\+LANBUS5}}~0x805U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aebbb47c7e9a7b13d826c861decc3c309}{PCAN\+\_\+\+LANBUS6}}~0x806U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ad0496d7d1d8484a9962c25a82125c32b}{PCAN\+\_\+\+LANBUS7}}~0x807U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a895e777b7657ccb062be5f86d8eccd8c}{PCAN\+\_\+\+LANBUS8}}~0x808U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a38c4320d8690cdeed0cb8a59bf1f0914}{PCAN\+\_\+\+LANBUS9}}~0x809U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_af972d51ddf043a8a69d7f6478865c451}{PCAN\+\_\+\+LANBUS10}}~0x80\+AU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aaf0a1852a05e56d3a00762280ba7a8e8}{PCAN\+\_\+\+LANBUS11}}~0x80\+BU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aa4352e36461700e3ee8a7f3ec8a40aa7}{PCAN\+\_\+\+LANBUS12}}~0x80\+CU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a12f86b57ba1338968d91f1930a9c7305}{PCAN\+\_\+\+LANBUS13}}~0x80\+DU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a513a7343c1d2b7a9b82fe3d878020b52}{PCAN\+\_\+\+LANBUS14}}~0x80\+EU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a13ef0f65822110aea8a209ff9d5fca7f}{PCAN\+\_\+\+LANBUS15}}~0x80\+FU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a705c2d5a9385212135a73162bb6d5783}{PCAN\+\_\+\+LANBUS16}}~0x810U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a42bbb945eb8ba5b25c362a4972774985}{PCAN\+\_\+\+ERROR\+\_\+\+OK}}~0x00000U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ae9aacb01be5292a4c448facfae6e3cc9}{PCAN\+\_\+\+ERROR\+\_\+\+XMTFULL}}~0x00001U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8409e516ba9a331dd143d8c821580032}{PCAN\+\_\+\+ERROR\+\_\+\+OVERRUN}}~0x00002U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a668bd0c4a6a2282418040f947650b4dc}{PCAN\+\_\+\+ERROR\+\_\+\+BUSLIGHT}}~0x00004U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8e77cc12afacab95fe4fccb1d2db4320}{PCAN\+\_\+\+ERROR\+\_\+\+BUSHEAVY}}~0x00008U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ad00c06f1ef5402c2ce9688560915af0e}{PCAN\+\_\+\+ERROR\+\_\+\+BUSWARNING}}~\mbox{\hyperlink{_p_c_a_n_basic_8h_a8e77cc12afacab95fe4fccb1d2db4320}{PCAN\+\_\+\+ERROR\+\_\+\+BUSHEAVY}}
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a5497b5f42e2861d7880492ecfdfe2dcc}{PCAN\+\_\+\+ERROR\+\_\+\+BUSPASSIVE}}~0x40000U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8ee08b0b751af294627d69565030d938}{PCAN\+\_\+\+ERROR\+\_\+\+BUSOFF}}~0x00010U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a1e74a1e006dac9d1fb2db19958fe80c2}{PCAN\+\_\+\+ERROR\+\_\+\+ANYBUSERR}}~(\mbox{\hyperlink{_p_c_a_n_basic_8h_ad00c06f1ef5402c2ce9688560915af0e}{PCAN\+\_\+\+ERROR\+\_\+\+BUSWARNING}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_p_c_a_n_basic_8h_a668bd0c4a6a2282418040f947650b4dc}{PCAN\+\_\+\+ERROR\+\_\+\+BUSLIGHT}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_p_c_a_n_basic_8h_a8e77cc12afacab95fe4fccb1d2db4320}{PCAN\+\_\+\+ERROR\+\_\+\+BUSHEAVY}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_p_c_a_n_basic_8h_a8ee08b0b751af294627d69565030d938}{PCAN\+\_\+\+ERROR\+\_\+\+BUSOFF}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_p_c_a_n_basic_8h_a5497b5f42e2861d7880492ecfdfe2dcc}{PCAN\+\_\+\+ERROR\+\_\+\+BUSPASSIVE}})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a6f4fb3cd7bd49de7c904c4ce4d4b6e71}{PCAN\+\_\+\+ERROR\+\_\+\+QRCVEMPTY}}~0x00020U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a02e6be92586e46340bd7111acddc25a7}{PCAN\+\_\+\+ERROR\+\_\+\+QOVERRUN}}~0x00040U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_afa224709f000df8b15f9e01b5239a5f7}{PCAN\+\_\+\+ERROR\+\_\+\+QXMTFULL}}~0x00080U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a7cd788f6869928c07072d38336d796b8}{PCAN\+\_\+\+ERROR\+\_\+\+REGTEST}}~0x00100U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a44f5918051d42d2c16aa7586a65fff65}{PCAN\+\_\+\+ERROR\+\_\+\+NODRIVER}}~0x00200U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a4f7f2faefaedd4bd6e4c257e89ffc9d0}{PCAN\+\_\+\+ERROR\+\_\+\+HWINUSE}}~0x00400U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a2437587db6358847ea7c010f049e62c9}{PCAN\+\_\+\+ERROR\+\_\+\+NETINUSE}}~0x00800U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ad32961eee61e233c0419f4baf5cfc640}{PCAN\+\_\+\+ERROR\+\_\+\+ILLHW}}~0x01400U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a3c801a064f80626c7185315419c13e9a}{PCAN\+\_\+\+ERROR\+\_\+\+ILLNET}}~0x01800U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a4d299f12bb77b104384cc50045a339ef}{PCAN\+\_\+\+ERROR\+\_\+\+ILLCLIENT}}~0x01\+C00U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a3f1d9922244b2470f084d9c9eee9fe77}{PCAN\+\_\+\+ERROR\+\_\+\+ILLHANDLE}}~(\mbox{\hyperlink{_p_c_a_n_basic_8h_ad32961eee61e233c0419f4baf5cfc640}{PCAN\+\_\+\+ERROR\+\_\+\+ILLHW}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_p_c_a_n_basic_8h_a3c801a064f80626c7185315419c13e9a}{PCAN\+\_\+\+ERROR\+\_\+\+ILLNET}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_p_c_a_n_basic_8h_a4d299f12bb77b104384cc50045a339ef}{PCAN\+\_\+\+ERROR\+\_\+\+ILLCLIENT}})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a09bd3a02e2d3bcdc061f0771a6d29521}{PCAN\+\_\+\+ERROR\+\_\+\+RESOURCE}}~0x02000U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ad466bd8dfa2a9dd9cbff627fa2964dcd}{PCAN\+\_\+\+ERROR\+\_\+\+ILLPARAMTYPE}}~0x04000U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8da12dbdcfa27924dbf47fae096d9b63}{PCAN\+\_\+\+ERROR\+\_\+\+ILLPARAMVAL}}~0x08000U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a39bd1a7214e6c29d96b05636d266f53c}{PCAN\+\_\+\+ERROR\+\_\+\+UNKNOWN}}~0x10000U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a3491078d384794c1b507156122dc04b2}{PCAN\+\_\+\+ERROR\+\_\+\+ILLDATA}}~0x20000U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a0996dd9d93aca05a9b91043ccfbb5f1d}{PCAN\+\_\+\+ERROR\+\_\+\+ILLMODE}}~0x80000U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a06949885ea6355b3d42e069570f6c570}{PCAN\+\_\+\+ERROR\+\_\+\+CAUTION}}~0x2000000U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a29e632fe7da6396059485e529044d403}{PCAN\+\_\+\+ERROR\+\_\+\+INITIALIZE}}~0x4000000U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a31bf12e75bc99cdbd0688e3ccb24b269}{PCAN\+\_\+\+ERROR\+\_\+\+ILLOPERATION}}~0x8000000U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a2d9351d3adc5769c8453df0fff3cfd74}{PCAN\+\_\+\+NONE}}~0x00U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_af387444184b25db47940fdae0f4f5ee9}{PCAN\+\_\+\+PEAKCAN}}~0x01U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a1fb89785cbd3e86954a0501689be9197}{PCAN\+\_\+\+ISA}}~0x02U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aab7f8142c67dd5a3df0afb20e03f98d5}{PCAN\+\_\+\+DNG}}~0x03U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a43b093e44f8f343812de928a3583343f}{PCAN\+\_\+\+PCI}}~0x04U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a423410d821be4efb236c0deb0d64c1c9}{PCAN\+\_\+\+USB}}~0x05U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a6abe67ee718a685fcb56dcf780c77dc9}{PCAN\+\_\+\+PCC}}~0x06U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a24440d36b0c5665e730177405f1e51c2}{PCAN\+\_\+\+VIRTUAL}}~0x07U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ac9e554ae9a53755e9bd61b1f2e7e0382}{PCAN\+\_\+\+LAN}}~0x08U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8a95041c358ad487da62b3c07d63e6cb}{PCAN\+\_\+\+DEVICE\+\_\+\+ID}}~0x01U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a1b1ae0bf038d22a998a80027b389db0a}{PCAN\+\_\+5\+VOLTS\+\_\+\+POWER}}~0x02U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a637fbe410813a381e61d655760c6eae8}{PCAN\+\_\+\+RECEIVE\+\_\+\+EVENT}}~0x03U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a0a23e79b08303e5988c54aa42f77b6c4}{PCAN\+\_\+\+MESSAGE\+\_\+\+FILTER}}~0x04U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a65e2520461ec1cdbedc00cbed45c38ff}{PCAN\+\_\+\+API\+\_\+\+VERSION}}~0x05U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aed20f9409d7e204caf5aa122735e01d8}{PCAN\+\_\+\+CHANNEL\+\_\+\+VERSION}}~0x06U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a9723bc79baa2f5a7e2ed0fdf13be52dd}{PCAN\+\_\+\+BUSOFF\+\_\+\+AUTORESET}}~0x07U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_acff16674068c0a576ffb5a61faa5d8d7}{PCAN\+\_\+\+LISTEN\+\_\+\+ONLY}}~0x08U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a451b6ac29759a547c287607fe3fa6ced}{PCAN\+\_\+\+LOG\+\_\+\+LOCATION}}~0x09U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a6e86299c27b363d53902f50c9b21c76e}{PCAN\+\_\+\+LOG\+\_\+\+STATUS}}~0x0\+AU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a2e35a29d224dc334d13525c0e2651fda}{PCAN\+\_\+\+LOG\+\_\+\+CONFIGURE}}~0x0\+BU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aee4ba4a8a1207c3b0b782c224034d40c}{PCAN\+\_\+\+LOG\+\_\+\+TEXT}}~0x0\+CU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a596c86cc06029321392d10760fcc1542}{PCAN\+\_\+\+CHANNEL\+\_\+\+CONDITION}}~0x0\+DU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_adbc232d8109993308e54cc0eadc990d9}{PCAN\+\_\+\+HARDWARE\+\_\+\+NAME}}~0x0\+EU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a1db9da34abf0233990b2cc1ff8a5e0a9}{PCAN\+\_\+\+RECEIVE\+\_\+\+STATUS}}~0x0\+FU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a4a2ab4d69e14218ecc996ecf81a0b108}{PCAN\+\_\+\+CONTROLLER\+\_\+\+NUMBER}}~0x10U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_abd8a2b690c9b1f9f1656888f0aa76565}{PCAN\+\_\+\+TRACE\+\_\+\+LOCATION}}~0x11U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a710cd75f6322e2fb9eaa252cc8897086}{PCAN\+\_\+\+TRACE\+\_\+\+STATUS}}~0x12U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a28f7bbd8d6004ce19b298c26ca909674}{PCAN\+\_\+\+TRACE\+\_\+\+SIZE}}~0x13U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aa6337f95095dbad8dd045477e4ac5a10}{PCAN\+\_\+\+TRACE\+\_\+\+CONFIGURE}}~0x14U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aa909eb39c1c5bcd78da690f1eb2353d7}{PCAN\+\_\+\+CHANNEL\+\_\+\+IDENTIFYING}}~0x15U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a765fb66c5f9baf81aa4507b390326f03}{PCAN\+\_\+\+CHANNEL\+\_\+\+FEATURES}}~0x16U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a3b77e90f77f51287c9ab51fb22072212}{PCAN\+\_\+\+BITRATE\+\_\+\+ADAPTING}}~0x17U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a5fd18ef617109c4c2d50765a4d5e108f}{PCAN\+\_\+\+BITRATE\+\_\+\+INFO}}~0x18U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ab70ad57d35f14603f0f03d1617973982}{PCAN\+\_\+\+BITRATE\+\_\+\+INFO\+\_\+\+FD}}~0x19U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a2106e822f692f5ce9f42f56f115722fd}{PCAN\+\_\+\+BUSSPEED\+\_\+\+NOMINAL}}~0x1\+AU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ac37c10c110f8ce2750e051ff7add9e94}{PCAN\+\_\+\+BUSSPEED\+\_\+\+DATA}}~0x1\+BU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a637c1e90249a424505a90c56b030d9d8}{PCAN\+\_\+\+IP\+\_\+\+ADDRESS}}~0x1\+CU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a09c04acd8dd8c41f4fd61307ed19be0e}{PCAN\+\_\+\+LAN\+\_\+\+SERVICE\+\_\+\+STATUS}}~0x1\+DU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_adc63b7a5b92cf5813184f590c24952e9}{PCAN\+\_\+\+ALLOW\+\_\+\+STATUS\+\_\+\+FRAMES}}~0x1\+EU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_af2266090a9bc384e4660a90fa3188bb3}{PCAN\+\_\+\+ALLOW\+\_\+\+RTR\+\_\+\+FRAMES}}~0x1\+FU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aac311fbde2a44487796f523bda911b66}{PCAN\+\_\+\+ALLOW\+\_\+\+ERROR\+\_\+\+FRAMES}}~0x20U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ac871c74219bdf5371085d18b6ee1aba0}{PCAN\+\_\+\+INTERFRAME\+\_\+\+DELAY}}~0x21U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_afb6bfb2d038bd19a48d032c5a1ecf467}{PCAN\+\_\+\+ACCEPTANCE\+\_\+\+FILTER\+\_\+11\+BIT}}~0x22U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_adf53026d8de2b22244432a26c534d916}{PCAN\+\_\+\+ACCEPTANCE\+\_\+\+FILTER\+\_\+29\+BIT}}~0x23U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a4af63c0402f409155125f43e10675e5d}{PCAN\+\_\+\+IO\+\_\+\+DIGITAL\+\_\+\+CONFIGURATION}}~0x24U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a33128eb2e362b9daea8bada87f1cc81f}{PCAN\+\_\+\+IO\+\_\+\+DIGITAL\+\_\+\+VALUE}}~0x25U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a9182cfc64b99e714e540be05cee40da5}{PCAN\+\_\+\+IO\+\_\+\+DIGITAL\+\_\+\+SET}}~0x26U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_acacf7c870bcf700e1ec1db58716e7fba}{PCAN\+\_\+\+IO\+\_\+\+DIGITAL\+\_\+\+CLEAR}}~0x27U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a6559dbf7480ee857a609ae162588e70a}{PCAN\+\_\+\+IO\+\_\+\+ANALOG\+\_\+\+VALUE}}~0x28U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a5156e50be38f4a86f7c80ee34949fc0a}{PCAN\+\_\+\+FIRMWARE\+\_\+\+VERSION}}~0x29U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ac4c839d795000f89e94068470bd91f22}{PCAN\+\_\+\+ATTACHED\+\_\+\+CHANNELS\+\_\+\+COUNT}}~0x2\+AU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a40e4f7b526fcd510c2ed91dbd37bf7e1}{PCAN\+\_\+\+ATTACHED\+\_\+\+CHANNELS}}~0x2\+BU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ae916c09140eeba1eaaea7de1ee80ebb6}{PCAN\+\_\+\+ALLOW\+\_\+\+ECHO\+\_\+\+FRAMES}}~0x2\+CU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a5c12528db429834e6ea82e0718697707}{PCAN\+\_\+\+DEVICE\+\_\+\+PART\+\_\+\+NUMBER}}~0x2\+DU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aff0558a9938ef96c0293fbf782f24fec}{PCAN\+\_\+\+DEVICE\+\_\+\+NUMBER}}~\mbox{\hyperlink{_p_c_a_n_basic_8h_a8a95041c358ad487da62b3c07d63e6cb}{PCAN\+\_\+\+DEVICE\+\_\+\+ID}}
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aa777b3d70a9c6bbc4447f8df33d66587}{PCAN\+\_\+\+PARAMETER\+\_\+\+OFF}}~0x00U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a1ae311c9286d3893af3213da57658b2d}{PCAN\+\_\+\+PARAMETER\+\_\+\+ON}}~0x01U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_afbcd415ec2b06f29338916be41804a6d}{PCAN\+\_\+\+FILTER\+\_\+\+CLOSE}}~0x00U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aae4471e61e59fcc2af014b8b99d12eca}{PCAN\+\_\+\+FILTER\+\_\+\+OPEN}}~0x01U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aa6aff6167ccbcee0836912243671f415}{PCAN\+\_\+\+FILTER\+\_\+\+CUSTOM}}~0x02U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a0923a664669122b4899b482421d09c3f}{PCAN\+\_\+\+CHANNEL\+\_\+\+UNAVAILABLE}}~0x00U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a0fc963ddc6ca66f9d175ac69446a6621}{PCAN\+\_\+\+CHANNEL\+\_\+\+AVAILABLE}}~0x01U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aa940fddfeb6e8751c3120e8146aac646}{PCAN\+\_\+\+CHANNEL\+\_\+\+OCCUPIED}}~0x02U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a962e9383e28d5c959e2ad1e4af1fbafd}{PCAN\+\_\+\+CHANNEL\+\_\+\+PCANVIEW}}~(\mbox{\hyperlink{_p_c_a_n_basic_8h_a0fc963ddc6ca66f9d175ac69446a6621}{PCAN\+\_\+\+CHANNEL\+\_\+\+AVAILABLE}} \texorpdfstring{$\vert$}{|}  \mbox{\hyperlink{_p_c_a_n_basic_8h_aa940fddfeb6e8751c3120e8146aac646}{PCAN\+\_\+\+CHANNEL\+\_\+\+OCCUPIED}})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8ddbf9d9b7d1599e49e82e1ed82e2fd2}{LOG\+\_\+\+FUNCTION\+\_\+\+DEFAULT}}~0x00U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8f070da554f25fa71d05d3f45785f6ac}{LOG\+\_\+\+FUNCTION\+\_\+\+ENTRY}}~0x01U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a16575b284aab54775f660d1bea84ffa8}{LOG\+\_\+\+FUNCTION\+\_\+\+PARAMETERS}}~0x02U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a0f80d602c814f3aff497cbda9d3fb979}{LOG\+\_\+\+FUNCTION\+\_\+\+LEAVE}}~0x04U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_af64e2454f0c9f31276bed9d3d27d8546}{LOG\+\_\+\+FUNCTION\+\_\+\+WRITE}}~0x08U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a6b3ebf2134386731e196088531b97ce2}{LOG\+\_\+\+FUNCTION\+\_\+\+READ}}~0x10U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ae86de3df6eefa99f8b8d3500957503bb}{LOG\+\_\+\+FUNCTION\+\_\+\+ALL}}~0x\+FFFFU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ada1433ffa9f114e0354740fbeab39afc}{TRACE\+\_\+\+FILE\+\_\+\+SINGLE}}~0x00U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a538fbf0855c51c7d465060957184eb44}{TRACE\+\_\+\+FILE\+\_\+\+SEGMENTED}}~0x01U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a23806676738b5bb29df784d78f200c70}{TRACE\+\_\+\+FILE\+\_\+\+DATE}}~0x02U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a76ce8e0fd6f7f2c436c5c25361458c66}{TRACE\+\_\+\+FILE\+\_\+\+TIME}}~0x04U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a50e86681928f1e0f665f4af43051a86f}{TRACE\+\_\+\+FILE\+\_\+\+OVERWRITE}}~0x80U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a85ad86c07bcf6134b7854654cd833c9d}{TRACE\+\_\+\+FILE\+\_\+\+DATA\+\_\+\+LENGTH}}~0x100U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a101e8cf83459fb9b76a44a257b1ae4e2}{FEATURE\+\_\+\+FD\+\_\+\+CAPABLE}}~0x01U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ac8d1d5585f589b6da0bb2abb313a9a38}{FEATURE\+\_\+\+DELAY\+\_\+\+CAPABLE}}~0x02U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a40092759f4164bc7f6a374fa3f5aaf23}{FEATURE\+\_\+\+IO\+\_\+\+CAPABLE}}~0x04U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a7a16b9ded8a67de1fc025cd977353171}{SERVICE\+\_\+\+STATUS\+\_\+\+STOPPED}}~0x01U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a3cd659bf62840dbbc3c5c24b55752159}{SERVICE\+\_\+\+STATUS\+\_\+\+RUNNING}}~0x04U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a6b0e7acb159e8d24b1d72eefd6c80766}{MAX\+\_\+\+LENGTH\+\_\+\+HARDWARE\+\_\+\+NAME}}~33
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8335c17c7ccdfb96c4155d9dda5d6e17}{MAX\+\_\+\+LENGTH\+\_\+\+VERSION\+\_\+\+STRING}}~256
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a98f72491c7dcd3c74a3fa25fce30e0c9}{PCAN\+\_\+\+MESSAGE\+\_\+\+STANDARD}}~0x00U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a1da97a3764b8680948633eef4d53117f}{PCAN\+\_\+\+MESSAGE\+\_\+\+RTR}}~0x01U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a21af7ee712428d297c1d8ac26c574a0c}{PCAN\+\_\+\+MESSAGE\+\_\+\+EXTENDED}}~0x02U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a74d53ff0cc9fb8219d429d0feeb4094f}{PCAN\+\_\+\+MESSAGE\+\_\+\+FD}}~0x04U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a92cbda928ae306231e466ca9864c14a0}{PCAN\+\_\+\+MESSAGE\+\_\+\+BRS}}~0x08U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a85050ccd2023dca97855264bf0b0531a}{PCAN\+\_\+\+MESSAGE\+\_\+\+ESI}}~0x10U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a6b7de341c9bea4dbe278894797fc4470}{PCAN\+\_\+\+MESSAGE\+\_\+\+ECHO}}~0x20U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ac1a9841bf7297676f54e62f2d466e880}{PCAN\+\_\+\+MESSAGE\+\_\+\+ERRFRAME}}~0x40U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a9ed32869aa192a723245ad67363cfe38}{PCAN\+\_\+\+MESSAGE\+\_\+\+STATUS}}~0x80U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aa3d5f2ac2840945563a35c90c2aa0644}{LOOKUP\+\_\+\+DEVICE\+\_\+\+TYPE}}~\+\_\+\+\_\+T(\"{}devicetype\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a71b5ce21608ece0af37994efe78fbdf1}{LOOKUP\+\_\+\+DEVICE\+\_\+\+ID}}~\+\_\+\+\_\+T(\"{}deviceid\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a59e732fcbd8d516bdc8881cfa219e736}{LOOKUP\+\_\+\+CONTROLLER\+\_\+\+NUMBER}}~\+\_\+\+\_\+T(\"{}controllernumber\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a7837cb07c1849af4f0d775d9d9ffaa5d}{LOOKUP\+\_\+\+IP\+\_\+\+ADDRESS}}~\+\_\+\+\_\+T(\"{}ipaddress\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a930b39acb014e4be3d6ffcd2b7e7b14c}{PCAN\+\_\+\+MODE\+\_\+\+STANDARD}}~\mbox{\hyperlink{_p_c_a_n_basic_8h_a98f72491c7dcd3c74a3fa25fce30e0c9}{PCAN\+\_\+\+MESSAGE\+\_\+\+STANDARD}}
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a616305580e99c7bcbd6e26fe60d94327}{PCAN\+\_\+\+MODE\+\_\+\+EXTENDED}}~\mbox{\hyperlink{_p_c_a_n_basic_8h_a21af7ee712428d297c1d8ac26c574a0c}{PCAN\+\_\+\+MESSAGE\+\_\+\+EXTENDED}}
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a9da0a3e61228a4bba658ae60fb7d5e12}{PCAN\+\_\+\+BAUD\+\_\+1M}}~0x0014U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a2f641523a97a9cb21e9a1abad2b54742}{PCAN\+\_\+\+BAUD\+\_\+800K}}~0x0016U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a5829a15d27fcf75ccb7cf2b46c21959f}{PCAN\+\_\+\+BAUD\+\_\+500K}}~0x001\+CU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a2d4e52de5e6b65d225ea3079b4017b82}{PCAN\+\_\+\+BAUD\+\_\+250K}}~0x011\+CU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aa8d299bf1a9e424b94e3b0a2d538fe6d}{PCAN\+\_\+\+BAUD\+\_\+125K}}~0x031\+CU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8bce17f3eba1122823f8f52f0c853582}{PCAN\+\_\+\+BAUD\+\_\+100K}}~0x432\+FU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a4a196f7b703e2e1f8be33d6d24136c99}{PCAN\+\_\+\+BAUD\+\_\+95K}}~0x\+C34\+EU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ac710a42a584343021ef4cd26164186ff}{PCAN\+\_\+\+BAUD\+\_\+83K}}~0x852\+BU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_acd3a201b0215070945a62239dc0300d5}{PCAN\+\_\+\+BAUD\+\_\+50K}}~0x472\+FU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8c9af2cf1c8afcb433e68bfb84bdf744}{PCAN\+\_\+\+BAUD\+\_\+47K}}~0x1414U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a04dc063d81fd4e0d28efb8f69d841376}{PCAN\+\_\+\+BAUD\+\_\+33K}}~0x8\+B2\+FU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a693a51931568b7de8086c25960482edd}{PCAN\+\_\+\+BAUD\+\_\+20K}}~0x532\+FU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a901f421cd9f808c4faa5626df245f597}{PCAN\+\_\+\+BAUD\+\_\+10K}}~0x672\+FU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ae97fe900aa76aee34bbb544692b137f9}{PCAN\+\_\+\+BAUD\+\_\+5K}}~0x7\+F7\+FU
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a61b44d5ac7d4101f2888a70fe56b759e}{PCAN\+\_\+\+BR\+\_\+\+CLOCK}}~\+\_\+\+\_\+T(\"{}f\+\_\+clock\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aa375076878ad159e258bdfe3906a1dcf}{PCAN\+\_\+\+BR\+\_\+\+CLOCK\+\_\+\+MHZ}}~\+\_\+\+\_\+T(\"{}f\+\_\+clock\+\_\+mhz\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_adb61ec5280250514e9e6eb3cd11c1ce9}{PCAN\+\_\+\+BR\+\_\+\+NOM\+\_\+\+BRP}}~\+\_\+\+\_\+T(\"{}nom\+\_\+brp\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a75101f5ff0178e8432fdcf4bc648f99f}{PCAN\+\_\+\+BR\+\_\+\+NOM\+\_\+\+TSEG1}}~\+\_\+\+\_\+T(\"{}nom\+\_\+tseg1\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ac953a3c4831d93931552c76cb601ac56}{PCAN\+\_\+\+BR\+\_\+\+NOM\+\_\+\+TSEG2}}~\+\_\+\+\_\+T(\"{}nom\+\_\+tseg2\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ad2fae3d96cb98213406455a4fa7449bf}{PCAN\+\_\+\+BR\+\_\+\+NOM\+\_\+\+SJW}}~\+\_\+\+\_\+T(\"{}nom\+\_\+sjw\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a33ac6a573bcd227dbb038bc48b613f39}{PCAN\+\_\+\+BR\+\_\+\+NOM\+\_\+\+SAMPLE}}~\+\_\+\+\_\+T(\"{}nom\+\_\+sam\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a25b33b35479867a35a19cafb38de02e9}{PCAN\+\_\+\+BR\+\_\+\+DATA\+\_\+\+BRP}}~\+\_\+\+\_\+T(\"{}data\+\_\+brp\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a0971872aab391148a0b87e2878275e2b}{PCAN\+\_\+\+BR\+\_\+\+DATA\+\_\+\+TSEG1}}~\+\_\+\+\_\+T(\"{}data\+\_\+tseg1\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a3264cf8afb64adabc29eab17e0d01f81}{PCAN\+\_\+\+BR\+\_\+\+DATA\+\_\+\+TSEG2}}~\+\_\+\+\_\+T(\"{}data\+\_\+tseg2\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a211015f3a7cac8fb8196fe3405fadfc2}{PCAN\+\_\+\+BR\+\_\+\+DATA\+\_\+\+SJW}}~\+\_\+\+\_\+T(\"{}data\+\_\+sjw\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a324ba573ddb93b1f62ce35394cb7f994}{PCAN\+\_\+\+BR\+\_\+\+DATA\+\_\+\+SAMPLE}}~\+\_\+\+\_\+T(\"{}data\+\_\+ssp\+\_\+offset\"{})
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a814148b0a6d568cf655ca6074242f1cd}{PCAN\+\_\+\+TYPE\+\_\+\+ISA}}~0x01U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a8fdafc53262d49a454bcfcd6df0083f6}{PCAN\+\_\+\+TYPE\+\_\+\+ISA\+\_\+\+SJA}}~0x09U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aa906d809fdc87218773ca2ccfb2c3d9f}{PCAN\+\_\+\+TYPE\+\_\+\+ISA\+\_\+\+PHYTEC}}~0x04U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aec937011ac43d7856605d5f38445d010}{PCAN\+\_\+\+TYPE\+\_\+\+DNG}}~0x02U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a06df5f45489aa8120947463bc17e04c3}{PCAN\+\_\+\+TYPE\+\_\+\+DNG\+\_\+\+EPP}}~0x03U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ac9ea3e6234c9efa0e27fa3c453c4f502}{PCAN\+\_\+\+TYPE\+\_\+\+DNG\+\_\+\+SJA}}~0x05U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_ab7099ed90e3567b98a959f603b16b476}{PCAN\+\_\+\+TYPE\+\_\+\+DNG\+\_\+\+SJA\+\_\+\+EPP}}~0x06U
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}~WORD
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}~DWORD
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a10adcad6c11864853a821b67c6d8bea7}{TPCANParameter}}~BYTE
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_afb69adbfbb891eefe428ddc547558897}{TPCANDevice}}~BYTE
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a3bee82993dcb5649c482fdfabf4f0386}{TPCANMessage\+Type}}~BYTE
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a58aed11b911a4feb810d554f1455c432}{TPCANType}}~BYTE
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a5b07d478fd732b13d87d55b79da7c3f4}{TPCANMode}}~BYTE
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a0e4eca8764a42ce5977582c12f178711}{TPCANBaudrate}}~WORD
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a172ab7abcf5b5a9bce40cb2f59829316}{TPCANBitrate\+FD}}~LPSTR
+\item 
+\#define \mbox{\hyperlink{_p_c_a_n_basic_8h_a61acd73852b70be92677f9a3dea1e491}{TPCANTimestamp\+FD}}~UINT64
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structtag_t_p_c_a_n_msg}{tag\+TPCANMsg}} \mbox{\hyperlink{_p_c_a_n_basic_8h_a9a20d6ecf53320490ec762fea48a2ab8}{TPCANMsg}}
+\item 
+typedef struct \mbox{\hyperlink{structtag_t_p_c_a_n_timestamp}{tag\+TPCANTimestamp}} \mbox{\hyperlink{_p_c_a_n_basic_8h_a8983bf79f3fd5c53f868c8a603f84fa2}{TPCANTimestamp}}
+\item 
+typedef struct \mbox{\hyperlink{structtag_t_p_c_a_n_msg_f_d}{tag\+TPCANMsg\+FD}} \mbox{\hyperlink{_p_c_a_n_basic_8h_ab8b617e7b69324dc0b39da85d5007df1}{TPCANMsg\+FD}}
+\item 
+typedef struct \mbox{\hyperlink{structtag_t_p_c_a_n_channel_information}{tag\+TPCANChannel\+Information}} \mbox{\hyperlink{_p_c_a_n_basic_8h_a6e4a96bc3e570b384101e125458afe2c}{TPCANChannel\+Information}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_a20af3d51795575de76cd978bb0946953}{CAN\+\_\+\+Initialize}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} Channel, \mbox{\hyperlink{_p_c_a_n_basic_8h_a0e4eca8764a42ce5977582c12f178711}{TPCANBaudrate}} Btr0\+Btr1, \mbox{\hyperlink{_p_c_a_n_basic_8h_a58aed11b911a4feb810d554f1455c432}{TPCANType}} Hw\+Type \mbox{\hyperlink{_p_c_a_n_basic_8h_af6d29016a2e53a596f23f08fa9066ee7}{\+\_\+\+DEF\+\_\+\+ARG}}, DWORD IOPort \mbox{\hyperlink{_p_c_a_n_basic_8h_af6d29016a2e53a596f23f08fa9066ee7}{\+\_\+\+DEF\+\_\+\+ARG}}, WORD Interrupt \mbox{\hyperlink{_p_c_a_n_basic_8h_af6d29016a2e53a596f23f08fa9066ee7}{\+\_\+\+DEF\+\_\+\+ARG}})
+\begin{DoxyCompactList}\small\item\em Initializes a PCAN Channel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_a7a16eae1bd29feb563414c970a69091c}{CAN\+\_\+\+Initialize\+FD}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} Channel, \mbox{\hyperlink{_p_c_a_n_basic_8h_a172ab7abcf5b5a9bce40cb2f59829316}{TPCANBitrate\+FD}} Bitrate\+FD)
+\begin{DoxyCompactList}\small\item\em Initializes a FD capable PCAN Channel ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_a3715eebfb1d0ac6f80e0f7f5730ca32d}{CAN\+\_\+\+Uninitialize}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} Channel)
+\begin{DoxyCompactList}\small\item\em Uninitializes one or all PCAN Channels initialized by CAN\+\_\+\+Initialize. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_aef4b155d2e6be2fd36b188909da03882}{CAN\+\_\+\+Reset}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} Channel)
+\begin{DoxyCompactList}\small\item\em Resets the receive and transmit queues of the PCAN Channel ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_af59c61b3f5616f4caa822c1b9824659a}{CAN\+\_\+\+Get\+Status}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} Channel)
+\begin{DoxyCompactList}\small\item\em Gets the current status of a PCAN Channel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_a92f43c11cb71590cba76155340a5b395}{CAN\+\_\+\+Read}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} Channel, \mbox{\hyperlink{_p_c_a_n_basic_8h_a9a20d6ecf53320490ec762fea48a2ab8}{TPCANMsg}} \texorpdfstring{$\ast$}{*}Message\+Buffer, \mbox{\hyperlink{_p_c_a_n_basic_8h_a8983bf79f3fd5c53f868c8a603f84fa2}{TPCANTimestamp}} \texorpdfstring{$\ast$}{*}Timestamp\+Buffer)
+\begin{DoxyCompactList}\small\item\em Reads a CAN message from the receive queue of a PCAN Channel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_a5c1cac2ba7a8f3d30bb8853bad4ca607}{CAN\+\_\+\+Read\+FD}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} Channel, \mbox{\hyperlink{_p_c_a_n_basic_8h_ab8b617e7b69324dc0b39da85d5007df1}{TPCANMsg\+FD}} \texorpdfstring{$\ast$}{*}Message\+Buffer, \mbox{\hyperlink{_p_c_a_n_basic_8h_a61acd73852b70be92677f9a3dea1e491}{TPCANTimestamp\+FD}} \texorpdfstring{$\ast$}{*}Timestamp\+Buffer)
+\begin{DoxyCompactList}\small\item\em Reads a CAN message from the receive queue of a FD capable PCAN Channel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_a02d2f873980df41f099380a530d77a7b}{CAN\+\_\+\+Write}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} Channel, \mbox{\hyperlink{_p_c_a_n_basic_8h_a9a20d6ecf53320490ec762fea48a2ab8}{TPCANMsg}} \texorpdfstring{$\ast$}{*}Message\+Buffer)
+\begin{DoxyCompactList}\small\item\em Transmits a CAN message. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_a687c5727922ad0dc73974c4765309e12}{CAN\+\_\+\+Write\+FD}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} Channel, \mbox{\hyperlink{_p_c_a_n_basic_8h_ab8b617e7b69324dc0b39da85d5007df1}{TPCANMsg\+FD}} \texorpdfstring{$\ast$}{*}Message\+Buffer)
+\begin{DoxyCompactList}\small\item\em Transmits a CAN message over a FD capable PCAN Channel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_a4b1542df766b1e6baac6e882ec520061}{CAN\+\_\+\+Filter\+Messages}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} Channel, DWORD From\+ID, DWORD To\+ID, \mbox{\hyperlink{_p_c_a_n_basic_8h_a5b07d478fd732b13d87d55b79da7c3f4}{TPCANMode}} Mode)
+\begin{DoxyCompactList}\small\item\em Configures the reception filter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_a6264b7de19be60778667a2ebf62a98d2}{CAN\+\_\+\+Get\+Value}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} Channel, \mbox{\hyperlink{_p_c_a_n_basic_8h_a10adcad6c11864853a821b67c6d8bea7}{TPCANParameter}} Parameter, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}Buffer, DWORD Buffer\+Length)
+\begin{DoxyCompactList}\small\item\em Retrieves a PCAN Channel value. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_a189dc3cbb358ce628536092c7252f3e4}{CAN\+\_\+\+Set\+Value}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} Channel, \mbox{\hyperlink{_p_c_a_n_basic_8h_a10adcad6c11864853a821b67c6d8bea7}{TPCANParameter}} Parameter, \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}Buffer, DWORD Buffer\+Length)
+\begin{DoxyCompactList}\small\item\em Configures or sets a PCAN Channel value. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_ae9a75045d4912ed909b2cb8fd45acb4e}{CAN\+\_\+\+Get\+Error\+Text}} (\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} Error, WORD Language, LPSTR Buffer)
+\begin{DoxyCompactList}\small\item\em Returns a descriptive text of a given TPCANStatus error code, in any desired language. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall \mbox{\hyperlink{_p_c_a_n_basic_8h_a550702819ec156ab5051b213d01664b7}{CAN\+\_\+\+Look\+Up\+Channel}} (LPSTR Parameters, \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} \texorpdfstring{$\ast$}{*}Found\+Channel)
+\begin{DoxyCompactList}\small\item\em Finds a PCAN-\/\+Basic channel that matches with the given parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_p_c_a_n_basic_8h_af6d29016a2e53a596f23f08fa9066ee7}\label{_p_c_a_n_basic_8h_af6d29016a2e53a596f23f08fa9066ee7} 
+\index{PCANBasic.h@{PCANBasic.h}!\_DEF\_ARG@{\_DEF\_ARG}}
+\index{\_DEF\_ARG@{\_DEF\_ARG}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{\_DEF\_ARG}{\_DEF\_ARG}}
+{\footnotesize\ttfamily \#define \+\_\+\+DEF\+\_\+\+ARG}
+
+\Hypertarget{_p_c_a_n_basic_8h_ac8d1d5585f589b6da0bb2abb313a9a38}\label{_p_c_a_n_basic_8h_ac8d1d5585f589b6da0bb2abb313a9a38} 
+\index{PCANBasic.h@{PCANBasic.h}!FEATURE\_DELAY\_CAPABLE@{FEATURE\_DELAY\_CAPABLE}}
+\index{FEATURE\_DELAY\_CAPABLE@{FEATURE\_DELAY\_CAPABLE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{FEATURE\_DELAY\_CAPABLE}{FEATURE\_DELAY\_CAPABLE}}
+{\footnotesize\ttfamily \#define FEATURE\+\_\+\+DELAY\+\_\+\+CAPABLE~0x02U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a101e8cf83459fb9b76a44a257b1ae4e2}\label{_p_c_a_n_basic_8h_a101e8cf83459fb9b76a44a257b1ae4e2} 
+\index{PCANBasic.h@{PCANBasic.h}!FEATURE\_FD\_CAPABLE@{FEATURE\_FD\_CAPABLE}}
+\index{FEATURE\_FD\_CAPABLE@{FEATURE\_FD\_CAPABLE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{FEATURE\_FD\_CAPABLE}{FEATURE\_FD\_CAPABLE}}
+{\footnotesize\ttfamily \#define FEATURE\+\_\+\+FD\+\_\+\+CAPABLE~0x01U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a40092759f4164bc7f6a374fa3f5aaf23}\label{_p_c_a_n_basic_8h_a40092759f4164bc7f6a374fa3f5aaf23} 
+\index{PCANBasic.h@{PCANBasic.h}!FEATURE\_IO\_CAPABLE@{FEATURE\_IO\_CAPABLE}}
+\index{FEATURE\_IO\_CAPABLE@{FEATURE\_IO\_CAPABLE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{FEATURE\_IO\_CAPABLE}{FEATURE\_IO\_CAPABLE}}
+{\footnotesize\ttfamily \#define FEATURE\+\_\+\+IO\+\_\+\+CAPABLE~0x04U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ae86de3df6eefa99f8b8d3500957503bb}\label{_p_c_a_n_basic_8h_ae86de3df6eefa99f8b8d3500957503bb} 
+\index{PCANBasic.h@{PCANBasic.h}!LOG\_FUNCTION\_ALL@{LOG\_FUNCTION\_ALL}}
+\index{LOG\_FUNCTION\_ALL@{LOG\_FUNCTION\_ALL}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_FUNCTION\_ALL}{LOG\_FUNCTION\_ALL}}
+{\footnotesize\ttfamily \#define LOG\+\_\+\+FUNCTION\+\_\+\+ALL~0x\+FFFFU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8ddbf9d9b7d1599e49e82e1ed82e2fd2}\label{_p_c_a_n_basic_8h_a8ddbf9d9b7d1599e49e82e1ed82e2fd2} 
+\index{PCANBasic.h@{PCANBasic.h}!LOG\_FUNCTION\_DEFAULT@{LOG\_FUNCTION\_DEFAULT}}
+\index{LOG\_FUNCTION\_DEFAULT@{LOG\_FUNCTION\_DEFAULT}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_FUNCTION\_DEFAULT}{LOG\_FUNCTION\_DEFAULT}}
+{\footnotesize\ttfamily \#define LOG\+\_\+\+FUNCTION\+\_\+\+DEFAULT~0x00U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8f070da554f25fa71d05d3f45785f6ac}\label{_p_c_a_n_basic_8h_a8f070da554f25fa71d05d3f45785f6ac} 
+\index{PCANBasic.h@{PCANBasic.h}!LOG\_FUNCTION\_ENTRY@{LOG\_FUNCTION\_ENTRY}}
+\index{LOG\_FUNCTION\_ENTRY@{LOG\_FUNCTION\_ENTRY}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_FUNCTION\_ENTRY}{LOG\_FUNCTION\_ENTRY}}
+{\footnotesize\ttfamily \#define LOG\+\_\+\+FUNCTION\+\_\+\+ENTRY~0x01U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a0f80d602c814f3aff497cbda9d3fb979}\label{_p_c_a_n_basic_8h_a0f80d602c814f3aff497cbda9d3fb979} 
+\index{PCANBasic.h@{PCANBasic.h}!LOG\_FUNCTION\_LEAVE@{LOG\_FUNCTION\_LEAVE}}
+\index{LOG\_FUNCTION\_LEAVE@{LOG\_FUNCTION\_LEAVE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_FUNCTION\_LEAVE}{LOG\_FUNCTION\_LEAVE}}
+{\footnotesize\ttfamily \#define LOG\+\_\+\+FUNCTION\+\_\+\+LEAVE~0x04U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a16575b284aab54775f660d1bea84ffa8}\label{_p_c_a_n_basic_8h_a16575b284aab54775f660d1bea84ffa8} 
+\index{PCANBasic.h@{PCANBasic.h}!LOG\_FUNCTION\_PARAMETERS@{LOG\_FUNCTION\_PARAMETERS}}
+\index{LOG\_FUNCTION\_PARAMETERS@{LOG\_FUNCTION\_PARAMETERS}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_FUNCTION\_PARAMETERS}{LOG\_FUNCTION\_PARAMETERS}}
+{\footnotesize\ttfamily \#define LOG\+\_\+\+FUNCTION\+\_\+\+PARAMETERS~0x02U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a6b3ebf2134386731e196088531b97ce2}\label{_p_c_a_n_basic_8h_a6b3ebf2134386731e196088531b97ce2} 
+\index{PCANBasic.h@{PCANBasic.h}!LOG\_FUNCTION\_READ@{LOG\_FUNCTION\_READ}}
+\index{LOG\_FUNCTION\_READ@{LOG\_FUNCTION\_READ}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_FUNCTION\_READ}{LOG\_FUNCTION\_READ}}
+{\footnotesize\ttfamily \#define LOG\+\_\+\+FUNCTION\+\_\+\+READ~0x10U}
+
+\Hypertarget{_p_c_a_n_basic_8h_af64e2454f0c9f31276bed9d3d27d8546}\label{_p_c_a_n_basic_8h_af64e2454f0c9f31276bed9d3d27d8546} 
+\index{PCANBasic.h@{PCANBasic.h}!LOG\_FUNCTION\_WRITE@{LOG\_FUNCTION\_WRITE}}
+\index{LOG\_FUNCTION\_WRITE@{LOG\_FUNCTION\_WRITE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_FUNCTION\_WRITE}{LOG\_FUNCTION\_WRITE}}
+{\footnotesize\ttfamily \#define LOG\+\_\+\+FUNCTION\+\_\+\+WRITE~0x08U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a59e732fcbd8d516bdc8881cfa219e736}\label{_p_c_a_n_basic_8h_a59e732fcbd8d516bdc8881cfa219e736} 
+\index{PCANBasic.h@{PCANBasic.h}!LOOKUP\_CONTROLLER\_NUMBER@{LOOKUP\_CONTROLLER\_NUMBER}}
+\index{LOOKUP\_CONTROLLER\_NUMBER@{LOOKUP\_CONTROLLER\_NUMBER}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{LOOKUP\_CONTROLLER\_NUMBER}{LOOKUP\_CONTROLLER\_NUMBER}}
+{\footnotesize\ttfamily \#define LOOKUP\+\_\+\+CONTROLLER\+\_\+\+NUMBER~\+\_\+\+\_\+T(\"{}controllernumber\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a71b5ce21608ece0af37994efe78fbdf1}\label{_p_c_a_n_basic_8h_a71b5ce21608ece0af37994efe78fbdf1} 
+\index{PCANBasic.h@{PCANBasic.h}!LOOKUP\_DEVICE\_ID@{LOOKUP\_DEVICE\_ID}}
+\index{LOOKUP\_DEVICE\_ID@{LOOKUP\_DEVICE\_ID}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{LOOKUP\_DEVICE\_ID}{LOOKUP\_DEVICE\_ID}}
+{\footnotesize\ttfamily \#define LOOKUP\+\_\+\+DEVICE\+\_\+\+ID~\+\_\+\+\_\+T(\"{}deviceid\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_aa3d5f2ac2840945563a35c90c2aa0644}\label{_p_c_a_n_basic_8h_aa3d5f2ac2840945563a35c90c2aa0644} 
+\index{PCANBasic.h@{PCANBasic.h}!LOOKUP\_DEVICE\_TYPE@{LOOKUP\_DEVICE\_TYPE}}
+\index{LOOKUP\_DEVICE\_TYPE@{LOOKUP\_DEVICE\_TYPE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{LOOKUP\_DEVICE\_TYPE}{LOOKUP\_DEVICE\_TYPE}}
+{\footnotesize\ttfamily \#define LOOKUP\+\_\+\+DEVICE\+\_\+\+TYPE~\+\_\+\+\_\+T(\"{}devicetype\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a7837cb07c1849af4f0d775d9d9ffaa5d}\label{_p_c_a_n_basic_8h_a7837cb07c1849af4f0d775d9d9ffaa5d} 
+\index{PCANBasic.h@{PCANBasic.h}!LOOKUP\_IP\_ADDRESS@{LOOKUP\_IP\_ADDRESS}}
+\index{LOOKUP\_IP\_ADDRESS@{LOOKUP\_IP\_ADDRESS}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{LOOKUP\_IP\_ADDRESS}{LOOKUP\_IP\_ADDRESS}}
+{\footnotesize\ttfamily \#define LOOKUP\+\_\+\+IP\+\_\+\+ADDRESS~\+\_\+\+\_\+T(\"{}ipaddress\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a6b0e7acb159e8d24b1d72eefd6c80766}\label{_p_c_a_n_basic_8h_a6b0e7acb159e8d24b1d72eefd6c80766} 
+\index{PCANBasic.h@{PCANBasic.h}!MAX\_LENGTH\_HARDWARE\_NAME@{MAX\_LENGTH\_HARDWARE\_NAME}}
+\index{MAX\_LENGTH\_HARDWARE\_NAME@{MAX\_LENGTH\_HARDWARE\_NAME}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_LENGTH\_HARDWARE\_NAME}{MAX\_LENGTH\_HARDWARE\_NAME}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+LENGTH\+\_\+\+HARDWARE\+\_\+\+NAME~33}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8335c17c7ccdfb96c4155d9dda5d6e17}\label{_p_c_a_n_basic_8h_a8335c17c7ccdfb96c4155d9dda5d6e17} 
+\index{PCANBasic.h@{PCANBasic.h}!MAX\_LENGTH\_VERSION\_STRING@{MAX\_LENGTH\_VERSION\_STRING}}
+\index{MAX\_LENGTH\_VERSION\_STRING@{MAX\_LENGTH\_VERSION\_STRING}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_LENGTH\_VERSION\_STRING}{MAX\_LENGTH\_VERSION\_STRING}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+LENGTH\+\_\+\+VERSION\+\_\+\+STRING~256}
+
+\Hypertarget{_p_c_a_n_basic_8h_a1b1ae0bf038d22a998a80027b389db0a}\label{_p_c_a_n_basic_8h_a1b1ae0bf038d22a998a80027b389db0a} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_5VOLTS\_POWER@{PCAN\_5VOLTS\_POWER}}
+\index{PCAN\_5VOLTS\_POWER@{PCAN\_5VOLTS\_POWER}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_5VOLTS\_POWER}{PCAN\_5VOLTS\_POWER}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+5\+VOLTS\+\_\+\+POWER~0x02U}
+
+\Hypertarget{_p_c_a_n_basic_8h_afb6bfb2d038bd19a48d032c5a1ecf467}\label{_p_c_a_n_basic_8h_afb6bfb2d038bd19a48d032c5a1ecf467} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ACCEPTANCE\_FILTER\_11BIT@{PCAN\_ACCEPTANCE\_FILTER\_11BIT}}
+\index{PCAN\_ACCEPTANCE\_FILTER\_11BIT@{PCAN\_ACCEPTANCE\_FILTER\_11BIT}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ACCEPTANCE\_FILTER\_11BIT}{PCAN\_ACCEPTANCE\_FILTER\_11BIT}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ACCEPTANCE\+\_\+\+FILTER\+\_\+11\+BIT~0x22U}
+
+\Hypertarget{_p_c_a_n_basic_8h_adf53026d8de2b22244432a26c534d916}\label{_p_c_a_n_basic_8h_adf53026d8de2b22244432a26c534d916} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ACCEPTANCE\_FILTER\_29BIT@{PCAN\_ACCEPTANCE\_FILTER\_29BIT}}
+\index{PCAN\_ACCEPTANCE\_FILTER\_29BIT@{PCAN\_ACCEPTANCE\_FILTER\_29BIT}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ACCEPTANCE\_FILTER\_29BIT}{PCAN\_ACCEPTANCE\_FILTER\_29BIT}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ACCEPTANCE\+\_\+\+FILTER\+\_\+29\+BIT~0x23U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ae916c09140eeba1eaaea7de1ee80ebb6}\label{_p_c_a_n_basic_8h_ae916c09140eeba1eaaea7de1ee80ebb6} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ALLOW\_ECHO\_FRAMES@{PCAN\_ALLOW\_ECHO\_FRAMES}}
+\index{PCAN\_ALLOW\_ECHO\_FRAMES@{PCAN\_ALLOW\_ECHO\_FRAMES}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ALLOW\_ECHO\_FRAMES}{PCAN\_ALLOW\_ECHO\_FRAMES}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ALLOW\+\_\+\+ECHO\+\_\+\+FRAMES~0x2\+CU}
+
+\Hypertarget{_p_c_a_n_basic_8h_aac311fbde2a44487796f523bda911b66}\label{_p_c_a_n_basic_8h_aac311fbde2a44487796f523bda911b66} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ALLOW\_ERROR\_FRAMES@{PCAN\_ALLOW\_ERROR\_FRAMES}}
+\index{PCAN\_ALLOW\_ERROR\_FRAMES@{PCAN\_ALLOW\_ERROR\_FRAMES}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ALLOW\_ERROR\_FRAMES}{PCAN\_ALLOW\_ERROR\_FRAMES}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ALLOW\+\_\+\+ERROR\+\_\+\+FRAMES~0x20U}
+
+\Hypertarget{_p_c_a_n_basic_8h_af2266090a9bc384e4660a90fa3188bb3}\label{_p_c_a_n_basic_8h_af2266090a9bc384e4660a90fa3188bb3} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ALLOW\_RTR\_FRAMES@{PCAN\_ALLOW\_RTR\_FRAMES}}
+\index{PCAN\_ALLOW\_RTR\_FRAMES@{PCAN\_ALLOW\_RTR\_FRAMES}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ALLOW\_RTR\_FRAMES}{PCAN\_ALLOW\_RTR\_FRAMES}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ALLOW\+\_\+\+RTR\+\_\+\+FRAMES~0x1\+FU}
+
+\Hypertarget{_p_c_a_n_basic_8h_adc63b7a5b92cf5813184f590c24952e9}\label{_p_c_a_n_basic_8h_adc63b7a5b92cf5813184f590c24952e9} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ALLOW\_STATUS\_FRAMES@{PCAN\_ALLOW\_STATUS\_FRAMES}}
+\index{PCAN\_ALLOW\_STATUS\_FRAMES@{PCAN\_ALLOW\_STATUS\_FRAMES}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ALLOW\_STATUS\_FRAMES}{PCAN\_ALLOW\_STATUS\_FRAMES}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ALLOW\+\_\+\+STATUS\+\_\+\+FRAMES~0x1\+EU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a65e2520461ec1cdbedc00cbed45c38ff}\label{_p_c_a_n_basic_8h_a65e2520461ec1cdbedc00cbed45c38ff} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_API\_VERSION@{PCAN\_API\_VERSION}}
+\index{PCAN\_API\_VERSION@{PCAN\_API\_VERSION}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_API\_VERSION}{PCAN\_API\_VERSION}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+API\+\_\+\+VERSION~0x05U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a40e4f7b526fcd510c2ed91dbd37bf7e1}\label{_p_c_a_n_basic_8h_a40e4f7b526fcd510c2ed91dbd37bf7e1} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ATTACHED\_CHANNELS@{PCAN\_ATTACHED\_CHANNELS}}
+\index{PCAN\_ATTACHED\_CHANNELS@{PCAN\_ATTACHED\_CHANNELS}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ATTACHED\_CHANNELS}{PCAN\_ATTACHED\_CHANNELS}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ATTACHED\+\_\+\+CHANNELS~0x2\+BU}
+
+\Hypertarget{_p_c_a_n_basic_8h_ac4c839d795000f89e94068470bd91f22}\label{_p_c_a_n_basic_8h_ac4c839d795000f89e94068470bd91f22} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ATTACHED\_CHANNELS\_COUNT@{PCAN\_ATTACHED\_CHANNELS\_COUNT}}
+\index{PCAN\_ATTACHED\_CHANNELS\_COUNT@{PCAN\_ATTACHED\_CHANNELS\_COUNT}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ATTACHED\_CHANNELS\_COUNT}{PCAN\_ATTACHED\_CHANNELS\_COUNT}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ATTACHED\+\_\+\+CHANNELS\+\_\+\+COUNT~0x2\+AU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8bce17f3eba1122823f8f52f0c853582}\label{_p_c_a_n_basic_8h_a8bce17f3eba1122823f8f52f0c853582} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_100K@{PCAN\_BAUD\_100K}}
+\index{PCAN\_BAUD\_100K@{PCAN\_BAUD\_100K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_100K}{PCAN\_BAUD\_100K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+100K~0x432\+FU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a901f421cd9f808c4faa5626df245f597}\label{_p_c_a_n_basic_8h_a901f421cd9f808c4faa5626df245f597} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_10K@{PCAN\_BAUD\_10K}}
+\index{PCAN\_BAUD\_10K@{PCAN\_BAUD\_10K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_10K}{PCAN\_BAUD\_10K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+10K~0x672\+FU}
+
+\Hypertarget{_p_c_a_n_basic_8h_aa8d299bf1a9e424b94e3b0a2d538fe6d}\label{_p_c_a_n_basic_8h_aa8d299bf1a9e424b94e3b0a2d538fe6d} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_125K@{PCAN\_BAUD\_125K}}
+\index{PCAN\_BAUD\_125K@{PCAN\_BAUD\_125K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_125K}{PCAN\_BAUD\_125K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+125K~0x031\+CU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a9da0a3e61228a4bba658ae60fb7d5e12}\label{_p_c_a_n_basic_8h_a9da0a3e61228a4bba658ae60fb7d5e12} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_1M@{PCAN\_BAUD\_1M}}
+\index{PCAN\_BAUD\_1M@{PCAN\_BAUD\_1M}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_1M}{PCAN\_BAUD\_1M}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+1M~0x0014U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a693a51931568b7de8086c25960482edd}\label{_p_c_a_n_basic_8h_a693a51931568b7de8086c25960482edd} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_20K@{PCAN\_BAUD\_20K}}
+\index{PCAN\_BAUD\_20K@{PCAN\_BAUD\_20K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_20K}{PCAN\_BAUD\_20K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+20K~0x532\+FU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a2d4e52de5e6b65d225ea3079b4017b82}\label{_p_c_a_n_basic_8h_a2d4e52de5e6b65d225ea3079b4017b82} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_250K@{PCAN\_BAUD\_250K}}
+\index{PCAN\_BAUD\_250K@{PCAN\_BAUD\_250K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_250K}{PCAN\_BAUD\_250K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+250K~0x011\+CU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a04dc063d81fd4e0d28efb8f69d841376}\label{_p_c_a_n_basic_8h_a04dc063d81fd4e0d28efb8f69d841376} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_33K@{PCAN\_BAUD\_33K}}
+\index{PCAN\_BAUD\_33K@{PCAN\_BAUD\_33K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_33K}{PCAN\_BAUD\_33K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+33K~0x8\+B2\+FU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8c9af2cf1c8afcb433e68bfb84bdf744}\label{_p_c_a_n_basic_8h_a8c9af2cf1c8afcb433e68bfb84bdf744} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_47K@{PCAN\_BAUD\_47K}}
+\index{PCAN\_BAUD\_47K@{PCAN\_BAUD\_47K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_47K}{PCAN\_BAUD\_47K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+47K~0x1414U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a5829a15d27fcf75ccb7cf2b46c21959f}\label{_p_c_a_n_basic_8h_a5829a15d27fcf75ccb7cf2b46c21959f} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_500K@{PCAN\_BAUD\_500K}}
+\index{PCAN\_BAUD\_500K@{PCAN\_BAUD\_500K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_500K}{PCAN\_BAUD\_500K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+500K~0x001\+CU}
+
+\Hypertarget{_p_c_a_n_basic_8h_acd3a201b0215070945a62239dc0300d5}\label{_p_c_a_n_basic_8h_acd3a201b0215070945a62239dc0300d5} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_50K@{PCAN\_BAUD\_50K}}
+\index{PCAN\_BAUD\_50K@{PCAN\_BAUD\_50K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_50K}{PCAN\_BAUD\_50K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+50K~0x472\+FU}
+
+\Hypertarget{_p_c_a_n_basic_8h_ae97fe900aa76aee34bbb544692b137f9}\label{_p_c_a_n_basic_8h_ae97fe900aa76aee34bbb544692b137f9} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_5K@{PCAN\_BAUD\_5K}}
+\index{PCAN\_BAUD\_5K@{PCAN\_BAUD\_5K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_5K}{PCAN\_BAUD\_5K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+5K~0x7\+F7\+FU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a2f641523a97a9cb21e9a1abad2b54742}\label{_p_c_a_n_basic_8h_a2f641523a97a9cb21e9a1abad2b54742} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_800K@{PCAN\_BAUD\_800K}}
+\index{PCAN\_BAUD\_800K@{PCAN\_BAUD\_800K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_800K}{PCAN\_BAUD\_800K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+800K~0x0016U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ac710a42a584343021ef4cd26164186ff}\label{_p_c_a_n_basic_8h_ac710a42a584343021ef4cd26164186ff} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_83K@{PCAN\_BAUD\_83K}}
+\index{PCAN\_BAUD\_83K@{PCAN\_BAUD\_83K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_83K}{PCAN\_BAUD\_83K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+83K~0x852\+BU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a4a196f7b703e2e1f8be33d6d24136c99}\label{_p_c_a_n_basic_8h_a4a196f7b703e2e1f8be33d6d24136c99} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BAUD\_95K@{PCAN\_BAUD\_95K}}
+\index{PCAN\_BAUD\_95K@{PCAN\_BAUD\_95K}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BAUD\_95K}{PCAN\_BAUD\_95K}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BAUD\+\_\+95K~0x\+C34\+EU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a3b77e90f77f51287c9ab51fb22072212}\label{_p_c_a_n_basic_8h_a3b77e90f77f51287c9ab51fb22072212} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BITRATE\_ADAPTING@{PCAN\_BITRATE\_ADAPTING}}
+\index{PCAN\_BITRATE\_ADAPTING@{PCAN\_BITRATE\_ADAPTING}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BITRATE\_ADAPTING}{PCAN\_BITRATE\_ADAPTING}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BITRATE\+\_\+\+ADAPTING~0x17U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a5fd18ef617109c4c2d50765a4d5e108f}\label{_p_c_a_n_basic_8h_a5fd18ef617109c4c2d50765a4d5e108f} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BITRATE\_INFO@{PCAN\_BITRATE\_INFO}}
+\index{PCAN\_BITRATE\_INFO@{PCAN\_BITRATE\_INFO}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BITRATE\_INFO}{PCAN\_BITRATE\_INFO}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BITRATE\+\_\+\+INFO~0x18U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ab70ad57d35f14603f0f03d1617973982}\label{_p_c_a_n_basic_8h_ab70ad57d35f14603f0f03d1617973982} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BITRATE\_INFO\_FD@{PCAN\_BITRATE\_INFO\_FD}}
+\index{PCAN\_BITRATE\_INFO\_FD@{PCAN\_BITRATE\_INFO\_FD}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BITRATE\_INFO\_FD}{PCAN\_BITRATE\_INFO\_FD}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BITRATE\+\_\+\+INFO\+\_\+\+FD~0x19U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a61b44d5ac7d4101f2888a70fe56b759e}\label{_p_c_a_n_basic_8h_a61b44d5ac7d4101f2888a70fe56b759e} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BR\_CLOCK@{PCAN\_BR\_CLOCK}}
+\index{PCAN\_BR\_CLOCK@{PCAN\_BR\_CLOCK}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BR\_CLOCK}{PCAN\_BR\_CLOCK}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BR\+\_\+\+CLOCK~\+\_\+\+\_\+T(\"{}f\+\_\+clock\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_aa375076878ad159e258bdfe3906a1dcf}\label{_p_c_a_n_basic_8h_aa375076878ad159e258bdfe3906a1dcf} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BR\_CLOCK\_MHZ@{PCAN\_BR\_CLOCK\_MHZ}}
+\index{PCAN\_BR\_CLOCK\_MHZ@{PCAN\_BR\_CLOCK\_MHZ}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BR\_CLOCK\_MHZ}{PCAN\_BR\_CLOCK\_MHZ}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BR\+\_\+\+CLOCK\+\_\+\+MHZ~\+\_\+\+\_\+T(\"{}f\+\_\+clock\+\_\+mhz\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a25b33b35479867a35a19cafb38de02e9}\label{_p_c_a_n_basic_8h_a25b33b35479867a35a19cafb38de02e9} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BR\_DATA\_BRP@{PCAN\_BR\_DATA\_BRP}}
+\index{PCAN\_BR\_DATA\_BRP@{PCAN\_BR\_DATA\_BRP}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BR\_DATA\_BRP}{PCAN\_BR\_DATA\_BRP}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BR\+\_\+\+DATA\+\_\+\+BRP~\+\_\+\+\_\+T(\"{}data\+\_\+brp\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a324ba573ddb93b1f62ce35394cb7f994}\label{_p_c_a_n_basic_8h_a324ba573ddb93b1f62ce35394cb7f994} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BR\_DATA\_SAMPLE@{PCAN\_BR\_DATA\_SAMPLE}}
+\index{PCAN\_BR\_DATA\_SAMPLE@{PCAN\_BR\_DATA\_SAMPLE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BR\_DATA\_SAMPLE}{PCAN\_BR\_DATA\_SAMPLE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BR\+\_\+\+DATA\+\_\+\+SAMPLE~\+\_\+\+\_\+T(\"{}data\+\_\+ssp\+\_\+offset\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a211015f3a7cac8fb8196fe3405fadfc2}\label{_p_c_a_n_basic_8h_a211015f3a7cac8fb8196fe3405fadfc2} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BR\_DATA\_SJW@{PCAN\_BR\_DATA\_SJW}}
+\index{PCAN\_BR\_DATA\_SJW@{PCAN\_BR\_DATA\_SJW}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BR\_DATA\_SJW}{PCAN\_BR\_DATA\_SJW}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BR\+\_\+\+DATA\+\_\+\+SJW~\+\_\+\+\_\+T(\"{}data\+\_\+sjw\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a0971872aab391148a0b87e2878275e2b}\label{_p_c_a_n_basic_8h_a0971872aab391148a0b87e2878275e2b} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BR\_DATA\_TSEG1@{PCAN\_BR\_DATA\_TSEG1}}
+\index{PCAN\_BR\_DATA\_TSEG1@{PCAN\_BR\_DATA\_TSEG1}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BR\_DATA\_TSEG1}{PCAN\_BR\_DATA\_TSEG1}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BR\+\_\+\+DATA\+\_\+\+TSEG1~\+\_\+\+\_\+T(\"{}data\+\_\+tseg1\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a3264cf8afb64adabc29eab17e0d01f81}\label{_p_c_a_n_basic_8h_a3264cf8afb64adabc29eab17e0d01f81} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BR\_DATA\_TSEG2@{PCAN\_BR\_DATA\_TSEG2}}
+\index{PCAN\_BR\_DATA\_TSEG2@{PCAN\_BR\_DATA\_TSEG2}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BR\_DATA\_TSEG2}{PCAN\_BR\_DATA\_TSEG2}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BR\+\_\+\+DATA\+\_\+\+TSEG2~\+\_\+\+\_\+T(\"{}data\+\_\+tseg2\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_adb61ec5280250514e9e6eb3cd11c1ce9}\label{_p_c_a_n_basic_8h_adb61ec5280250514e9e6eb3cd11c1ce9} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BR\_NOM\_BRP@{PCAN\_BR\_NOM\_BRP}}
+\index{PCAN\_BR\_NOM\_BRP@{PCAN\_BR\_NOM\_BRP}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BR\_NOM\_BRP}{PCAN\_BR\_NOM\_BRP}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BR\+\_\+\+NOM\+\_\+\+BRP~\+\_\+\+\_\+T(\"{}nom\+\_\+brp\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a33ac6a573bcd227dbb038bc48b613f39}\label{_p_c_a_n_basic_8h_a33ac6a573bcd227dbb038bc48b613f39} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BR\_NOM\_SAMPLE@{PCAN\_BR\_NOM\_SAMPLE}}
+\index{PCAN\_BR\_NOM\_SAMPLE@{PCAN\_BR\_NOM\_SAMPLE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BR\_NOM\_SAMPLE}{PCAN\_BR\_NOM\_SAMPLE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BR\+\_\+\+NOM\+\_\+\+SAMPLE~\+\_\+\+\_\+T(\"{}nom\+\_\+sam\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_ad2fae3d96cb98213406455a4fa7449bf}\label{_p_c_a_n_basic_8h_ad2fae3d96cb98213406455a4fa7449bf} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BR\_NOM\_SJW@{PCAN\_BR\_NOM\_SJW}}
+\index{PCAN\_BR\_NOM\_SJW@{PCAN\_BR\_NOM\_SJW}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BR\_NOM\_SJW}{PCAN\_BR\_NOM\_SJW}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BR\+\_\+\+NOM\+\_\+\+SJW~\+\_\+\+\_\+T(\"{}nom\+\_\+sjw\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a75101f5ff0178e8432fdcf4bc648f99f}\label{_p_c_a_n_basic_8h_a75101f5ff0178e8432fdcf4bc648f99f} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BR\_NOM\_TSEG1@{PCAN\_BR\_NOM\_TSEG1}}
+\index{PCAN\_BR\_NOM\_TSEG1@{PCAN\_BR\_NOM\_TSEG1}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BR\_NOM\_TSEG1}{PCAN\_BR\_NOM\_TSEG1}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BR\+\_\+\+NOM\+\_\+\+TSEG1~\+\_\+\+\_\+T(\"{}nom\+\_\+tseg1\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_ac953a3c4831d93931552c76cb601ac56}\label{_p_c_a_n_basic_8h_ac953a3c4831d93931552c76cb601ac56} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BR\_NOM\_TSEG2@{PCAN\_BR\_NOM\_TSEG2}}
+\index{PCAN\_BR\_NOM\_TSEG2@{PCAN\_BR\_NOM\_TSEG2}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BR\_NOM\_TSEG2}{PCAN\_BR\_NOM\_TSEG2}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BR\+\_\+\+NOM\+\_\+\+TSEG2~\+\_\+\+\_\+T(\"{}nom\+\_\+tseg2\"{})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a9723bc79baa2f5a7e2ed0fdf13be52dd}\label{_p_c_a_n_basic_8h_a9723bc79baa2f5a7e2ed0fdf13be52dd} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BUSOFF\_AUTORESET@{PCAN\_BUSOFF\_AUTORESET}}
+\index{PCAN\_BUSOFF\_AUTORESET@{PCAN\_BUSOFF\_AUTORESET}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BUSOFF\_AUTORESET}{PCAN\_BUSOFF\_AUTORESET}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BUSOFF\+\_\+\+AUTORESET~0x07U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ac37c10c110f8ce2750e051ff7add9e94}\label{_p_c_a_n_basic_8h_ac37c10c110f8ce2750e051ff7add9e94} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BUSSPEED\_DATA@{PCAN\_BUSSPEED\_DATA}}
+\index{PCAN\_BUSSPEED\_DATA@{PCAN\_BUSSPEED\_DATA}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BUSSPEED\_DATA}{PCAN\_BUSSPEED\_DATA}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BUSSPEED\+\_\+\+DATA~0x1\+BU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a2106e822f692f5ce9f42f56f115722fd}\label{_p_c_a_n_basic_8h_a2106e822f692f5ce9f42f56f115722fd} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_BUSSPEED\_NOMINAL@{PCAN\_BUSSPEED\_NOMINAL}}
+\index{PCAN\_BUSSPEED\_NOMINAL@{PCAN\_BUSSPEED\_NOMINAL}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_BUSSPEED\_NOMINAL}{PCAN\_BUSSPEED\_NOMINAL}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+BUSSPEED\+\_\+\+NOMINAL~0x1\+AU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a0fc963ddc6ca66f9d175ac69446a6621}\label{_p_c_a_n_basic_8h_a0fc963ddc6ca66f9d175ac69446a6621} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_CHANNEL\_AVAILABLE@{PCAN\_CHANNEL\_AVAILABLE}}
+\index{PCAN\_CHANNEL\_AVAILABLE@{PCAN\_CHANNEL\_AVAILABLE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_CHANNEL\_AVAILABLE}{PCAN\_CHANNEL\_AVAILABLE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+CHANNEL\+\_\+\+AVAILABLE~0x01U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a596c86cc06029321392d10760fcc1542}\label{_p_c_a_n_basic_8h_a596c86cc06029321392d10760fcc1542} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_CHANNEL\_CONDITION@{PCAN\_CHANNEL\_CONDITION}}
+\index{PCAN\_CHANNEL\_CONDITION@{PCAN\_CHANNEL\_CONDITION}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_CHANNEL\_CONDITION}{PCAN\_CHANNEL\_CONDITION}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+CHANNEL\+\_\+\+CONDITION~0x0\+DU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a765fb66c5f9baf81aa4507b390326f03}\label{_p_c_a_n_basic_8h_a765fb66c5f9baf81aa4507b390326f03} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_CHANNEL\_FEATURES@{PCAN\_CHANNEL\_FEATURES}}
+\index{PCAN\_CHANNEL\_FEATURES@{PCAN\_CHANNEL\_FEATURES}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_CHANNEL\_FEATURES}{PCAN\_CHANNEL\_FEATURES}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+CHANNEL\+\_\+\+FEATURES~0x16U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aa909eb39c1c5bcd78da690f1eb2353d7}\label{_p_c_a_n_basic_8h_aa909eb39c1c5bcd78da690f1eb2353d7} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_CHANNEL\_IDENTIFYING@{PCAN\_CHANNEL\_IDENTIFYING}}
+\index{PCAN\_CHANNEL\_IDENTIFYING@{PCAN\_CHANNEL\_IDENTIFYING}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_CHANNEL\_IDENTIFYING}{PCAN\_CHANNEL\_IDENTIFYING}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+CHANNEL\+\_\+\+IDENTIFYING~0x15U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aa940fddfeb6e8751c3120e8146aac646}\label{_p_c_a_n_basic_8h_aa940fddfeb6e8751c3120e8146aac646} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_CHANNEL\_OCCUPIED@{PCAN\_CHANNEL\_OCCUPIED}}
+\index{PCAN\_CHANNEL\_OCCUPIED@{PCAN\_CHANNEL\_OCCUPIED}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_CHANNEL\_OCCUPIED}{PCAN\_CHANNEL\_OCCUPIED}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+CHANNEL\+\_\+\+OCCUPIED~0x02U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a962e9383e28d5c959e2ad1e4af1fbafd}\label{_p_c_a_n_basic_8h_a962e9383e28d5c959e2ad1e4af1fbafd} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_CHANNEL\_PCANVIEW@{PCAN\_CHANNEL\_PCANVIEW}}
+\index{PCAN\_CHANNEL\_PCANVIEW@{PCAN\_CHANNEL\_PCANVIEW}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_CHANNEL\_PCANVIEW}{PCAN\_CHANNEL\_PCANVIEW}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+CHANNEL\+\_\+\+PCANVIEW~(\mbox{\hyperlink{_p_c_a_n_basic_8h_a0fc963ddc6ca66f9d175ac69446a6621}{PCAN\+\_\+\+CHANNEL\+\_\+\+AVAILABLE}} \texorpdfstring{$\vert$}{|}  \mbox{\hyperlink{_p_c_a_n_basic_8h_aa940fddfeb6e8751c3120e8146aac646}{PCAN\+\_\+\+CHANNEL\+\_\+\+OCCUPIED}})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a0923a664669122b4899b482421d09c3f}\label{_p_c_a_n_basic_8h_a0923a664669122b4899b482421d09c3f} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_CHANNEL\_UNAVAILABLE@{PCAN\_CHANNEL\_UNAVAILABLE}}
+\index{PCAN\_CHANNEL\_UNAVAILABLE@{PCAN\_CHANNEL\_UNAVAILABLE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_CHANNEL\_UNAVAILABLE}{PCAN\_CHANNEL\_UNAVAILABLE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+CHANNEL\+\_\+\+UNAVAILABLE~0x00U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aed20f9409d7e204caf5aa122735e01d8}\label{_p_c_a_n_basic_8h_aed20f9409d7e204caf5aa122735e01d8} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_CHANNEL\_VERSION@{PCAN\_CHANNEL\_VERSION}}
+\index{PCAN\_CHANNEL\_VERSION@{PCAN\_CHANNEL\_VERSION}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_CHANNEL\_VERSION}{PCAN\_CHANNEL\_VERSION}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+CHANNEL\+\_\+\+VERSION~0x06U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a4a2ab4d69e14218ecc996ecf81a0b108}\label{_p_c_a_n_basic_8h_a4a2ab4d69e14218ecc996ecf81a0b108} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_CONTROLLER\_NUMBER@{PCAN\_CONTROLLER\_NUMBER}}
+\index{PCAN\_CONTROLLER\_NUMBER@{PCAN\_CONTROLLER\_NUMBER}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_CONTROLLER\_NUMBER}{PCAN\_CONTROLLER\_NUMBER}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+CONTROLLER\+\_\+\+NUMBER~0x10U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8a95041c358ad487da62b3c07d63e6cb}\label{_p_c_a_n_basic_8h_a8a95041c358ad487da62b3c07d63e6cb} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_DEVICE\_ID@{PCAN\_DEVICE\_ID}}
+\index{PCAN\_DEVICE\_ID@{PCAN\_DEVICE\_ID}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_DEVICE\_ID}{PCAN\_DEVICE\_ID}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+DEVICE\+\_\+\+ID~0x01U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aff0558a9938ef96c0293fbf782f24fec}\label{_p_c_a_n_basic_8h_aff0558a9938ef96c0293fbf782f24fec} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_DEVICE\_NUMBER@{PCAN\_DEVICE\_NUMBER}}
+\index{PCAN\_DEVICE\_NUMBER@{PCAN\_DEVICE\_NUMBER}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_DEVICE\_NUMBER}{PCAN\_DEVICE\_NUMBER}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+DEVICE\+\_\+\+NUMBER~\mbox{\hyperlink{_p_c_a_n_basic_8h_a8a95041c358ad487da62b3c07d63e6cb}{PCAN\+\_\+\+DEVICE\+\_\+\+ID}}}
+
+\Hypertarget{_p_c_a_n_basic_8h_a5c12528db429834e6ea82e0718697707}\label{_p_c_a_n_basic_8h_a5c12528db429834e6ea82e0718697707} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_DEVICE\_PART\_NUMBER@{PCAN\_DEVICE\_PART\_NUMBER}}
+\index{PCAN\_DEVICE\_PART\_NUMBER@{PCAN\_DEVICE\_PART\_NUMBER}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_DEVICE\_PART\_NUMBER}{PCAN\_DEVICE\_PART\_NUMBER}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+DEVICE\+\_\+\+PART\+\_\+\+NUMBER~0x2\+DU}
+
+\Hypertarget{_p_c_a_n_basic_8h_aab7f8142c67dd5a3df0afb20e03f98d5}\label{_p_c_a_n_basic_8h_aab7f8142c67dd5a3df0afb20e03f98d5} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_DNG@{PCAN\_DNG}}
+\index{PCAN\_DNG@{PCAN\_DNG}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_DNG}{PCAN\_DNG}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+DNG~0x03U}
+
+\Hypertarget{_p_c_a_n_basic_8h_adc1603ace4b14d23bd4e95a31c2f8530}\label{_p_c_a_n_basic_8h_adc1603ace4b14d23bd4e95a31c2f8530} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_DNGBUS1@{PCAN\_DNGBUS1}}
+\index{PCAN\_DNGBUS1@{PCAN\_DNGBUS1}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_DNGBUS1}{PCAN\_DNGBUS1}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+DNGBUS1~0x31U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a1e74a1e006dac9d1fb2db19958fe80c2}\label{_p_c_a_n_basic_8h_a1e74a1e006dac9d1fb2db19958fe80c2} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_ANYBUSERR@{PCAN\_ERROR\_ANYBUSERR}}
+\index{PCAN\_ERROR\_ANYBUSERR@{PCAN\_ERROR\_ANYBUSERR}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_ANYBUSERR}{PCAN\_ERROR\_ANYBUSERR}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+ANYBUSERR~(\mbox{\hyperlink{_p_c_a_n_basic_8h_ad00c06f1ef5402c2ce9688560915af0e}{PCAN\+\_\+\+ERROR\+\_\+\+BUSWARNING}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_p_c_a_n_basic_8h_a668bd0c4a6a2282418040f947650b4dc}{PCAN\+\_\+\+ERROR\+\_\+\+BUSLIGHT}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_p_c_a_n_basic_8h_a8e77cc12afacab95fe4fccb1d2db4320}{PCAN\+\_\+\+ERROR\+\_\+\+BUSHEAVY}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_p_c_a_n_basic_8h_a8ee08b0b751af294627d69565030d938}{PCAN\+\_\+\+ERROR\+\_\+\+BUSOFF}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_p_c_a_n_basic_8h_a5497b5f42e2861d7880492ecfdfe2dcc}{PCAN\+\_\+\+ERROR\+\_\+\+BUSPASSIVE}})}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8e77cc12afacab95fe4fccb1d2db4320}\label{_p_c_a_n_basic_8h_a8e77cc12afacab95fe4fccb1d2db4320} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_BUSHEAVY@{PCAN\_ERROR\_BUSHEAVY}}
+\index{PCAN\_ERROR\_BUSHEAVY@{PCAN\_ERROR\_BUSHEAVY}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_BUSHEAVY}{PCAN\_ERROR\_BUSHEAVY}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+BUSHEAVY~0x00008U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a668bd0c4a6a2282418040f947650b4dc}\label{_p_c_a_n_basic_8h_a668bd0c4a6a2282418040f947650b4dc} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_BUSLIGHT@{PCAN\_ERROR\_BUSLIGHT}}
+\index{PCAN\_ERROR\_BUSLIGHT@{PCAN\_ERROR\_BUSLIGHT}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_BUSLIGHT}{PCAN\_ERROR\_BUSLIGHT}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+BUSLIGHT~0x00004U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8ee08b0b751af294627d69565030d938}\label{_p_c_a_n_basic_8h_a8ee08b0b751af294627d69565030d938} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_BUSOFF@{PCAN\_ERROR\_BUSOFF}}
+\index{PCAN\_ERROR\_BUSOFF@{PCAN\_ERROR\_BUSOFF}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_BUSOFF}{PCAN\_ERROR\_BUSOFF}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+BUSOFF~0x00010U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a5497b5f42e2861d7880492ecfdfe2dcc}\label{_p_c_a_n_basic_8h_a5497b5f42e2861d7880492ecfdfe2dcc} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_BUSPASSIVE@{PCAN\_ERROR\_BUSPASSIVE}}
+\index{PCAN\_ERROR\_BUSPASSIVE@{PCAN\_ERROR\_BUSPASSIVE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_BUSPASSIVE}{PCAN\_ERROR\_BUSPASSIVE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+BUSPASSIVE~0x40000U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ad00c06f1ef5402c2ce9688560915af0e}\label{_p_c_a_n_basic_8h_ad00c06f1ef5402c2ce9688560915af0e} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_BUSWARNING@{PCAN\_ERROR\_BUSWARNING}}
+\index{PCAN\_ERROR\_BUSWARNING@{PCAN\_ERROR\_BUSWARNING}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_BUSWARNING}{PCAN\_ERROR\_BUSWARNING}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+BUSWARNING~\mbox{\hyperlink{_p_c_a_n_basic_8h_a8e77cc12afacab95fe4fccb1d2db4320}{PCAN\+\_\+\+ERROR\+\_\+\+BUSHEAVY}}}
+
+\Hypertarget{_p_c_a_n_basic_8h_a06949885ea6355b3d42e069570f6c570}\label{_p_c_a_n_basic_8h_a06949885ea6355b3d42e069570f6c570} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_CAUTION@{PCAN\_ERROR\_CAUTION}}
+\index{PCAN\_ERROR\_CAUTION@{PCAN\_ERROR\_CAUTION}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_CAUTION}{PCAN\_ERROR\_CAUTION}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+CAUTION~0x2000000U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a4f7f2faefaedd4bd6e4c257e89ffc9d0}\label{_p_c_a_n_basic_8h_a4f7f2faefaedd4bd6e4c257e89ffc9d0} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_HWINUSE@{PCAN\_ERROR\_HWINUSE}}
+\index{PCAN\_ERROR\_HWINUSE@{PCAN\_ERROR\_HWINUSE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_HWINUSE}{PCAN\_ERROR\_HWINUSE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+HWINUSE~0x00400U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a4d299f12bb77b104384cc50045a339ef}\label{_p_c_a_n_basic_8h_a4d299f12bb77b104384cc50045a339ef} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_ILLCLIENT@{PCAN\_ERROR\_ILLCLIENT}}
+\index{PCAN\_ERROR\_ILLCLIENT@{PCAN\_ERROR\_ILLCLIENT}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_ILLCLIENT}{PCAN\_ERROR\_ILLCLIENT}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+ILLCLIENT~0x01\+C00U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a3491078d384794c1b507156122dc04b2}\label{_p_c_a_n_basic_8h_a3491078d384794c1b507156122dc04b2} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_ILLDATA@{PCAN\_ERROR\_ILLDATA}}
+\index{PCAN\_ERROR\_ILLDATA@{PCAN\_ERROR\_ILLDATA}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_ILLDATA}{PCAN\_ERROR\_ILLDATA}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+ILLDATA~0x20000U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a3f1d9922244b2470f084d9c9eee9fe77}\label{_p_c_a_n_basic_8h_a3f1d9922244b2470f084d9c9eee9fe77} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_ILLHANDLE@{PCAN\_ERROR\_ILLHANDLE}}
+\index{PCAN\_ERROR\_ILLHANDLE@{PCAN\_ERROR\_ILLHANDLE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_ILLHANDLE}{PCAN\_ERROR\_ILLHANDLE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+ILLHANDLE~(\mbox{\hyperlink{_p_c_a_n_basic_8h_ad32961eee61e233c0419f4baf5cfc640}{PCAN\+\_\+\+ERROR\+\_\+\+ILLHW}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_p_c_a_n_basic_8h_a3c801a064f80626c7185315419c13e9a}{PCAN\+\_\+\+ERROR\+\_\+\+ILLNET}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_p_c_a_n_basic_8h_a4d299f12bb77b104384cc50045a339ef}{PCAN\+\_\+\+ERROR\+\_\+\+ILLCLIENT}})}
+
+\Hypertarget{_p_c_a_n_basic_8h_ad32961eee61e233c0419f4baf5cfc640}\label{_p_c_a_n_basic_8h_ad32961eee61e233c0419f4baf5cfc640} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_ILLHW@{PCAN\_ERROR\_ILLHW}}
+\index{PCAN\_ERROR\_ILLHW@{PCAN\_ERROR\_ILLHW}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_ILLHW}{PCAN\_ERROR\_ILLHW}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+ILLHW~0x01400U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a0996dd9d93aca05a9b91043ccfbb5f1d}\label{_p_c_a_n_basic_8h_a0996dd9d93aca05a9b91043ccfbb5f1d} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_ILLMODE@{PCAN\_ERROR\_ILLMODE}}
+\index{PCAN\_ERROR\_ILLMODE@{PCAN\_ERROR\_ILLMODE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_ILLMODE}{PCAN\_ERROR\_ILLMODE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+ILLMODE~0x80000U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a3c801a064f80626c7185315419c13e9a}\label{_p_c_a_n_basic_8h_a3c801a064f80626c7185315419c13e9a} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_ILLNET@{PCAN\_ERROR\_ILLNET}}
+\index{PCAN\_ERROR\_ILLNET@{PCAN\_ERROR\_ILLNET}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_ILLNET}{PCAN\_ERROR\_ILLNET}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+ILLNET~0x01800U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a31bf12e75bc99cdbd0688e3ccb24b269}\label{_p_c_a_n_basic_8h_a31bf12e75bc99cdbd0688e3ccb24b269} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_ILLOPERATION@{PCAN\_ERROR\_ILLOPERATION}}
+\index{PCAN\_ERROR\_ILLOPERATION@{PCAN\_ERROR\_ILLOPERATION}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_ILLOPERATION}{PCAN\_ERROR\_ILLOPERATION}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+ILLOPERATION~0x8000000U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ad466bd8dfa2a9dd9cbff627fa2964dcd}\label{_p_c_a_n_basic_8h_ad466bd8dfa2a9dd9cbff627fa2964dcd} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_ILLPARAMTYPE@{PCAN\_ERROR\_ILLPARAMTYPE}}
+\index{PCAN\_ERROR\_ILLPARAMTYPE@{PCAN\_ERROR\_ILLPARAMTYPE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_ILLPARAMTYPE}{PCAN\_ERROR\_ILLPARAMTYPE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+ILLPARAMTYPE~0x04000U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8da12dbdcfa27924dbf47fae096d9b63}\label{_p_c_a_n_basic_8h_a8da12dbdcfa27924dbf47fae096d9b63} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_ILLPARAMVAL@{PCAN\_ERROR\_ILLPARAMVAL}}
+\index{PCAN\_ERROR\_ILLPARAMVAL@{PCAN\_ERROR\_ILLPARAMVAL}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_ILLPARAMVAL}{PCAN\_ERROR\_ILLPARAMVAL}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+ILLPARAMVAL~0x08000U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a29e632fe7da6396059485e529044d403}\label{_p_c_a_n_basic_8h_a29e632fe7da6396059485e529044d403} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_INITIALIZE@{PCAN\_ERROR\_INITIALIZE}}
+\index{PCAN\_ERROR\_INITIALIZE@{PCAN\_ERROR\_INITIALIZE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_INITIALIZE}{PCAN\_ERROR\_INITIALIZE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+INITIALIZE~0x4000000U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a2437587db6358847ea7c010f049e62c9}\label{_p_c_a_n_basic_8h_a2437587db6358847ea7c010f049e62c9} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_NETINUSE@{PCAN\_ERROR\_NETINUSE}}
+\index{PCAN\_ERROR\_NETINUSE@{PCAN\_ERROR\_NETINUSE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_NETINUSE}{PCAN\_ERROR\_NETINUSE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+NETINUSE~0x00800U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a44f5918051d42d2c16aa7586a65fff65}\label{_p_c_a_n_basic_8h_a44f5918051d42d2c16aa7586a65fff65} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_NODRIVER@{PCAN\_ERROR\_NODRIVER}}
+\index{PCAN\_ERROR\_NODRIVER@{PCAN\_ERROR\_NODRIVER}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_NODRIVER}{PCAN\_ERROR\_NODRIVER}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+NODRIVER~0x00200U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a42bbb945eb8ba5b25c362a4972774985}\label{_p_c_a_n_basic_8h_a42bbb945eb8ba5b25c362a4972774985} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_OK@{PCAN\_ERROR\_OK}}
+\index{PCAN\_ERROR\_OK@{PCAN\_ERROR\_OK}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_OK}{PCAN\_ERROR\_OK}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+OK~0x00000U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8409e516ba9a331dd143d8c821580032}\label{_p_c_a_n_basic_8h_a8409e516ba9a331dd143d8c821580032} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_OVERRUN@{PCAN\_ERROR\_OVERRUN}}
+\index{PCAN\_ERROR\_OVERRUN@{PCAN\_ERROR\_OVERRUN}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_OVERRUN}{PCAN\_ERROR\_OVERRUN}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+OVERRUN~0x00002U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a02e6be92586e46340bd7111acddc25a7}\label{_p_c_a_n_basic_8h_a02e6be92586e46340bd7111acddc25a7} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_QOVERRUN@{PCAN\_ERROR\_QOVERRUN}}
+\index{PCAN\_ERROR\_QOVERRUN@{PCAN\_ERROR\_QOVERRUN}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_QOVERRUN}{PCAN\_ERROR\_QOVERRUN}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+QOVERRUN~0x00040U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a6f4fb3cd7bd49de7c904c4ce4d4b6e71}\label{_p_c_a_n_basic_8h_a6f4fb3cd7bd49de7c904c4ce4d4b6e71} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_QRCVEMPTY@{PCAN\_ERROR\_QRCVEMPTY}}
+\index{PCAN\_ERROR\_QRCVEMPTY@{PCAN\_ERROR\_QRCVEMPTY}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_QRCVEMPTY}{PCAN\_ERROR\_QRCVEMPTY}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+QRCVEMPTY~0x00020U}
+
+\Hypertarget{_p_c_a_n_basic_8h_afa224709f000df8b15f9e01b5239a5f7}\label{_p_c_a_n_basic_8h_afa224709f000df8b15f9e01b5239a5f7} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_QXMTFULL@{PCAN\_ERROR\_QXMTFULL}}
+\index{PCAN\_ERROR\_QXMTFULL@{PCAN\_ERROR\_QXMTFULL}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_QXMTFULL}{PCAN\_ERROR\_QXMTFULL}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+QXMTFULL~0x00080U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a7cd788f6869928c07072d38336d796b8}\label{_p_c_a_n_basic_8h_a7cd788f6869928c07072d38336d796b8} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_REGTEST@{PCAN\_ERROR\_REGTEST}}
+\index{PCAN\_ERROR\_REGTEST@{PCAN\_ERROR\_REGTEST}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_REGTEST}{PCAN\_ERROR\_REGTEST}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+REGTEST~0x00100U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a09bd3a02e2d3bcdc061f0771a6d29521}\label{_p_c_a_n_basic_8h_a09bd3a02e2d3bcdc061f0771a6d29521} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_RESOURCE@{PCAN\_ERROR\_RESOURCE}}
+\index{PCAN\_ERROR\_RESOURCE@{PCAN\_ERROR\_RESOURCE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_RESOURCE}{PCAN\_ERROR\_RESOURCE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+RESOURCE~0x02000U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a39bd1a7214e6c29d96b05636d266f53c}\label{_p_c_a_n_basic_8h_a39bd1a7214e6c29d96b05636d266f53c} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_UNKNOWN@{PCAN\_ERROR\_UNKNOWN}}
+\index{PCAN\_ERROR\_UNKNOWN@{PCAN\_ERROR\_UNKNOWN}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_UNKNOWN}{PCAN\_ERROR\_UNKNOWN}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+UNKNOWN~0x10000U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ae9aacb01be5292a4c448facfae6e3cc9}\label{_p_c_a_n_basic_8h_ae9aacb01be5292a4c448facfae6e3cc9} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ERROR\_XMTFULL@{PCAN\_ERROR\_XMTFULL}}
+\index{PCAN\_ERROR\_XMTFULL@{PCAN\_ERROR\_XMTFULL}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ERROR\_XMTFULL}{PCAN\_ERROR\_XMTFULL}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ERROR\+\_\+\+XMTFULL~0x00001U}
+
+\Hypertarget{_p_c_a_n_basic_8h_afbcd415ec2b06f29338916be41804a6d}\label{_p_c_a_n_basic_8h_afbcd415ec2b06f29338916be41804a6d} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_FILTER\_CLOSE@{PCAN\_FILTER\_CLOSE}}
+\index{PCAN\_FILTER\_CLOSE@{PCAN\_FILTER\_CLOSE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_FILTER\_CLOSE}{PCAN\_FILTER\_CLOSE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+FILTER\+\_\+\+CLOSE~0x00U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aa6aff6167ccbcee0836912243671f415}\label{_p_c_a_n_basic_8h_aa6aff6167ccbcee0836912243671f415} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_FILTER\_CUSTOM@{PCAN\_FILTER\_CUSTOM}}
+\index{PCAN\_FILTER\_CUSTOM@{PCAN\_FILTER\_CUSTOM}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_FILTER\_CUSTOM}{PCAN\_FILTER\_CUSTOM}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+FILTER\+\_\+\+CUSTOM~0x02U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aae4471e61e59fcc2af014b8b99d12eca}\label{_p_c_a_n_basic_8h_aae4471e61e59fcc2af014b8b99d12eca} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_FILTER\_OPEN@{PCAN\_FILTER\_OPEN}}
+\index{PCAN\_FILTER\_OPEN@{PCAN\_FILTER\_OPEN}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_FILTER\_OPEN}{PCAN\_FILTER\_OPEN}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+FILTER\+\_\+\+OPEN~0x01U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a5156e50be38f4a86f7c80ee34949fc0a}\label{_p_c_a_n_basic_8h_a5156e50be38f4a86f7c80ee34949fc0a} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_FIRMWARE\_VERSION@{PCAN\_FIRMWARE\_VERSION}}
+\index{PCAN\_FIRMWARE\_VERSION@{PCAN\_FIRMWARE\_VERSION}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_FIRMWARE\_VERSION}{PCAN\_FIRMWARE\_VERSION}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+FIRMWARE\+\_\+\+VERSION~0x29U}
+
+\Hypertarget{_p_c_a_n_basic_8h_adbc232d8109993308e54cc0eadc990d9}\label{_p_c_a_n_basic_8h_adbc232d8109993308e54cc0eadc990d9} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_HARDWARE\_NAME@{PCAN\_HARDWARE\_NAME}}
+\index{PCAN\_HARDWARE\_NAME@{PCAN\_HARDWARE\_NAME}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_HARDWARE\_NAME}{PCAN\_HARDWARE\_NAME}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+HARDWARE\+\_\+\+NAME~0x0\+EU}
+
+\Hypertarget{_p_c_a_n_basic_8h_ac871c74219bdf5371085d18b6ee1aba0}\label{_p_c_a_n_basic_8h_ac871c74219bdf5371085d18b6ee1aba0} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_INTERFRAME\_DELAY@{PCAN\_INTERFRAME\_DELAY}}
+\index{PCAN\_INTERFRAME\_DELAY@{PCAN\_INTERFRAME\_DELAY}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_INTERFRAME\_DELAY}{PCAN\_INTERFRAME\_DELAY}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+INTERFRAME\+\_\+\+DELAY~0x21U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a6559dbf7480ee857a609ae162588e70a}\label{_p_c_a_n_basic_8h_a6559dbf7480ee857a609ae162588e70a} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_IO\_ANALOG\_VALUE@{PCAN\_IO\_ANALOG\_VALUE}}
+\index{PCAN\_IO\_ANALOG\_VALUE@{PCAN\_IO\_ANALOG\_VALUE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_IO\_ANALOG\_VALUE}{PCAN\_IO\_ANALOG\_VALUE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+IO\+\_\+\+ANALOG\+\_\+\+VALUE~0x28U}
+
+\Hypertarget{_p_c_a_n_basic_8h_acacf7c870bcf700e1ec1db58716e7fba}\label{_p_c_a_n_basic_8h_acacf7c870bcf700e1ec1db58716e7fba} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_IO\_DIGITAL\_CLEAR@{PCAN\_IO\_DIGITAL\_CLEAR}}
+\index{PCAN\_IO\_DIGITAL\_CLEAR@{PCAN\_IO\_DIGITAL\_CLEAR}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_IO\_DIGITAL\_CLEAR}{PCAN\_IO\_DIGITAL\_CLEAR}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+IO\+\_\+\+DIGITAL\+\_\+\+CLEAR~0x27U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a4af63c0402f409155125f43e10675e5d}\label{_p_c_a_n_basic_8h_a4af63c0402f409155125f43e10675e5d} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_IO\_DIGITAL\_CONFIGURATION@{PCAN\_IO\_DIGITAL\_CONFIGURATION}}
+\index{PCAN\_IO\_DIGITAL\_CONFIGURATION@{PCAN\_IO\_DIGITAL\_CONFIGURATION}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_IO\_DIGITAL\_CONFIGURATION}{PCAN\_IO\_DIGITAL\_CONFIGURATION}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+IO\+\_\+\+DIGITAL\+\_\+\+CONFIGURATION~0x24U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a9182cfc64b99e714e540be05cee40da5}\label{_p_c_a_n_basic_8h_a9182cfc64b99e714e540be05cee40da5} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_IO\_DIGITAL\_SET@{PCAN\_IO\_DIGITAL\_SET}}
+\index{PCAN\_IO\_DIGITAL\_SET@{PCAN\_IO\_DIGITAL\_SET}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_IO\_DIGITAL\_SET}{PCAN\_IO\_DIGITAL\_SET}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+IO\+\_\+\+DIGITAL\+\_\+\+SET~0x26U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a33128eb2e362b9daea8bada87f1cc81f}\label{_p_c_a_n_basic_8h_a33128eb2e362b9daea8bada87f1cc81f} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_IO\_DIGITAL\_VALUE@{PCAN\_IO\_DIGITAL\_VALUE}}
+\index{PCAN\_IO\_DIGITAL\_VALUE@{PCAN\_IO\_DIGITAL\_VALUE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_IO\_DIGITAL\_VALUE}{PCAN\_IO\_DIGITAL\_VALUE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+IO\+\_\+\+DIGITAL\+\_\+\+VALUE~0x25U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a637c1e90249a424505a90c56b030d9d8}\label{_p_c_a_n_basic_8h_a637c1e90249a424505a90c56b030d9d8} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_IP\_ADDRESS@{PCAN\_IP\_ADDRESS}}
+\index{PCAN\_IP\_ADDRESS@{PCAN\_IP\_ADDRESS}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_IP\_ADDRESS}{PCAN\_IP\_ADDRESS}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+IP\+\_\+\+ADDRESS~0x1\+CU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a1fb89785cbd3e86954a0501689be9197}\label{_p_c_a_n_basic_8h_a1fb89785cbd3e86954a0501689be9197} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ISA@{PCAN\_ISA}}
+\index{PCAN\_ISA@{PCAN\_ISA}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ISA}{PCAN\_ISA}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ISA~0x02U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a6dcd91c8d1f74d9fa1cff4a6ce181829}\label{_p_c_a_n_basic_8h_a6dcd91c8d1f74d9fa1cff4a6ce181829} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ISABUS1@{PCAN\_ISABUS1}}
+\index{PCAN\_ISABUS1@{PCAN\_ISABUS1}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ISABUS1}{PCAN\_ISABUS1}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ISABUS1~0x21U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a48bb8e9d285bae66a6cb96b09925f8e1}\label{_p_c_a_n_basic_8h_a48bb8e9d285bae66a6cb96b09925f8e1} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ISABUS2@{PCAN\_ISABUS2}}
+\index{PCAN\_ISABUS2@{PCAN\_ISABUS2}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ISABUS2}{PCAN\_ISABUS2}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ISABUS2~0x22U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a964c846744572a6cd3a656062ea2b263}\label{_p_c_a_n_basic_8h_a964c846744572a6cd3a656062ea2b263} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ISABUS3@{PCAN\_ISABUS3}}
+\index{PCAN\_ISABUS3@{PCAN\_ISABUS3}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ISABUS3}{PCAN\_ISABUS3}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ISABUS3~0x23U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a0d80174c1f3d7bb187d78dcedd8be0f8}\label{_p_c_a_n_basic_8h_a0d80174c1f3d7bb187d78dcedd8be0f8} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ISABUS4@{PCAN\_ISABUS4}}
+\index{PCAN\_ISABUS4@{PCAN\_ISABUS4}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ISABUS4}{PCAN\_ISABUS4}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ISABUS4~0x24U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aa0e417f4ef5697b594fdb8ff89118b2c}\label{_p_c_a_n_basic_8h_aa0e417f4ef5697b594fdb8ff89118b2c} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ISABUS5@{PCAN\_ISABUS5}}
+\index{PCAN\_ISABUS5@{PCAN\_ISABUS5}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ISABUS5}{PCAN\_ISABUS5}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ISABUS5~0x25U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aca953dbb471d5afdf36970172440e099}\label{_p_c_a_n_basic_8h_aca953dbb471d5afdf36970172440e099} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ISABUS6@{PCAN\_ISABUS6}}
+\index{PCAN\_ISABUS6@{PCAN\_ISABUS6}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ISABUS6}{PCAN\_ISABUS6}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ISABUS6~0x26U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ae5f49cb9d0f98a3ae6441aa380e042b1}\label{_p_c_a_n_basic_8h_ae5f49cb9d0f98a3ae6441aa380e042b1} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ISABUS7@{PCAN\_ISABUS7}}
+\index{PCAN\_ISABUS7@{PCAN\_ISABUS7}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ISABUS7}{PCAN\_ISABUS7}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ISABUS7~0x27U}
+
+\Hypertarget{_p_c_a_n_basic_8h_afefc3463a816cb6aa34a90c78b4d2690}\label{_p_c_a_n_basic_8h_afefc3463a816cb6aa34a90c78b4d2690} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_ISABUS8@{PCAN\_ISABUS8}}
+\index{PCAN\_ISABUS8@{PCAN\_ISABUS8}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_ISABUS8}{PCAN\_ISABUS8}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+ISABUS8~0x28U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ac9e554ae9a53755e9bd61b1f2e7e0382}\label{_p_c_a_n_basic_8h_ac9e554ae9a53755e9bd61b1f2e7e0382} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LAN@{PCAN\_LAN}}
+\index{PCAN\_LAN@{PCAN\_LAN}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LAN}{PCAN\_LAN}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LAN~0x08U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a09c04acd8dd8c41f4fd61307ed19be0e}\label{_p_c_a_n_basic_8h_a09c04acd8dd8c41f4fd61307ed19be0e} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LAN\_SERVICE\_STATUS@{PCAN\_LAN\_SERVICE\_STATUS}}
+\index{PCAN\_LAN\_SERVICE\_STATUS@{PCAN\_LAN\_SERVICE\_STATUS}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LAN\_SERVICE\_STATUS}{PCAN\_LAN\_SERVICE\_STATUS}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LAN\+\_\+\+SERVICE\+\_\+\+STATUS~0x1\+DU}
+
+\Hypertarget{_p_c_a_n_basic_8h_ae7f6f4cdf22215e6125f82c25e43ef2a}\label{_p_c_a_n_basic_8h_ae7f6f4cdf22215e6125f82c25e43ef2a} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS1@{PCAN\_LANBUS1}}
+\index{PCAN\_LANBUS1@{PCAN\_LANBUS1}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS1}{PCAN\_LANBUS1}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS1~0x801U}
+
+\Hypertarget{_p_c_a_n_basic_8h_af972d51ddf043a8a69d7f6478865c451}\label{_p_c_a_n_basic_8h_af972d51ddf043a8a69d7f6478865c451} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS10@{PCAN\_LANBUS10}}
+\index{PCAN\_LANBUS10@{PCAN\_LANBUS10}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS10}{PCAN\_LANBUS10}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS10~0x80\+AU}
+
+\Hypertarget{_p_c_a_n_basic_8h_aaf0a1852a05e56d3a00762280ba7a8e8}\label{_p_c_a_n_basic_8h_aaf0a1852a05e56d3a00762280ba7a8e8} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS11@{PCAN\_LANBUS11}}
+\index{PCAN\_LANBUS11@{PCAN\_LANBUS11}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS11}{PCAN\_LANBUS11}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS11~0x80\+BU}
+
+\Hypertarget{_p_c_a_n_basic_8h_aa4352e36461700e3ee8a7f3ec8a40aa7}\label{_p_c_a_n_basic_8h_aa4352e36461700e3ee8a7f3ec8a40aa7} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS12@{PCAN\_LANBUS12}}
+\index{PCAN\_LANBUS12@{PCAN\_LANBUS12}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS12}{PCAN\_LANBUS12}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS12~0x80\+CU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a12f86b57ba1338968d91f1930a9c7305}\label{_p_c_a_n_basic_8h_a12f86b57ba1338968d91f1930a9c7305} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS13@{PCAN\_LANBUS13}}
+\index{PCAN\_LANBUS13@{PCAN\_LANBUS13}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS13}{PCAN\_LANBUS13}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS13~0x80\+DU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a513a7343c1d2b7a9b82fe3d878020b52}\label{_p_c_a_n_basic_8h_a513a7343c1d2b7a9b82fe3d878020b52} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS14@{PCAN\_LANBUS14}}
+\index{PCAN\_LANBUS14@{PCAN\_LANBUS14}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS14}{PCAN\_LANBUS14}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS14~0x80\+EU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a13ef0f65822110aea8a209ff9d5fca7f}\label{_p_c_a_n_basic_8h_a13ef0f65822110aea8a209ff9d5fca7f} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS15@{PCAN\_LANBUS15}}
+\index{PCAN\_LANBUS15@{PCAN\_LANBUS15}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS15}{PCAN\_LANBUS15}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS15~0x80\+FU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a705c2d5a9385212135a73162bb6d5783}\label{_p_c_a_n_basic_8h_a705c2d5a9385212135a73162bb6d5783} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS16@{PCAN\_LANBUS16}}
+\index{PCAN\_LANBUS16@{PCAN\_LANBUS16}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS16}{PCAN\_LANBUS16}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS16~0x810U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8a904b4ce7159a56f2b8b7eb78eadaa0}\label{_p_c_a_n_basic_8h_a8a904b4ce7159a56f2b8b7eb78eadaa0} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS2@{PCAN\_LANBUS2}}
+\index{PCAN\_LANBUS2@{PCAN\_LANBUS2}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS2}{PCAN\_LANBUS2}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS2~0x802U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a26945377128955367be488c8a18495a6}\label{_p_c_a_n_basic_8h_a26945377128955367be488c8a18495a6} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS3@{PCAN\_LANBUS3}}
+\index{PCAN\_LANBUS3@{PCAN\_LANBUS3}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS3}{PCAN\_LANBUS3}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS3~0x803U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ab1a3a677aac6f0f6e0557930f612f8cf}\label{_p_c_a_n_basic_8h_ab1a3a677aac6f0f6e0557930f612f8cf} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS4@{PCAN\_LANBUS4}}
+\index{PCAN\_LANBUS4@{PCAN\_LANBUS4}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS4}{PCAN\_LANBUS4}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS4~0x804U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a0b1ba41da7d26a0b498e424728f0fda2}\label{_p_c_a_n_basic_8h_a0b1ba41da7d26a0b498e424728f0fda2} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS5@{PCAN\_LANBUS5}}
+\index{PCAN\_LANBUS5@{PCAN\_LANBUS5}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS5}{PCAN\_LANBUS5}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS5~0x805U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aebbb47c7e9a7b13d826c861decc3c309}\label{_p_c_a_n_basic_8h_aebbb47c7e9a7b13d826c861decc3c309} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS6@{PCAN\_LANBUS6}}
+\index{PCAN\_LANBUS6@{PCAN\_LANBUS6}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS6}{PCAN\_LANBUS6}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS6~0x806U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ad0496d7d1d8484a9962c25a82125c32b}\label{_p_c_a_n_basic_8h_ad0496d7d1d8484a9962c25a82125c32b} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS7@{PCAN\_LANBUS7}}
+\index{PCAN\_LANBUS7@{PCAN\_LANBUS7}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS7}{PCAN\_LANBUS7}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS7~0x807U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a895e777b7657ccb062be5f86d8eccd8c}\label{_p_c_a_n_basic_8h_a895e777b7657ccb062be5f86d8eccd8c} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS8@{PCAN\_LANBUS8}}
+\index{PCAN\_LANBUS8@{PCAN\_LANBUS8}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS8}{PCAN\_LANBUS8}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS8~0x808U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a38c4320d8690cdeed0cb8a59bf1f0914}\label{_p_c_a_n_basic_8h_a38c4320d8690cdeed0cb8a59bf1f0914} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LANBUS9@{PCAN\_LANBUS9}}
+\index{PCAN\_LANBUS9@{PCAN\_LANBUS9}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LANBUS9}{PCAN\_LANBUS9}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LANBUS9~0x809U}
+
+\Hypertarget{_p_c_a_n_basic_8h_acff16674068c0a576ffb5a61faa5d8d7}\label{_p_c_a_n_basic_8h_acff16674068c0a576ffb5a61faa5d8d7} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LISTEN\_ONLY@{PCAN\_LISTEN\_ONLY}}
+\index{PCAN\_LISTEN\_ONLY@{PCAN\_LISTEN\_ONLY}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LISTEN\_ONLY}{PCAN\_LISTEN\_ONLY}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LISTEN\+\_\+\+ONLY~0x08U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a2e35a29d224dc334d13525c0e2651fda}\label{_p_c_a_n_basic_8h_a2e35a29d224dc334d13525c0e2651fda} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LOG\_CONFIGURE@{PCAN\_LOG\_CONFIGURE}}
+\index{PCAN\_LOG\_CONFIGURE@{PCAN\_LOG\_CONFIGURE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LOG\_CONFIGURE}{PCAN\_LOG\_CONFIGURE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LOG\+\_\+\+CONFIGURE~0x0\+BU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a451b6ac29759a547c287607fe3fa6ced}\label{_p_c_a_n_basic_8h_a451b6ac29759a547c287607fe3fa6ced} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LOG\_LOCATION@{PCAN\_LOG\_LOCATION}}
+\index{PCAN\_LOG\_LOCATION@{PCAN\_LOG\_LOCATION}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LOG\_LOCATION}{PCAN\_LOG\_LOCATION}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LOG\+\_\+\+LOCATION~0x09U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a6e86299c27b363d53902f50c9b21c76e}\label{_p_c_a_n_basic_8h_a6e86299c27b363d53902f50c9b21c76e} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LOG\_STATUS@{PCAN\_LOG\_STATUS}}
+\index{PCAN\_LOG\_STATUS@{PCAN\_LOG\_STATUS}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LOG\_STATUS}{PCAN\_LOG\_STATUS}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LOG\+\_\+\+STATUS~0x0\+AU}
+
+\Hypertarget{_p_c_a_n_basic_8h_aee4ba4a8a1207c3b0b782c224034d40c}\label{_p_c_a_n_basic_8h_aee4ba4a8a1207c3b0b782c224034d40c} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_LOG\_TEXT@{PCAN\_LOG\_TEXT}}
+\index{PCAN\_LOG\_TEXT@{PCAN\_LOG\_TEXT}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_LOG\_TEXT}{PCAN\_LOG\_TEXT}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+LOG\+\_\+\+TEXT~0x0\+CU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a92cbda928ae306231e466ca9864c14a0}\label{_p_c_a_n_basic_8h_a92cbda928ae306231e466ca9864c14a0} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_MESSAGE\_BRS@{PCAN\_MESSAGE\_BRS}}
+\index{PCAN\_MESSAGE\_BRS@{PCAN\_MESSAGE\_BRS}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_MESSAGE\_BRS}{PCAN\_MESSAGE\_BRS}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+MESSAGE\+\_\+\+BRS~0x08U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a6b7de341c9bea4dbe278894797fc4470}\label{_p_c_a_n_basic_8h_a6b7de341c9bea4dbe278894797fc4470} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_MESSAGE\_ECHO@{PCAN\_MESSAGE\_ECHO}}
+\index{PCAN\_MESSAGE\_ECHO@{PCAN\_MESSAGE\_ECHO}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_MESSAGE\_ECHO}{PCAN\_MESSAGE\_ECHO}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+MESSAGE\+\_\+\+ECHO~0x20U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ac1a9841bf7297676f54e62f2d466e880}\label{_p_c_a_n_basic_8h_ac1a9841bf7297676f54e62f2d466e880} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_MESSAGE\_ERRFRAME@{PCAN\_MESSAGE\_ERRFRAME}}
+\index{PCAN\_MESSAGE\_ERRFRAME@{PCAN\_MESSAGE\_ERRFRAME}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_MESSAGE\_ERRFRAME}{PCAN\_MESSAGE\_ERRFRAME}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+MESSAGE\+\_\+\+ERRFRAME~0x40U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a85050ccd2023dca97855264bf0b0531a}\label{_p_c_a_n_basic_8h_a85050ccd2023dca97855264bf0b0531a} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_MESSAGE\_ESI@{PCAN\_MESSAGE\_ESI}}
+\index{PCAN\_MESSAGE\_ESI@{PCAN\_MESSAGE\_ESI}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_MESSAGE\_ESI}{PCAN\_MESSAGE\_ESI}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+MESSAGE\+\_\+\+ESI~0x10U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a21af7ee712428d297c1d8ac26c574a0c}\label{_p_c_a_n_basic_8h_a21af7ee712428d297c1d8ac26c574a0c} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_MESSAGE\_EXTENDED@{PCAN\_MESSAGE\_EXTENDED}}
+\index{PCAN\_MESSAGE\_EXTENDED@{PCAN\_MESSAGE\_EXTENDED}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_MESSAGE\_EXTENDED}{PCAN\_MESSAGE\_EXTENDED}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+MESSAGE\+\_\+\+EXTENDED~0x02U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a74d53ff0cc9fb8219d429d0feeb4094f}\label{_p_c_a_n_basic_8h_a74d53ff0cc9fb8219d429d0feeb4094f} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_MESSAGE\_FD@{PCAN\_MESSAGE\_FD}}
+\index{PCAN\_MESSAGE\_FD@{PCAN\_MESSAGE\_FD}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_MESSAGE\_FD}{PCAN\_MESSAGE\_FD}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+MESSAGE\+\_\+\+FD~0x04U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a0a23e79b08303e5988c54aa42f77b6c4}\label{_p_c_a_n_basic_8h_a0a23e79b08303e5988c54aa42f77b6c4} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_MESSAGE\_FILTER@{PCAN\_MESSAGE\_FILTER}}
+\index{PCAN\_MESSAGE\_FILTER@{PCAN\_MESSAGE\_FILTER}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_MESSAGE\_FILTER}{PCAN\_MESSAGE\_FILTER}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+MESSAGE\+\_\+\+FILTER~0x04U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a1da97a3764b8680948633eef4d53117f}\label{_p_c_a_n_basic_8h_a1da97a3764b8680948633eef4d53117f} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_MESSAGE\_RTR@{PCAN\_MESSAGE\_RTR}}
+\index{PCAN\_MESSAGE\_RTR@{PCAN\_MESSAGE\_RTR}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_MESSAGE\_RTR}{PCAN\_MESSAGE\_RTR}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+MESSAGE\+\_\+\+RTR~0x01U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a98f72491c7dcd3c74a3fa25fce30e0c9}\label{_p_c_a_n_basic_8h_a98f72491c7dcd3c74a3fa25fce30e0c9} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_MESSAGE\_STANDARD@{PCAN\_MESSAGE\_STANDARD}}
+\index{PCAN\_MESSAGE\_STANDARD@{PCAN\_MESSAGE\_STANDARD}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_MESSAGE\_STANDARD}{PCAN\_MESSAGE\_STANDARD}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+MESSAGE\+\_\+\+STANDARD~0x00U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a9ed32869aa192a723245ad67363cfe38}\label{_p_c_a_n_basic_8h_a9ed32869aa192a723245ad67363cfe38} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_MESSAGE\_STATUS@{PCAN\_MESSAGE\_STATUS}}
+\index{PCAN\_MESSAGE\_STATUS@{PCAN\_MESSAGE\_STATUS}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_MESSAGE\_STATUS}{PCAN\_MESSAGE\_STATUS}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+MESSAGE\+\_\+\+STATUS~0x80U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a616305580e99c7bcbd6e26fe60d94327}\label{_p_c_a_n_basic_8h_a616305580e99c7bcbd6e26fe60d94327} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_MODE\_EXTENDED@{PCAN\_MODE\_EXTENDED}}
+\index{PCAN\_MODE\_EXTENDED@{PCAN\_MODE\_EXTENDED}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_MODE\_EXTENDED}{PCAN\_MODE\_EXTENDED}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+MODE\+\_\+\+EXTENDED~\mbox{\hyperlink{_p_c_a_n_basic_8h_a21af7ee712428d297c1d8ac26c574a0c}{PCAN\+\_\+\+MESSAGE\+\_\+\+EXTENDED}}}
+
+\Hypertarget{_p_c_a_n_basic_8h_a930b39acb014e4be3d6ffcd2b7e7b14c}\label{_p_c_a_n_basic_8h_a930b39acb014e4be3d6ffcd2b7e7b14c} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_MODE\_STANDARD@{PCAN\_MODE\_STANDARD}}
+\index{PCAN\_MODE\_STANDARD@{PCAN\_MODE\_STANDARD}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_MODE\_STANDARD}{PCAN\_MODE\_STANDARD}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+MODE\+\_\+\+STANDARD~\mbox{\hyperlink{_p_c_a_n_basic_8h_a98f72491c7dcd3c74a3fa25fce30e0c9}{PCAN\+\_\+\+MESSAGE\+\_\+\+STANDARD}}}
+
+\Hypertarget{_p_c_a_n_basic_8h_a2d9351d3adc5769c8453df0fff3cfd74}\label{_p_c_a_n_basic_8h_a2d9351d3adc5769c8453df0fff3cfd74} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_NONE@{PCAN\_NONE}}
+\index{PCAN\_NONE@{PCAN\_NONE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_NONE}{PCAN\_NONE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+NONE~0x00U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a4a3fd26be40cfb9953ce78d73649ac07}\label{_p_c_a_n_basic_8h_a4a3fd26be40cfb9953ce78d73649ac07} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_NONEBUS@{PCAN\_NONEBUS}}
+\index{PCAN\_NONEBUS@{PCAN\_NONEBUS}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_NONEBUS}{PCAN\_NONEBUS}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+NONEBUS~0x00U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aa777b3d70a9c6bbc4447f8df33d66587}\label{_p_c_a_n_basic_8h_aa777b3d70a9c6bbc4447f8df33d66587} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PARAMETER\_OFF@{PCAN\_PARAMETER\_OFF}}
+\index{PCAN\_PARAMETER\_OFF@{PCAN\_PARAMETER\_OFF}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PARAMETER\_OFF}{PCAN\_PARAMETER\_OFF}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PARAMETER\+\_\+\+OFF~0x00U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a1ae311c9286d3893af3213da57658b2d}\label{_p_c_a_n_basic_8h_a1ae311c9286d3893af3213da57658b2d} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PARAMETER\_ON@{PCAN\_PARAMETER\_ON}}
+\index{PCAN\_PARAMETER\_ON@{PCAN\_PARAMETER\_ON}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PARAMETER\_ON}{PCAN\_PARAMETER\_ON}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PARAMETER\+\_\+\+ON~0x01U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a6abe67ee718a685fcb56dcf780c77dc9}\label{_p_c_a_n_basic_8h_a6abe67ee718a685fcb56dcf780c77dc9} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCC@{PCAN\_PCC}}
+\index{PCAN\_PCC@{PCAN\_PCC}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCC}{PCAN\_PCC}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCC~0x06U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8939817a7fb75dc010ed46a6dced0240}\label{_p_c_a_n_basic_8h_a8939817a7fb75dc010ed46a6dced0240} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCCBUS1@{PCAN\_PCCBUS1}}
+\index{PCAN\_PCCBUS1@{PCAN\_PCCBUS1}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCCBUS1}{PCAN\_PCCBUS1}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCCBUS1~0x61U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aae64ed4b729070ea317b3f76e51bb61e}\label{_p_c_a_n_basic_8h_aae64ed4b729070ea317b3f76e51bb61e} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCCBUS2@{PCAN\_PCCBUS2}}
+\index{PCAN\_PCCBUS2@{PCAN\_PCCBUS2}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCCBUS2}{PCAN\_PCCBUS2}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCCBUS2~0x62U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a43b093e44f8f343812de928a3583343f}\label{_p_c_a_n_basic_8h_a43b093e44f8f343812de928a3583343f} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCI@{PCAN\_PCI}}
+\index{PCAN\_PCI@{PCAN\_PCI}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCI}{PCAN\_PCI}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCI~0x04U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a5d4525f5813ebe5f649316f08e4bd2b2}\label{_p_c_a_n_basic_8h_a5d4525f5813ebe5f649316f08e4bd2b2} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS1@{PCAN\_PCIBUS1}}
+\index{PCAN\_PCIBUS1@{PCAN\_PCIBUS1}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS1}{PCAN\_PCIBUS1}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS1~0x41U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a91fb840d1c5f701e1b29ac7adccf1a3e}\label{_p_c_a_n_basic_8h_a91fb840d1c5f701e1b29ac7adccf1a3e} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS10@{PCAN\_PCIBUS10}}
+\index{PCAN\_PCIBUS10@{PCAN\_PCIBUS10}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS10}{PCAN\_PCIBUS10}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS10~0x40\+AU}
+
+\Hypertarget{_p_c_a_n_basic_8h_abcd6dbb65530ade8dc1aee6fa16dba84}\label{_p_c_a_n_basic_8h_abcd6dbb65530ade8dc1aee6fa16dba84} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS11@{PCAN\_PCIBUS11}}
+\index{PCAN\_PCIBUS11@{PCAN\_PCIBUS11}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS11}{PCAN\_PCIBUS11}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS11~0x40\+BU}
+
+\Hypertarget{_p_c_a_n_basic_8h_ad60a54251a08f673649b5d2c845a10b7}\label{_p_c_a_n_basic_8h_ad60a54251a08f673649b5d2c845a10b7} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS12@{PCAN\_PCIBUS12}}
+\index{PCAN\_PCIBUS12@{PCAN\_PCIBUS12}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS12}{PCAN\_PCIBUS12}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS12~0x40\+CU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a0d56a48b3462635877d378a9b3c7fae2}\label{_p_c_a_n_basic_8h_a0d56a48b3462635877d378a9b3c7fae2} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS13@{PCAN\_PCIBUS13}}
+\index{PCAN\_PCIBUS13@{PCAN\_PCIBUS13}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS13}{PCAN\_PCIBUS13}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS13~0x40\+DU}
+
+\Hypertarget{_p_c_a_n_basic_8h_ae0e0252208c7f0740f6a86b4bb191d6b}\label{_p_c_a_n_basic_8h_ae0e0252208c7f0740f6a86b4bb191d6b} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS14@{PCAN\_PCIBUS14}}
+\index{PCAN\_PCIBUS14@{PCAN\_PCIBUS14}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS14}{PCAN\_PCIBUS14}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS14~0x40\+EU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a2a71a0b30c6d39e55d3ef30432c8107b}\label{_p_c_a_n_basic_8h_a2a71a0b30c6d39e55d3ef30432c8107b} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS15@{PCAN\_PCIBUS15}}
+\index{PCAN\_PCIBUS15@{PCAN\_PCIBUS15}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS15}{PCAN\_PCIBUS15}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS15~0x40\+FU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a41e79da9bc50fd5580db4374138799ec}\label{_p_c_a_n_basic_8h_a41e79da9bc50fd5580db4374138799ec} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS16@{PCAN\_PCIBUS16}}
+\index{PCAN\_PCIBUS16@{PCAN\_PCIBUS16}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS16}{PCAN\_PCIBUS16}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS16~0x410U}
+
+\Hypertarget{_p_c_a_n_basic_8h_acf4c97b73acf7d081fc0b31007d53932}\label{_p_c_a_n_basic_8h_acf4c97b73acf7d081fc0b31007d53932} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS2@{PCAN\_PCIBUS2}}
+\index{PCAN\_PCIBUS2@{PCAN\_PCIBUS2}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS2}{PCAN\_PCIBUS2}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS2~0x42U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a21781c62d15812b4e7ad7a743be804c3}\label{_p_c_a_n_basic_8h_a21781c62d15812b4e7ad7a743be804c3} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS3@{PCAN\_PCIBUS3}}
+\index{PCAN\_PCIBUS3@{PCAN\_PCIBUS3}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS3}{PCAN\_PCIBUS3}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS3~0x43U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a6a0420849501c59ae3af2c3ce6ce3e1f}\label{_p_c_a_n_basic_8h_a6a0420849501c59ae3af2c3ce6ce3e1f} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS4@{PCAN\_PCIBUS4}}
+\index{PCAN\_PCIBUS4@{PCAN\_PCIBUS4}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS4}{PCAN\_PCIBUS4}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS4~0x44U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ad1c3546efd1f0831ecdab5bbe5f585ba}\label{_p_c_a_n_basic_8h_ad1c3546efd1f0831ecdab5bbe5f585ba} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS5@{PCAN\_PCIBUS5}}
+\index{PCAN\_PCIBUS5@{PCAN\_PCIBUS5}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS5}{PCAN\_PCIBUS5}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS5~0x45U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a7e2027bd863102ec36c913174fed867d}\label{_p_c_a_n_basic_8h_a7e2027bd863102ec36c913174fed867d} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS6@{PCAN\_PCIBUS6}}
+\index{PCAN\_PCIBUS6@{PCAN\_PCIBUS6}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS6}{PCAN\_PCIBUS6}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS6~0x46U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ab900f246895850c6650ab022e34313e7}\label{_p_c_a_n_basic_8h_ab900f246895850c6650ab022e34313e7} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS7@{PCAN\_PCIBUS7}}
+\index{PCAN\_PCIBUS7@{PCAN\_PCIBUS7}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS7}{PCAN\_PCIBUS7}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS7~0x47U}
+
+\Hypertarget{_p_c_a_n_basic_8h_adab491e8c7d8831426ceb81dec9d1c29}\label{_p_c_a_n_basic_8h_adab491e8c7d8831426ceb81dec9d1c29} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS8@{PCAN\_PCIBUS8}}
+\index{PCAN\_PCIBUS8@{PCAN\_PCIBUS8}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS8}{PCAN\_PCIBUS8}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS8~0x48U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ac52b5e2d613d1a0fd729c70601b76148}\label{_p_c_a_n_basic_8h_ac52b5e2d613d1a0fd729c70601b76148} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PCIBUS9@{PCAN\_PCIBUS9}}
+\index{PCAN\_PCIBUS9@{PCAN\_PCIBUS9}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PCIBUS9}{PCAN\_PCIBUS9}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PCIBUS9~0x409U}
+
+\Hypertarget{_p_c_a_n_basic_8h_af387444184b25db47940fdae0f4f5ee9}\label{_p_c_a_n_basic_8h_af387444184b25db47940fdae0f4f5ee9} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_PEAKCAN@{PCAN\_PEAKCAN}}
+\index{PCAN\_PEAKCAN@{PCAN\_PEAKCAN}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_PEAKCAN}{PCAN\_PEAKCAN}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+PEAKCAN~0x01U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a637fbe410813a381e61d655760c6eae8}\label{_p_c_a_n_basic_8h_a637fbe410813a381e61d655760c6eae8} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_RECEIVE\_EVENT@{PCAN\_RECEIVE\_EVENT}}
+\index{PCAN\_RECEIVE\_EVENT@{PCAN\_RECEIVE\_EVENT}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_RECEIVE\_EVENT}{PCAN\_RECEIVE\_EVENT}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+RECEIVE\+\_\+\+EVENT~0x03U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a1db9da34abf0233990b2cc1ff8a5e0a9}\label{_p_c_a_n_basic_8h_a1db9da34abf0233990b2cc1ff8a5e0a9} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_RECEIVE\_STATUS@{PCAN\_RECEIVE\_STATUS}}
+\index{PCAN\_RECEIVE\_STATUS@{PCAN\_RECEIVE\_STATUS}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_RECEIVE\_STATUS}{PCAN\_RECEIVE\_STATUS}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+RECEIVE\+\_\+\+STATUS~0x0\+FU}
+
+\Hypertarget{_p_c_a_n_basic_8h_aa6337f95095dbad8dd045477e4ac5a10}\label{_p_c_a_n_basic_8h_aa6337f95095dbad8dd045477e4ac5a10} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_TRACE\_CONFIGURE@{PCAN\_TRACE\_CONFIGURE}}
+\index{PCAN\_TRACE\_CONFIGURE@{PCAN\_TRACE\_CONFIGURE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_TRACE\_CONFIGURE}{PCAN\_TRACE\_CONFIGURE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+TRACE\+\_\+\+CONFIGURE~0x14U}
+
+\Hypertarget{_p_c_a_n_basic_8h_abd8a2b690c9b1f9f1656888f0aa76565}\label{_p_c_a_n_basic_8h_abd8a2b690c9b1f9f1656888f0aa76565} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_TRACE\_LOCATION@{PCAN\_TRACE\_LOCATION}}
+\index{PCAN\_TRACE\_LOCATION@{PCAN\_TRACE\_LOCATION}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_TRACE\_LOCATION}{PCAN\_TRACE\_LOCATION}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+TRACE\+\_\+\+LOCATION~0x11U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a28f7bbd8d6004ce19b298c26ca909674}\label{_p_c_a_n_basic_8h_a28f7bbd8d6004ce19b298c26ca909674} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_TRACE\_SIZE@{PCAN\_TRACE\_SIZE}}
+\index{PCAN\_TRACE\_SIZE@{PCAN\_TRACE\_SIZE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_TRACE\_SIZE}{PCAN\_TRACE\_SIZE}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+TRACE\+\_\+\+SIZE~0x13U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a710cd75f6322e2fb9eaa252cc8897086}\label{_p_c_a_n_basic_8h_a710cd75f6322e2fb9eaa252cc8897086} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_TRACE\_STATUS@{PCAN\_TRACE\_STATUS}}
+\index{PCAN\_TRACE\_STATUS@{PCAN\_TRACE\_STATUS}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_TRACE\_STATUS}{PCAN\_TRACE\_STATUS}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+TRACE\+\_\+\+STATUS~0x12U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aec937011ac43d7856605d5f38445d010}\label{_p_c_a_n_basic_8h_aec937011ac43d7856605d5f38445d010} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_TYPE\_DNG@{PCAN\_TYPE\_DNG}}
+\index{PCAN\_TYPE\_DNG@{PCAN\_TYPE\_DNG}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_TYPE\_DNG}{PCAN\_TYPE\_DNG}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+TYPE\+\_\+\+DNG~0x02U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a06df5f45489aa8120947463bc17e04c3}\label{_p_c_a_n_basic_8h_a06df5f45489aa8120947463bc17e04c3} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_TYPE\_DNG\_EPP@{PCAN\_TYPE\_DNG\_EPP}}
+\index{PCAN\_TYPE\_DNG\_EPP@{PCAN\_TYPE\_DNG\_EPP}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_TYPE\_DNG\_EPP}{PCAN\_TYPE\_DNG\_EPP}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+TYPE\+\_\+\+DNG\+\_\+\+EPP~0x03U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ac9ea3e6234c9efa0e27fa3c453c4f502}\label{_p_c_a_n_basic_8h_ac9ea3e6234c9efa0e27fa3c453c4f502} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_TYPE\_DNG\_SJA@{PCAN\_TYPE\_DNG\_SJA}}
+\index{PCAN\_TYPE\_DNG\_SJA@{PCAN\_TYPE\_DNG\_SJA}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_TYPE\_DNG\_SJA}{PCAN\_TYPE\_DNG\_SJA}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+TYPE\+\_\+\+DNG\+\_\+\+SJA~0x05U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ab7099ed90e3567b98a959f603b16b476}\label{_p_c_a_n_basic_8h_ab7099ed90e3567b98a959f603b16b476} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_TYPE\_DNG\_SJA\_EPP@{PCAN\_TYPE\_DNG\_SJA\_EPP}}
+\index{PCAN\_TYPE\_DNG\_SJA\_EPP@{PCAN\_TYPE\_DNG\_SJA\_EPP}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_TYPE\_DNG\_SJA\_EPP}{PCAN\_TYPE\_DNG\_SJA\_EPP}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+TYPE\+\_\+\+DNG\+\_\+\+SJA\+\_\+\+EPP~0x06U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a814148b0a6d568cf655ca6074242f1cd}\label{_p_c_a_n_basic_8h_a814148b0a6d568cf655ca6074242f1cd} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_TYPE\_ISA@{PCAN\_TYPE\_ISA}}
+\index{PCAN\_TYPE\_ISA@{PCAN\_TYPE\_ISA}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_TYPE\_ISA}{PCAN\_TYPE\_ISA}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+TYPE\+\_\+\+ISA~0x01U}
+
+\Hypertarget{_p_c_a_n_basic_8h_aa906d809fdc87218773ca2ccfb2c3d9f}\label{_p_c_a_n_basic_8h_aa906d809fdc87218773ca2ccfb2c3d9f} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_TYPE\_ISA\_PHYTEC@{PCAN\_TYPE\_ISA\_PHYTEC}}
+\index{PCAN\_TYPE\_ISA\_PHYTEC@{PCAN\_TYPE\_ISA\_PHYTEC}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_TYPE\_ISA\_PHYTEC}{PCAN\_TYPE\_ISA\_PHYTEC}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+TYPE\+\_\+\+ISA\+\_\+\+PHYTEC~0x04U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8fdafc53262d49a454bcfcd6df0083f6}\label{_p_c_a_n_basic_8h_a8fdafc53262d49a454bcfcd6df0083f6} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_TYPE\_ISA\_SJA@{PCAN\_TYPE\_ISA\_SJA}}
+\index{PCAN\_TYPE\_ISA\_SJA@{PCAN\_TYPE\_ISA\_SJA}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_TYPE\_ISA\_SJA}{PCAN\_TYPE\_ISA\_SJA}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+TYPE\+\_\+\+ISA\+\_\+\+SJA~0x09U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a423410d821be4efb236c0deb0d64c1c9}\label{_p_c_a_n_basic_8h_a423410d821be4efb236c0deb0d64c1c9} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USB@{PCAN\_USB}}
+\index{PCAN\_USB@{PCAN\_USB}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USB}{PCAN\_USB}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USB~0x05U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a53d2c4be575d319ca42993059abb376a}\label{_p_c_a_n_basic_8h_a53d2c4be575d319ca42993059abb376a} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS1@{PCAN\_USBBUS1}}
+\index{PCAN\_USBBUS1@{PCAN\_USBBUS1}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS1}{PCAN\_USBBUS1}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS1~0x51U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a48ab0834ecfccc11e1aec84d1540d878}\label{_p_c_a_n_basic_8h_a48ab0834ecfccc11e1aec84d1540d878} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS10@{PCAN\_USBBUS10}}
+\index{PCAN\_USBBUS10@{PCAN\_USBBUS10}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS10}{PCAN\_USBBUS10}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS10~0x50\+AU}
+
+\Hypertarget{_p_c_a_n_basic_8h_aafc791ddb9a13cdd2b2b34dc2aea1406}\label{_p_c_a_n_basic_8h_aafc791ddb9a13cdd2b2b34dc2aea1406} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS11@{PCAN\_USBBUS11}}
+\index{PCAN\_USBBUS11@{PCAN\_USBBUS11}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS11}{PCAN\_USBBUS11}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS11~0x50\+BU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a00525b52b01a31dced82676a08c3d511}\label{_p_c_a_n_basic_8h_a00525b52b01a31dced82676a08c3d511} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS12@{PCAN\_USBBUS12}}
+\index{PCAN\_USBBUS12@{PCAN\_USBBUS12}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS12}{PCAN\_USBBUS12}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS12~0x50\+CU}
+
+\Hypertarget{_p_c_a_n_basic_8h_af5d38bd7571e0db547b5a27ab2824c2b}\label{_p_c_a_n_basic_8h_af5d38bd7571e0db547b5a27ab2824c2b} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS13@{PCAN\_USBBUS13}}
+\index{PCAN\_USBBUS13@{PCAN\_USBBUS13}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS13}{PCAN\_USBBUS13}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS13~0x50\+DU}
+
+\Hypertarget{_p_c_a_n_basic_8h_ad3bb9bccdaa912a232f6d572987c93bd}\label{_p_c_a_n_basic_8h_ad3bb9bccdaa912a232f6d572987c93bd} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS14@{PCAN\_USBBUS14}}
+\index{PCAN\_USBBUS14@{PCAN\_USBBUS14}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS14}{PCAN\_USBBUS14}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS14~0x50\+EU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a28725f8c116174680fdac1455f123193}\label{_p_c_a_n_basic_8h_a28725f8c116174680fdac1455f123193} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS15@{PCAN\_USBBUS15}}
+\index{PCAN\_USBBUS15@{PCAN\_USBBUS15}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS15}{PCAN\_USBBUS15}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS15~0x50\+FU}
+
+\Hypertarget{_p_c_a_n_basic_8h_a9751966a11d1b4b72d58c6aa1fbe7af4}\label{_p_c_a_n_basic_8h_a9751966a11d1b4b72d58c6aa1fbe7af4} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS16@{PCAN\_USBBUS16}}
+\index{PCAN\_USBBUS16@{PCAN\_USBBUS16}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS16}{PCAN\_USBBUS16}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS16~0x510U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a17a852f2ac4dc8dcaadaa91788f8af7e}\label{_p_c_a_n_basic_8h_a17a852f2ac4dc8dcaadaa91788f8af7e} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS2@{PCAN\_USBBUS2}}
+\index{PCAN\_USBBUS2@{PCAN\_USBBUS2}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS2}{PCAN\_USBBUS2}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS2~0x52U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ad14c1ad22d1b65bc907980ab1c6617a8}\label{_p_c_a_n_basic_8h_ad14c1ad22d1b65bc907980ab1c6617a8} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS3@{PCAN\_USBBUS3}}
+\index{PCAN\_USBBUS3@{PCAN\_USBBUS3}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS3}{PCAN\_USBBUS3}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS3~0x53U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a2904a67f624c3a536cc131013f81b2bd}\label{_p_c_a_n_basic_8h_a2904a67f624c3a536cc131013f81b2bd} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS4@{PCAN\_USBBUS4}}
+\index{PCAN\_USBBUS4@{PCAN\_USBBUS4}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS4}{PCAN\_USBBUS4}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS4~0x54U}
+
+\Hypertarget{_p_c_a_n_basic_8h_afe829b051eb5332b6858fa9da7639b8c}\label{_p_c_a_n_basic_8h_afe829b051eb5332b6858fa9da7639b8c} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS5@{PCAN\_USBBUS5}}
+\index{PCAN\_USBBUS5@{PCAN\_USBBUS5}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS5}{PCAN\_USBBUS5}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS5~0x55U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a5a69196e6b208155d3a1c8a9373cd564}\label{_p_c_a_n_basic_8h_a5a69196e6b208155d3a1c8a9373cd564} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS6@{PCAN\_USBBUS6}}
+\index{PCAN\_USBBUS6@{PCAN\_USBBUS6}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS6}{PCAN\_USBBUS6}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS6~0x56U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a72f1a283dc2eb095a06e7618337b6673}\label{_p_c_a_n_basic_8h_a72f1a283dc2eb095a06e7618337b6673} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS7@{PCAN\_USBBUS7}}
+\index{PCAN\_USBBUS7@{PCAN\_USBBUS7}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS7}{PCAN\_USBBUS7}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS7~0x57U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8c7a701b684eb0d0e3c49eac511cab41}\label{_p_c_a_n_basic_8h_a8c7a701b684eb0d0e3c49eac511cab41} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS8@{PCAN\_USBBUS8}}
+\index{PCAN\_USBBUS8@{PCAN\_USBBUS8}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS8}{PCAN\_USBBUS8}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS8~0x58U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a5de5f5fb76787aa745f9e5ba301712a8}\label{_p_c_a_n_basic_8h_a5de5f5fb76787aa745f9e5ba301712a8} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_USBBUS9@{PCAN\_USBBUS9}}
+\index{PCAN\_USBBUS9@{PCAN\_USBBUS9}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_USBBUS9}{PCAN\_USBBUS9}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+USBBUS9~0x509U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a24440d36b0c5665e730177405f1e51c2}\label{_p_c_a_n_basic_8h_a24440d36b0c5665e730177405f1e51c2} 
+\index{PCANBasic.h@{PCANBasic.h}!PCAN\_VIRTUAL@{PCAN\_VIRTUAL}}
+\index{PCAN\_VIRTUAL@{PCAN\_VIRTUAL}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{PCAN\_VIRTUAL}{PCAN\_VIRTUAL}}
+{\footnotesize\ttfamily \#define PCAN\+\_\+\+VIRTUAL~0x07U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a3cd659bf62840dbbc3c5c24b55752159}\label{_p_c_a_n_basic_8h_a3cd659bf62840dbbc3c5c24b55752159} 
+\index{PCANBasic.h@{PCANBasic.h}!SERVICE\_STATUS\_RUNNING@{SERVICE\_STATUS\_RUNNING}}
+\index{SERVICE\_STATUS\_RUNNING@{SERVICE\_STATUS\_RUNNING}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{SERVICE\_STATUS\_RUNNING}{SERVICE\_STATUS\_RUNNING}}
+{\footnotesize\ttfamily \#define SERVICE\+\_\+\+STATUS\+\_\+\+RUNNING~0x04U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a7a16b9ded8a67de1fc025cd977353171}\label{_p_c_a_n_basic_8h_a7a16b9ded8a67de1fc025cd977353171} 
+\index{PCANBasic.h@{PCANBasic.h}!SERVICE\_STATUS\_STOPPED@{SERVICE\_STATUS\_STOPPED}}
+\index{SERVICE\_STATUS\_STOPPED@{SERVICE\_STATUS\_STOPPED}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{SERVICE\_STATUS\_STOPPED}{SERVICE\_STATUS\_STOPPED}}
+{\footnotesize\ttfamily \#define SERVICE\+\_\+\+STATUS\+\_\+\+STOPPED~0x01U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a0e4eca8764a42ce5977582c12f178711}\label{_p_c_a_n_basic_8h_a0e4eca8764a42ce5977582c12f178711} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANBaudrate@{TPCANBaudrate}}
+\index{TPCANBaudrate@{TPCANBaudrate}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANBaudrate}{TPCANBaudrate}}
+{\footnotesize\ttfamily \#define TPCANBaudrate~WORD}
+
+\Hypertarget{_p_c_a_n_basic_8h_a172ab7abcf5b5a9bce40cb2f59829316}\label{_p_c_a_n_basic_8h_a172ab7abcf5b5a9bce40cb2f59829316} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANBitrateFD@{TPCANBitrateFD}}
+\index{TPCANBitrateFD@{TPCANBitrateFD}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANBitrateFD}{TPCANBitrateFD}}
+{\footnotesize\ttfamily \#define TPCANBitrate\+FD~LPSTR}
+
+\Hypertarget{_p_c_a_n_basic_8h_afb69adbfbb891eefe428ddc547558897}\label{_p_c_a_n_basic_8h_afb69adbfbb891eefe428ddc547558897} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANDevice@{TPCANDevice}}
+\index{TPCANDevice@{TPCANDevice}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANDevice}{TPCANDevice}}
+{\footnotesize\ttfamily \#define TPCANDevice~BYTE}
+
+\Hypertarget{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}\label{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANHandle@{TPCANHandle}}
+\index{TPCANHandle@{TPCANHandle}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANHandle}{TPCANHandle}}
+{\footnotesize\ttfamily \#define TPCANHandle~WORD}
+
+\Hypertarget{_p_c_a_n_basic_8h_a3bee82993dcb5649c482fdfabf4f0386}\label{_p_c_a_n_basic_8h_a3bee82993dcb5649c482fdfabf4f0386} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANMessageType@{TPCANMessageType}}
+\index{TPCANMessageType@{TPCANMessageType}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANMessageType}{TPCANMessageType}}
+{\footnotesize\ttfamily \#define TPCANMessage\+Type~BYTE}
+
+\Hypertarget{_p_c_a_n_basic_8h_a5b07d478fd732b13d87d55b79da7c3f4}\label{_p_c_a_n_basic_8h_a5b07d478fd732b13d87d55b79da7c3f4} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANMode@{TPCANMode}}
+\index{TPCANMode@{TPCANMode}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANMode}{TPCANMode}}
+{\footnotesize\ttfamily \#define TPCANMode~BYTE}
+
+\Hypertarget{_p_c_a_n_basic_8h_a10adcad6c11864853a821b67c6d8bea7}\label{_p_c_a_n_basic_8h_a10adcad6c11864853a821b67c6d8bea7} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANParameter@{TPCANParameter}}
+\index{TPCANParameter@{TPCANParameter}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANParameter}{TPCANParameter}}
+{\footnotesize\ttfamily \#define TPCANParameter~BYTE}
+
+\Hypertarget{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}\label{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANStatus@{TPCANStatus}}
+\index{TPCANStatus@{TPCANStatus}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANStatus}{TPCANStatus}}
+{\footnotesize\ttfamily \#define TPCANStatus~DWORD}
+
+\Hypertarget{_p_c_a_n_basic_8h_a61acd73852b70be92677f9a3dea1e491}\label{_p_c_a_n_basic_8h_a61acd73852b70be92677f9a3dea1e491} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANTimestampFD@{TPCANTimestampFD}}
+\index{TPCANTimestampFD@{TPCANTimestampFD}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANTimestampFD}{TPCANTimestampFD}}
+{\footnotesize\ttfamily \#define TPCANTimestamp\+FD~UINT64}
+
+\Hypertarget{_p_c_a_n_basic_8h_a58aed11b911a4feb810d554f1455c432}\label{_p_c_a_n_basic_8h_a58aed11b911a4feb810d554f1455c432} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANType@{TPCANType}}
+\index{TPCANType@{TPCANType}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANType}{TPCANType}}
+{\footnotesize\ttfamily \#define TPCANType~BYTE}
+
+\Hypertarget{_p_c_a_n_basic_8h_a85ad86c07bcf6134b7854654cd833c9d}\label{_p_c_a_n_basic_8h_a85ad86c07bcf6134b7854654cd833c9d} 
+\index{PCANBasic.h@{PCANBasic.h}!TRACE\_FILE\_DATA\_LENGTH@{TRACE\_FILE\_DATA\_LENGTH}}
+\index{TRACE\_FILE\_DATA\_LENGTH@{TRACE\_FILE\_DATA\_LENGTH}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TRACE\_FILE\_DATA\_LENGTH}{TRACE\_FILE\_DATA\_LENGTH}}
+{\footnotesize\ttfamily \#define TRACE\+\_\+\+FILE\+\_\+\+DATA\+\_\+\+LENGTH~0x100U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a23806676738b5bb29df784d78f200c70}\label{_p_c_a_n_basic_8h_a23806676738b5bb29df784d78f200c70} 
+\index{PCANBasic.h@{PCANBasic.h}!TRACE\_FILE\_DATE@{TRACE\_FILE\_DATE}}
+\index{TRACE\_FILE\_DATE@{TRACE\_FILE\_DATE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TRACE\_FILE\_DATE}{TRACE\_FILE\_DATE}}
+{\footnotesize\ttfamily \#define TRACE\+\_\+\+FILE\+\_\+\+DATE~0x02U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a50e86681928f1e0f665f4af43051a86f}\label{_p_c_a_n_basic_8h_a50e86681928f1e0f665f4af43051a86f} 
+\index{PCANBasic.h@{PCANBasic.h}!TRACE\_FILE\_OVERWRITE@{TRACE\_FILE\_OVERWRITE}}
+\index{TRACE\_FILE\_OVERWRITE@{TRACE\_FILE\_OVERWRITE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TRACE\_FILE\_OVERWRITE}{TRACE\_FILE\_OVERWRITE}}
+{\footnotesize\ttfamily \#define TRACE\+\_\+\+FILE\+\_\+\+OVERWRITE~0x80U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a538fbf0855c51c7d465060957184eb44}\label{_p_c_a_n_basic_8h_a538fbf0855c51c7d465060957184eb44} 
+\index{PCANBasic.h@{PCANBasic.h}!TRACE\_FILE\_SEGMENTED@{TRACE\_FILE\_SEGMENTED}}
+\index{TRACE\_FILE\_SEGMENTED@{TRACE\_FILE\_SEGMENTED}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TRACE\_FILE\_SEGMENTED}{TRACE\_FILE\_SEGMENTED}}
+{\footnotesize\ttfamily \#define TRACE\+\_\+\+FILE\+\_\+\+SEGMENTED~0x01U}
+
+\Hypertarget{_p_c_a_n_basic_8h_ada1433ffa9f114e0354740fbeab39afc}\label{_p_c_a_n_basic_8h_ada1433ffa9f114e0354740fbeab39afc} 
+\index{PCANBasic.h@{PCANBasic.h}!TRACE\_FILE\_SINGLE@{TRACE\_FILE\_SINGLE}}
+\index{TRACE\_FILE\_SINGLE@{TRACE\_FILE\_SINGLE}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TRACE\_FILE\_SINGLE}{TRACE\_FILE\_SINGLE}}
+{\footnotesize\ttfamily \#define TRACE\+\_\+\+FILE\+\_\+\+SINGLE~0x00U}
+
+\Hypertarget{_p_c_a_n_basic_8h_a76ce8e0fd6f7f2c436c5c25361458c66}\label{_p_c_a_n_basic_8h_a76ce8e0fd6f7f2c436c5c25361458c66} 
+\index{PCANBasic.h@{PCANBasic.h}!TRACE\_FILE\_TIME@{TRACE\_FILE\_TIME}}
+\index{TRACE\_FILE\_TIME@{TRACE\_FILE\_TIME}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TRACE\_FILE\_TIME}{TRACE\_FILE\_TIME}}
+{\footnotesize\ttfamily \#define TRACE\+\_\+\+FILE\+\_\+\+TIME~0x04U}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{_p_c_a_n_basic_8h_a6e4a96bc3e570b384101e125458afe2c}\label{_p_c_a_n_basic_8h_a6e4a96bc3e570b384101e125458afe2c} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANChannelInformation@{TPCANChannelInformation}}
+\index{TPCANChannelInformation@{TPCANChannelInformation}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANChannelInformation}{TPCANChannelInformation}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structtag_t_p_c_a_n_channel_information}{tag\+TPCANChannel\+Information}} \mbox{\hyperlink{_p_c_a_n_basic_8h_a6e4a96bc3e570b384101e125458afe2c}{TPCANChannel\+Information}}}
+
+\Hypertarget{_p_c_a_n_basic_8h_a9a20d6ecf53320490ec762fea48a2ab8}\label{_p_c_a_n_basic_8h_a9a20d6ecf53320490ec762fea48a2ab8} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANMsg@{TPCANMsg}}
+\index{TPCANMsg@{TPCANMsg}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANMsg}{TPCANMsg}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structtag_t_p_c_a_n_msg}{tag\+TPCANMsg}} \mbox{\hyperlink{_p_c_a_n_basic_8h_a9a20d6ecf53320490ec762fea48a2ab8}{TPCANMsg}}}
+
+\Hypertarget{_p_c_a_n_basic_8h_ab8b617e7b69324dc0b39da85d5007df1}\label{_p_c_a_n_basic_8h_ab8b617e7b69324dc0b39da85d5007df1} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANMsgFD@{TPCANMsgFD}}
+\index{TPCANMsgFD@{TPCANMsgFD}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANMsgFD}{TPCANMsgFD}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structtag_t_p_c_a_n_msg_f_d}{tag\+TPCANMsg\+FD}} \mbox{\hyperlink{_p_c_a_n_basic_8h_ab8b617e7b69324dc0b39da85d5007df1}{TPCANMsg\+FD}}}
+
+\Hypertarget{_p_c_a_n_basic_8h_a8983bf79f3fd5c53f868c8a603f84fa2}\label{_p_c_a_n_basic_8h_a8983bf79f3fd5c53f868c8a603f84fa2} 
+\index{PCANBasic.h@{PCANBasic.h}!TPCANTimestamp@{TPCANTimestamp}}
+\index{TPCANTimestamp@{TPCANTimestamp}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{TPCANTimestamp}{TPCANTimestamp}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structtag_t_p_c_a_n_timestamp}{tag\+TPCANTimestamp}} \mbox{\hyperlink{_p_c_a_n_basic_8h_a8983bf79f3fd5c53f868c8a603f84fa2}{TPCANTimestamp}}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_p_c_a_n_basic_8h_a4b1542df766b1e6baac6e882ec520061}\label{_p_c_a_n_basic_8h_a4b1542df766b1e6baac6e882ec520061} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_FilterMessages@{CAN\_FilterMessages}}
+\index{CAN\_FilterMessages@{CAN\_FilterMessages}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_FilterMessages()}{CAN\_FilterMessages()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Filter\+Messages (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}}]{Channel,  }\item[{DWORD}]{From\+ID,  }\item[{DWORD}]{To\+ID,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a5b07d478fd732b13d87d55b79da7c3f4}{TPCANMode}}}]{Mode }\end{DoxyParamCaption})}
+
+
+
+Configures the reception filter. 
+
+The message filter will be expanded with every call to this function. If it is desired to reset the filter, please use the CAN\+\_\+\+Set\+Value function
+
+
+\begin{DoxyParams}{Parameters}
+{\em Channel} & \"{}\+The handle of a PCAN Channel\"{}\\
+\hline
+{\em From\+ID} & \"{}\+The lowest CAN ID to be received\"{}\\
+\hline
+{\em To\+ID} & \"{}\+The highest CAN ID to be received\"{}\\
+\hline
+{\em Mode} & \"{}\+Message type, Standard (11-\/bit identifier) or  \+Extended (29-\/bit identifier)\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_ae9a75045d4912ed909b2cb8fd45acb4e}\label{_p_c_a_n_basic_8h_ae9a75045d4912ed909b2cb8fd45acb4e} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_GetErrorText@{CAN\_GetErrorText}}
+\index{CAN\_GetErrorText@{CAN\_GetErrorText}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_GetErrorText()}{CAN\_GetErrorText()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Get\+Error\+Text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}}]{Error,  }\item[{WORD}]{Language,  }\item[{LPSTR}]{Buffer }\end{DoxyParamCaption})}
+
+
+
+Returns a descriptive text of a given TPCANStatus error code, in any desired language. 
+
+The current languages available for translation are\+: Neutral (0x00), German (0x07), English (0x09), Spanish (0x0A), Italian (0x10) and French (0x0C)
+
+
+\begin{DoxyParams}{Parameters}
+{\em Error} & \"{}\+A TPCANStatus error code\"{}\\
+\hline
+{\em Language} & \"{}\+Indicates a \textquotesingle{}\+Primary language ID\textquotesingle{}\"{}\\
+\hline
+{\em Buffer} & \"{}\+Buffer for a null terminated char array\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_af59c61b3f5616f4caa822c1b9824659a}\label{_p_c_a_n_basic_8h_af59c61b3f5616f4caa822c1b9824659a} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_GetStatus@{CAN\_GetStatus}}
+\index{CAN\_GetStatus@{CAN\_GetStatus}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_GetStatus()}{CAN\_GetStatus()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Get\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}}]{Channel }\end{DoxyParamCaption})}
+
+
+
+Gets the current status of a PCAN Channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Channel} & \"{}\+The handle of a PCAN Channel\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_a6264b7de19be60778667a2ebf62a98d2}\label{_p_c_a_n_basic_8h_a6264b7de19be60778667a2ebf62a98d2} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_GetValue@{CAN\_GetValue}}
+\index{CAN\_GetValue@{CAN\_GetValue}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_GetValue()}{CAN\_GetValue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Get\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}}]{Channel,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a10adcad6c11864853a821b67c6d8bea7}{TPCANParameter}}}]{Parameter,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{Buffer,  }\item[{DWORD}]{Buffer\+Length }\end{DoxyParamCaption})}
+
+
+
+Retrieves a PCAN Channel value. 
+
+Parameters can be present or not according with the kind of Hardware (PCAN Channel) being used. If a parameter is not available, a PCAN\+\_\+\+ERROR\+\_\+\+ILLPARAMTYPE error will be returned
+
+
+\begin{DoxyParams}{Parameters}
+{\em Channel} & \"{}\+The handle of a PCAN Channel\"{}\\
+\hline
+{\em Parameter} & \"{}\+The TPCANParameter parameter to get\"{}\\
+\hline
+{\em Buffer} & \"{}\+Buffer for the parameter value\"{}\\
+\hline
+{\em Buffer\+Length} & \"{}\+Size in bytes of the buffer\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_a20af3d51795575de76cd978bb0946953}\label{_p_c_a_n_basic_8h_a20af3d51795575de76cd978bb0946953} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_Initialize@{CAN\_Initialize}}
+\index{CAN\_Initialize@{CAN\_Initialize}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_Initialize()}{CAN\_Initialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}}]{Channel,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a0e4eca8764a42ce5977582c12f178711}{TPCANBaudrate}}}]{Btr0\+Btr1,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a58aed11b911a4feb810d554f1455c432}{TPCANType}} Hw\+Type}]{\+\_\+\+DEF\+\_\+\+ARG,  }\item[{DWORD IOPort}]{\+\_\+\+DEF\+\_\+\+ARG,  }\item[{WORD Interrupt}]{\+\_\+\+DEF\+\_\+\+ARG }\end{DoxyParamCaption})}
+
+
+
+Initializes a PCAN Channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Channel} & \"{}\+The handle of a PCAN Channel\"{}\\
+\hline
+{\em Btr0\+Btr1} & \"{}\+The speed for the communication (\+BTR0\+BTR1 code)\"{}\\
+\hline
+{\em Hw\+Type} & \"{}\+Non-\/\+Pn\+P\+: The type of hardware and operation mode\"{}\\
+\hline
+{\em IOPort} & \"{}\+Non-\/\+Pn\+P\+: The I/\+O address for the parallel port\"{}\\
+\hline
+{\em Interrupt} & \"{}\+Non-\/\+Pn\+P\+: Interrupt number of the parallel port\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_a7a16eae1bd29feb563414c970a69091c}\label{_p_c_a_n_basic_8h_a7a16eae1bd29feb563414c970a69091c} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_InitializeFD@{CAN\_InitializeFD}}
+\index{CAN\_InitializeFD@{CAN\_InitializeFD}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_InitializeFD()}{CAN\_InitializeFD()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Initialize\+FD (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}}]{Channel,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a172ab7abcf5b5a9bce40cb2f59829316}{TPCANBitrate\+FD}}}]{Bitrate\+FD }\end{DoxyParamCaption})}
+
+
+
+Initializes a FD capable PCAN Channel ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Channel} & \"{}\+The handle of a FD capable PCAN Channel\"{}\\
+\hline
+{\em Bitrate\+FD} & \"{}\+The speed for the communication (\+FD bit rate string)\"{}\\
+\hline
+\end{DoxyParams}
+
+
+See PCAN\+\_\+\+BR\+\_\+\texorpdfstring{$\ast$}{*} values
+\begin{DoxyItemize}
+\item Parameter and values must be separated by \textquotesingle{}=\textquotesingle{}
+\item Couples of Parameter/value must be separated by \textquotesingle{},\textquotesingle{}
+\item Following Parameter must be filled out\+: f\+\_\+clock, data\+\_\+brp, data\+\_\+sjw, data\+\_\+tseg1, data\+\_\+tseg2, nom\+\_\+brp, nom\+\_\+sjw, nom\+\_\+tseg1, nom\+\_\+tseg2.
+\item Following Parameters are optional (not used yet)\+: data\+\_\+ssp\+\_\+offset, nom\+\_\+sam /remarks\texorpdfstring{$>$}{>} 
+\end{DoxyItemize}
+
+f\+\_\+clock=80000000,nom\+\_\+brp=10,nom\+\_\+tseg1=5,nom\+\_\+tseg2=2,nom\+\_\+sjw=1,data\+\_\+brp=4,data\+\_\+tseg1=7,data\+\_\+tseg2=2,data\+\_\+sjw=1
+
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_a550702819ec156ab5051b213d01664b7}\label{_p_c_a_n_basic_8h_a550702819ec156ab5051b213d01664b7} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_LookUpChannel@{CAN\_LookUpChannel}}
+\index{CAN\_LookUpChannel@{CAN\_LookUpChannel}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_LookUpChannel()}{CAN\_LookUpChannel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Look\+Up\+Channel (\begin{DoxyParamCaption}\item[{LPSTR}]{Parameters,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}} \texorpdfstring{$\ast$}{*}}]{Found\+Channel }\end{DoxyParamCaption})}
+
+
+
+Finds a PCAN-\/\+Basic channel that matches with the given parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Parameters} & A comma separated string contained pairs of parameter-\/name/value to be matched within a PCAN-\/\+Basic channel\\
+\hline
+{\em Found\+Channel} & Buffer for returning the PCAN-\/\+Basic channel, when found\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A TPCANStatus error code
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_a92f43c11cb71590cba76155340a5b395}\label{_p_c_a_n_basic_8h_a92f43c11cb71590cba76155340a5b395} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_Read@{CAN\_Read}}
+\index{CAN\_Read@{CAN\_Read}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_Read()}{CAN\_Read()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}}]{Channel,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a9a20d6ecf53320490ec762fea48a2ab8}{TPCANMsg}} \texorpdfstring{$\ast$}{*}}]{Message\+Buffer,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a8983bf79f3fd5c53f868c8a603f84fa2}{TPCANTimestamp}} \texorpdfstring{$\ast$}{*}}]{Timestamp\+Buffer }\end{DoxyParamCaption})}
+
+
+
+Reads a CAN message from the receive queue of a PCAN Channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Channel} & \"{}\+The handle of a PCAN Channel\"{}\\
+\hline
+{\em Message\+Buffer} & \"{}\+A TPCANMsg structure buffer to store the CAN message\"{}\\
+\hline
+{\em Timestamp\+Buffer} & \"{}\+A TPCANTimestamp structure buffer to get  the reception time of the message. If this value is not desired, this parameter should be passed as NULL\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_a5c1cac2ba7a8f3d30bb8853bad4ca607}\label{_p_c_a_n_basic_8h_a5c1cac2ba7a8f3d30bb8853bad4ca607} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_ReadFD@{CAN\_ReadFD}}
+\index{CAN\_ReadFD@{CAN\_ReadFD}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_ReadFD()}{CAN\_ReadFD()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Read\+FD (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}}]{Channel,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_ab8b617e7b69324dc0b39da85d5007df1}{TPCANMsg\+FD}} \texorpdfstring{$\ast$}{*}}]{Message\+Buffer,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a61acd73852b70be92677f9a3dea1e491}{TPCANTimestamp\+FD}} \texorpdfstring{$\ast$}{*}}]{Timestamp\+Buffer }\end{DoxyParamCaption})}
+
+
+
+Reads a CAN message from the receive queue of a FD capable PCAN Channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Channel} & \"{}\+The handle of a FD capable PCAN Channel\"{}\\
+\hline
+{\em Message\+Buffer} & \"{}\+A TPCANMsg\+FD structure buffer to store the CAN message\"{}\\
+\hline
+{\em Timestamp\+Buffer} & \"{}\+A TPCANTimestamp\+FD buffer to get  the reception time of the message. If this value is not desired, this parameter should be passed as NULL\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_aef4b155d2e6be2fd36b188909da03882}\label{_p_c_a_n_basic_8h_aef4b155d2e6be2fd36b188909da03882} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_Reset@{CAN\_Reset}}
+\index{CAN\_Reset@{CAN\_Reset}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_Reset()}{CAN\_Reset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}}]{Channel }\end{DoxyParamCaption})}
+
+
+
+Resets the receive and transmit queues of the PCAN Channel ~\newline
+ 
+
+A reset of the CAN controller is not performed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Channel} & \"{}\+The handle of a PCAN Channel\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_a189dc3cbb358ce628536092c7252f3e4}\label{_p_c_a_n_basic_8h_a189dc3cbb358ce628536092c7252f3e4} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_SetValue@{CAN\_SetValue}}
+\index{CAN\_SetValue@{CAN\_SetValue}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_SetValue()}{CAN\_SetValue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Set\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}}]{Channel,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a10adcad6c11864853a821b67c6d8bea7}{TPCANParameter}}}]{Parameter,  }\item[{\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*}}]{Buffer,  }\item[{DWORD}]{Buffer\+Length }\end{DoxyParamCaption})}
+
+
+
+Configures or sets a PCAN Channel value. 
+
+Parameters can be present or not according with the kind of Hardware (PCAN Channel) being used. If a parameter is not available, a PCAN\+\_\+\+ERROR\+\_\+\+ILLPARAMTYPE error will be returned
+
+
+\begin{DoxyParams}{Parameters}
+{\em Channel} & \"{}\+The handle of a PCAN Channel\"{}\\
+\hline
+{\em Parameter} & \"{}\+The TPCANParameter parameter to set\"{}\\
+\hline
+{\em Buffer} & \"{}\+Buffer with the value to be set\"{}\\
+\hline
+{\em Buffer\+Length} & \"{}\+Size in bytes of the buffer\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_a3715eebfb1d0ac6f80e0f7f5730ca32d}\label{_p_c_a_n_basic_8h_a3715eebfb1d0ac6f80e0f7f5730ca32d} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_Uninitialize@{CAN\_Uninitialize}}
+\index{CAN\_Uninitialize@{CAN\_Uninitialize}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_Uninitialize()}{CAN\_Uninitialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Uninitialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}}]{Channel }\end{DoxyParamCaption})}
+
+
+
+Uninitializes one or all PCAN Channels initialized by CAN\+\_\+\+Initialize. 
+
+Giving the TPCANHandle value \"{}\+PCAN\+\_\+\+NONEBUS\"{}, uninitialize all initialized channels
+
+
+\begin{DoxyParams}{Parameters}
+{\em Channel} & \"{}\+The handle of a PCAN Channel\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_a02d2f873980df41f099380a530d77a7b}\label{_p_c_a_n_basic_8h_a02d2f873980df41f099380a530d77a7b} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_Write@{CAN\_Write}}
+\index{CAN\_Write@{CAN\_Write}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_Write()}{CAN\_Write()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}}]{Channel,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a9a20d6ecf53320490ec762fea48a2ab8}{TPCANMsg}} \texorpdfstring{$\ast$}{*}}]{Message\+Buffer }\end{DoxyParamCaption})}
+
+
+
+Transmits a CAN message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Channel} & \"{}\+The handle of a PCAN Channel\"{}\\
+\hline
+{\em Message\+Buffer} & \"{}\+A TPCANMsg buffer with the message to be sent\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}
+\Hypertarget{_p_c_a_n_basic_8h_a687c5727922ad0dc73974c4765309e12}\label{_p_c_a_n_basic_8h_a687c5727922ad0dc73974c4765309e12} 
+\index{PCANBasic.h@{PCANBasic.h}!CAN\_WriteFD@{CAN\_WriteFD}}
+\index{CAN\_WriteFD@{CAN\_WriteFD}!PCANBasic.h@{PCANBasic.h}}
+\doxysubsubsection{\texorpdfstring{CAN\_WriteFD()}{CAN\_WriteFD()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}} \+\_\+\+\_\+stdcall CAN\+\_\+\+Write\+FD (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}}]{Channel,  }\item[{\mbox{\hyperlink{_p_c_a_n_basic_8h_ab8b617e7b69324dc0b39da85d5007df1}{TPCANMsg\+FD}} \texorpdfstring{$\ast$}{*}}]{Message\+Buffer }\end{DoxyParamCaption})}
+
+
+
+Transmits a CAN message over a FD capable PCAN Channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Channel} & \"{}\+The handle of a FD capable PCAN Channel\"{}\\
+\hline
+{\em Message\+Buffer} & \"{}\+A TPCANMsg\+FD buffer with the message to be sent\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\"{}\+A TPCANStatus error code\"{}
+\end{DoxyReturn}

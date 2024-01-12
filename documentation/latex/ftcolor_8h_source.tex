@@ -1,0 +1,1724 @@
+\doxysection{ftcolor.\+h}
+\hypertarget{ftcolor_8h_source}{}\label{ftcolor_8h_source}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/freetype/ftcolor.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/freetype/ftcolor.h}}
+\mbox{\hyperlink{ftcolor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ ftcolor.h}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ FreeType's\ glyph\ color\ management\ (specification).}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ Copyright\ (C)\ 2018-\/2022\ by}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ David\ Turner,\ Robert\ Wilhelm,\ and\ Werner\ Lemberg.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ the\ FreeType\ project,\ and\ may\ only\ be\ used,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ modified,\ and\ distributed\ under\ the\ terms\ of\ the\ FreeType\ project}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ license,\ LICENSE.TXT.\ \ By\ continuing\ to\ use,\ modify,\ or\ distribute}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ this\ file\ you\ indicate\ that\ you\ have\ read\ the\ license\ and}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ understand\ and\ accept\ it\ fully.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifndef\ FTCOLOR\_H\_}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ FTCOLOR\_H\_}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{freetype_8h}{freetype/freetype.h}}>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#ifdef\ FREETYPE\_H}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#error\ "{}freetype.h\ of\ FreeType\ 1\ has\ been\ loaded!"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#error\ "{}Please\ fix\ the\ directory\ search\ order\ for\ header\ files"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#error\ "{}so\ that\ freetype.h\ of\ FreeType\ 2\ is\ found\ first."{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \mbox{\hyperlink{ftheader_8h_a72ee5814b3ae378ebb7fd3a8e3ddec14}{FT\_BEGIN\_HEADER}}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ \ \ *\ @section:}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ \ \ *\ \ \ color\_management}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ \ \ *\ @title:}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ *\ \ \ Glyph\ Color\ Management}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ *\ @abstract:}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ *\ \ \ Retrieving\ and\ manipulating\ OpenType's\ 'CPAL'\ table\ data.}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ \ \ *\ \ \ The\ functions\ described\ here\ allow\ access\ and\ manipulation\ of\ color}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ \ \ *\ \ \ palette\ entries\ in\ OpenType's\ 'CPAL'\ tables.}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Color}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00056\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00057\ \textcolor{comment}{\ \ \ *\ \ \ This\ structure\ models\ a\ BGRA\ color\ value\ of\ a\ 'CPAL'\ palette\ entry.}}
+\DoxyCodeLine{00058\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00059\ \textcolor{comment}{\ \ \ *\ \ \ The\ used\ color\ space\ is\ sRGB;\ the\ colors\ are\ not\ pre-\/multiplied,\ and}}
+\DoxyCodeLine{00060\ \textcolor{comment}{\ \ \ *\ \ \ alpha\ values\ must\ be\ explicitly\ set.}}
+\DoxyCodeLine{00061\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00062\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ \ \ *\ \ \ blue\ ::}}
+\DoxyCodeLine{00064\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Blue\ value.}}
+\DoxyCodeLine{00065\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00066\ \textcolor{comment}{\ \ \ *\ \ \ green\ ::}}
+\DoxyCodeLine{00067\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Green\ value.}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ *\ \ \ red\ ::}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Red\ value.}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ *\ \ \ alpha\ ::}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Alpha\ value,\ giving\ the\ red,\ green,\ and\ blue\ color's\ opacity.}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00076\ \textcolor{comment}{\ \ \ *\ \ \ 2.10}}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00078\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___color__}{FT\_Color\_}}}
+\DoxyCodeLine{00079\ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a51f26183ca0c9f4af958939648caeccd}{FT\_Byte}}\ \ \mbox{\hyperlink{struct_f_t___color___ab6715c4e693978853b2234badbf9b8a4}{blue}};}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a51f26183ca0c9f4af958939648caeccd}{FT\_Byte}}\ \ \mbox{\hyperlink{struct_f_t___color___a5192188cd5602ffa94cc13a72934d4fa}{green}};}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a51f26183ca0c9f4af958939648caeccd}{FT\_Byte}}\ \ \mbox{\hyperlink{struct_f_t___color___a1149559897904556cc3bfa1cd848604d}{red}};}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a51f26183ca0c9f4af958939648caeccd}{FT\_Byte}}\ \ \mbox{\hyperlink{struct_f_t___color___a0226cbec82cdc2f05dca8152347c7526}{alpha}};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a2dfafc33e5e9d6af4961a0e9c687e250}{FT\_Color}};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ \ \ *\ @enum:}}
+\DoxyCodeLine{00091\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PALETTE\_XXX}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00093\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ *\ \ \ A\ list\ of\ bit\ field\ constants\ used\ in\ the\ \`{}palette\_flags`\ array\ of\ the}}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ *\ \ \ @FT\_Palette\_Data\ structure\ to\ indicate\ for\ which\ background\ a\ palette}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ \ \ *\ \ \ with\ a\ given\ index\ is\ usable.}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00098\ \textcolor{comment}{\ \ \ *\ @values:}}
+\DoxyCodeLine{00099\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PALETTE\_FOR\_LIGHT\_BACKGROUND\ ::}}
+\DoxyCodeLine{00100\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ palette\ is\ appropriate\ to\ use\ when\ displaying\ the\ font\ on\ a}}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ \ \ *\ \ \ \ \ light\ background\ such\ as\ white.}}
+\DoxyCodeLine{00102\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00103\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PALETTE\_FOR\_DARK\_BACKGROUND\ ::}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ palette\ is\ appropriate\ to\ use\ when\ displaying\ the\ font\ on\ a\ dark}}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ \ \ *\ \ \ \ \ background\ such\ as\ black.}}
+\DoxyCodeLine{00106\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00107\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00108\ \textcolor{comment}{\ \ \ *\ \ \ 2.10}}
+\DoxyCodeLine{00109\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ FT\_PALETTE\_FOR\_LIGHT\_BACKGROUND\ \ 0x01}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ FT\_PALETTE\_FOR\_DARK\_BACKGROUND\ \ \ 0x02}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00115\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00116\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00117\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Palette\_Data}}
+\DoxyCodeLine{00118\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00119\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00120\ \textcolor{comment}{\ \ \ *\ \ \ This\ structure\ holds\ the\ data\ of\ the\ 'CPAL'\ table.}}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00123\ \textcolor{comment}{\ \ \ *\ \ \ num\_palettes\ ::}}
+\DoxyCodeLine{00124\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ number\ of\ palettes.}}
+\DoxyCodeLine{00125\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00126\ \textcolor{comment}{\ \ \ *\ \ \ palette\_name\_ids\ ::}}
+\DoxyCodeLine{00127\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ optional\ read-\/only\ array\ of\ palette\ name\ IDs\ with\ \`{}num\_palettes`}}
+\DoxyCodeLine{00128\ \textcolor{comment}{\ \ \ *\ \ \ \ \ elements,\ corresponding\ to\ entries\ like\ 'dark'\ or\ 'light'\ in\ the}}
+\DoxyCodeLine{00129\ \textcolor{comment}{\ \ \ *\ \ \ \ \ font's\ 'name'\ table.}}
+\DoxyCodeLine{00130\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00131\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ empty\ name\ ID\ in\ the\ 'CPAL'\ table\ gets\ represented\ as\ value}}
+\DoxyCodeLine{00132\ \textcolor{comment}{\ \ \ *\ \ \ \ \ 0xFFFF.}}
+\DoxyCodeLine{00133\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00134\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \`{}NULL`\ if\ the\ font's\ 'CPAL'\ table\ doesn't\ contain\ appropriate\ data.}}
+\DoxyCodeLine{00135\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ \ \ *\ \ \ palette\_flags\ ::}}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ optional\ read-\/only\ array\ of\ palette\ flags\ with\ \`{}num\_palettes`}}
+\DoxyCodeLine{00138\ \textcolor{comment}{\ \ \ *\ \ \ \ \ elements.\ \ Possible\ values\ are\ an\ ORed\ combination\ of}}
+\DoxyCodeLine{00139\ \textcolor{comment}{\ \ \ *\ \ \ \ \ @FT\_PALETTE\_FOR\_LIGHT\_BACKGROUND\ and}}
+\DoxyCodeLine{00140\ \textcolor{comment}{\ \ \ *\ \ \ \ \ @FT\_PALETTE\_FOR\_DARK\_BACKGROUND.}}
+\DoxyCodeLine{00141\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00142\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \`{}NULL`\ if\ the\ font's\ 'CPAL'\ table\ doesn't\ contain\ appropriate\ data.}}
+\DoxyCodeLine{00143\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00144\ \textcolor{comment}{\ \ \ *\ \ \ num\_palette\_entries\ ::}}
+\DoxyCodeLine{00145\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ number\ of\ entries\ in\ a\ single\ palette.\ \ All\ palettes\ have\ the}}
+\DoxyCodeLine{00146\ \textcolor{comment}{\ \ \ *\ \ \ \ \ same\ size.}}
+\DoxyCodeLine{00147\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00148\ \textcolor{comment}{\ \ \ *\ \ \ palette\_entry\_name\_ids\ ::}}
+\DoxyCodeLine{00149\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ optional\ read-\/only\ array\ of\ palette\ entry\ name\ IDs\ with}}
+\DoxyCodeLine{00150\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \`{}num\_palette\_entries`.\ \ In\ each\ palette,\ entries\ with\ the\ same\ index}}
+\DoxyCodeLine{00151\ \textcolor{comment}{\ \ \ *\ \ \ \ \ have\ the\ same\ function.\ \ For\ example,\ index\string~0\ might\ correspond\ to}}
+\DoxyCodeLine{00152\ \textcolor{comment}{\ \ \ *\ \ \ \ \ string\ 'outline'\ in\ the\ font's\ 'name'\ table\ to\ indicate\ that\ this}}
+\DoxyCodeLine{00153\ \textcolor{comment}{\ \ \ *\ \ \ \ \ palette\ entry\ is\ used\ for\ outlines,\ index\string~1\ might\ correspond\ to}}
+\DoxyCodeLine{00154\ \textcolor{comment}{\ \ \ *\ \ \ \ \ 'fill'\ to\ indicate\ the\ filling\ color\ palette\ entry,\ etc.}}
+\DoxyCodeLine{00155\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00156\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ empty\ entry\ name\ ID\ in\ the\ 'CPAL'\ table\ gets\ represented\ as\ value}}
+\DoxyCodeLine{00157\ \textcolor{comment}{\ \ \ *\ \ \ \ \ 0xFFFF.}}
+\DoxyCodeLine{00158\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00159\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \`{}NULL`\ if\ the\ font's\ 'CPAL'\ table\ doesn't\ contain\ appropriate\ data.}}
+\DoxyCodeLine{00160\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00161\ \textcolor{comment}{\ \ \ *\ @note:}}
+\DoxyCodeLine{00162\ \textcolor{comment}{\ \ \ *\ \ \ Use\ function\ @FT\_Get\_Sfnt\_Name\ to\ map\ name\ IDs\ and\ entry\ name\ IDs\ to}}
+\DoxyCodeLine{00163\ \textcolor{comment}{\ \ \ *\ \ \ name\ strings.}}
+\DoxyCodeLine{00164\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00165\ \textcolor{comment}{\ \ \ *\ \ \ Use\ function\ @FT\_Palette\_Select\ to\ get\ the\ colors\ associated\ with\ a}}
+\DoxyCodeLine{00166\ \textcolor{comment}{\ \ \ *\ \ \ palette\ entry.}}
+\DoxyCodeLine{00167\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00168\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00169\ \textcolor{comment}{\ \ \ *\ \ \ 2.10}}
+\DoxyCodeLine{00170\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00171\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___palette___data__}{FT\_Palette\_Data\_}}\ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a937f6c17cf5ffd09086d8610c37b9f58}{FT\_UShort}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___palette___data___a18f15055b421533dda69de0ebefcea77}{num\_palettes}};}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{fttypes_8h_a937f6c17cf5ffd09086d8610c37b9f58}{FT\_UShort}}*\ \ \mbox{\hyperlink{struct_f_t___palette___data___a618d2378434666270e960003da2f1f97}{palette\_name\_ids}};}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{fttypes_8h_a937f6c17cf5ffd09086d8610c37b9f58}{FT\_UShort}}*\ \ \mbox{\hyperlink{struct_f_t___palette___data___a16a1fca74a6f3695294c2a7c6452b5bb}{palette\_flags}};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a937f6c17cf5ffd09086d8610c37b9f58}{FT\_UShort}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___palette___data___a2aeae7b23eb0548d06f1ab33ba3c4576}{num\_palette\_entries}};}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{fttypes_8h_a937f6c17cf5ffd09086d8610c37b9f58}{FT\_UShort}}*\ \ \mbox{\hyperlink{struct_f_t___palette___data___a3c2c54ace88ae72cdadd2c183d761052}{palette\_entry\_name\_ids}};}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_ab2bc294e65e6251d8a3581be7342cd59}{FT\_Palette\_Data}};}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00183\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00184\ \textcolor{comment}{\ \ \ *\ @function:}}
+\DoxyCodeLine{00185\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Palette\_Data\_Get}}
+\DoxyCodeLine{00186\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00187\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00188\ \textcolor{comment}{\ \ \ *\ \ \ Retrieve\ the\ face's\ color\ palette\ data.}}
+\DoxyCodeLine{00189\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00190\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{00191\ \textcolor{comment}{\ \ \ *\ \ \ face\ ::}}
+\DoxyCodeLine{00192\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ source\ face\ handle.}}
+\DoxyCodeLine{00193\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00194\ \textcolor{comment}{\ \ \ *\ @output:}}
+\DoxyCodeLine{00195\ \textcolor{comment}{\ \ \ *\ \ \ apalette\ ::}}
+\DoxyCodeLine{00196\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ pointer\ to\ an\ @FT\_Palette\_Data\ structure.}}
+\DoxyCodeLine{00197\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00198\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{00199\ \textcolor{comment}{\ \ \ *\ \ \ FreeType\ error\ code.\ \ 0\string~means\ success.}}
+\DoxyCodeLine{00200\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00201\ \textcolor{comment}{\ \ \ *\ @note:}}
+\DoxyCodeLine{00202\ \textcolor{comment}{\ \ \ *\ \ \ All\ arrays\ in\ the\ returned\ @FT\_Palette\_Data\ structure\ are\ read-\/only.}}
+\DoxyCodeLine{00203\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00204\ \textcolor{comment}{\ \ \ *\ \ \ This\ function\ always\ returns\ an\ error\ if\ the\ config\ macro}}
+\DoxyCodeLine{00205\ \textcolor{comment}{\ \ \ *\ \ \ \`{}TT\_CONFIG\_OPTION\_COLOR\_LAYERS`\ is\ not\ defined\ in\ \`{}ftoption.h`.}}
+\DoxyCodeLine{00206\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00207\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00208\ \textcolor{comment}{\ \ \ *\ \ \ 2.10}}
+\DoxyCodeLine{00209\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00210\ \ \ \mbox{\hyperlink{public-macros_8h_abb1f0cb171117bb94f204d09e6a89a6e}{FT\_EXPORT}}(\ \mbox{\hyperlink{fttypes_8h_a64c8060bdb3d6eec844a1bf670e06bdd}{FT\_Error}}\ )}
+\DoxyCodeLine{00211\ \ \ \mbox{\hyperlink{ftcolor_8h_a64cac166a372c0980c75eb94df41718e}{FT\_Palette\_Data\_Get}}(\ \mbox{\hyperlink{struct_f_t___face_rec__}{FT\_Face}}\ \ \ \ \ \ \ \ \ \ \ face,}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___palette___data__}{FT\_Palette\_Data}}\ \ *apalette\ );}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00216\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00217\ \textcolor{comment}{\ \ \ *\ @function:}}
+\DoxyCodeLine{00218\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Palette\_Select}}
+\DoxyCodeLine{00219\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00220\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00221\ \textcolor{comment}{\ \ \ *\ \ \ This\ function\ has\ two\ purposes.}}
+\DoxyCodeLine{00222\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00223\ \textcolor{comment}{\ \ \ *\ \ \ (1)\ It\ activates\ a\ palette\ for\ rendering\ color\ glyphs,\ and}}
+\DoxyCodeLine{00224\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00225\ \textcolor{comment}{\ \ \ *\ \ \ (2)\ it\ retrieves\ all\ (unmodified)\ color\ entries\ of\ this\ palette.\ \ This}}
+\DoxyCodeLine{00226\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ function\ returns\ a\ read-\/write\ array,\ which\ means\ that\ a\ calling}}
+\DoxyCodeLine{00227\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ application\ can\ modify\ the\ palette\ entries\ on\ demand.}}
+\DoxyCodeLine{00228\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00229\ \textcolor{comment}{\ \ \ *\ A\ corollary\ of\ (2)\ is\ that\ calling\ the\ function,\ then\ modifying\ some}}
+\DoxyCodeLine{00230\ \textcolor{comment}{\ \ \ *\ values,\ then\ calling\ the\ function\ again\ with\ the\ same\ arguments\ resets}}
+\DoxyCodeLine{00231\ \textcolor{comment}{\ \ \ *\ all\ color\ entries\ to\ the\ original\ 'CPAL'\ values;\ all\ user\ modifications}}
+\DoxyCodeLine{00232\ \textcolor{comment}{\ \ \ *\ are\ lost.}}
+\DoxyCodeLine{00233\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00234\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{00235\ \textcolor{comment}{\ \ \ *\ \ \ face\ ::}}
+\DoxyCodeLine{00236\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ source\ face\ handle.}}
+\DoxyCodeLine{00237\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00238\ \textcolor{comment}{\ \ \ *\ \ \ palette\_index\ ::}}
+\DoxyCodeLine{00239\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ palette\ index.}}
+\DoxyCodeLine{00240\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00241\ \textcolor{comment}{\ \ \ *\ @output:}}
+\DoxyCodeLine{00242\ \textcolor{comment}{\ \ \ *\ \ \ apalette\ ::}}
+\DoxyCodeLine{00243\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ array\ of\ color\ entries\ for\ a\ palette\ with\ index\ \`{}palette\_index`,}}
+\DoxyCodeLine{00244\ \textcolor{comment}{\ \ \ *\ \ \ \ \ having\ \`{}num\_palette\_entries`\ elements\ (as\ found\ in\ the}}
+\DoxyCodeLine{00245\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \`{}FT\_Palette\_Data`\ structure).\ \ If\ \`{}apalette`\ is\ set\ to\ \`{}NULL`,\ no}}
+\DoxyCodeLine{00246\ \textcolor{comment}{\ \ \ *\ \ \ \ \ array\ gets\ returned\ (and\ no\ color\ entries\ can\ be\ modified).}}
+\DoxyCodeLine{00247\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00248\ \textcolor{comment}{\ \ \ *\ \ \ \ \ In\ case\ the\ font\ doesn't\ support\ color\ palettes,\ \`{}NULL`\ is\ returned.}}
+\DoxyCodeLine{00249\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00250\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{00251\ \textcolor{comment}{\ \ \ *\ \ \ FreeType\ error\ code.\ \ 0\string~means\ success.}}
+\DoxyCodeLine{00252\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00253\ \textcolor{comment}{\ \ \ *\ @note:}}
+\DoxyCodeLine{00254\ \textcolor{comment}{\ \ \ *\ \ \ The\ array\ pointed\ to\ by\ \`{}apalette\_entries`\ is\ owned\ and\ managed\ by}}
+\DoxyCodeLine{00255\ \textcolor{comment}{\ \ \ *\ \ \ FreeType.}}
+\DoxyCodeLine{00256\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00257\ \textcolor{comment}{\ \ \ *\ \ \ This\ function\ always\ returns\ an\ error\ if\ the\ config\ macro}}
+\DoxyCodeLine{00258\ \textcolor{comment}{\ \ \ *\ \ \ \`{}TT\_CONFIG\_OPTION\_COLOR\_LAYERS`\ is\ not\ defined\ in\ \`{}ftoption.h`.}}
+\DoxyCodeLine{00259\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00260\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00261\ \textcolor{comment}{\ \ \ *\ \ \ 2.10}}
+\DoxyCodeLine{00262\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00263\ \ \ \mbox{\hyperlink{public-macros_8h_abb1f0cb171117bb94f204d09e6a89a6e}{FT\_EXPORT}}(\ \mbox{\hyperlink{fttypes_8h_a64c8060bdb3d6eec844a1bf670e06bdd}{FT\_Error}}\ )}
+\DoxyCodeLine{00264\ \ \ \mbox{\hyperlink{ftcolor_8h_ac744666049785758585c03bcbd349138}{FT\_Palette\_Select}}(\ \mbox{\hyperlink{struct_f_t___face_rec__}{FT\_Face}}\ \ \ \ \ face,}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a937f6c17cf5ffd09086d8610c37b9f58}{FT\_UShort}}\ \ \ palette\_index,}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a2dfafc33e5e9d6af4961a0e9c687e250}{FT\_Color}}*\ \ *apalette\ );}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00270\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00271\ \textcolor{comment}{\ \ \ *\ @function:}}
+\DoxyCodeLine{00272\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Palette\_Set\_Foreground\_Color}}
+\DoxyCodeLine{00273\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00274\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00275\ \textcolor{comment}{\ \ \ *\ \ \ 'COLR'\ uses\ palette\ index\ 0xFFFF\ to\ indicate\ a\ 'text\ foreground}}
+\DoxyCodeLine{00276\ \textcolor{comment}{\ \ \ *\ \ \ color'.\ \ This\ function\ sets\ this\ value.}}
+\DoxyCodeLine{00277\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00278\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{00279\ \textcolor{comment}{\ \ \ *\ \ \ face\ ::}}
+\DoxyCodeLine{00280\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ source\ face\ handle.}}
+\DoxyCodeLine{00281\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00282\ \textcolor{comment}{\ \ \ *\ \ \ foreground\_color\ ::}}
+\DoxyCodeLine{00283\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ \`{}FT\_Color`\ structure\ to\ define\ the\ text\ foreground\ color.}}
+\DoxyCodeLine{00284\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00285\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{00286\ \textcolor{comment}{\ \ \ *\ \ \ FreeType\ error\ code.\ \ 0\string~means\ success.}}
+\DoxyCodeLine{00287\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00288\ \textcolor{comment}{\ \ \ *\ @note:}}
+\DoxyCodeLine{00289\ \textcolor{comment}{\ \ \ *\ \ \ If\ this\ function\ isn't\ called,\ the\ text\ foreground\ color\ is\ set\ to}}
+\DoxyCodeLine{00290\ \textcolor{comment}{\ \ \ *\ \ \ white\ opaque\ (BGRA\ value\ 0xFFFFFFFF)\ if}}
+\DoxyCodeLine{00291\ \textcolor{comment}{\ \ \ *\ \ \ @FT\_PALETTE\_FOR\_DARK\_BACKGROUND\ is\ present\ for\ the\ current\ palette,}}
+\DoxyCodeLine{00292\ \textcolor{comment}{\ \ \ *\ \ \ and\ black\ opaque\ (BGRA\ value\ 0x000000FF)\ otherwise,\ including\ the\ case}}
+\DoxyCodeLine{00293\ \textcolor{comment}{\ \ \ *\ \ \ that\ no\ palette\ types\ are\ available\ in\ the\ 'CPAL'\ table.}}
+\DoxyCodeLine{00294\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00295\ \textcolor{comment}{\ \ \ *\ \ \ This\ function\ always\ returns\ an\ error\ if\ the\ config\ macro}}
+\DoxyCodeLine{00296\ \textcolor{comment}{\ \ \ *\ \ \ \`{}TT\_CONFIG\_OPTION\_COLOR\_LAYERS`\ is\ not\ defined\ in\ \`{}ftoption.h`.}}
+\DoxyCodeLine{00297\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00298\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00299\ \textcolor{comment}{\ \ \ *\ \ \ 2.10}}
+\DoxyCodeLine{00300\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00301\ \ \ \mbox{\hyperlink{public-macros_8h_abb1f0cb171117bb94f204d09e6a89a6e}{FT\_EXPORT}}(\ \mbox{\hyperlink{fttypes_8h_a64c8060bdb3d6eec844a1bf670e06bdd}{FT\_Error}}\ )}
+\DoxyCodeLine{00302\ \ \ \mbox{\hyperlink{ftcolor_8h_a87b5df5969998129860bda8e2c9e3de8}{FT\_Palette\_Set\_Foreground\_Color}}(\ \mbox{\hyperlink{struct_f_t___face_rec__}{FT\_Face}}\ \ \ face,}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a2dfafc33e5e9d6af4961a0e9c687e250}{FT\_Color}}\ \ foreground\_color\ );}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00306\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00307\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00308\ \textcolor{comment}{\ \ \ *\ @section:}}
+\DoxyCodeLine{00309\ \textcolor{comment}{\ \ \ *\ \ \ layer\_management}}
+\DoxyCodeLine{00310\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00311\ \textcolor{comment}{\ \ \ *\ @title:}}
+\DoxyCodeLine{00312\ \textcolor{comment}{\ \ \ *\ \ \ Glyph\ Layer\ Management}}
+\DoxyCodeLine{00313\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00314\ \textcolor{comment}{\ \ \ *\ @abstract:}}
+\DoxyCodeLine{00315\ \textcolor{comment}{\ \ \ *\ \ \ Retrieving\ and\ manipulating\ OpenType's\ 'COLR'\ table\ data.}}
+\DoxyCodeLine{00316\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00317\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00318\ \textcolor{comment}{\ \ \ *\ \ \ The\ functions\ described\ here\ allow\ access\ of\ colored\ glyph\ layer\ data}}
+\DoxyCodeLine{00319\ \textcolor{comment}{\ \ \ *\ \ \ in\ OpenType's\ 'COLR'\ tables.}}
+\DoxyCodeLine{00320\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00324\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00325\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00326\ \textcolor{comment}{\ \ \ *\ \ \ FT\_LayerIterator}}
+\DoxyCodeLine{00327\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00328\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00329\ \textcolor{comment}{\ \ \ *\ \ \ This\ iterator\ object\ is\ needed\ for\ @FT\_Get\_Color\_Glyph\_Layer.}}
+\DoxyCodeLine{00330\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00331\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00332\ \textcolor{comment}{\ \ \ *\ \ \ num\_layers\ ::}}
+\DoxyCodeLine{00333\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ number\ of\ glyph\ layers\ for\ the\ requested\ glyph\ index.\ \ Will\ be}}
+\DoxyCodeLine{00334\ \textcolor{comment}{\ \ \ *\ \ \ \ \ set\ by\ @FT\_Get\_Color\_Glyph\_Layer.}}
+\DoxyCodeLine{00335\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00336\ \textcolor{comment}{\ \ \ *\ \ \ layer\ ::}}
+\DoxyCodeLine{00337\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ current\ layer.\ \ Will\ be\ set\ by\ @FT\_Get\_Color\_Glyph\_Layer.}}
+\DoxyCodeLine{00338\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00339\ \textcolor{comment}{\ \ \ *\ \ \ p\ ::}}
+\DoxyCodeLine{00340\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ opaque\ pointer\ into\ 'COLR'\ table\ data.\ \ The\ caller\ must\ set\ this}}
+\DoxyCodeLine{00341\ \textcolor{comment}{\ \ \ *\ \ \ \ \ to\ \`{}NULL`\ before\ the\ first\ call\ of\ @FT\_Get\_Color\_Glyph\_Layer.}}
+\DoxyCodeLine{00342\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00343\ \ \ typedef\ struct\ \ \mbox{\hyperlink{struct_f_t___layer_iterator__}{FT\_LayerIterator\_}}}
+\DoxyCodeLine{00344\ \ \ \{}
+\DoxyCodeLine{00345\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_abcb8db4dbf35d2b55a9e8c7b0926dc52}{FT\_UInt}}\ \ \ \mbox{\hyperlink{struct_f_t___layer_iterator___adab25a3c54dde5c299f1aee8d05a877d}{num\_layers}};}
+\DoxyCodeLine{00346\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_abcb8db4dbf35d2b55a9e8c7b0926dc52}{FT\_UInt}}\ \ \ \mbox{\hyperlink{struct_f_t___layer_iterator___a88cfbc1f7f9512dcd10ae44f7fbbbf4a}{layer}};}
+\DoxyCodeLine{00347\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a51f26183ca0c9f4af958939648caeccd}{FT\_Byte}}*\ \ \mbox{\hyperlink{struct_f_t___layer_iterator___a95cacbc73382b1be03e612898971c534}{p}};}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00349\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_acdf9f09fe2836080dc6d9c5a11b62007}{FT\_LayerIterator}};}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00352\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00353\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00354\ \textcolor{comment}{\ \ \ *\ @function:}}
+\DoxyCodeLine{00355\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Get\_Color\_Glyph\_Layer}}
+\DoxyCodeLine{00356\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00357\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00358\ \textcolor{comment}{\ \ \ *\ \ \ This\ is\ an\ interface\ to\ the\ 'COLR'\ table\ in\ OpenType\ fonts\ to}}
+\DoxyCodeLine{00359\ \textcolor{comment}{\ \ \ *\ \ \ iteratively\ retrieve\ the\ colored\ glyph\ layers\ associated\ with\ the}}
+\DoxyCodeLine{00360\ \textcolor{comment}{\ \ \ *\ \ \ current\ glyph\ slot.}}
+\DoxyCodeLine{00361\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00362\ \textcolor{comment}{\ \ \ *\ \ \ \ \ https://docs.microsoft.com/en-\/us/typography/opentype/spec/colr}}
+\DoxyCodeLine{00363\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00364\ \textcolor{comment}{\ \ \ *\ \ \ The\ glyph\ layer\ data\ for\ a\ given\ glyph\ index,\ if\ present,\ provides\ an}}
+\DoxyCodeLine{00365\ \textcolor{comment}{\ \ \ *\ \ \ alternative,\ multi-\/color\ glyph\ representation:\ Instead\ of\ rendering}}
+\DoxyCodeLine{00366\ \textcolor{comment}{\ \ \ *\ \ \ the\ outline\ or\ bitmap\ with\ the\ given\ glyph\ index,\ glyphs\ with\ the}}
+\DoxyCodeLine{00367\ \textcolor{comment}{\ \ \ *\ \ \ indices\ and\ colors\ returned\ by\ this\ function\ are\ rendered\ layer\ by}}
+\DoxyCodeLine{00368\ \textcolor{comment}{\ \ \ *\ \ \ layer.}}
+\DoxyCodeLine{00369\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00370\ \textcolor{comment}{\ \ \ *\ \ \ The\ returned\ elements\ are\ ordered\ in\ the\ z\string~direction\ from\ bottom\ to}}
+\DoxyCodeLine{00371\ \textcolor{comment}{\ \ \ *\ \ \ top;\ the\ 'n'th\ element\ should\ be\ rendered\ with\ the\ associated\ palette}}
+\DoxyCodeLine{00372\ \textcolor{comment}{\ \ \ *\ \ \ color\ and\ blended\ on\ top\ of\ the\ already\ rendered\ layers\ (elements\ 0,}}
+\DoxyCodeLine{00373\ \textcolor{comment}{\ \ \ *\ \ \ 1,\ ...,\ n-\/1).}}
+\DoxyCodeLine{00374\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00375\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{00376\ \textcolor{comment}{\ \ \ *\ \ \ face\ ::}}
+\DoxyCodeLine{00377\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ handle\ to\ the\ parent\ face\ object.}}
+\DoxyCodeLine{00378\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00379\ \textcolor{comment}{\ \ \ *\ \ \ base\_glyph\ ::}}
+\DoxyCodeLine{00380\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ glyph\ index\ the\ colored\ glyph\ layers\ are\ associated\ with.}}
+\DoxyCodeLine{00381\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00382\ \textcolor{comment}{\ \ \ *\ @inout:}}
+\DoxyCodeLine{00383\ \textcolor{comment}{\ \ \ *\ \ \ iterator\ ::}}
+\DoxyCodeLine{00384\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ @FT\_LayerIterator\ object.\ \ For\ the\ first\ call\ you\ should\ set}}
+\DoxyCodeLine{00385\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \`{}iterator-\/>p`\ to\ \`{}NULL`.\ \ For\ all\ following\ calls,\ simply\ use\ the}}
+\DoxyCodeLine{00386\ \textcolor{comment}{\ \ \ *\ \ \ \ \ same\ object\ again.}}
+\DoxyCodeLine{00387\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00388\ \textcolor{comment}{\ \ \ *\ @output:}}
+\DoxyCodeLine{00389\ \textcolor{comment}{\ \ \ *\ \ \ aglyph\_index\ ::}}
+\DoxyCodeLine{00390\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ glyph\ index\ of\ the\ current\ layer.}}
+\DoxyCodeLine{00391\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00392\ \textcolor{comment}{\ \ \ *\ \ \ acolor\_index\ ::}}
+\DoxyCodeLine{00393\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ color\ index\ into\ the\ font\ face's\ color\ palette\ of\ the\ current}}
+\DoxyCodeLine{00394\ \textcolor{comment}{\ \ \ *\ \ \ \ \ layer.\ \ The\ value\ 0xFFFF\ is\ special;\ it\ doesn't\ reference\ a\ palette}}
+\DoxyCodeLine{00395\ \textcolor{comment}{\ \ \ *\ \ \ \ \ entry\ but\ indicates\ that\ the\ text\ foreground\ color\ should\ be\ used}}
+\DoxyCodeLine{00396\ \textcolor{comment}{\ \ \ *\ \ \ \ \ instead\ (to\ be\ set\ up\ by\ the\ application\ outside\ of\ FreeType).}}
+\DoxyCodeLine{00397\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00398\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ color\ palette\ can\ be\ retrieved\ with\ @FT\_Palette\_Select.}}
+\DoxyCodeLine{00399\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00400\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{00401\ \textcolor{comment}{\ \ \ *\ \ \ Value\string~1\ if\ everything\ is\ OK.\ \ If\ there\ are\ no\ more\ layers\ (or\ if\ there}}
+\DoxyCodeLine{00402\ \textcolor{comment}{\ \ \ *\ \ \ are\ no\ layers\ at\ all),\ value\string~0\ gets\ returned.\ \ In\ case\ of\ an\ error,}}
+\DoxyCodeLine{00403\ \textcolor{comment}{\ \ \ *\ \ \ value\string~0\ is\ returned\ also.}}
+\DoxyCodeLine{00404\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00405\ \textcolor{comment}{\ \ \ *\ @note:}}
+\DoxyCodeLine{00406\ \textcolor{comment}{\ \ \ *\ \ \ This\ function\ is\ necessary\ if\ you\ want\ to\ handle\ glyph\ layers\ by}}
+\DoxyCodeLine{00407\ \textcolor{comment}{\ \ \ *\ \ \ yourself.\ \ In\ particular,\ functions\ that\ operate\ with\ @FT\_GlyphRec}}
+\DoxyCodeLine{00408\ \textcolor{comment}{\ \ \ *\ \ \ objects\ (like\ @FT\_Get\_Glyph\ or\ @FT\_Glyph\_To\_Bitmap)\ don't\ have\ access}}
+\DoxyCodeLine{00409\ \textcolor{comment}{\ \ \ *\ \ \ to\ this\ information.}}
+\DoxyCodeLine{00410\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00411\ \textcolor{comment}{\ \ \ *\ \ \ Note\ that\ @FT\_Render\_Glyph\ is\ able\ to\ handle\ colored\ glyph\ layers}}
+\DoxyCodeLine{00412\ \textcolor{comment}{\ \ \ *\ \ \ automatically\ if\ the\ @FT\_LOAD\_COLOR\ flag\ is\ passed\ to\ a\ previous\ call}}
+\DoxyCodeLine{00413\ \textcolor{comment}{\ \ \ *\ \ \ to\ @FT\_Load\_Glyph.\ \ [This\ is\ an\ experimental\ feature.]}}
+\DoxyCodeLine{00414\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00415\ \textcolor{comment}{\ \ \ *\ @example:}}
+\DoxyCodeLine{00416\ \textcolor{comment}{\ \ \ *\ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{00417\ \textcolor{comment}{\ \ \ *\ \ \ \ \ FT\_Color*\ \ \ \ \ \ \ \ \ palette;}}
+\DoxyCodeLine{00418\ \textcolor{comment}{\ \ \ *\ \ \ \ \ FT\_LayerIterator\ \ iterator;}}
+\DoxyCodeLine{00419\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00420\ \textcolor{comment}{\ \ \ *\ \ \ \ \ FT\_Bool\ \ have\_layers;}}
+\DoxyCodeLine{00421\ \textcolor{comment}{\ \ \ *\ \ \ \ \ FT\_UInt\ \ layer\_glyph\_index;}}
+\DoxyCodeLine{00422\ \textcolor{comment}{\ \ \ *\ \ \ \ \ FT\_UInt\ \ layer\_color\_index;}}
+\DoxyCodeLine{00423\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00424\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00425\ \textcolor{comment}{\ \ \ *\ \ \ \ \ error\ =\ FT\_Palette\_Select(\ face,\ palette\_index,\ \&palette\ );}}
+\DoxyCodeLine{00426\ \textcolor{comment}{\ \ \ *\ \ \ \ \ if\ (\ error\ )}}
+\DoxyCodeLine{00427\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ palette\ =\ NULL;}}
+\DoxyCodeLine{00428\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00429\ \textcolor{comment}{\ \ \ *\ \ \ \ \ iterator.p\ \ =\ NULL;}}
+\DoxyCodeLine{00430\ \textcolor{comment}{\ \ \ *\ \ \ \ \ have\_layers\ =\ FT\_Get\_Color\_Glyph\_Layer(\ face,}}
+\DoxyCodeLine{00431\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glyph\_index,}}
+\DoxyCodeLine{00432\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&layer\_glyph\_index,}}
+\DoxyCodeLine{00433\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&layer\_color\_index,}}
+\DoxyCodeLine{00434\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&iterator\ );}}
+\DoxyCodeLine{00435\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00436\ \textcolor{comment}{\ \ \ *\ \ \ \ \ if\ (\ palette\ \&\&\ have\_layers\ )}}
+\DoxyCodeLine{00437\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \{}}
+\DoxyCodeLine{00438\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ do}}
+\DoxyCodeLine{00439\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00440\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ FT\_Color\ \ layer\_color;}}
+\DoxyCodeLine{00441\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00442\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00443\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ if\ (\ layer\_color\_index\ ==\ 0xFFFF\ )}}
+\DoxyCodeLine{00444\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ layer\_color\ =\ text\_foreground\_color;}}
+\DoxyCodeLine{00445\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ else}}
+\DoxyCodeLine{00446\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ layer\_color\ =\ palette[layer\_color\_index];}}
+\DoxyCodeLine{00447\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00448\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ //\ Load\ and\ render\ glyph\ \`{}layer\_glyph\_index',\ then}}
+\DoxyCodeLine{00449\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ //\ blend\ resulting\ pixmap\ (using\ color\ \`{}layer\_color')}}
+\DoxyCodeLine{00450\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ //\ with\ previously\ created\ pixmaps.}}
+\DoxyCodeLine{00451\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00452\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \}\ while\ (\ FT\_Get\_Color\_Glyph\_Layer(\ face,}}
+\DoxyCodeLine{00453\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glyph\_index,}}
+\DoxyCodeLine{00454\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&layer\_glyph\_index,}}
+\DoxyCodeLine{00455\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&layer\_color\_index,}}
+\DoxyCodeLine{00456\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&iterator\ )\ );}}
+\DoxyCodeLine{00457\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \}}}
+\DoxyCodeLine{00458\ \textcolor{comment}{\ \ \ *\ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{00459\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00460\ \ \ \mbox{\hyperlink{public-macros_8h_abb1f0cb171117bb94f204d09e6a89a6e}{FT\_EXPORT}}(\ \mbox{\hyperlink{fttypes_8h_a1a832a256bb5a7e6e884afaa1a07f3ae}{FT\_Bool}}\ )}
+\DoxyCodeLine{00461\ \ \ \mbox{\hyperlink{ftcolor_8h_ac372d26ca386467da825115bfd75b0bf}{FT\_Get\_Color\_Glyph\_Layer}}(\ \mbox{\hyperlink{struct_f_t___face_rec__}{FT\_Face}}\ \ \ \ \ \ \ \ \ \ \ \ face,}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{fttypes_8h_abcb8db4dbf35d2b55a9e8c7b0926dc52}{FT\_UInt}}\ \ \ \ \ \ \ \ \ \ \ \ base\_glyph,}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{fttypes_8h_abcb8db4dbf35d2b55a9e8c7b0926dc52}{FT\_UInt}}\ \ \ \ \ \ \ \ \ \ \ *aglyph\_index,}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{fttypes_8h_abcb8db4dbf35d2b55a9e8c7b0926dc52}{FT\_UInt}}\ \ \ \ \ \ \ \ \ \ \ *acolor\_index,}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___layer_iterator__}{FT\_LayerIterator}}*\ \ iterator\ );}
+\DoxyCodeLine{00466\ }
+\DoxyCodeLine{00467\ }
+\DoxyCodeLine{00468\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00469\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00470\ \textcolor{comment}{\ \ \ *\ @enum:}}
+\DoxyCodeLine{00471\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintFormat}}
+\DoxyCodeLine{00472\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00473\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00474\ \textcolor{comment}{\ \ \ *\ \ \ Enumeration\ describing\ the\ different\ paint\ format\ types\ of\ the\ v1}}
+\DoxyCodeLine{00475\ \textcolor{comment}{\ \ \ *\ \ \ extensions\ to\ the\ 'COLR'\ table,\ see}}
+\DoxyCodeLine{00476\ \textcolor{comment}{\ \ \ *\ \ \ 'https://github.com/googlefonts/colr-\/gradients-\/spec'.}}
+\DoxyCodeLine{00477\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00478\ \textcolor{comment}{\ \ \ *\ \ \ The\ enumeration\ values\ losely\ correspond\ with\ the\ format\ numbers\ of}}
+\DoxyCodeLine{00479\ \textcolor{comment}{\ \ \ *\ \ \ the\ specification:\ FreeType\ always\ returns\ a\ fully\ specified\ 'Paint'}}
+\DoxyCodeLine{00480\ \textcolor{comment}{\ \ \ *\ \ \ structure\ for\ the\ 'Transform',\ 'Translate',\ 'Scale',\ 'Rotate',\ and}}
+\DoxyCodeLine{00481\ \textcolor{comment}{\ \ \ *\ \ \ 'Skew'\ table\ types\ even\ though\ the\ specification\ has\ different\ formats}}
+\DoxyCodeLine{00482\ \textcolor{comment}{\ \ \ *\ \ \ depending\ on\ whether\ or\ not\ a\ center\ is\ specified,\ whether\ the\ scale}}
+\DoxyCodeLine{00483\ \textcolor{comment}{\ \ \ *\ \ \ is\ uniform\ in\ x\ and\ y\string~direction\ or\ not,\ etc.\ \ Also,\ only\ non-\/variable}}
+\DoxyCodeLine{00484\ \textcolor{comment}{\ \ \ *\ \ \ format\ identifiers\ are\ listed\ in\ this\ enumeration;\ as\ soon\ as\ support}}
+\DoxyCodeLine{00485\ \textcolor{comment}{\ \ \ *\ \ \ for\ variable\ 'COLR'\ v1\ fonts\ is\ implemented,\ interpolation\ is}}
+\DoxyCodeLine{00486\ \textcolor{comment}{\ \ \ *\ \ \ performed\ dependent\ on\ axis\ coordinates,\ which\ are\ configured\ on\ the}}
+\DoxyCodeLine{00487\ \textcolor{comment}{\ \ \ *\ \ \ @FT\_Face\ through\ @FT\_Set\_Var\_Design\_Coordinates.\ \ This\ implies\ that}}
+\DoxyCodeLine{00488\ \textcolor{comment}{\ \ \ *\ \ \ always\ static,\ readily\ interpolated\ values\ are\ returned\ in\ the\ 'Paint'}}
+\DoxyCodeLine{00489\ \textcolor{comment}{\ \ \ *\ \ \ structures.}}
+\DoxyCodeLine{00490\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00491\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00492\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00493\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00494\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00495\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00496\ \ \ typedef\ enum\ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5}{FT\_PaintFormat\_}}}
+\DoxyCodeLine{00497\ \ \ \{}
+\DoxyCodeLine{00498\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5a0a13f9bbd1ce9037400ea7f5d72088fa}{FT\_COLR\_PAINTFORMAT\_COLR\_LAYERS}}\ \ \ \ \ =\ 1,}
+\DoxyCodeLine{00499\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5a03557833ff1969bc848ea2e04751ec58}{FT\_COLR\_PAINTFORMAT\_SOLID}}\ \ \ \ \ \ \ \ \ \ \ =\ 2,}
+\DoxyCodeLine{00500\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5ae781f6c00d9b1b6710af91522194a5a2}{FT\_COLR\_PAINTFORMAT\_LINEAR\_GRADIENT}}\ =\ 4,}
+\DoxyCodeLine{00501\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5ad9d7011bd09584e3032315a9276a71c1}{FT\_COLR\_PAINTFORMAT\_RADIAL\_GRADIENT}}\ =\ 6,}
+\DoxyCodeLine{00502\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5a25a7f01f96a33d7139ab1223422f5bd6}{FT\_COLR\_PAINTFORMAT\_SWEEP\_GRADIENT}}\ \ =\ 8,}
+\DoxyCodeLine{00503\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5a6ed0e9d85de095881f5208e2b601df9b}{FT\_COLR\_PAINTFORMAT\_GLYPH}}\ \ \ \ \ \ \ \ \ \ \ =\ 10,}
+\DoxyCodeLine{00504\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5af477e73218678c830a7119980f201071}{FT\_COLR\_PAINTFORMAT\_COLR\_GLYPH}}\ \ \ \ \ \ =\ 11,}
+\DoxyCodeLine{00505\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5a5f1a6a551c1ecb596e760f679e93a1d8}{FT\_COLR\_PAINTFORMAT\_TRANSFORM}}\ \ \ \ \ \ \ =\ 12,}
+\DoxyCodeLine{00506\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5af4e01209797f9a54ceac4e16a02d0df0}{FT\_COLR\_PAINTFORMAT\_TRANSLATE}}\ \ \ \ \ \ \ =\ 14,}
+\DoxyCodeLine{00507\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5a2f443678765e595db3936cbf8c64da6b}{FT\_COLR\_PAINTFORMAT\_SCALE}}\ \ \ \ \ \ \ \ \ \ \ =\ 16,}
+\DoxyCodeLine{00508\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5a33edb12504b90a3f0da264bdbd91cad0}{FT\_COLR\_PAINTFORMAT\_ROTATE}}\ \ \ \ \ \ \ \ \ \ =\ 24,}
+\DoxyCodeLine{00509\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5ab1863e5000526bf2a55a0b68fcc9be0a}{FT\_COLR\_PAINTFORMAT\_SKEW}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 28,}
+\DoxyCodeLine{00510\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5ac6751af4bb1e991fb9bbb013e60ab591}{FT\_COLR\_PAINTFORMAT\_COMPOSITE}}\ \ \ \ \ \ \ =\ 32,}
+\DoxyCodeLine{00511\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5a7846b57690a002b94729333a31905fa1}{FT\_COLR\_PAINT\_FORMAT\_MAX}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 33,}
+\DoxyCodeLine{00512\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_ab369594192f9afd284b8a4bf0d0eb2c5a8a55925c13957849d81086fedeef564f}{FT\_COLR\_PAINTFORMAT\_UNSUPPORTED}}\ \ \ \ \ =\ 255}
+\DoxyCodeLine{00513\ }
+\DoxyCodeLine{00514\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a0331dcc20db22cd8164ddbe0a6d6eaeb}{FT\_PaintFormat}};}
+\DoxyCodeLine{00515\ }
+\DoxyCodeLine{00516\ }
+\DoxyCodeLine{00517\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00518\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00519\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00520\ \textcolor{comment}{\ \ \ *\ \ \ FT\_ColorStopIterator}}
+\DoxyCodeLine{00521\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00522\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00523\ \textcolor{comment}{\ \ \ *\ \ \ This\ iterator\ object\ is\ needed\ for\ @FT\_Get\_Colorline\_Stops.\ \ It\ keeps}}
+\DoxyCodeLine{00524\ \textcolor{comment}{\ \ \ *\ \ \ state\ while\ iterating\ over\ the\ stops\ of\ an\ @FT\_ColorLine,}}
+\DoxyCodeLine{00525\ \textcolor{comment}{\ \ \ *\ \ \ representing\ the\ \`{}ColorLine`\ struct\ of\ the\ v1\ extensions\ to\ 'COLR',}}
+\DoxyCodeLine{00526\ \textcolor{comment}{\ \ \ *\ \ \ see\ 'https://github.com/googlefonts/colr-\/gradients-\/spec'.}}
+\DoxyCodeLine{00527\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00528\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00529\ \textcolor{comment}{\ \ \ *\ \ \ num\_color\_stops\ ::}}
+\DoxyCodeLine{00530\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ number\ of\ color\ stops\ for\ the\ requested\ glyph\ index.\ \ Set\ by}}
+\DoxyCodeLine{00531\ \textcolor{comment}{\ \ \ *\ \ \ \ \ @FT\_Get\_Paint.}}
+\DoxyCodeLine{00532\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00533\ \textcolor{comment}{\ \ \ *\ \ \ current\_color\_stop\ ::}}
+\DoxyCodeLine{00534\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ current\ color\ stop.\ \ Set\ by\ @FT\_Get\_Colorline\_Stops.}}
+\DoxyCodeLine{00535\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00536\ \textcolor{comment}{\ \ \ *\ \ \ p\ ::}}
+\DoxyCodeLine{00537\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ opaque\ pointer\ into\ 'COLR'\ table\ data.\ \ Set\ by\ @FT\_Get\_Paint.}}
+\DoxyCodeLine{00538\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Updated\ by\ @FT\_Get\_Colorline\_Stops.}}
+\DoxyCodeLine{00539\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00540\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00541\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00542\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00543\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00544\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00545\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___color_stop_iterator__}{FT\_ColorStopIterator\_}}}
+\DoxyCodeLine{00546\ \ \ \{}
+\DoxyCodeLine{00547\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_abcb8db4dbf35d2b55a9e8c7b0926dc52}{FT\_UInt}}\ \ \mbox{\hyperlink{struct_f_t___color_stop_iterator___a10655912a687d59ff7684c69e0749d93}{num\_color\_stops}};}
+\DoxyCodeLine{00548\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_abcb8db4dbf35d2b55a9e8c7b0926dc52}{FT\_UInt}}\ \ \mbox{\hyperlink{struct_f_t___color_stop_iterator___ace5741dbba2d84952d7a4ca8fd245aa5}{current\_color\_stop}};}
+\DoxyCodeLine{00549\ }
+\DoxyCodeLine{00550\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a51f26183ca0c9f4af958939648caeccd}{FT\_Byte}}*\ \ \mbox{\hyperlink{struct_f_t___color_stop_iterator___abb19c170b920d54e9ddcc826e9887296}{p}};}
+\DoxyCodeLine{00551\ }
+\DoxyCodeLine{00552\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a0b9fe1cb22f98bf83c1b044d54fc0e20}{FT\_ColorStopIterator}};}
+\DoxyCodeLine{00553\ }
+\DoxyCodeLine{00554\ }
+\DoxyCodeLine{00555\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00556\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00557\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00558\ \textcolor{comment}{\ \ \ *\ \ \ FT\_ColorIndex}}
+\DoxyCodeLine{00559\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00560\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00561\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ \`{}ColorIndex`\ value\ of\ the\ 'COLR'\ v1}}
+\DoxyCodeLine{00562\ \textcolor{comment}{\ \ \ *\ \ \ extensions,\ see\ 'https://github.com/googlefonts/colr-\/gradients-\/spec'.}}
+\DoxyCodeLine{00563\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00564\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00565\ \textcolor{comment}{\ \ \ *\ \ \ palette\_index\ ::}}
+\DoxyCodeLine{00566\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ palette\ index\ into\ a\ 'CPAL'\ palette.}}
+\DoxyCodeLine{00567\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00568\ \textcolor{comment}{\ \ \ *\ \ \ alpha\ ::}}
+\DoxyCodeLine{00569\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Alpha\ transparency\ value\ multiplied\ with\ the\ value\ from\ 'CPAL'.}}
+\DoxyCodeLine{00570\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00571\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00572\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00573\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00574\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00575\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00576\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___color_index__}{FT\_ColorIndex\_}}}
+\DoxyCodeLine{00577\ \ \ \{}
+\DoxyCodeLine{00578\ \ \ \ \ \mbox{\hyperlink{integer-types_8h_af9bfc99e3f8d44fc8d61ff6d43c7f580}{FT\_UInt16}}\ \ \ \mbox{\hyperlink{struct_f_t___color_index___a321e3984d133dd1d5958b75a6567037b}{palette\_index}};}
+\DoxyCodeLine{00579\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a430d070e946e531a607ae350e822ffca}{FT\_F2Dot14}}\ \ \mbox{\hyperlink{struct_f_t___color_index___a378c521bc573641afb3ac9f199e0c7da}{alpha}};}
+\DoxyCodeLine{00580\ }
+\DoxyCodeLine{00581\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a391d7df1ebcf03c532a0e01d29c17d69}{FT\_ColorIndex}};}
+\DoxyCodeLine{00582\ }
+\DoxyCodeLine{00583\ }
+\DoxyCodeLine{00584\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00585\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00586\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00587\ \textcolor{comment}{\ \ \ *\ \ \ FT\_ColorStop}}
+\DoxyCodeLine{00588\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00589\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00590\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ \`{}ColorStop`\ value\ of\ the\ 'COLR'\ v1}}
+\DoxyCodeLine{00591\ \textcolor{comment}{\ \ \ *\ \ \ extensions,\ see\ 'https://github.com/googlefonts/colr-\/gradients-\/spec'.}}
+\DoxyCodeLine{00592\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00593\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00594\ \textcolor{comment}{\ \ \ *\ \ \ stop\_offset\ ::}}
+\DoxyCodeLine{00595\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ stop\ offset\ between\ 0\ and\ 1\ along\ the\ gradient.}}
+\DoxyCodeLine{00596\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00597\ \textcolor{comment}{\ \ \ *\ \ \ color\ ::}}
+\DoxyCodeLine{00598\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ color\ information\ for\ this\ stop,\ see\ @FT\_ColorIndex.}}
+\DoxyCodeLine{00599\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00600\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00601\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00602\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00603\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00604\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00605\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___color_stop__}{FT\_ColorStop\_}}}
+\DoxyCodeLine{00606\ \ \ \{}
+\DoxyCodeLine{00607\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a430d070e946e531a607ae350e822ffca}{FT\_F2Dot14}}\ \ \ \ \ \mbox{\hyperlink{struct_f_t___color_stop___ab5469b439a95630f9ec0575088a0091a}{stop\_offset}};}
+\DoxyCodeLine{00608\ \ \ \ \ \mbox{\hyperlink{struct_f_t___color_index__}{FT\_ColorIndex}}\ \ \mbox{\hyperlink{struct_f_t___color_stop___ab29a4b8a4f3f4959c0772975386e54cf}{color}};}
+\DoxyCodeLine{00609\ }
+\DoxyCodeLine{00610\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a5ef82b70900dac503b1652dad2f70346}{FT\_ColorStop}};}
+\DoxyCodeLine{00611\ }
+\DoxyCodeLine{00612\ }
+\DoxyCodeLine{00613\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00614\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00615\ \textcolor{comment}{\ \ \ *\ @enum:}}
+\DoxyCodeLine{00616\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintExtend}}
+\DoxyCodeLine{00617\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00618\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00619\ \textcolor{comment}{\ \ \ *\ \ \ An\ enumeration\ representing\ the\ 'Extend'\ mode\ of\ the\ 'COLR'\ v1}}
+\DoxyCodeLine{00620\ \textcolor{comment}{\ \ \ *\ \ \ extensions,\ see\ 'https://github.com/googlefonts/colr-\/gradients-\/spec'.}}
+\DoxyCodeLine{00621\ \textcolor{comment}{\ \ \ *\ \ \ It\ describes\ how\ the\ gradient\ fill\ continues\ at\ the\ other\ boundaries.}}
+\DoxyCodeLine{00622\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00623\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00624\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00625\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00626\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00627\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00628\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \ \mbox{\hyperlink{ftcolor_8h_a3414b538cddc9253df7cfdcd7677b4fa}{FT\_PaintExtend\_}}}
+\DoxyCodeLine{00629\ \ \ \{}
+\DoxyCodeLine{00630\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a3414b538cddc9253df7cfdcd7677b4faac5b35fb9954918258e2b90b3fb92dc1e}{FT\_COLR\_PAINT\_EXTEND\_PAD}}\ \ \ \ \ =\ 0,}
+\DoxyCodeLine{00631\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a3414b538cddc9253df7cfdcd7677b4faac00173533aed5c6df1f08aaf03b21ded}{FT\_COLR\_PAINT\_EXTEND\_REPEAT}}\ \ =\ 1,}
+\DoxyCodeLine{00632\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a3414b538cddc9253df7cfdcd7677b4faa7f93938115b14716f051044c7f195c4f}{FT\_COLR\_PAINT\_EXTEND\_REFLECT}}\ =\ 2}
+\DoxyCodeLine{00633\ }
+\DoxyCodeLine{00634\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a3d277478b7711ca59e0015c7c430e21f}{FT\_PaintExtend}};}
+\DoxyCodeLine{00635\ }
+\DoxyCodeLine{00636\ }
+\DoxyCodeLine{00637\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00638\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00639\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00640\ \textcolor{comment}{\ \ \ *\ \ \ FT\_ColorLine}}
+\DoxyCodeLine{00641\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00642\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00643\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ \`{}ColorLine`\ value\ of\ the\ 'COLR'\ v1}}
+\DoxyCodeLine{00644\ \textcolor{comment}{\ \ \ *\ \ \ extensions,\ see\ 'https://github.com/googlefonts/colr-\/gradients-\/spec'.}}
+\DoxyCodeLine{00645\ \textcolor{comment}{\ \ \ *\ \ \ It\ describes\ a\ list\ of\ color\ stops\ along\ the\ defined\ gradient.}}
+\DoxyCodeLine{00646\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00647\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00648\ \textcolor{comment}{\ \ \ *\ \ \ extend\ ::}}
+\DoxyCodeLine{00649\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ extend\ mode\ at\ the\ outer\ boundaries,\ see\ @FT\_PaintExtend.}}
+\DoxyCodeLine{00650\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00651\ \textcolor{comment}{\ \ \ *\ \ \ color\_stop\_iterator\ ::}}
+\DoxyCodeLine{00652\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ @FT\_ColorStopIterator\ used\ to\ enumerate\ and\ retrieve\ the}}
+\DoxyCodeLine{00653\ \textcolor{comment}{\ \ \ *\ \ \ \ \ actual\ @FT\_ColorStop's.}}
+\DoxyCodeLine{00654\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00655\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00656\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00657\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00658\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00659\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00660\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___color_line__}{FT\_ColorLine\_}}}
+\DoxyCodeLine{00661\ \ \ \{}
+\DoxyCodeLine{00662\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a3d277478b7711ca59e0015c7c430e21f}{FT\_PaintExtend}}\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___color_line___a9cd2d1cc2f29f7a4fc725897c6e52f5d}{extend}};}
+\DoxyCodeLine{00663\ \ \ \ \ \mbox{\hyperlink{struct_f_t___color_stop_iterator__}{FT\_ColorStopIterator}}\ \ \mbox{\hyperlink{struct_f_t___color_line___a8ccab04cde6aeff7d472879438107619}{color\_stop\_iterator}};}
+\DoxyCodeLine{00664\ }
+\DoxyCodeLine{00665\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_aff176261476c36e5738aa5b6f3455fc7}{FT\_ColorLine}};}
+\DoxyCodeLine{00666\ }
+\DoxyCodeLine{00667\ }
+\DoxyCodeLine{00668\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00669\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00670\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00671\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Affine23}}
+\DoxyCodeLine{00672\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00673\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00674\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ used\ to\ store\ a\ 2x3\ matrix.\ \ Coefficients\ are\ in}}
+\DoxyCodeLine{00675\ \textcolor{comment}{\ \ \ *\ \ \ 16.16\ fixed-\/point\ format.\ \ The\ computation\ performed\ is}}
+\DoxyCodeLine{00676\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00677\ \textcolor{comment}{\ \ \ *\ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{00678\ \textcolor{comment}{\ \ \ *\ \ \ \ \ x'\ =\ x*xx\ +\ y*xy\ +\ dx}}
+\DoxyCodeLine{00679\ \textcolor{comment}{\ \ \ *\ \ \ \ \ y'\ =\ x*yx\ +\ y*yy\ +\ dy}}
+\DoxyCodeLine{00680\ \textcolor{comment}{\ \ \ *\ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{00681\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00682\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00683\ \textcolor{comment}{\ \ \ *\ \ \ xx\ ::}}
+\DoxyCodeLine{00684\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Matrix\ coefficient.}}
+\DoxyCodeLine{00685\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00686\ \textcolor{comment}{\ \ \ *\ \ \ xy\ ::}}
+\DoxyCodeLine{00687\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Matrix\ coefficient.}}
+\DoxyCodeLine{00688\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00689\ \textcolor{comment}{\ \ \ *\ \ \ dx\ ::}}
+\DoxyCodeLine{00690\ \textcolor{comment}{\ \ \ *\ \ \ \ \ x\ translation.}}
+\DoxyCodeLine{00691\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00692\ \textcolor{comment}{\ \ \ *\ \ \ yx\ ::}}
+\DoxyCodeLine{00693\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Matrix\ coefficient.}}
+\DoxyCodeLine{00694\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00695\ \textcolor{comment}{\ \ \ *\ \ \ yy\ ::}}
+\DoxyCodeLine{00696\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Matrix\ coefficient.}}
+\DoxyCodeLine{00697\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00698\ \textcolor{comment}{\ \ \ *\ \ \ dy\ ::}}
+\DoxyCodeLine{00699\ \textcolor{comment}{\ \ \ *\ \ \ \ \ y\ translation.}}
+\DoxyCodeLine{00700\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00701\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00702\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00703\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00704\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00705\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00706\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___affine__23__}{FT\_Affine\_23\_}}}
+\DoxyCodeLine{00707\ \ \ \{}
+\DoxyCodeLine{00708\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___affine__23___a72e3398887b02943605920d3ff580cdf}{xx}},\ \mbox{\hyperlink{struct_f_t___affine__23___a1042ae284ceed174ef70bd8ae0a98d73}{xy}},\ \mbox{\hyperlink{struct_f_t___affine__23___a8b921b7aeccb7d56b3e29cedc2340159}{dx}};}
+\DoxyCodeLine{00709\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___affine__23___abc35501e98d5f442a061f504aac42c8c}{yx}},\ \mbox{\hyperlink{struct_f_t___affine__23___a55456ad41cb17bad89da2966caa3165d}{yy}},\ \mbox{\hyperlink{struct_f_t___affine__23___a29cdfad466d224d40c1fa0272b9f5fce}{dy}};}
+\DoxyCodeLine{00710\ }
+\DoxyCodeLine{00711\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_aa771049e46052269e0b02cca018405e0}{FT\_Affine23}};}
+\DoxyCodeLine{00712\ }
+\DoxyCodeLine{00713\ }
+\DoxyCodeLine{00714\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00715\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00716\ \textcolor{comment}{\ \ \ *\ @enum:}}
+\DoxyCodeLine{00717\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Composite\_Mode}}
+\DoxyCodeLine{00718\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00719\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00720\ \textcolor{comment}{\ \ \ *\ \ \ An\ enumeration\ listing\ the\ 'COLR'\ v1\ composite\ modes\ used\ in}}
+\DoxyCodeLine{00721\ \textcolor{comment}{\ \ \ *\ \ \ @FT\_PaintComposite.\ \ For\ more\ details\ on\ each\ paint\ mode,\ see}}
+\DoxyCodeLine{00722\ \textcolor{comment}{\ \ \ *\ \ \ 'https://www.w3.org/TR/compositing-\/1/\#porterduffcompositingoperators'.}}
+\DoxyCodeLine{00723\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00724\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00725\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00726\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00727\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00728\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00729\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9b}{FT\_Composite\_Mode\_}}}
+\DoxyCodeLine{00730\ \ \ \{}
+\DoxyCodeLine{00731\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9bafe307aa91bd02116970fff1342c9a6d0}{FT\_COLR\_COMPOSITE\_CLEAR}}\ \ \ \ \ \ \ \ \ \ =\ 0,}
+\DoxyCodeLine{00732\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9bac2a105d434d61479279bc46a758cf633}{FT\_COLR\_COMPOSITE\_SRC}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 1,}
+\DoxyCodeLine{00733\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba41c64c1e995baffcdd278a6c4aa8b7ab}{FT\_COLR\_COMPOSITE\_DEST}}\ \ \ \ \ \ \ \ \ \ \ =\ 2,}
+\DoxyCodeLine{00734\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba3a868a7cd346b09a4e18bc3a1ff13a6b}{FT\_COLR\_COMPOSITE\_SRC\_OVER}}\ \ \ \ \ \ \ =\ 3,}
+\DoxyCodeLine{00735\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba98c4a80430f697f1801ab68c8f6dc333}{FT\_COLR\_COMPOSITE\_DEST\_OVER}}\ \ \ \ \ \ =\ 4,}
+\DoxyCodeLine{00736\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba1a12245eaa58a928607669d8a821943c}{FT\_COLR\_COMPOSITE\_SRC\_IN}}\ \ \ \ \ \ \ \ \ =\ 5,}
+\DoxyCodeLine{00737\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9bac90c1be2b2d57c783a7471d4e0cf80ef}{FT\_COLR\_COMPOSITE\_DEST\_IN}}\ \ \ \ \ \ \ \ =\ 6,}
+\DoxyCodeLine{00738\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba5b9a10bcf3958426319f5361722c7157}{FT\_COLR\_COMPOSITE\_SRC\_OUT}}\ \ \ \ \ \ \ \ =\ 7,}
+\DoxyCodeLine{00739\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9bac3c9f454aed90315602829e22f6d30a5}{FT\_COLR\_COMPOSITE\_DEST\_OUT}}\ \ \ \ \ \ \ =\ 8,}
+\DoxyCodeLine{00740\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba3b26a82865f2a2ee550772539be15503}{FT\_COLR\_COMPOSITE\_SRC\_ATOP}}\ \ \ \ \ \ \ =\ 9,}
+\DoxyCodeLine{00741\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9bacbbb5f1d8ef77cea36728aa742f9cafb}{FT\_COLR\_COMPOSITE\_DEST\_ATOP}}\ \ \ \ \ \ =\ 10,}
+\DoxyCodeLine{00742\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9bab7e80d3bf79e55381c5c0865a3e58bbd}{FT\_COLR\_COMPOSITE\_XOR}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 11,}
+\DoxyCodeLine{00743\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba068078f4b398093f20184b6daf507fd7}{FT\_COLR\_COMPOSITE\_PLUS}}\ \ \ \ \ \ \ \ \ \ \ =\ 12,}
+\DoxyCodeLine{00744\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba77fe68cd002c92c52b1e235861b86110}{FT\_COLR\_COMPOSITE\_SCREEN}}\ \ \ \ \ \ \ \ \ =\ 13,}
+\DoxyCodeLine{00745\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba42ce58754e37b5cec1dbf2c029887225}{FT\_COLR\_COMPOSITE\_OVERLAY}}\ \ \ \ \ \ \ \ =\ 14,}
+\DoxyCodeLine{00746\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba035499f782a5f01ab3985d1488072f92}{FT\_COLR\_COMPOSITE\_DARKEN}}\ \ \ \ \ \ \ \ \ =\ 15,}
+\DoxyCodeLine{00747\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9baf2cd980e27dbb6466b6b188abb31e711}{FT\_COLR\_COMPOSITE\_LIGHTEN}}\ \ \ \ \ \ \ \ =\ 16,}
+\DoxyCodeLine{00748\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba5f8cc94d0f140ed55154b4ac10228d13}{FT\_COLR\_COMPOSITE\_COLOR\_DODGE}}\ \ \ \ =\ 17,}
+\DoxyCodeLine{00749\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba8d081adab1b9765bc93deb1cbbd56eb8}{FT\_COLR\_COMPOSITE\_COLOR\_BURN}}\ \ \ \ \ =\ 18,}
+\DoxyCodeLine{00750\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba22da565b45630a235d2fafe16e277f2c}{FT\_COLR\_COMPOSITE\_HARD\_LIGHT}}\ \ \ \ \ =\ 19,}
+\DoxyCodeLine{00751\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9bafe5e0a81a9ae9f5d2efab260200d4e61}{FT\_COLR\_COMPOSITE\_SOFT\_LIGHT}}\ \ \ \ \ =\ 20,}
+\DoxyCodeLine{00752\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba067b4709fbbd68391eb6f5e75c19489f}{FT\_COLR\_COMPOSITE\_DIFFERENCE}}\ \ \ \ \ =\ 21,}
+\DoxyCodeLine{00753\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9bac583dcd692cca22e38b7044fd2f2a3fa}{FT\_COLR\_COMPOSITE\_EXCLUSION}}\ \ \ \ \ \ =\ 22,}
+\DoxyCodeLine{00754\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9bae1cfffeca5ded2038ec60202a6eeca63}{FT\_COLR\_COMPOSITE\_MULTIPLY}}\ \ \ \ \ \ \ =\ 23,}
+\DoxyCodeLine{00755\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba71b0eb70136f4b51553d965102fd2476}{FT\_COLR\_COMPOSITE\_HSL\_HUE}}\ \ \ \ \ \ \ \ =\ 24,}
+\DoxyCodeLine{00756\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9baa5ba4992d7194d351a0c0244e989a908}{FT\_COLR\_COMPOSITE\_HSL\_SATURATION}}\ =\ 25,}
+\DoxyCodeLine{00757\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9bae87c7af2ef3fdbee300fef283843e476}{FT\_COLR\_COMPOSITE\_HSL\_COLOR}}\ \ \ \ \ \ =\ 26,}
+\DoxyCodeLine{00758\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9bafc8bdfeaf6e857124badb54aa5be0ab2}{FT\_COLR\_COMPOSITE\_HSL\_LUMINOSITY}}\ =\ 27,}
+\DoxyCodeLine{00759\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a482c4a78fed65a7d3be2a0f42e175f9ba4c922413f2f9dd85550185e281830a29}{FT\_COLR\_COMPOSITE\_MAX}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 28}
+\DoxyCodeLine{00760\ }
+\DoxyCodeLine{00761\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a66777ff2ba75de8a4371f76e3362ffd5}{FT\_Composite\_Mode}};}
+\DoxyCodeLine{00762\ }
+\DoxyCodeLine{00763\ }
+\DoxyCodeLine{00764\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00765\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00766\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00767\ \textcolor{comment}{\ \ \ *\ \ \ FT\_OpaquePaint}}
+\DoxyCodeLine{00768\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00769\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00770\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ an\ offset\ to\ a\ \`{}Paint`\ value\ stored\ in\ any}}
+\DoxyCodeLine{00771\ \textcolor{comment}{\ \ \ *\ \ \ of\ the\ paint\ tables\ of\ a\ 'COLR'\ v1\ font.\ \ Compare\ Offset<24>\ there.}}
+\DoxyCodeLine{00772\ \textcolor{comment}{\ \ \ *\ \ \ When\ 'COLR'\ v1\ paint\ tables\ represented\ by\ FreeType\ objects\ such\ as}}
+\DoxyCodeLine{00773\ \textcolor{comment}{\ \ \ *\ \ \ @FT\_PaintColrLayers,\ @FT\_PaintComposite,\ or\ @FT\_PaintTransform}}
+\DoxyCodeLine{00774\ \textcolor{comment}{\ \ \ *\ \ \ reference\ downstream\ nested\ paint\ tables,\ we\ do\ not\ immediately}}
+\DoxyCodeLine{00775\ \textcolor{comment}{\ \ \ *\ \ \ retrieve\ them\ but\ encapsulate\ their\ location\ in\ this\ type.\ \ Use}}
+\DoxyCodeLine{00776\ \textcolor{comment}{\ \ \ *\ \ \ @FT\_Get\_Paint\ to\ retrieve\ the\ actual\ @FT\_COLR\_Paint\ object\ that}}
+\DoxyCodeLine{00777\ \textcolor{comment}{\ \ \ *\ \ \ describes\ the\ details\ of\ the\ respective\ paint\ table.}}
+\DoxyCodeLine{00778\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00779\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00780\ \textcolor{comment}{\ \ \ *\ \ \ p\ ::}}
+\DoxyCodeLine{00781\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ internal\ offset\ to\ a\ Paint\ table,\ needs\ to\ be\ set\ to\ NULL\ before}}
+\DoxyCodeLine{00782\ \textcolor{comment}{\ \ \ *\ \ \ \ \ passing\ this\ struct\ as\ an\ argument\ to\ @FT\_Get\_Paint.}}
+\DoxyCodeLine{00783\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00784\ \textcolor{comment}{\ \ \ *\ \ \ insert\_root\_transform\ ::}}
+\DoxyCodeLine{00785\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ internal\ boolean\ to\ track\ whether\ an\ initial\ root\ transform\ is}}
+\DoxyCodeLine{00786\ \textcolor{comment}{\ \ \ *\ \ \ \ \ to\ be\ provided.\ \ Do\ not\ set\ this\ value.}}
+\DoxyCodeLine{00787\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00788\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00789\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00790\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00791\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00792\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00793\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___opaque___paint__}{FT\_Opaque\_Paint\_}}}
+\DoxyCodeLine{00794\ \ \ \{}
+\DoxyCodeLine{00795\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a51f26183ca0c9f4af958939648caeccd}{FT\_Byte}}*\ \ \mbox{\hyperlink{struct_f_t___opaque___paint___ae74a6aa959d6435e111bdcb75f133a0d}{p}};}
+\DoxyCodeLine{00796\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a1a832a256bb5a7e6e884afaa1a07f3ae}{FT\_Bool}}\ \ \ \mbox{\hyperlink{struct_f_t___opaque___paint___aa5d0e146bf2a997b6b16e004290452f4}{insert\_root\_transform}};}
+\DoxyCodeLine{00797\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a45ae311cce6be947907c21c7b80d456e}{FT\_OpaquePaint}};}
+\DoxyCodeLine{00798\ }
+\DoxyCodeLine{00799\ }
+\DoxyCodeLine{00800\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00801\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00802\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00803\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintColrLayers}}
+\DoxyCodeLine{00804\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00805\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00806\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ \`{}PaintColrLayers`\ table\ of\ a\ 'COLR'\ v1}}
+\DoxyCodeLine{00807\ \textcolor{comment}{\ \ \ *\ \ \ font.\ \ This\ table\ describes\ a\ set\ of\ layers\ that\ are\ to\ be\ composited}}
+\DoxyCodeLine{00808\ \textcolor{comment}{\ \ \ *\ \ \ with\ composite\ mode\ \`{}FT\_COLR\_COMPOSITE\_SRC\_OVER`.\ \ The\ return\ value}}
+\DoxyCodeLine{00809\ \textcolor{comment}{\ \ \ *\ \ \ of\ this\ function\ is\ an\ @FT\_LayerIterator\ initialized\ so\ that\ it\ can}}
+\DoxyCodeLine{00810\ \textcolor{comment}{\ \ \ *\ \ \ be\ used\ with\ @FT\_Get\_Paint\_Layers\ to\ retrieve\ the\ @FT\_OpaquePaint}}
+\DoxyCodeLine{00811\ \textcolor{comment}{\ \ \ *\ \ \ objects\ as\ references\ to\ each\ layer.}}
+\DoxyCodeLine{00812\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00813\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00814\ \textcolor{comment}{\ \ \ *\ \ \ layer\_iterator\ ::}}
+\DoxyCodeLine{00815\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ layer\ iterator\ that\ describes\ the\ layers\ of\ this\ paint.}}
+\DoxyCodeLine{00816\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00817\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00818\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00819\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00820\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00821\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00822\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_colr_layers__}{FT\_PaintColrLayers\_}}}
+\DoxyCodeLine{00823\ \ \ \{}
+\DoxyCodeLine{00824\ \ \ \ \ \mbox{\hyperlink{struct_f_t___layer_iterator__}{FT\_LayerIterator}}\ \ \mbox{\hyperlink{struct_f_t___paint_colr_layers___a3db9c21ae21cf0794e13cdceb0b9af29}{layer\_iterator}};}
+\DoxyCodeLine{00825\ }
+\DoxyCodeLine{00826\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_aa8a05d48b0922e5197d4297046f8e01b}{FT\_PaintColrLayers}};}
+\DoxyCodeLine{00827\ }
+\DoxyCodeLine{00828\ }
+\DoxyCodeLine{00829\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00830\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00831\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00832\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintSolid}}
+\DoxyCodeLine{00833\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00834\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00835\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ \`{}PaintSolid`\ value\ of\ the\ 'COLR'\ v1}}
+\DoxyCodeLine{00836\ \textcolor{comment}{\ \ \ *\ \ \ extensions,\ see\ 'https://github.com/googlefonts/colr-\/gradients-\/spec'.}}
+\DoxyCodeLine{00837\ \textcolor{comment}{\ \ \ *\ \ \ Using\ a\ \`{}PaintSolid`\ value\ means\ that\ the\ glyph\ layer\ filled\ with}}
+\DoxyCodeLine{00838\ \textcolor{comment}{\ \ \ *\ \ \ this\ paint\ is\ solid-\/colored\ and\ does\ not\ contain\ a\ gradient.}}
+\DoxyCodeLine{00839\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00840\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00841\ \textcolor{comment}{\ \ \ *\ \ \ color\ ::}}
+\DoxyCodeLine{00842\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ color\ information\ for\ this\ solid\ paint,\ see\ @FT\_ColorIndex.}}
+\DoxyCodeLine{00843\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00844\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00845\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00846\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00847\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00848\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00849\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_solid__}{FT\_PaintSolid\_}}}
+\DoxyCodeLine{00850\ \ \ \{}
+\DoxyCodeLine{00851\ \ \ \ \ \mbox{\hyperlink{struct_f_t___color_index__}{FT\_ColorIndex}}\ \ \mbox{\hyperlink{struct_f_t___paint_solid___ad6a8ae2541a033a9f8ca603d98131bb9}{color}};}
+\DoxyCodeLine{00852\ }
+\DoxyCodeLine{00853\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a4ce3992e99699b1ea95ff5cafa441331}{FT\_PaintSolid}};}
+\DoxyCodeLine{00854\ }
+\DoxyCodeLine{00855\ }
+\DoxyCodeLine{00856\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00857\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00858\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00859\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintLinearGradient}}
+\DoxyCodeLine{00860\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00861\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00862\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ \`{}PaintLinearGradient`\ value\ of\ the\ 'COLR'}}
+\DoxyCodeLine{00863\ \textcolor{comment}{\ \ \ *\ \ \ v1\ extensions,\ see}}
+\DoxyCodeLine{00864\ \textcolor{comment}{\ \ \ *\ \ \ 'https://github.com/googlefonts/colr-\/gradients-\/spec'.\ \ The\ glyph}}
+\DoxyCodeLine{00865\ \textcolor{comment}{\ \ \ *\ \ \ layer\ filled\ with\ this\ paint\ is\ drawn\ filled\ with\ a\ linear\ gradient.}}
+\DoxyCodeLine{00866\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00867\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00868\ \textcolor{comment}{\ \ \ *\ \ \ colorline\ ::}}
+\DoxyCodeLine{00869\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ @FT\_ColorLine\ information\ for\ this\ paint,\ i.e.,\ the\ list\ of}}
+\DoxyCodeLine{00870\ \textcolor{comment}{\ \ \ *\ \ \ \ \ color\ stops\ along\ the\ gradient.}}
+\DoxyCodeLine{00871\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00872\ \textcolor{comment}{\ \ \ *\ \ \ p0\ ::}}
+\DoxyCodeLine{00873\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ starting\ point\ of\ the\ gradient\ definition\ in\ font\ units}}
+\DoxyCodeLine{00874\ \textcolor{comment}{\ \ \ *\ \ \ \ \ represented\ as\ a\ 16.16\ fixed-\/point\ \`{}FT\_Vector`.}}
+\DoxyCodeLine{00875\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00876\ \textcolor{comment}{\ \ \ *\ \ \ p1\ ::}}
+\DoxyCodeLine{00877\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ end\ point\ of\ the\ gradient\ definition\ in\ font\ units}}
+\DoxyCodeLine{00878\ \textcolor{comment}{\ \ \ *\ \ \ \ \ represented\ as\ a\ 16.16\ fixed-\/point\ \`{}FT\_Vector`.}}
+\DoxyCodeLine{00879\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00880\ \textcolor{comment}{\ \ \ *\ \ \ p2\ ::}}
+\DoxyCodeLine{00881\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Optional\ point\string~p2\ to\ rotate\ the\ gradient\ in\ font\ units}}
+\DoxyCodeLine{00882\ \textcolor{comment}{\ \ \ *\ \ \ \ \ represented\ as\ a\ 16.16\ fixed-\/point\ \`{}FT\_Vector`.}}
+\DoxyCodeLine{00883\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Otherwise\ equal\ to\string~p0.}}
+\DoxyCodeLine{00884\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00885\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00886\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00887\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00888\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00889\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00890\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_linear_gradient__}{FT\_PaintLinearGradient\_}}}
+\DoxyCodeLine{00891\ \ \ \{}
+\DoxyCodeLine{00892\ \ \ \ \ \mbox{\hyperlink{struct_f_t___color_line__}{FT\_ColorLine}}\ \ \mbox{\hyperlink{struct_f_t___paint_linear_gradient___af5f602c4e290a0763cb3a951e0ea1052}{colorline}};}
+\DoxyCodeLine{00893\ }
+\DoxyCodeLine{00894\ \ \ \ \ \textcolor{comment}{/*\ TODO:\ Potentially\ expose\ those\ as\ x0,\ y0\ etc.\ */}}
+\DoxyCodeLine{00895\ \ \ \ \ \mbox{\hyperlink{struct_f_t___vector__}{FT\_Vector}}\ \ \mbox{\hyperlink{struct_f_t___paint_linear_gradient___a271ab171f781bbf1c82f0527dba35346}{p0}};}
+\DoxyCodeLine{00896\ \ \ \ \ \mbox{\hyperlink{struct_f_t___vector__}{FT\_Vector}}\ \ \mbox{\hyperlink{struct_f_t___paint_linear_gradient___a54e8358aab37381eed9c9e8604dfde84}{p1}};}
+\DoxyCodeLine{00897\ \ \ \ \ \mbox{\hyperlink{struct_f_t___vector__}{FT\_Vector}}\ \ \mbox{\hyperlink{struct_f_t___paint_linear_gradient___a8c12206d60d4a0d5c1ca542095faf6c8}{p2}};}
+\DoxyCodeLine{00898\ }
+\DoxyCodeLine{00899\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a2602c7ecde19c614b49efcf0fcf6885b}{FT\_PaintLinearGradient}};}
+\DoxyCodeLine{00900\ }
+\DoxyCodeLine{00901\ }
+\DoxyCodeLine{00902\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00903\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00904\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00905\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintRadialGradient}}
+\DoxyCodeLine{00906\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00907\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00908\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ \`{}PaintRadialGradient`\ value\ of\ the\ 'COLR'}}
+\DoxyCodeLine{00909\ \textcolor{comment}{\ \ \ *\ \ \ v1\ extensions,\ see}}
+\DoxyCodeLine{00910\ \textcolor{comment}{\ \ \ *\ \ \ 'https://github.com/googlefonts/colr-\/gradients-\/spec'.\ \ The\ glyph}}
+\DoxyCodeLine{00911\ \textcolor{comment}{\ \ \ *\ \ \ layer\ filled\ with\ this\ paint\ is\ drawn\ filled\ filled\ with\ a\ radial}}
+\DoxyCodeLine{00912\ \textcolor{comment}{\ \ \ *\ \ \ gradient.}}
+\DoxyCodeLine{00913\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00914\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00915\ \textcolor{comment}{\ \ \ *\ \ \ colorline\ ::}}
+\DoxyCodeLine{00916\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ @FT\_ColorLine\ information\ for\ this\ paint,\ i.e.,\ the\ list\ of}}
+\DoxyCodeLine{00917\ \textcolor{comment}{\ \ \ *\ \ \ \ \ color\ stops\ along\ the\ gradient.}}
+\DoxyCodeLine{00918\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00919\ \textcolor{comment}{\ \ \ *\ \ \ c0\ ::}}
+\DoxyCodeLine{00920\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ center\ of\ the\ starting\ point\ of\ the\ radial\ gradient\ in\ font}}
+\DoxyCodeLine{00921\ \textcolor{comment}{\ \ \ *\ \ \ \ \ units\ represented\ as\ a\ 16.16\ fixed-\/point\ \`{}FT\_Vector`.}}
+\DoxyCodeLine{00922\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00923\ \textcolor{comment}{\ \ \ *\ \ \ r0\ ::}}
+\DoxyCodeLine{00924\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ radius\ of\ the\ starting\ circle\ of\ the\ radial\ gradient\ in\ font}}
+\DoxyCodeLine{00925\ \textcolor{comment}{\ \ \ *\ \ \ \ \ units\ represented\ as\ a\ 16.16\ fixed-\/point\ value.}}
+\DoxyCodeLine{00926\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00927\ \textcolor{comment}{\ \ \ *\ \ \ c1\ ::}}
+\DoxyCodeLine{00928\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ center\ of\ the\ end\ point\ of\ the\ radial\ gradient\ in\ font\ units}}
+\DoxyCodeLine{00929\ \textcolor{comment}{\ \ \ *\ \ \ \ \ represented\ as\ a\ 16.16\ fixed-\/point\ \`{}FT\_Vector`.}}
+\DoxyCodeLine{00930\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00931\ \textcolor{comment}{\ \ \ *\ \ \ r1\ ::}}
+\DoxyCodeLine{00932\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ radius\ of\ the\ end\ circle\ of\ the\ radial\ gradient\ in\ font}}
+\DoxyCodeLine{00933\ \textcolor{comment}{\ \ \ *\ \ \ \ \ units\ represented\ as\ a\ 16.16\ fixed-\/point\ value.}}
+\DoxyCodeLine{00934\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00935\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00936\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00937\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00938\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00939\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00940\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_radial_gradient__}{FT\_PaintRadialGradient\_}}}
+\DoxyCodeLine{00941\ \ \ \{}
+\DoxyCodeLine{00942\ \ \ \ \ \mbox{\hyperlink{struct_f_t___color_line__}{FT\_ColorLine}}\ \ \mbox{\hyperlink{struct_f_t___paint_radial_gradient___aed503e610709f2f56c667de66ce3411c}{colorline}};}
+\DoxyCodeLine{00943\ }
+\DoxyCodeLine{00944\ \ \ \ \ \mbox{\hyperlink{struct_f_t___vector__}{FT\_Vector}}\ \ \mbox{\hyperlink{struct_f_t___paint_radial_gradient___a0596f52eb4c34320bca63559c11a4f19}{c0}};}
+\DoxyCodeLine{00945\ \ \ \ \ \mbox{\hyperlink{ftimage_8h_af5f230f4b253d4c7715fd2e595614c90}{FT\_Pos}}\ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_radial_gradient___a70905736b122cdc82bc66f22e28cf37c}{r0}};}
+\DoxyCodeLine{00946\ \ \ \ \ \mbox{\hyperlink{struct_f_t___vector__}{FT\_Vector}}\ \ \mbox{\hyperlink{struct_f_t___paint_radial_gradient___a8118a7c0f3f5f6b19c034b1a5d48332b}{c1}};}
+\DoxyCodeLine{00947\ \ \ \ \ \mbox{\hyperlink{ftimage_8h_af5f230f4b253d4c7715fd2e595614c90}{FT\_Pos}}\ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_radial_gradient___abffaeb35bfef11cf5765fd7772685435}{r1}};}
+\DoxyCodeLine{00948\ }
+\DoxyCodeLine{00949\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a0f01a19e92c7ca0377e05d6e4630908b}{FT\_PaintRadialGradient}};}
+\DoxyCodeLine{00950\ }
+\DoxyCodeLine{00951\ }
+\DoxyCodeLine{00952\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00953\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00954\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00955\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintSweepGradient}}
+\DoxyCodeLine{00956\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00957\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00958\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ \`{}PaintSweepGradient`\ value\ of\ the\ 'COLR'}}
+\DoxyCodeLine{00959\ \textcolor{comment}{\ \ \ *\ \ \ v1\ extensions,\ see}}
+\DoxyCodeLine{00960\ \textcolor{comment}{\ \ \ *\ \ \ 'https://github.com/googlefonts/colr-\/gradients-\/spec'.\ \ The\ glyph}}
+\DoxyCodeLine{00961\ \textcolor{comment}{\ \ \ *\ \ \ layer\ filled\ with\ this\ paint\ is\ drawn\ filled\ with\ a\ sweep\ gradient}}
+\DoxyCodeLine{00962\ \textcolor{comment}{\ \ \ *\ \ \ from\ \`{}start\_angle`\ to\ \`{}end\_angle`.}}
+\DoxyCodeLine{00963\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00964\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00965\ \textcolor{comment}{\ \ \ *\ \ \ colorline\ ::}}
+\DoxyCodeLine{00966\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ @FT\_ColorLine\ information\ for\ this\ paint,\ i.e.,\ the\ list\ of}}
+\DoxyCodeLine{00967\ \textcolor{comment}{\ \ \ *\ \ \ \ \ color\ stops\ along\ the\ gradient.}}
+\DoxyCodeLine{00968\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00969\ \textcolor{comment}{\ \ \ *\ \ \ center\ ::}}
+\DoxyCodeLine{00970\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ center\ of\ the\ sweep\ gradient\ in\ font\ units\ represented\ as\ a}}
+\DoxyCodeLine{00971\ \textcolor{comment}{\ \ \ *\ \ \ \ \ vector\ of\ 16.16\ fixed-\/point\ values.}}
+\DoxyCodeLine{00972\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00973\ \textcolor{comment}{\ \ \ *\ \ \ start\_angle\ ::}}
+\DoxyCodeLine{00974\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ start\ angle\ of\ the\ sweep\ gradient\ in\ 16.16\ fixed-\/point}}
+\DoxyCodeLine{00975\ \textcolor{comment}{\ \ \ *\ \ \ \ \ format\ specifying\ degrees\ divided\ by\ 180.0\ (as\ in\ the}}
+\DoxyCodeLine{00976\ \textcolor{comment}{\ \ \ *\ \ \ \ \ spec).\ \ Multiply\ by\ 180.0f\ to\ receive\ degrees\ value.\ \ Values\ are}}
+\DoxyCodeLine{00977\ \textcolor{comment}{\ \ \ *\ \ \ \ \ given\ counter-\/clockwise,\ starting\ from\ the\ (positive)\ y\string~axis.}}
+\DoxyCodeLine{00978\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00979\ \textcolor{comment}{\ \ \ *\ \ \ end\_angle\ ::}}
+\DoxyCodeLine{00980\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ end\ angle\ of\ the\ sweep\ gradient\ in\ 16.16\ fixed-\/point}}
+\DoxyCodeLine{00981\ \textcolor{comment}{\ \ \ *\ \ \ \ \ format\ specifying\ degrees\ divided\ by\ 180.0\ (as\ in\ the}}
+\DoxyCodeLine{00982\ \textcolor{comment}{\ \ \ *\ \ \ \ \ spec).\ \ Multiply\ by\ 180.0f\ to\ receive\ degrees\ value.\ \ Values\ are}}
+\DoxyCodeLine{00983\ \textcolor{comment}{\ \ \ *\ \ \ \ \ given\ counter-\/clockwise,\ starting\ from\ the\ (positive)\ y\string~axis.}}
+\DoxyCodeLine{00984\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00985\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{00986\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{00987\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{00988\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00989\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00990\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_sweep_gradient__}{FT\_PaintSweepGradient\_}}}
+\DoxyCodeLine{00991\ \ \ \{}
+\DoxyCodeLine{00992\ \ \ \ \ \mbox{\hyperlink{struct_f_t___color_line__}{FT\_ColorLine}}\ \ \mbox{\hyperlink{struct_f_t___paint_sweep_gradient___aae83a46fb5ebde4489ba65247cbbb2c7}{colorline}};}
+\DoxyCodeLine{00993\ }
+\DoxyCodeLine{00994\ \ \ \ \ \mbox{\hyperlink{struct_f_t___vector__}{FT\_Vector}}\ \ \mbox{\hyperlink{struct_f_t___paint_sweep_gradient___a6ce34525f37243ff4cf713e1d2df3713}{center}};}
+\DoxyCodeLine{00995\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \ \mbox{\hyperlink{struct_f_t___paint_sweep_gradient___ab588ee22d1e784a9016d84daa9556cc8}{start\_angle}};}
+\DoxyCodeLine{00996\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \ \mbox{\hyperlink{struct_f_t___paint_sweep_gradient___a1fe7762fe8f344291b8f8236196a28bb}{end\_angle}};}
+\DoxyCodeLine{00997\ }
+\DoxyCodeLine{00998\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a02d884d3b3e8c668186a69634a53efe7}{FT\_PaintSweepGradient}};}
+\DoxyCodeLine{00999\ }
+\DoxyCodeLine{01000\ }
+\DoxyCodeLine{01001\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01002\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01003\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{01004\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintGlyph}}
+\DoxyCodeLine{01005\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01006\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01007\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ 'COLR'\ v1\ \`{}PaintGlyph`\ paint\ table.}}
+\DoxyCodeLine{01008\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01009\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{01010\ \textcolor{comment}{\ \ \ *\ \ \ paint\ ::}}
+\DoxyCodeLine{01011\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ opaque\ paint\ object\ pointing\ to\ a\ \`{}Paint`\ table\ that\ serves\ as}}
+\DoxyCodeLine{01012\ \textcolor{comment}{\ \ \ *\ \ \ \ \ the\ fill\ for\ the\ glyph\ ID.}}
+\DoxyCodeLine{01013\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01014\ \textcolor{comment}{\ \ \ *\ \ \ glyphID\ ::}}
+\DoxyCodeLine{01015\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ glyph\ ID\ from\ the\ 'glyf'\ table,\ which\ serves\ as\ the\ contour}}
+\DoxyCodeLine{01016\ \textcolor{comment}{\ \ \ *\ \ \ \ \ information\ that\ is\ filled\ with\ paint.}}
+\DoxyCodeLine{01017\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01018\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01019\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01020\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01021\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01022\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01023\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_glyph__}{FT\_PaintGlyph\_}}}
+\DoxyCodeLine{01024\ \ \ \{}
+\DoxyCodeLine{01025\ \ \ \ \ \mbox{\hyperlink{struct_f_t___opaque___paint__}{FT\_OpaquePaint}}\ \ \mbox{\hyperlink{struct_f_t___paint_glyph___ad413042cb36e43446eb88659b397ffe0}{paint}};}
+\DoxyCodeLine{01026\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_abcb8db4dbf35d2b55a9e8c7b0926dc52}{FT\_UInt}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_glyph___a670c80f328ea8982d29ba0e9e6c56421}{glyphID}};}
+\DoxyCodeLine{01027\ }
+\DoxyCodeLine{01028\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_aaa8fb7aa1fe7c03e715f3dd169c66d63}{FT\_PaintGlyph}};}
+\DoxyCodeLine{01029\ }
+\DoxyCodeLine{01030\ }
+\DoxyCodeLine{01031\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01032\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01033\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{01034\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintColrGlyph}}
+\DoxyCodeLine{01035\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01036\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01037\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ 'COLR'\ v1\ \`{}PaintColorGlyph`\ paint\ table.}}
+\DoxyCodeLine{01038\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01039\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{01040\ \textcolor{comment}{\ \ \ *\ \ \ glyphID\ ::}}
+\DoxyCodeLine{01041\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ glyph\ ID\ from\ the\ \`{}BaseGlyphV1List`\ table\ that\ is\ drawn\ for}}
+\DoxyCodeLine{01042\ \textcolor{comment}{\ \ \ *\ \ \ \ \ this\ paint.}}
+\DoxyCodeLine{01043\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01044\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01045\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01046\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01047\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01048\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01049\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_colr_glyph__}{FT\_PaintColrGlyph\_}}}
+\DoxyCodeLine{01050\ \ \ \{}
+\DoxyCodeLine{01051\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_abcb8db4dbf35d2b55a9e8c7b0926dc52}{FT\_UInt}}\ \ \mbox{\hyperlink{struct_f_t___paint_colr_glyph___ace87e868d3a1c5a32dc7f18b5cc48a1e}{glyphID}};}
+\DoxyCodeLine{01052\ }
+\DoxyCodeLine{01053\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a41792c176574ea772788593158c53dd3}{FT\_PaintColrGlyph}};}
+\DoxyCodeLine{01054\ }
+\DoxyCodeLine{01055\ }
+\DoxyCodeLine{01056\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01057\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01058\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{01059\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintTransform}}
+\DoxyCodeLine{01060\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01061\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01062\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ 'COLR'\ v1\ \`{}PaintTransform`\ paint\ table.}}
+\DoxyCodeLine{01063\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01064\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{01065\ \textcolor{comment}{\ \ \ *\ \ \ paint\ ::}}
+\DoxyCodeLine{01066\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ opaque\ paint\ that\ is\ subject\ to\ being\ transformed.}}
+\DoxyCodeLine{01067\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01068\ \textcolor{comment}{\ \ \ *\ \ \ affine\ ::}}
+\DoxyCodeLine{01069\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ 2x3\ transformation\ matrix\ in\ @FT\_Affine23\ format\ containing}}
+\DoxyCodeLine{01070\ \textcolor{comment}{\ \ \ *\ \ \ \ \ 16.16\ fixed-\/point\ values.}}
+\DoxyCodeLine{01071\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01072\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01073\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01074\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01075\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01076\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01077\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_transform__}{FT\_PaintTransform\_}}}
+\DoxyCodeLine{01078\ \ \ \{}
+\DoxyCodeLine{01079\ \ \ \ \ \mbox{\hyperlink{struct_f_t___opaque___paint__}{FT\_OpaquePaint}}\ \ \mbox{\hyperlink{struct_f_t___paint_transform___acec90a92796c5cdff0ebb3c48edcd59b}{paint}};}
+\DoxyCodeLine{01080\ \ \ \ \ \mbox{\hyperlink{struct_f_t___affine__23__}{FT\_Affine23}}\ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_transform___a760e6982a8e5618e7fbf1ba200e24387}{affine}};}
+\DoxyCodeLine{01081\ }
+\DoxyCodeLine{01082\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a406c2e504551bf0f943e3af4c8e33ee8}{FT\_PaintTransform}};}
+\DoxyCodeLine{01083\ }
+\DoxyCodeLine{01084\ }
+\DoxyCodeLine{01085\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01086\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01087\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{01088\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintTranslate}}
+\DoxyCodeLine{01089\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01090\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01091\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ 'COLR'\ v1\ \`{}PaintTranslate`\ paint\ table.}}
+\DoxyCodeLine{01092\ \textcolor{comment}{\ \ \ *\ \ \ Used\ for\ translating\ downstream\ paints\ by\ a\ given\ x\ and\ y\string~delta.}}
+\DoxyCodeLine{01093\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01094\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{01095\ \textcolor{comment}{\ \ \ *\ \ \ paint\ ::}}
+\DoxyCodeLine{01096\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ @FT\_OpaquePaint\ object\ referencing\ the\ paint\ that\ is\ to\ be}}
+\DoxyCodeLine{01097\ \textcolor{comment}{\ \ \ *\ \ \ \ \ rotated.}}
+\DoxyCodeLine{01098\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01099\ \textcolor{comment}{\ \ \ *\ \ \ dx\ ::}}
+\DoxyCodeLine{01100\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Translation\ in\ x\string~direction\ in\ font\ units\ represented\ as\ a}}
+\DoxyCodeLine{01101\ \textcolor{comment}{\ \ \ *\ \ \ \ \ 16.16\ fixed-\/point\ value.}}
+\DoxyCodeLine{01102\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01103\ \textcolor{comment}{\ \ \ *\ \ \ dy\ ::}}
+\DoxyCodeLine{01104\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Translation\ in\ y\string~direction\ in\ font\ units\ represented\ as\ a}}
+\DoxyCodeLine{01105\ \textcolor{comment}{\ \ \ *\ \ \ \ \ 16.16\ fixed-\/point\ value.}}
+\DoxyCodeLine{01106\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01107\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01108\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01109\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01110\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01111\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01112\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_translate__}{FT\_PaintTranslate\_}}}
+\DoxyCodeLine{01113\ \ \ \{}
+\DoxyCodeLine{01114\ \ \ \ \ \mbox{\hyperlink{struct_f_t___opaque___paint__}{FT\_OpaquePaint}}\ \ \mbox{\hyperlink{struct_f_t___paint_translate___af13b7dd7ff93dba79081e7cc70a3451d}{paint}};}
+\DoxyCodeLine{01115\ }
+\DoxyCodeLine{01116\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_translate___a4a896b58e4a89c6b28b20ed7ef5c73d5}{dx}};}
+\DoxyCodeLine{01117\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_translate___a6b66418a6922e393b65b6326cdc68a9e}{dy}};}
+\DoxyCodeLine{01118\ }
+\DoxyCodeLine{01119\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a33fbee0be42147463c694be5afd70c0f}{FT\_PaintTranslate}};}
+\DoxyCodeLine{01120\ }
+\DoxyCodeLine{01121\ }
+\DoxyCodeLine{01122\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01123\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01124\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{01125\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintScale}}
+\DoxyCodeLine{01126\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01127\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01128\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ all\ of\ the\ 'COLR'\ v1\ 'PaintScale*'\ paint}}
+\DoxyCodeLine{01129\ \textcolor{comment}{\ \ \ *\ \ \ tables.\ \ Used\ for\ scaling\ downstream\ paints\ by\ a\ given\ x\ and\ y\string~scale,}}
+\DoxyCodeLine{01130\ \textcolor{comment}{\ \ \ *\ \ \ with\ a\ given\ center.\ \ This\ structure\ is\ used\ for\ all\ 'PaintScale*'}}
+\DoxyCodeLine{01131\ \textcolor{comment}{\ \ \ *\ \ \ types\ that\ are\ part\ of\ specification;\ fields\ of\ this\ structure\ are}}
+\DoxyCodeLine{01132\ \textcolor{comment}{\ \ \ *\ \ \ filled\ accordingly.\ \ If\ there\ is\ a\ center,\ the\ center\ values\ are\ set,}}
+\DoxyCodeLine{01133\ \textcolor{comment}{\ \ \ *\ \ \ otherwise\ they\ are\ set\ to\ the\ zero\ coordinate.\ \ If\ the\ source\ font}}
+\DoxyCodeLine{01134\ \textcolor{comment}{\ \ \ *\ \ \ file\ has\ 'PaintScaleUniform*'\ set,\ the\ scale\ values\ are\ set}}
+\DoxyCodeLine{01135\ \textcolor{comment}{\ \ \ *\ \ \ accordingly\ to\ the\ same\ value.}}
+\DoxyCodeLine{01136\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01137\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{01138\ \textcolor{comment}{\ \ \ *\ \ \ paint\ ::}}
+\DoxyCodeLine{01139\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ @FT\_OpaquePaint\ object\ referencing\ the\ paint\ that\ is\ to\ be}}
+\DoxyCodeLine{01140\ \textcolor{comment}{\ \ \ *\ \ \ \ \ scaled.}}
+\DoxyCodeLine{01141\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01142\ \textcolor{comment}{\ \ \ *\ \ \ scale\_x\ ::}}
+\DoxyCodeLine{01143\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Scale\ factor\ in\ x\string~direction\ represented\ as\ a}}
+\DoxyCodeLine{01144\ \textcolor{comment}{\ \ \ *\ \ \ \ \ 16.16\ fixed-\/point\ value.}}
+\DoxyCodeLine{01145\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01146\ \textcolor{comment}{\ \ \ *\ \ \ scale\_y\ ::}}
+\DoxyCodeLine{01147\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Scale\ factor\ in\ y\string~direction\ represented\ as\ a}}
+\DoxyCodeLine{01148\ \textcolor{comment}{\ \ \ *\ \ \ \ \ 16.16\ fixed-\/point\ value.}}
+\DoxyCodeLine{01149\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01150\ \textcolor{comment}{\ \ \ *\ \ \ center\_x\ ::}}
+\DoxyCodeLine{01151\ \textcolor{comment}{\ \ \ *\ \ \ \ \ x\string~coordinate\ of\ center\ point\ to\ scale\ from\ represented\ as\ a}}
+\DoxyCodeLine{01152\ \textcolor{comment}{\ \ \ *\ \ \ \ \ 16.16\ fixed-\/point\ value.}}
+\DoxyCodeLine{01153\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01154\ \textcolor{comment}{\ \ \ *\ \ \ center\_y\ ::}}
+\DoxyCodeLine{01155\ \textcolor{comment}{\ \ \ *\ \ \ \ \ y\string~coordinate\ of\ center\ point\ to\ scale\ from\ represented\ as\ a}}
+\DoxyCodeLine{01156\ \textcolor{comment}{\ \ \ *\ \ \ \ \ 16.16\ fixed-\/point\ value.}}
+\DoxyCodeLine{01157\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01158\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01159\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01160\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward-\/compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01161\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01162\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01163\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_scale__}{FT\_PaintScale\_}}}
+\DoxyCodeLine{01164\ \ \ \{}
+\DoxyCodeLine{01165\ \ \ \ \ \mbox{\hyperlink{struct_f_t___opaque___paint__}{FT\_OpaquePaint}}\ \ \mbox{\hyperlink{struct_f_t___paint_scale___a56881e5265e9710eab206528d1f33c49}{paint}};}
+\DoxyCodeLine{01166\ }
+\DoxyCodeLine{01167\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_scale___a4734794a94b8834de0b34cfd2ec7c60c}{scale\_x}};}
+\DoxyCodeLine{01168\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_scale___af46719043bad78792b9fe7c27b21b408}{scale\_y}};}
+\DoxyCodeLine{01169\ }
+\DoxyCodeLine{01170\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_scale___afc92f7df24f813d985774c57e3876e30}{center\_x}};}
+\DoxyCodeLine{01171\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_scale___a08b230bf135d62f8836eee46f779090c}{center\_y}};}
+\DoxyCodeLine{01172\ }
+\DoxyCodeLine{01173\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_ad0f0b03c7c568a2b1819763f2018001c}{FT\_PaintScale}};}
+\DoxyCodeLine{01174\ }
+\DoxyCodeLine{01175\ }
+\DoxyCodeLine{01176\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01177\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01178\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{01179\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintRotate}}
+\DoxyCodeLine{01180\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01181\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01182\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ 'COLR'\ v1\ \`{}PaintRotate`\ paint\ table.\ \ Used}}
+\DoxyCodeLine{01183\ \textcolor{comment}{\ \ \ *\ \ \ for\ rotating\ downstream\ paints\ with\ a\ given\ center\ and\ angle.}}
+\DoxyCodeLine{01184\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01185\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{01186\ \textcolor{comment}{\ \ \ *\ \ \ paint\ ::}}
+\DoxyCodeLine{01187\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ @FT\_OpaquePaint\ object\ referencing\ the\ paint\ that\ is\ to\ be}}
+\DoxyCodeLine{01188\ \textcolor{comment}{\ \ \ *\ \ \ \ \ rotated.}}
+\DoxyCodeLine{01189\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01190\ \textcolor{comment}{\ \ \ *\ \ \ angle\ ::}}
+\DoxyCodeLine{01191\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ rotation\ angle\ that\ is\ to\ be\ applied\ in\ degrees\ divided\ by}}
+\DoxyCodeLine{01192\ \textcolor{comment}{\ \ \ *\ \ \ \ \ 180.0\ (as\ in\ the\ spec)\ represented\ as\ a\ 16.16\ fixed-\/point}}
+\DoxyCodeLine{01193\ \textcolor{comment}{\ \ \ *\ \ \ \ \ value.\ \ Multiply\ by\ 180.0f\ to\ receive\ degrees\ value.}}
+\DoxyCodeLine{01194\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01195\ \textcolor{comment}{\ \ \ *\ \ \ center\_x\ ::}}
+\DoxyCodeLine{01196\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ x\string~coordinate\ of\ the\ pivot\ point\ of\ the\ rotation\ in\ font}}
+\DoxyCodeLine{01197\ \textcolor{comment}{\ \ \ *\ \ \ \ \ units)\ represented\ as\ a\ 16.16\ fixed-\/point\ value.}}
+\DoxyCodeLine{01198\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01199\ \textcolor{comment}{\ \ \ *\ \ \ center\_y\ ::}}
+\DoxyCodeLine{01200\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ y\string~coordinate\ of\ the\ pivot\ point\ of\ the\ rotation\ in\ font}}
+\DoxyCodeLine{01201\ \textcolor{comment}{\ \ \ *\ \ \ \ \ units\ represented\ as\ a\ 16.16\ fixed-\/point\ value.}}
+\DoxyCodeLine{01202\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01203\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01204\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01205\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01206\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01207\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01208\ }
+\DoxyCodeLine{01209\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_rotate__}{FT\_PaintRotate\_}}}
+\DoxyCodeLine{01210\ \ \ \{}
+\DoxyCodeLine{01211\ \ \ \ \ \mbox{\hyperlink{struct_f_t___opaque___paint__}{FT\_OpaquePaint}}\ \ \mbox{\hyperlink{struct_f_t___paint_rotate___a91da4043686553a3a9dc00d4d0327555}{paint}};}
+\DoxyCodeLine{01212\ }
+\DoxyCodeLine{01213\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_rotate___a00dba7d6966d25ba1607887219249d74}{angle}};}
+\DoxyCodeLine{01214\ }
+\DoxyCodeLine{01215\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_rotate___a640612b5e1dcb50ce603e5f4bbf02e38}{center\_x}};}
+\DoxyCodeLine{01216\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_rotate___a0d86876e1ae0f24bc3ca59f9fcd7f37e}{center\_y}};}
+\DoxyCodeLine{01217\ }
+\DoxyCodeLine{01218\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a9f842c1359fc4bd2f7451a56bc3378eb}{FT\_PaintRotate}};}
+\DoxyCodeLine{01219\ }
+\DoxyCodeLine{01220\ }
+\DoxyCodeLine{01221\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01222\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01223\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{01224\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintSkew}}
+\DoxyCodeLine{01225\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01226\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01227\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ 'COLR'\ v1\ \`{}PaintSkew`\ paint\ table.\ \ Used}}
+\DoxyCodeLine{01228\ \textcolor{comment}{\ \ \ *\ \ \ for\ skewing\ or\ shearing\ downstream\ paints\ by\ a\ given\ center\ and}}
+\DoxyCodeLine{01229\ \textcolor{comment}{\ \ \ *\ \ \ angle.}}
+\DoxyCodeLine{01230\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01231\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{01232\ \textcolor{comment}{\ \ \ *\ \ \ paint\ ::}}
+\DoxyCodeLine{01233\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ @FT\_OpaquePaint\ object\ referencing\ the\ paint\ that\ is\ to\ be}}
+\DoxyCodeLine{01234\ \textcolor{comment}{\ \ \ *\ \ \ \ \ skewed.}}
+\DoxyCodeLine{01235\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01236\ \textcolor{comment}{\ \ \ *\ \ \ x\_skew\_angle\ ::}}
+\DoxyCodeLine{01237\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ skewing\ angle\ in\ x\string~direction\ in\ degrees\ divided\ by\ 180.0}}
+\DoxyCodeLine{01238\ \textcolor{comment}{\ \ \ *\ \ \ \ \ (as\ in\ the\ spec)\ represented\ as\ a\ 16.16\ fixed-\/point}}
+\DoxyCodeLine{01239\ \textcolor{comment}{\ \ \ *\ \ \ \ \ value.\ Multiply\ by\ 180.0f\ to\ receive\ degrees.}}
+\DoxyCodeLine{01240\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01241\ \textcolor{comment}{\ \ \ *\ \ \ y\_skew\_angle\ ::}}
+\DoxyCodeLine{01242\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ skewing\ angle\ in\ y\string~direction\ in\ degrees\ divided\ by\ 180.0}}
+\DoxyCodeLine{01243\ \textcolor{comment}{\ \ \ *\ \ \ \ \ (as\ in\ the\ spec)\ represented\ as\ a\ 16.16\ fixed-\/point}}
+\DoxyCodeLine{01244\ \textcolor{comment}{\ \ \ *\ \ \ \ \ value.\ \ Multiply\ by\ 180.0f\ to\ receive\ degrees.}}
+\DoxyCodeLine{01245\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01246\ \textcolor{comment}{\ \ \ *\ \ \ center\_x\ ::}}
+\DoxyCodeLine{01247\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ x\string~coordinate\ of\ the\ pivot\ point\ of\ the\ skew\ in\ font\ units}}
+\DoxyCodeLine{01248\ \textcolor{comment}{\ \ \ *\ \ \ \ \ represented\ as\ a\ 16.16\ fixed-\/point\ value.}}
+\DoxyCodeLine{01249\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01250\ \textcolor{comment}{\ \ \ *\ \ \ center\_y\ ::}}
+\DoxyCodeLine{01251\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ y\string~coordinate\ of\ the\ pivot\ point\ of\ the\ skew\ in\ font\ units}}
+\DoxyCodeLine{01252\ \textcolor{comment}{\ \ \ *\ \ \ \ \ represented\ as\ a\ 16.16\ fixed-\/point\ value.}}
+\DoxyCodeLine{01253\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01254\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01255\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01256\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01257\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01258\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01259\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_skew__}{FT\_PaintSkew\_}}}
+\DoxyCodeLine{01260\ \ \ \{}
+\DoxyCodeLine{01261\ \ \ \ \ \mbox{\hyperlink{struct_f_t___opaque___paint__}{FT\_OpaquePaint}}\ \ \mbox{\hyperlink{struct_f_t___paint_skew___aa3be4a1b7c615ef40825736149fd3245}{paint}};}
+\DoxyCodeLine{01262\ }
+\DoxyCodeLine{01263\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_skew___a7cae75fcdfec89ef78ae59ecd793247d}{x\_skew\_angle}};}
+\DoxyCodeLine{01264\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_skew___a66a29259af9fee3c9b70a5c913487b39}{y\_skew\_angle}};}
+\DoxyCodeLine{01265\ }
+\DoxyCodeLine{01266\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_skew___a31edf22656a133209b59abb4680de083}{center\_x}};}
+\DoxyCodeLine{01267\ \ \ \ \ \mbox{\hyperlink{fttypes_8h_a5f5a679cc09f758efdd0d1c5feed3c3d}{FT\_Fixed}}\ \ \mbox{\hyperlink{struct_f_t___paint_skew___a5deaae29030b8c415a73c126ab6a29a4}{center\_y}};}
+\DoxyCodeLine{01268\ }
+\DoxyCodeLine{01269\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a7ee67a8ac20b7a9c96ae43dbea8e2109}{FT\_PaintSkew}};}
+\DoxyCodeLine{01270\ }
+\DoxyCodeLine{01271\ }
+\DoxyCodeLine{01272\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01273\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01274\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{01275\ \textcolor{comment}{\ \ \ *\ \ \ FT\_PaintComposite}}
+\DoxyCodeLine{01276\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01277\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01278\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ 'COLR'v1\ \`{}PaintComposite`\ paint\ table.}}
+\DoxyCodeLine{01279\ \textcolor{comment}{\ \ \ *\ \ \ Used\ for\ compositing\ two\ paints\ in\ a\ 'COLR'\ v1\ directed\ acycling}}
+\DoxyCodeLine{01280\ \textcolor{comment}{\ \ \ *\ \ \ graph.}}
+\DoxyCodeLine{01281\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01282\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{01283\ \textcolor{comment}{\ \ \ *\ \ \ source\_paint\ ::}}
+\DoxyCodeLine{01284\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ @FT\_OpaquePaint\ object\ referencing\ the\ source\ that\ is\ to\ be}}
+\DoxyCodeLine{01285\ \textcolor{comment}{\ \ \ *\ \ \ \ \ composited.}}
+\DoxyCodeLine{01286\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01287\ \textcolor{comment}{\ \ \ *\ \ \ composite\_mode\ ::}}
+\DoxyCodeLine{01288\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ @FT\_Composite\_Mode\ enum\ value\ determining\ the\ composition}}
+\DoxyCodeLine{01289\ \textcolor{comment}{\ \ \ *\ \ \ \ \ operation.}}
+\DoxyCodeLine{01290\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01291\ \textcolor{comment}{\ \ \ *\ \ \ backdrop\_paint\ ::}}
+\DoxyCodeLine{01292\ \textcolor{comment}{\ \ \ *\ \ \ \ \ An\ @FT\_OpaquePaint\ object\ referencing\ the\ backdrop\ paint\ that}}
+\DoxyCodeLine{01293\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \`{}source\_paint`\ is\ composited\ onto.}}
+\DoxyCodeLine{01294\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01295\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01296\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01297\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01298\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01299\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01300\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___paint_composite__}{FT\_PaintComposite\_}}}
+\DoxyCodeLine{01301\ \ \ \{}
+\DoxyCodeLine{01302\ \ \ \ \ \mbox{\hyperlink{struct_f_t___opaque___paint__}{FT\_OpaquePaint}}\ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_composite___a6e532893220599702051b80a9cc053ef}{source\_paint}};}
+\DoxyCodeLine{01303\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a66777ff2ba75de8a4371f76e3362ffd5}{FT\_Composite\_Mode}}\ \ \mbox{\hyperlink{struct_f_t___paint_composite___ad78ceb77cafc42b013ef4d3b1cd3da9e}{composite\_mode}};}
+\DoxyCodeLine{01304\ \ \ \ \ \mbox{\hyperlink{struct_f_t___opaque___paint__}{FT\_OpaquePaint}}\ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_composite___a570e79b2f37d1b50059ab526ce23fa6e}{backdrop\_paint}};}
+\DoxyCodeLine{01305\ }
+\DoxyCodeLine{01306\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_aae5fa7dd4bc703aba3febda6fd568dc1}{FT\_PaintComposite}};}
+\DoxyCodeLine{01307\ }
+\DoxyCodeLine{01308\ }
+\DoxyCodeLine{01309\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01310\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01311\ \textcolor{comment}{\ \ \ *\ @union:}}
+\DoxyCodeLine{01312\ \textcolor{comment}{\ \ \ *\ \ \ FT\_COLR\_Paint}}
+\DoxyCodeLine{01313\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01314\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01315\ \textcolor{comment}{\ \ \ *\ \ \ A\ union\ object\ representing\ format\ and\ details\ of\ a\ paint\ table\ of\ a}}
+\DoxyCodeLine{01316\ \textcolor{comment}{\ \ \ *\ \ \ 'COLR'\ v1\ font,\ see}}
+\DoxyCodeLine{01317\ \textcolor{comment}{\ \ \ *\ \ \ 'https://github.com/googlefonts/colr-\/gradients-\/spec'.\ \ Use}}
+\DoxyCodeLine{01318\ \textcolor{comment}{\ \ \ *\ \ \ @FT\_Get\_Paint\ to\ retrieve\ a\ @FT\_COLR\_Paint\ for\ an\ @FT\_OpaquePaint}}
+\DoxyCodeLine{01319\ \textcolor{comment}{\ \ \ *\ \ \ object.}}
+\DoxyCodeLine{01320\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01321\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{01322\ \textcolor{comment}{\ \ \ *\ \ \ format\ ::}}
+\DoxyCodeLine{01323\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ gradient\ format\ for\ this\ Paint\ structure.}}
+\DoxyCodeLine{01324\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01325\ \textcolor{comment}{\ \ \ *\ \ \ u\ ::}}
+\DoxyCodeLine{01326\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Union\ of\ all\ paint\ table\ types:}}
+\DoxyCodeLine{01327\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01328\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ *\ @FT\_PaintColrLayers}}
+\DoxyCodeLine{01329\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ *\ @FT\_PaintGlyph}}
+\DoxyCodeLine{01330\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ *\ @FT\_PaintSolid}}
+\DoxyCodeLine{01331\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ *\ @FT\_PaintLinearGradient}}
+\DoxyCodeLine{01332\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ *\ @FT\_PaintRadialGradient}}
+\DoxyCodeLine{01333\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ *\ @FT\_PaintSweepGradient}}
+\DoxyCodeLine{01334\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ *\ @FT\_PaintTransform}}
+\DoxyCodeLine{01335\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ *\ @FT\_PaintTranslate}}
+\DoxyCodeLine{01336\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ *\ @FT\_PaintRotate}}
+\DoxyCodeLine{01337\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ *\ @FT\_PaintSkew}}
+\DoxyCodeLine{01338\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ *\ @FT\_PaintComposite}}
+\DoxyCodeLine{01339\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ *\ @FT\_PaintColrGlyph}}
+\DoxyCodeLine{01340\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01341\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01342\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01343\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01344\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01345\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01346\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___c_o_l_r___paint__}{FT\_COLR\_Paint\_}}}
+\DoxyCodeLine{01347\ \ \ \{}
+\DoxyCodeLine{01348\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a0331dcc20db22cd8164ddbe0a6d6eaeb}{FT\_PaintFormat}}\ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___a70ce68d9fa2242348378fe7128ee0d0a}{format}};}
+\DoxyCodeLine{01349\ }
+\DoxyCodeLine{01350\ \ \ \ \ \textcolor{keyword}{union}}
+\DoxyCodeLine{01351\ \ \ \ \ \{}
+\DoxyCodeLine{01352\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_colr_layers__}{FT\_PaintColrLayers}}\ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___ada37b670b9cf9e53becc1a54a6eaec2f}{colr\_layers}};}
+\DoxyCodeLine{01353\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_glyph__}{FT\_PaintGlyph}}\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___a7b18c110e99c1ec3599e015f28336e2b}{glyph}};}
+\DoxyCodeLine{01354\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_solid__}{FT\_PaintSolid}}\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___a529e16877190a7a11e3bbefc644fb60a}{solid}};}
+\DoxyCodeLine{01355\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_linear_gradient__}{FT\_PaintLinearGradient}}\ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___a3311be0e90195b99dc3ea4a548c2168a}{linear\_gradient}};}
+\DoxyCodeLine{01356\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_radial_gradient__}{FT\_PaintRadialGradient}}\ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___ab9d4bad4b3988b9fffd188ea75815d65}{radial\_gradient}};}
+\DoxyCodeLine{01357\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_sweep_gradient__}{FT\_PaintSweepGradient}}\ \ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___ab751a40e4030d2f207168a7c161e7c92}{sweep\_gradient}};}
+\DoxyCodeLine{01358\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_transform__}{FT\_PaintTransform}}\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___a8a2e56464ee005cc07168530fe25820c}{transform}};}
+\DoxyCodeLine{01359\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_translate__}{FT\_PaintTranslate}}\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___acb6c3428d4a50a14ab705bd327a84e3e}{translate}};}
+\DoxyCodeLine{01360\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_scale__}{FT\_PaintScale}}\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___ae826790f9db0e8b1bc4c199cbf938e40}{scale}};}
+\DoxyCodeLine{01361\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_rotate__}{FT\_PaintRotate}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___ae8497def1b2d9b321a225d8c27a48c22}{rotate}};}
+\DoxyCodeLine{01362\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_skew__}{FT\_PaintSkew}}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___a08d1d467aba99925563be2e102bcda8c}{skew}};}
+\DoxyCodeLine{01363\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_composite__}{FT\_PaintComposite}}\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___aa630ad371dbbcff96a36e8bb44602666}{composite}};}
+\DoxyCodeLine{01364\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___paint_colr_glyph__}{FT\_PaintColrGlyph}}\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___a8e4b014f0eaf84318f1f78472fa1ab55}{colr\_glyph}};}
+\DoxyCodeLine{01365\ }
+\DoxyCodeLine{01366\ \ \ \ \ \}\ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint___a5850c2ebe0b8b8e88d7ab68519be2e4e}{u}};}
+\DoxyCodeLine{01367\ }
+\DoxyCodeLine{01368\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a24cee1993ae981a1de8f51bb555d5cb4}{FT\_COLR\_Paint}};}
+\DoxyCodeLine{01369\ }
+\DoxyCodeLine{01370\ }
+\DoxyCodeLine{01371\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01372\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01373\ \textcolor{comment}{\ \ \ *\ @enum:}}
+\DoxyCodeLine{01374\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Color\_Root\_Transform}}
+\DoxyCodeLine{01375\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01376\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01377\ \textcolor{comment}{\ \ \ *\ \ \ An\ enumeration\ to\ specify\ whether\ @FT\_Get\_Color\_Glyph\_Paint\ is\ to}}
+\DoxyCodeLine{01378\ \textcolor{comment}{\ \ \ *\ \ \ return\ a\ root\ transform\ to\ configure\ the\ client's\ graphics\ context}}
+\DoxyCodeLine{01379\ \textcolor{comment}{\ \ \ *\ \ \ matrix.}}
+\DoxyCodeLine{01380\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01381\ \textcolor{comment}{\ \ \ *\ @values:}}
+\DoxyCodeLine{01382\ \textcolor{comment}{\ \ \ *\ \ \ FT\_COLOR\_INCLUDE\_ROOT\_TRANSFORM\ ::}}
+\DoxyCodeLine{01383\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Do\ include\ the\ root\ transform\ as\ the\ initial\ @FT\_COLR\_Paint\ object.}}
+\DoxyCodeLine{01384\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01385\ \textcolor{comment}{\ \ \ *\ \ \ FT\_COLOR\_NO\_ROOT\_TRANSFORM\ ::}}
+\DoxyCodeLine{01386\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Do\ not\ output\ an\ initial\ root\ transform.}}
+\DoxyCodeLine{01387\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01388\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01389\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01390\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01391\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01392\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01393\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \ \mbox{\hyperlink{ftcolor_8h_a17e374eb73347b8769e5887f68e9f053}{FT\_Color\_Root\_Transform\_}}}
+\DoxyCodeLine{01394\ \ \ \{}
+\DoxyCodeLine{01395\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a17e374eb73347b8769e5887f68e9f053a8a810c781d9ead59383ca2c76985d6d3}{FT\_COLOR\_INCLUDE\_ROOT\_TRANSFORM}},}
+\DoxyCodeLine{01396\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a17e374eb73347b8769e5887f68e9f053aa5ed96832b96e111e365f3a2ab364d40}{FT\_COLOR\_NO\_ROOT\_TRANSFORM}},}
+\DoxyCodeLine{01397\ }
+\DoxyCodeLine{01398\ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a17e374eb73347b8769e5887f68e9f053a4a9e4677ae46463b88d9f33fcd57895b}{FT\_COLOR\_ROOT\_TRANSFORM\_MAX}}}
+\DoxyCodeLine{01399\ }
+\DoxyCodeLine{01400\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a9446c228e25e53970ce67664be0aaa93}{FT\_Color\_Root\_Transform}};}
+\DoxyCodeLine{01401\ }
+\DoxyCodeLine{01402\ }
+\DoxyCodeLine{01403\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01404\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01405\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{01406\ \textcolor{comment}{\ \ \ *\ \ \ FT\_ClipBox}}
+\DoxyCodeLine{01407\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01408\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01409\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ representing\ a\ 'COLR'\ v1\ 'ClipBox'\ table.\ \ 'COLR'\ v1}}
+\DoxyCodeLine{01410\ \textcolor{comment}{\ \ \ *\ \ \ glyphs\ may\ optionally\ define\ a\ clip\ box\ for\ aiding\ allocation\ or}}
+\DoxyCodeLine{01411\ \textcolor{comment}{\ \ \ *\ \ \ defining\ a\ maximum\ drawable\ region.\ \ Use\ @FT\_Get\_Color\_Glyph\_ClipBox}}
+\DoxyCodeLine{01412\ \textcolor{comment}{\ \ \ *\ \ \ to\ retrieve\ it.}}
+\DoxyCodeLine{01413\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01414\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{01415\ \textcolor{comment}{\ \ \ *\ \ \ bottom\_left\ ::}}
+\DoxyCodeLine{01416\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ bottom\ left\ corner\ of\ the\ clip\ box\ as\ an\ @FT\_Vector\ with}}
+\DoxyCodeLine{01417\ \textcolor{comment}{\ \ \ *\ \ \ \ \ fixed-\/point\ coordinates\ in\ 26.6\ format.}}
+\DoxyCodeLine{01418\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01419\ \textcolor{comment}{\ \ \ *\ \ \ top\_left\ ::}}
+\DoxyCodeLine{01420\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ top\ left\ corner\ of\ the\ clip\ box\ as\ an\ @FT\_Vector\ with}}
+\DoxyCodeLine{01421\ \textcolor{comment}{\ \ \ *\ \ \ \ \ fixed-\/point\ coordinates\ in\ 26.6\ format.}}
+\DoxyCodeLine{01422\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01423\ \textcolor{comment}{\ \ \ *\ \ \ top\_right\ ::}}
+\DoxyCodeLine{01424\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ top\ right\ corner\ of\ the\ clip\ box\ as\ an\ @FT\_Vector\ with}}
+\DoxyCodeLine{01425\ \textcolor{comment}{\ \ \ *\ \ \ \ \ fixed-\/point\ coordinates\ in\ 26.6\ format.}}
+\DoxyCodeLine{01426\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01427\ \textcolor{comment}{\ \ \ *\ \ \ bottom\_right\ ::}}
+\DoxyCodeLine{01428\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ bottom\ right\ corner\ of\ the\ clip\ box\ as\ an\ @FT\_Vector\ with}}
+\DoxyCodeLine{01429\ \textcolor{comment}{\ \ \ *\ \ \ \ \ fixed-\/point\ coordinates\ in\ 26.6\ format.}}
+\DoxyCodeLine{01430\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01431\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01432\ \textcolor{comment}{\ \ \ *\ \ \ 2.12\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01433\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01434\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01435\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01436\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___clip_box__}{FT\_ClipBox\_}}}
+\DoxyCodeLine{01437\ \ \ \{}
+\DoxyCodeLine{01438\ \ \ \ \ \mbox{\hyperlink{struct_f_t___vector__}{FT\_Vector}}\ \ \mbox{\hyperlink{struct_f_t___clip_box___a40bae78801542ef377885924df103ab9}{bottom\_left}};}
+\DoxyCodeLine{01439\ \ \ \ \ \mbox{\hyperlink{struct_f_t___vector__}{FT\_Vector}}\ \ \mbox{\hyperlink{struct_f_t___clip_box___abb2c875d877d65b182c832d698de96ec}{top\_left}};}
+\DoxyCodeLine{01440\ \ \ \ \ \mbox{\hyperlink{struct_f_t___vector__}{FT\_Vector}}\ \ \mbox{\hyperlink{struct_f_t___clip_box___ad54fca0c8dfb062f589aef4219a6057a}{top\_right}};}
+\DoxyCodeLine{01441\ \ \ \ \ \mbox{\hyperlink{struct_f_t___vector__}{FT\_Vector}}\ \ \mbox{\hyperlink{struct_f_t___clip_box___a35245ba211b365a687a4185e5271f5a4}{bottom\_right}};}
+\DoxyCodeLine{01442\ }
+\DoxyCodeLine{01443\ \ \ \}\ \mbox{\hyperlink{ftcolor_8h_a9e865f55043c3afbcdda90f868f613a7}{FT\_ClipBox}};}
+\DoxyCodeLine{01444\ }
+\DoxyCodeLine{01445\ }
+\DoxyCodeLine{01446\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01447\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01448\ \textcolor{comment}{\ \ \ *\ @function:}}
+\DoxyCodeLine{01449\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Get\_Color\_Glyph\_Paint}}
+\DoxyCodeLine{01450\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01451\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01452\ \textcolor{comment}{\ \ \ *\ \ \ This\ is\ the\ starting\ point\ and\ interface\ to\ color\ gradient}}
+\DoxyCodeLine{01453\ \textcolor{comment}{\ \ \ *\ \ \ information\ in\ a\ 'COLR'\ v1\ table\ in\ OpenType\ fonts\ to\ recursively}}
+\DoxyCodeLine{01454\ \textcolor{comment}{\ \ \ *\ \ \ retrieve\ the\ paint\ tables\ for\ the\ directed\ acyclic\ graph\ of\ a\ colored}}
+\DoxyCodeLine{01455\ \textcolor{comment}{\ \ \ *\ \ \ glyph,\ given\ a\ glyph\ ID.}}
+\DoxyCodeLine{01456\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01457\ \textcolor{comment}{\ \ \ *\ \ \ \ \ https://github.com/googlefonts/colr-\/gradients-\/spec}}
+\DoxyCodeLine{01458\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01459\ \textcolor{comment}{\ \ \ *\ \ \ In\ a\ 'COLR'\ v1\ font,\ each\ color\ glyph\ defines\ a\ directed\ acyclic}}
+\DoxyCodeLine{01460\ \textcolor{comment}{\ \ \ *\ \ \ graph\ of\ nested\ paint\ tables,\ such\ as\ \`{}PaintGlyph`,\ \`{}PaintSolid`,}}
+\DoxyCodeLine{01461\ \textcolor{comment}{\ \ \ *\ \ \ \`{}PaintLinearGradient`,\ \`{}PaintRadialGradient`,\ and\ so\ on.\ \ Using\ this}}
+\DoxyCodeLine{01462\ \textcolor{comment}{\ \ \ *\ \ \ function\ and\ specifying\ a\ glyph\ ID,\ one\ retrieves\ the\ root\ paint}}
+\DoxyCodeLine{01463\ \textcolor{comment}{\ \ \ *\ \ \ table\ for\ this\ glyph\ ID.}}
+\DoxyCodeLine{01464\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01465\ \textcolor{comment}{\ \ \ *\ \ \ This\ function\ allows\ control\ whether\ an\ initial\ root\ transform\ is}}
+\DoxyCodeLine{01466\ \textcolor{comment}{\ \ \ *\ \ \ returned\ to\ configure\ scaling,\ transform,\ and\ translation\ correctly}}
+\DoxyCodeLine{01467\ \textcolor{comment}{\ \ \ *\ \ \ on\ the\ client's\ graphics\ context.\ \ The\ initial\ root\ transform\ is}}
+\DoxyCodeLine{01468\ \textcolor{comment}{\ \ \ *\ \ \ computed\ and\ returned\ according\ to\ the\ values\ configured\ for\ @FT\_Size}}
+\DoxyCodeLine{01469\ \textcolor{comment}{\ \ \ *\ \ \ and\ @FT\_Set\_Transform\ on\ the\ @FT\_Face\ object,\ see\ below\ for\ details}}
+\DoxyCodeLine{01470\ \textcolor{comment}{\ \ \ *\ \ \ of\ the\ \`{}root\_transform`\ parameter.\ \ This\ has\ implications\ for\ a}}
+\DoxyCodeLine{01471\ \textcolor{comment}{\ \ \ *\ \ \ client\ 'COLR'\ v1\ implementation:\ When\ this\ function\ returns\ an}}
+\DoxyCodeLine{01472\ \textcolor{comment}{\ \ \ *\ \ \ initially\ computed\ root\ transform,\ at\ the\ time\ of\ executing\ the}}
+\DoxyCodeLine{01473\ \textcolor{comment}{\ \ \ *\ \ \ @FT\_PaintGlyph\ operation,\ the\ contours\ should\ be\ retrieved\ using}}
+\DoxyCodeLine{01474\ \textcolor{comment}{\ \ \ *\ \ \ @FT\_Load\_Glyph\ at\ unscaled,\ untransformed\ size.\ \ This\ is\ because\ the}}
+\DoxyCodeLine{01475\ \textcolor{comment}{\ \ \ *\ \ \ root\ transform\ applied\ to\ the\ graphics\ context\ will\ take\ care\ of}}
+\DoxyCodeLine{01476\ \textcolor{comment}{\ \ \ *\ \ \ correct\ scaling.}}
+\DoxyCodeLine{01477\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01478\ \textcolor{comment}{\ \ \ *\ \ \ Alternatively,\ to\ allow\ hinting\ of\ contours,\ at\ the\ time\ of\ executing}}
+\DoxyCodeLine{01479\ \textcolor{comment}{\ \ \ *\ \ \ @FT\_Load\_Glyph,\ the\ current\ graphics\ context\ transformation\ matrix}}
+\DoxyCodeLine{01480\ \textcolor{comment}{\ \ \ *\ \ \ can\ be\ decomposed\ into\ a\ scaling\ matrix\ and\ a\ remainder,\ and}}
+\DoxyCodeLine{01481\ \textcolor{comment}{\ \ \ *\ \ \ @FT\_Load\_Glyph\ can\ be\ used\ to\ retrieve\ the\ contours\ at\ scaled\ size.}}
+\DoxyCodeLine{01482\ \textcolor{comment}{\ \ \ *\ \ \ Care\ must\ then\ be\ taken\ to\ blit\ or\ clip\ to\ the\ graphics\ context\ with}}
+\DoxyCodeLine{01483\ \textcolor{comment}{\ \ \ *\ \ \ taking\ this\ remainder\ transformation\ into\ account.}}
+\DoxyCodeLine{01484\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01485\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{01486\ \textcolor{comment}{\ \ \ *\ \ \ face\ ::}}
+\DoxyCodeLine{01487\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ handle\ to\ the\ parent\ face\ object.}}
+\DoxyCodeLine{01488\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01489\ \textcolor{comment}{\ \ \ *\ \ \ base\_glyph\ ::}}
+\DoxyCodeLine{01490\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ glyph\ index\ for\ which\ to\ retrieve\ the\ root\ paint\ table.}}
+\DoxyCodeLine{01491\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01492\ \textcolor{comment}{\ \ \ *\ \ \ root\_transform\ ::}}
+\DoxyCodeLine{01493\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Specifies\ whether\ an\ initially\ computed\ root\ is\ returned\ by\ the}}
+\DoxyCodeLine{01494\ \textcolor{comment}{\ \ \ *\ \ \ \ \ @FT\_PaintTransform\ operation\ to\ account\ for\ the\ activated\ size}}
+\DoxyCodeLine{01495\ \textcolor{comment}{\ \ \ *\ \ \ \ \ (see\ @FT\_Activate\_Size)\ and\ the\ configured\ transform\ and\ translate}}
+\DoxyCodeLine{01496\ \textcolor{comment}{\ \ \ *\ \ \ \ \ (see\ @FT\_Set\_Transform).}}
+\DoxyCodeLine{01497\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01498\ \textcolor{comment}{\ \ \ *\ \ \ \ \ This\ root\ transform\ is\ returned\ before\ nodes\ of\ the\ glyph\ graph\ of}}
+\DoxyCodeLine{01499\ \textcolor{comment}{\ \ \ *\ \ \ \ \ the\ font\ are\ returned.\ \ Subsequent\ @FT\_COLR\_Paint\ structures}}
+\DoxyCodeLine{01500\ \textcolor{comment}{\ \ \ *\ \ \ \ \ contain\ unscaled\ and\ untransformed\ values.\ \ The\ inserted\ root}}
+\DoxyCodeLine{01501\ \textcolor{comment}{\ \ \ *\ \ \ \ \ transform\ enables\ the\ client\ application\ to\ apply\ an\ initial}}
+\DoxyCodeLine{01502\ \textcolor{comment}{\ \ \ *\ \ \ \ \ transform\ to\ its\ graphics\ context.\ \ When\ executing\ subsequent}}
+\DoxyCodeLine{01503\ \textcolor{comment}{\ \ \ *\ \ \ \ \ FT\_COLR\_Paint\ operations,\ values\ from\ @FT\_COLR\_Paint\ operations}}
+\DoxyCodeLine{01504\ \textcolor{comment}{\ \ \ *\ \ \ \ \ will\ ultimately\ be\ correctly\ scaled\ because\ of\ the\ root\ transform}}
+\DoxyCodeLine{01505\ \textcolor{comment}{\ \ \ *\ \ \ \ \ applied\ to\ the\ graphics\ context.\ \ Use}}
+\DoxyCodeLine{01506\ \textcolor{comment}{\ \ \ *\ \ \ \ \ @FT\_COLOR\_INCLUDE\_ROOT\_TRANSFORM\ to\ include\ the\ root\ transform,\ use}}
+\DoxyCodeLine{01507\ \textcolor{comment}{\ \ \ *\ \ \ \ \ @FT\_COLOR\_NO\_ROOT\_TRANSFORM\ to\ not\ include\ it.\ \ The\ latter\ may\ be}}
+\DoxyCodeLine{01508\ \textcolor{comment}{\ \ \ *\ \ \ \ \ useful\ when\ traversing\ the\ 'COLR'\ v1\ glyph\ graph\ and\ reaching\ a}}
+\DoxyCodeLine{01509\ \textcolor{comment}{\ \ \ *\ \ \ \ \ @FT\_PaintColrGlyph.\ \ When\ recursing\ into\ @FT\_PaintColrGlyph\ and}}
+\DoxyCodeLine{01510\ \textcolor{comment}{\ \ \ *\ \ \ \ \ painting\ that\ inline,\ no\ additional\ root\ transform\ is\ needed\ as\ it}}
+\DoxyCodeLine{01511\ \textcolor{comment}{\ \ \ *\ \ \ \ \ has\ already\ been\ applied\ to\ the\ graphics\ context\ at\ the\ beginning}}
+\DoxyCodeLine{01512\ \textcolor{comment}{\ \ \ *\ \ \ \ \ of\ drawing\ this\ glyph.}}
+\DoxyCodeLine{01513\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01514\ \textcolor{comment}{\ \ \ *\ @output:}}
+\DoxyCodeLine{01515\ \textcolor{comment}{\ \ \ *\ \ \ paint\ ::}}
+\DoxyCodeLine{01516\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ @FT\_OpaquePaint\ object\ that\ references\ the\ actual\ paint\ table.}}
+\DoxyCodeLine{01517\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01518\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ respective\ actual\ @FT\_COLR\_Paint\ object\ is\ retrieved\ via}}
+\DoxyCodeLine{01519\ \textcolor{comment}{\ \ \ *\ \ \ \ \ @FT\_Get\_Paint.}}
+\DoxyCodeLine{01520\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01521\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{01522\ \textcolor{comment}{\ \ \ *\ \ \ Value\string~1\ if\ everything\ is\ OK.\ \ If\ no\ color\ glyph\ is\ found,\ or\ the\ root}}
+\DoxyCodeLine{01523\ \textcolor{comment}{\ \ \ *\ \ \ paint\ could\ not\ be\ retrieved,\ value\string~0\ gets\ returned.\ \ In\ case\ of\ an}}
+\DoxyCodeLine{01524\ \textcolor{comment}{\ \ \ *\ \ \ error,\ value\string~0\ is\ returned\ also.}}
+\DoxyCodeLine{01525\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01526\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01527\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01528\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01529\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01530\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01531\ \ \ \mbox{\hyperlink{public-macros_8h_abb1f0cb171117bb94f204d09e6a89a6e}{FT\_EXPORT}}(\ \mbox{\hyperlink{fttypes_8h_a1a832a256bb5a7e6e884afaa1a07f3ae}{FT\_Bool}}\ )}
+\DoxyCodeLine{01532\ \ \ \mbox{\hyperlink{ftcolor_8h_a31eb1dd424d1e08cf53c08e3501013a0}{FT\_Get\_Color\_Glyph\_Paint}}(\ \mbox{\hyperlink{struct_f_t___face_rec__}{FT\_Face}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face,}
+\DoxyCodeLine{01533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{fttypes_8h_abcb8db4dbf35d2b55a9e8c7b0926dc52}{FT\_UInt}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ base\_glyph,}
+\DoxyCodeLine{01534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{ftcolor_8h_a9446c228e25e53970ce67664be0aaa93}{FT\_Color\_Root\_Transform}}\ \ root\_transform,}
+\DoxyCodeLine{01535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___opaque___paint__}{FT\_OpaquePaint}}*\ \ \ \ \ \ \ \ \ \ paint\ );}
+\DoxyCodeLine{01536\ }
+\DoxyCodeLine{01537\ }
+\DoxyCodeLine{01538\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01539\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01540\ \textcolor{comment}{\ \ \ *\ @function:}}
+\DoxyCodeLine{01541\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Get\_Color\_Glyph\_ClipBox}}
+\DoxyCodeLine{01542\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01543\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01544\ \textcolor{comment}{\ \ \ *\ \ \ Search\ for\ a\ 'COLR'\ v1\ clip\ box\ for\ the\ specified\ \`{}base\_glyph`\ and}}
+\DoxyCodeLine{01545\ \textcolor{comment}{\ \ \ *\ \ \ fill\ the\ \`{}clip\_box`\ parameter\ with\ the\ 'COLR'\ v1\ 'ClipBox'\ information}}
+\DoxyCodeLine{01546\ \textcolor{comment}{\ \ \ *\ \ \ if\ one\ is\ found.}}
+\DoxyCodeLine{01547\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01548\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{01549\ \textcolor{comment}{\ \ \ *\ \ \ face\ ::}}
+\DoxyCodeLine{01550\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ handle\ to\ the\ parent\ face\ object.}}
+\DoxyCodeLine{01551\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01552\ \textcolor{comment}{\ \ \ *\ \ \ base\_glyph\ ::}}
+\DoxyCodeLine{01553\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ glyph\ index\ for\ which\ to\ retrieve\ the\ clip\ box.}}
+\DoxyCodeLine{01554\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01555\ \textcolor{comment}{\ \ \ *\ @output:}}
+\DoxyCodeLine{01556\ \textcolor{comment}{\ \ \ *\ \ \ clip\_box\ ::}}
+\DoxyCodeLine{01557\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ clip\ box\ for\ the\ requested\ \`{}base\_glyph`\ if\ one\ is\ found.\ \ The}}
+\DoxyCodeLine{01558\ \textcolor{comment}{\ \ \ *\ \ \ \ \ clip\ box\ is\ computed\ taking\ scale\ and\ transformations\ configured\ on}}
+\DoxyCodeLine{01559\ \textcolor{comment}{\ \ \ *\ \ \ \ \ the\ @FT\_Face\ into\ account.\ \ @FT\_ClipBox\ contains\ @FT\_Vector\ values}}
+\DoxyCodeLine{01560\ \textcolor{comment}{\ \ \ *\ \ \ \ \ in\ 26.6\ format.}}
+\DoxyCodeLine{01561\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01562\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{01563\ \textcolor{comment}{\ \ \ *\ \ \ Value\string~1\ if\ a\ clip\ box\ is\ found.\ \ If\ no\ clip\ box\ is\ found\ or\ an\ error}}
+\DoxyCodeLine{01564\ \textcolor{comment}{\ \ \ *\ \ \ occured,\ value\string~0\ is\ returned.}}
+\DoxyCodeLine{01565\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01566\ \textcolor{comment}{\ \ \ *\ @note:}}
+\DoxyCodeLine{01567\ \textcolor{comment}{\ \ \ *\ \ \ To\ retrieve\ the\ clip\ box\ in\ font\ units,\ reset\ scale\ to\ units-\/per-\/em}}
+\DoxyCodeLine{01568\ \textcolor{comment}{\ \ \ *\ \ \ and\ remove\ transforms\ configured\ using\ @FT\_Set\_Transform.}}
+\DoxyCodeLine{01569\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01570\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01571\ \textcolor{comment}{\ \ \ *\ \ \ 2.12\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01572\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01573\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01574\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01575\ \ \ \mbox{\hyperlink{public-macros_8h_abb1f0cb171117bb94f204d09e6a89a6e}{FT\_EXPORT}}(\ \mbox{\hyperlink{fttypes_8h_a1a832a256bb5a7e6e884afaa1a07f3ae}{FT\_Bool}}\ )}
+\DoxyCodeLine{01576\ \ \ \mbox{\hyperlink{ftcolor_8h_ad55450c96154abddc39ed53dd1de4930}{FT\_Get\_Color\_Glyph\_ClipBox}}(\ \mbox{\hyperlink{struct_f_t___face_rec__}{FT\_Face}}\ \ \ \ \ \ face,}
+\DoxyCodeLine{01577\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{fttypes_8h_abcb8db4dbf35d2b55a9e8c7b0926dc52}{FT\_UInt}}\ \ \ \ \ \ base\_glyph,}
+\DoxyCodeLine{01578\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___clip_box__}{FT\_ClipBox}}*\ \ clip\_box\ );}
+\DoxyCodeLine{01579\ }
+\DoxyCodeLine{01580\ }
+\DoxyCodeLine{01581\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01582\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01583\ \textcolor{comment}{\ \ \ *\ @function:}}
+\DoxyCodeLine{01584\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Get\_Paint\_Layers}}
+\DoxyCodeLine{01585\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01586\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01587\ \textcolor{comment}{\ \ \ *\ \ \ Access\ the\ layers\ of\ a\ \`{}PaintColrLayers`\ table.}}
+\DoxyCodeLine{01588\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01589\ \textcolor{comment}{\ \ \ *\ \ \ If\ the\ root\ paint\ of\ a\ color\ glyph,\ or\ a\ nested\ paint\ of\ a\ 'COLR'}}
+\DoxyCodeLine{01590\ \textcolor{comment}{\ \ \ *\ \ \ glyph\ is\ a\ \`{}PaintColrLayers`\ table,\ this\ function\ retrieves\ the}}
+\DoxyCodeLine{01591\ \textcolor{comment}{\ \ \ *\ \ \ layers\ of\ the\ \`{}PaintColrLayers`\ table.}}
+\DoxyCodeLine{01592\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01593\ \textcolor{comment}{\ \ \ *\ \ \ The\ @FT\_PaintColrLayers\ object\ contains\ an\ @FT\_LayerIterator,\ which}}
+\DoxyCodeLine{01594\ \textcolor{comment}{\ \ \ *\ \ \ is\ used\ here\ to\ iterate\ over\ the\ layers.\ \ Each\ layer\ is\ returned\ as}}
+\DoxyCodeLine{01595\ \textcolor{comment}{\ \ \ *\ \ \ an\ @FT\_OpaquePaint\ object,\ which\ then\ can\ be\ used\ with\ @FT\_Get\_Paint}}
+\DoxyCodeLine{01596\ \textcolor{comment}{\ \ \ *\ \ \ to\ retrieve\ the\ actual\ paint\ object.}}
+\DoxyCodeLine{01597\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01598\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{01599\ \textcolor{comment}{\ \ \ *\ \ \ face\ ::}}
+\DoxyCodeLine{01600\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ handle\ to\ the\ parent\ face\ object.}}
+\DoxyCodeLine{01601\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01602\ \textcolor{comment}{\ \ \ *\ @inout:}}
+\DoxyCodeLine{01603\ \textcolor{comment}{\ \ \ *\ \ \ iterator\ ::}}
+\DoxyCodeLine{01604\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ @FT\_LayerIterator\ from\ an\ @FT\_PaintColrLayers\ object,\ for\ which}}
+\DoxyCodeLine{01605\ \textcolor{comment}{\ \ \ *\ \ \ \ \ the\ layers\ are\ to\ be\ retrieved.\ \ The\ internal\ state\ of\ the\ iterator}}
+\DoxyCodeLine{01606\ \textcolor{comment}{\ \ \ *\ \ \ \ \ is\ incremented\ after\ one\ call\ to\ this\ function\ for\ retrieving\ one}}
+\DoxyCodeLine{01607\ \textcolor{comment}{\ \ \ *\ \ \ \ \ layer.}}
+\DoxyCodeLine{01608\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01609\ \textcolor{comment}{\ \ \ *\ @output:}}
+\DoxyCodeLine{01610\ \textcolor{comment}{\ \ \ *\ \ \ paint\ ::}}
+\DoxyCodeLine{01611\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ @FT\_OpaquePaint\ object\ that\ references\ the\ actual\ paint\ table.}}
+\DoxyCodeLine{01612\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ respective\ actual\ @FT\_COLR\_Paint\ object\ is\ retrieved\ via}}
+\DoxyCodeLine{01613\ \textcolor{comment}{\ \ \ *\ \ \ \ \ @FT\_Get\_Paint.}}
+\DoxyCodeLine{01614\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01615\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{01616\ \textcolor{comment}{\ \ \ *\ \ \ Value\string~1\ if\ everything\ is\ OK.\ \ Value\string~0\ gets\ returned\ when\ the\ paint}}
+\DoxyCodeLine{01617\ \textcolor{comment}{\ \ \ *\ \ \ object\ can\ not\ be\ retrieved\ or\ any\ other\ error\ occurs.}}
+\DoxyCodeLine{01618\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01619\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01620\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01621\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01622\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01623\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01624\ \ \ \mbox{\hyperlink{public-macros_8h_abb1f0cb171117bb94f204d09e6a89a6e}{FT\_EXPORT}}(\ \mbox{\hyperlink{fttypes_8h_a1a832a256bb5a7e6e884afaa1a07f3ae}{FT\_Bool}}\ )}
+\DoxyCodeLine{01625\ \ \ \mbox{\hyperlink{ftcolor_8h_a887b08adbcba745f521f732800e26a3c}{FT\_Get\_Paint\_Layers}}(\ \mbox{\hyperlink{struct_f_t___face_rec__}{FT\_Face}}\ \ \ \ \ \ \ \ \ \ \ \ face,}
+\DoxyCodeLine{01626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___layer_iterator__}{FT\_LayerIterator}}*\ \ iterator,}
+\DoxyCodeLine{01627\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___opaque___paint__}{FT\_OpaquePaint}}*\ \ \ \ paint\ );}
+\DoxyCodeLine{01628\ }
+\DoxyCodeLine{01629\ }
+\DoxyCodeLine{01630\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01631\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01632\ \textcolor{comment}{\ \ \ *\ @function:}}
+\DoxyCodeLine{01633\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Get\_Colorline\_Stops}}
+\DoxyCodeLine{01634\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01635\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01636\ \textcolor{comment}{\ \ \ *\ \ \ This\ is\ an\ interface\ to\ color\ gradient\ information\ in\ a\ 'COLR'\ v1}}
+\DoxyCodeLine{01637\ \textcolor{comment}{\ \ \ *\ \ \ table\ in\ OpenType\ fonts\ to\ iteratively\ retrieve\ the\ gradient\ and}}
+\DoxyCodeLine{01638\ \textcolor{comment}{\ \ \ *\ \ \ solid\ fill\ information\ for\ colored\ glyph\ layers\ for\ a\ specified\ glyph}}
+\DoxyCodeLine{01639\ \textcolor{comment}{\ \ \ *\ \ \ ID.}}
+\DoxyCodeLine{01640\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01641\ \textcolor{comment}{\ \ \ *\ \ \ \ \ https://github.com/googlefonts/colr-\/gradients-\/spec}}
+\DoxyCodeLine{01642\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01643\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{01644\ \textcolor{comment}{\ \ \ *\ \ \ face\ ::}}
+\DoxyCodeLine{01645\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ handle\ to\ the\ parent\ face\ object.}}
+\DoxyCodeLine{01646\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01647\ \textcolor{comment}{\ \ \ *\ @inout:}}
+\DoxyCodeLine{01648\ \textcolor{comment}{\ \ \ *\ \ \ iterator\ ::}}
+\DoxyCodeLine{01649\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ retrieved\ @FT\_ColorStopIterator,\ configured\ on\ an\ @FT\_ColorLine,}}
+\DoxyCodeLine{01650\ \textcolor{comment}{\ \ \ *\ \ \ \ \ which\ in\ turn\ got\ retrieved\ via\ paint\ information\ in}}
+\DoxyCodeLine{01651\ \textcolor{comment}{\ \ \ *\ \ \ \ \ @FT\_PaintLinearGradient\ or\ @FT\_PaintRadialGradient.}}
+\DoxyCodeLine{01652\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01653\ \textcolor{comment}{\ \ \ *\ @output:}}
+\DoxyCodeLine{01654\ \textcolor{comment}{\ \ \ *\ \ \ color\_stop\ ::}}
+\DoxyCodeLine{01655\ \textcolor{comment}{\ \ \ *\ \ \ \ \ Color\ index\ and\ alpha\ value\ for\ the\ retrieved\ color\ stop.}}
+\DoxyCodeLine{01656\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01657\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{01658\ \textcolor{comment}{\ \ \ *\ \ \ Value\string~1\ if\ everything\ is\ OK.\ \ If\ there\ are\ no\ more\ color\ stops,}}
+\DoxyCodeLine{01659\ \textcolor{comment}{\ \ \ *\ \ \ value\string~0\ gets\ returned.\ \ In\ case\ of\ an\ error,\ value\string~0\ is\ returned}}
+\DoxyCodeLine{01660\ \textcolor{comment}{\ \ \ *\ \ \ also.}}
+\DoxyCodeLine{01661\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01662\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01663\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01664\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01665\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01666\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01667\ \ \ \mbox{\hyperlink{public-macros_8h_abb1f0cb171117bb94f204d09e6a89a6e}{FT\_EXPORT}}(\ \mbox{\hyperlink{fttypes_8h_a1a832a256bb5a7e6e884afaa1a07f3ae}{FT\_Bool}}\ )}
+\DoxyCodeLine{01668\ \ \ \mbox{\hyperlink{ftcolor_8h_afc47a02263dd4c733cf836bec21c73ae}{FT\_Get\_Colorline\_Stops}}(\ \mbox{\hyperlink{struct_f_t___face_rec__}{FT\_Face}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face,}
+\DoxyCodeLine{01669\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___color_stop__}{FT\_ColorStop}}*\ \ \ \ \ \ \ \ \ \ color\_stop,}
+\DoxyCodeLine{01670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___color_stop_iterator__}{FT\_ColorStopIterator}}*\ \ iterator\ );}
+\DoxyCodeLine{01671\ }
+\DoxyCodeLine{01672\ }
+\DoxyCodeLine{01673\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{01674\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01675\ \textcolor{comment}{\ \ \ *\ @function:}}
+\DoxyCodeLine{01676\ \textcolor{comment}{\ \ \ *\ \ FT\_Get\_Paint}}
+\DoxyCodeLine{01677\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01678\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{01679\ \textcolor{comment}{\ \ \ *\ \ \ Access\ the\ details\ of\ a\ paint\ using\ an\ @FT\_OpaquePaint\ opaque\ paint}}
+\DoxyCodeLine{01680\ \textcolor{comment}{\ \ \ *\ \ \ object,\ which\ internally\ stores\ the\ offset\ to\ the\ respective\ \`{}Paint`}}
+\DoxyCodeLine{01681\ \textcolor{comment}{\ \ \ *\ \ \ object\ in\ the\ 'COLR'\ table.}}
+\DoxyCodeLine{01682\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01683\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{01684\ \textcolor{comment}{\ \ \ *\ \ \ face\ ::}}
+\DoxyCodeLine{01685\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ handle\ to\ the\ parent\ face\ object.}}
+\DoxyCodeLine{01686\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01687\ \textcolor{comment}{\ \ \ *\ \ \ opaque\_paint\ ::}}
+\DoxyCodeLine{01688\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ opaque\ paint\ object\ for\ which\ the\ underlying\ @FT\_COLR\_Paint}}
+\DoxyCodeLine{01689\ \textcolor{comment}{\ \ \ *\ \ \ \ \ data\ is\ to\ be\ retrieved.}}
+\DoxyCodeLine{01690\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01691\ \textcolor{comment}{\ \ \ *\ @output:}}
+\DoxyCodeLine{01692\ \textcolor{comment}{\ \ \ *\ \ \ paint\ ::}}
+\DoxyCodeLine{01693\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ specific\ @FT\_COLR\_Paint\ object\ containing\ information\ coming}}
+\DoxyCodeLine{01694\ \textcolor{comment}{\ \ \ *\ \ \ \ \ from\ one\ of\ the\ font's\ \`{}Paint*\`{}\ tables.}}
+\DoxyCodeLine{01695\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01696\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{01697\ \textcolor{comment}{\ \ \ *\ \ \ Value\string~1\ if\ everything\ is\ OK.\ \ Value\string~0\ if\ no\ details\ can\ be\ found\ for}}
+\DoxyCodeLine{01698\ \textcolor{comment}{\ \ \ *\ \ \ this\ paint\ or\ any\ other\ error\ occured.}}
+\DoxyCodeLine{01699\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01700\ \textcolor{comment}{\ \ \ *\ @since:}}
+\DoxyCodeLine{01701\ \textcolor{comment}{\ \ \ *\ \ \ 2.11\ -\/-\/\ **currently\ experimental\ only!**\ \ There\ might\ be\ changes}}
+\DoxyCodeLine{01702\ \textcolor{comment}{\ \ \ *\ \ \ without\ retaining\ backward\ compatibility\ of\ both\ the\ API\ and\ ABI.}}
+\DoxyCodeLine{01703\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{01704\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{01705\ \ \ \mbox{\hyperlink{public-macros_8h_abb1f0cb171117bb94f204d09e6a89a6e}{FT\_EXPORT}}(\ \mbox{\hyperlink{fttypes_8h_a1a832a256bb5a7e6e884afaa1a07f3ae}{FT\_Bool}}\ )}
+\DoxyCodeLine{01706\ \ \ \mbox{\hyperlink{ftcolor_8h_ae756d675da4fbd93b737ffe8a4c32280}{FT\_Get\_Paint}}(\ \mbox{\hyperlink{struct_f_t___face_rec__}{FT\_Face}}\ \ \ \ \ \ \ \ \ face,}
+\DoxyCodeLine{01707\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___opaque___paint__}{FT\_OpaquePaint}}\ \ opaque\_paint,}
+\DoxyCodeLine{01708\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___c_o_l_r___paint__}{FT\_COLR\_Paint}}*\ \ paint\ );}
+\DoxyCodeLine{01709\ }
+\DoxyCodeLine{01710\ \ \ \textcolor{comment}{/*\ */}}
+\DoxyCodeLine{01711\ }
+\DoxyCodeLine{01712\ }
+\DoxyCodeLine{01713\ \mbox{\hyperlink{ftheader_8h_a2ebbdbbee7f9bfa8b6b86790de7e9963}{FT\_END\_HEADER}}}
+\DoxyCodeLine{01714\ }
+\DoxyCodeLine{01715\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ FTCOLOR\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01716\ }
+\DoxyCodeLine{01717\ }
+\DoxyCodeLine{01718\ \textcolor{comment}{/*\ END\ */}}
+
+\end{DoxyCode}

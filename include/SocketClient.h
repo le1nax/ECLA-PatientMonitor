@@ -5,7 +5,7 @@
 #include "Socket.h"
 
 
-#define RECEIVEINTERVAL 500 // koennen den receive thread nicht komplett durchlaufen lassen weil wir keinen echten Parallelismus haben
+#define RECEIVEINTERVAL 500 
 
 class SocketClient : public UDPSocket {
 

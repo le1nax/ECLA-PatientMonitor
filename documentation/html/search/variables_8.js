@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['keep_5falive_5fmsg_0',['keep_alive_msg',['../class_socket_client.html#a86bec6b625272160bdc141e7d93a4a50',1,'SocketClient']]],
-  ['keep_5falive_5fmsg2_1',['keep_alive_msg2',['../class_socket_client.html#a29ada0aeb49d140548909b0c73f89b91',1,'SocketClient']]]
+  ['timestamp_0',['timestamp',['../struct_data_point_encoded.html#a90004fee0286d2f69d31c0acf2f40e42',1,'DataPointEncoded']]]
 ];

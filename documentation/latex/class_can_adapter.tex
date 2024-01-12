@@ -1,0 +1,74 @@
+\doxysection{Can\+Adapter Class Reference}
+\hypertarget{class_can_adapter}{}\label{class_can_adapter}\index{CanAdapter@{CanAdapter}}
+
+
+{\ttfamily \#include $<$Can\+Adapter.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_can_adapter_af75bae6a534704d1b533187fe1d3a1ec}{Can\+Adapter}} (TPCANHandle device)
+\begin{DoxyCompactList}\small\item\em Constructor of \doxylink{class_can_adapter}{Can\+Adapter}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_can_adapter_a272e43110f2f2f593e9f1b921b007833}{connect}} ()
+\begin{DoxyCompactList}\small\item\em Connects PCAN USB Adapter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_data_point}{Data\+Point}} \mbox{\hyperlink{class_can_adapter_a09f2f43d484eeeacc8f8a6aa409c6fc6}{listen}} ()
+\begin{DoxyCompactList}\small\item\em Read function of PCAN USB Adapter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_can_adapter_a3d727bd2f0775b370868e4ec89a76d69}{skip\+Data\+Points}} (size\+\_\+t amount)
+\begin{DoxyCompactList}\small\item\em Skips a certain amount of data points. Used, when config\+Mode\+Debug is set to true. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_can_adapter_af75bae6a534704d1b533187fe1d3a1ec}\label{class_can_adapter_af75bae6a534704d1b533187fe1d3a1ec} 
+\index{CanAdapter@{CanAdapter}!CanAdapter@{CanAdapter}}
+\index{CanAdapter@{CanAdapter}!CanAdapter@{CanAdapter}}
+\doxysubsubsection{\texorpdfstring{CanAdapter()}{CanAdapter()}}
+{\footnotesize\ttfamily Can\+Adapter\+::\+Can\+Adapter (\begin{DoxyParamCaption}\item[{TPCANHandle}]{device }\end{DoxyParamCaption})}
+
+
+
+Constructor of \doxylink{class_can_adapter}{Can\+Adapter}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Handles PCANUsb Adapter \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_can_adapter_a272e43110f2f2f593e9f1b921b007833}\label{class_can_adapter_a272e43110f2f2f593e9f1b921b007833} 
+\index{CanAdapter@{CanAdapter}!connect@{connect}}
+\index{connect@{connect}!CanAdapter@{CanAdapter}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily bool Can\+Adapter\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Connects PCAN USB Adapter. 
+
+\begin{DoxyReturn}{Returns}
+Returns Success of connection 
+\end{DoxyReturn}
+\Hypertarget{class_can_adapter_a09f2f43d484eeeacc8f8a6aa409c6fc6}\label{class_can_adapter_a09f2f43d484eeeacc8f8a6aa409c6fc6} 
+\index{CanAdapter@{CanAdapter}!listen@{listen}}
+\index{listen@{listen}!CanAdapter@{CanAdapter}}
+\doxysubsubsection{\texorpdfstring{listen()}{listen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_data_point}{Data\+Point}} Can\+Adapter\+::listen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read function of PCAN USB Adapter. 
+
+\begin{DoxyReturn}{Returns}
+Returns read Data Point 
+\end{DoxyReturn}
+\Hypertarget{class_can_adapter_a3d727bd2f0775b370868e4ec89a76d69}\label{class_can_adapter_a3d727bd2f0775b370868e4ec89a76d69} 
+\index{CanAdapter@{CanAdapter}!skipDataPoints@{skipDataPoints}}
+\index{skipDataPoints@{skipDataPoints}!CanAdapter@{CanAdapter}}
+\doxysubsubsection{\texorpdfstring{skipDataPoints()}{skipDataPoints()}}
+{\footnotesize\ttfamily void Can\+Adapter\+::skip\+Data\+Points (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{amount }\end{DoxyParamCaption})}
+
+
+
+Skips a certain amount of data points. Used, when config\+Mode\+Debug is set to true. 
+

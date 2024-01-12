@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['x_0',['X',['../struct_im_font_atlas_custom_rect.html#a4e653e0c1855c48c4fc0b830ed696aed',1,'ImFontAtlasCustomRect']]],
+  ['x_1',['x',['../struct_f_t___vector__.html#a941e818e6dfca06409cddff4f325f74c',1,'FT_Vector_::x'],['../struct_f_t___span__.html#a7f7235a404c66398b49c50fa09691ba5',1,'FT_Span_::x'],['../struct_f_t___unit_vector__.html#a03c9f8ae35a5ad1bcac49995a9dac714',1,'FT_UnitVector_::x'],['../struct_im_vec2.html#a5802a68560961ed8cb8cc5fb2a244c2d',1,'ImVec2::x'],['../struct_im_vec4.html#a2090f651f5e5b78fedae8dab87343db6',1,'ImVec4::x'],['../struct_im_vec1.html#a825500197aa4fe7c4aa563ae547fd29b',1,'ImVec1::x'],['../struct_im_vec2ih.html#a0963e82728b3ea68d882089e1f5e231b',1,'ImVec2ih::x'],['../structstbrp__rect.html#a4cc623a3e29f0bc0d3375f6645c84d18',1,'stbrp_rect::x'],['../structstbrp__node.html#a45ab31a88025db27d08040d715b129ea',1,'stbrp_node::x'],['../structstbtt__vertex.html#a81773edbe760d0e090561a3c1e86c919',1,'stbtt_vertex::x']]],
+  ['x0_2',['x0',['../struct_stb_textedit_row.html#af30b3e1d61d1acea26d3e0ebec2cb81d',1,'StbTexteditRow::x0'],['../structstbtt__bakedchar.html#a8011a0ed0410de9fa405c9cb1ab43da2',1,'stbtt_bakedchar::x0'],['../structstbtt__aligned__quad.html#ad74fd8fd69f8a8e1bd20cb0ab7df6e2e',1,'stbtt_aligned_quad::x0'],['../structstbtt__packedchar.html#a02cb73a5af37ed60dafd5e4b731af09e',1,'stbtt_packedchar::x0']]],
+  ['x0_3',['X0',['../struct_im_font_glyph.html#a1e93bf7292c052549972fc46646ff104',1,'ImFontGlyph']]],
+  ['x1_4',['x1',['../struct_stb_textedit_row.html#a3a3e1a506030c871a1b3d09bf26e341f',1,'StbTexteditRow::x1'],['../structstbtt__bakedchar.html#a72c22c32abde95a5ba02925b8bd892bf',1,'stbtt_bakedchar::x1'],['../structstbtt__aligned__quad.html#a43a7eeac24238e289f825e644331dee6',1,'stbtt_aligned_quad::x1'],['../structstbtt__packedchar.html#a99d371f0261cd13dfd1a179f143175d1',1,'stbtt_packedchar::x1']]],
+  ['x1_5',['X1',['../struct_im_font_glyph.html#a1d907170d807c5e5f2a43d74b99f0d89',1,'ImFontGlyph']]],
+  ['x_5fppem_6',['x_ppem',['../struct_f_t___bitmap___size__.html#a6f877a792d2dc93328037c928979215f',1,'FT_Bitmap_Size_::x_ppem'],['../struct_f_t___size___metrics__.html#abb42b175a3450e9d8b84483f166d6c8a',1,'FT_Size_Metrics_::x_ppem']]],
+  ['x_5fres_7',['x_res',['../struct_f_t_c___scaler_rec__.html#a886c7c1230dc5d5e6b3fc32d06274752',1,'FTC_ScalerRec_']]],
+  ['x_5fscale_8',['x_scale',['../struct_f_t___size___metrics__.html#a5e92028bb9881e107a6fb75d557eaff1',1,'FT_Size_Metrics_']]],
+  ['x_5fskew_5fangle_9',['x_skew_angle',['../struct_f_t___paint_skew__.html#a7cae75fcdfec89ef78ae59ecd793247d',1,'FT_PaintSkew_']]],
+  ['xadvance_10',['xadvance',['../struct_f_t_c___s_bit_rec__.html#a502a0bb69d973d2ae626a842eb9fefd3',1,'FTC_SBitRec_::xadvance'],['../structstbtt__bakedchar.html#ad77b35d1a849d9eb7edb91df05b10536',1,'stbtt_bakedchar::xadvance'],['../structstbtt__packedchar.html#a28707ae98d1fa946b3390840aeff76ab',1,'stbtt_packedchar::xadvance']]],
+  ['xavgcharwidth_11',['xAvgCharWidth',['../struct_t_t___o_s2__.html#af903883918479780d17a72f6fee992bd',1,'TT_OS2_']]],
+  ['xflags_12',['xflags',['../structgz__header__s.html#a40e35dc1a967c6537c6012cf5416210a',1,'gz_header_s']]],
+  ['xheight_13',['xHeight',['../struct_t_t___p_c_l_t__.html#a4b2f3e6bf6508eacbff5e4eb16745872',1,'TT_PCLT_']]],
+  ['xmax_14',['xMax',['../struct_f_t___b_box__.html#ac6da5c44f4cb7b97eef1f438eb69c0ec',1,'FT_BBox_::xMax'],['../struct_t_t___header__.html#a593b9cc3e11532972a7fc96944dd1ae9',1,'TT_Header_::xMax']]],
+  ['xmax_5fextent_15',['xMax_Extent',['../struct_t_t___hori_header__.html#ab483cb323f9adc9d959209a42eb19957',1,'TT_HoriHeader_']]],
+  ['xmin_16',['xMin',['../struct_f_t___b_box__.html#a1f2a5d0565d496c1d41e43d018f45add',1,'FT_BBox_::xMin'],['../struct_t_t___header__.html#ae4553d76427d9f7a28595ed71897dcbb',1,'TT_Header_::xMin']]],
+  ['xoff_17',['xoff',['../structstbtt__bakedchar.html#a0708a6588a2768b68a3ae59002944b7c',1,'stbtt_bakedchar::xoff'],['../structstbtt__packedchar.html#adb30c50674c79d32116ae6f94bd5893f',1,'stbtt_packedchar::xoff']]],
+  ['xoff2_18',['xoff2',['../structstbtt__packedchar.html#a3a33880f925ca826c908cbf9f0673c9f',1,'stbtt_packedchar']]],
+  ['xuid_19',['xuid',['../struct_c_i_d___face_info_rec__.html#a32cd8836dd8a395d9aa6fb5831f06b27',1,'CID_FaceInfoRec_']]],
+  ['xx_20',['xx',['../struct_f_t___affine__23__.html#a72e3398887b02943605920d3ff580cdf',1,'FT_Affine_23_::xx'],['../struct_f_t___matrix__.html#a27d51c2958634abe7bf377610e095f74',1,'FT_Matrix_::xx']]],
+  ['xy_21',['xy',['../struct_f_t___affine__23__.html#a1042ae284ceed174ef70bd8ae0a98d73',1,'FT_Affine_23_::xy'],['../struct_f_t___matrix__.html#a7e9f439d37c00ba1a11919bcaa8937a2',1,'FT_Matrix_::xy']]]
+];

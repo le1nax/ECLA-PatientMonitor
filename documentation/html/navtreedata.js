@@ -24,16 +24,16 @@
 */
 var NAVTREE =
 [
-  [ "MPMonitorGUI", "index.html", [
+  [ "ECLA-PatientenmonitorServer", "index.html", [
     [ "Todo List", "todo.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
+        [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", "functions_vars" ]
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -41,7 +41,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
@@ -51,13 +50,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_ava_obj_8cpp.html",
-"definitions_8h.html#a2632956bd5f14e2e21997dbb006d8072ad5fd4c2eccb31414214350515aa48c61",
-"definitions_8h.html#a65e33b872d5b1cd91c004aaea9a85ecea50b0dd5b0613d307358e7dda9c147831",
-"definitions_8h.html#a65e33b872d5b1cd91c004aaea9a85eceaad6ccde2ee84ee6b54834e72fd9147a8",
-"definitions_8h.html#a939534065e17395e094ec0605d7205c0ac50fe72d0db86e8bc2ea9b54c742a0f6",
-"definitions_8h.html#ad9ea9c753a0a667a0c7ffc657703091faf840c453211a21f5df4f58700726417f",
-"struct_sa_obs_value.html"
+"_can_adapter_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

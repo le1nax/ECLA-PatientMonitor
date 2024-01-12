@@ -1,0 +1,358 @@
+\doxysection{ftsystem.\+h}
+\hypertarget{ftsystem_8h_source}{}\label{ftsystem_8h_source}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/freetype/ftsystem.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/freetype/ftsystem.h}}
+\mbox{\hyperlink{ftsystem_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ ftsystem.h}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ FreeType\ low-\/level\ system\ interface\ definition\ (specification).}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ Copyright\ (C)\ 1996-\/2022\ by}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ David\ Turner,\ Robert\ Wilhelm,\ and\ Werner\ Lemberg.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ the\ FreeType\ project,\ and\ may\ only\ be\ used,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ modified,\ and\ distributed\ under\ the\ terms\ of\ the\ FreeType\ project}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ license,\ LICENSE.TXT.\ \ By\ continuing\ to\ use,\ modify,\ or\ distribute}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ this\ file\ you\ indicate\ that\ you\ have\ read\ the\ license\ and}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ understand\ and\ accept\ it\ fully.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifndef\ FTSYSTEM\_H\_}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ FTSYSTEM\_H\_}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \mbox{\hyperlink{ftheader_8h_a72ee5814b3ae378ebb7fd3a8e3ddec14}{FT\_BEGIN\_HEADER}}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ \ \ *\ @section:}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ \ \ *\ \ system\_interface}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ \ \ *\ @title:}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \ \ *\ \ System\ Interface}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ \ \ *\ @abstract:}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ \ \ *\ \ How\ FreeType\ manages\ memory\ and\ i/o.}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ *\ \ This\ section\ contains\ various\ definitions\ related\ to\ memory\ management}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ *\ \ and\ i/o\ access.\ \ You\ need\ to\ understand\ this\ information\ if\ you\ want\ to}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ *\ \ use\ a\ custom\ memory\ manager\ or\ you\ own\ i/o\ streams.}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ M\ E\ M\ O\ R\ Y\ \ \ M\ A\ N\ A\ G\ E\ M\ E\ N\ T}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00056\ \textcolor{comment}{\ \ \ *\ @type:}}
+\DoxyCodeLine{00057\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Memory}}
+\DoxyCodeLine{00058\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00059\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00060\ \textcolor{comment}{\ \ \ *\ \ \ A\ handle\ to\ a\ given\ memory\ manager\ object,\ defined\ with\ an}}
+\DoxyCodeLine{00061\ \textcolor{comment}{\ \ \ *\ \ \ @FT\_MemoryRec\ structure.}}
+\DoxyCodeLine{00062\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_f_t___memory_rec__}{FT\_MemoryRec\_}}*\ \ \mbox{\hyperlink{ftsystem_8h_a67ec7ea35cde99a89a65e9f827a9ad3a}{FT\_Memory}};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ *\ @functype:}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Alloc\_Func}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ *\ \ \ A\ function\ used\ to\ allocate\ \`{}size`\ bytes\ from\ \`{}memory`.}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{00076\ \textcolor{comment}{\ \ \ *\ \ \ memory\ ::}}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ handle\ to\ the\ source\ memory\ manager.}}
+\DoxyCodeLine{00078\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00079\ \textcolor{comment}{\ \ \ *\ \ \ size\ ::}}
+\DoxyCodeLine{00080\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ size\ in\ bytes\ to\ allocate.}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{00083\ \textcolor{comment}{\ \ \ *\ \ \ Address\ of\ new\ memory\ block.\ \ 0\string~in\ case\ of\ failure.}}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00086\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}*}
+\DoxyCodeLine{00087\ \ \ (*FT\_Alloc\_Func)(\ \mbox{\hyperlink{ftsystem_8h_a67ec7ea35cde99a89a65e9f827a9ad3a}{FT\_Memory}}\ \ memory,}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \ \ \ \ \ \ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3d1e3edfcf61ca2d831883e1afbad89e}{size}}\ );}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00093\ \textcolor{comment}{\ \ \ *\ @functype:}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Free\_Func}}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ \ \ *\ \ \ A\ function\ used\ to\ release\ a\ given\ block\ of\ memory.}}
+\DoxyCodeLine{00098\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00099\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{00100\ \textcolor{comment}{\ \ \ *\ \ \ memory\ ::}}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ handle\ to\ the\ source\ memory\ manager.}}
+\DoxyCodeLine{00102\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00103\ \textcolor{comment}{\ \ \ *\ \ \ block\ ::}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ address\ of\ the\ target\ memory\ block.}}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00106\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00107\ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}}
+\DoxyCodeLine{00108\ \ \ (*\mbox{\hyperlink{ftsystem_8h_abbf66b34e6c3a7f9564cbe3d6fa6c6fb}{FT\_Free\_Func}})(\ \mbox{\hyperlink{ftsystem_8h_a67ec7ea35cde99a89a65e9f827a9ad3a}{FT\_Memory}}\ \ memory,}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ block\ );}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00113\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00114\ \textcolor{comment}{\ \ \ *\ @functype:}}
+\DoxyCodeLine{00115\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Realloc\_Func}}
+\DoxyCodeLine{00116\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00117\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00118\ \textcolor{comment}{\ \ \ *\ \ \ A\ function\ used\ to\ re-\/allocate\ a\ given\ block\ of\ memory.}}
+\DoxyCodeLine{00119\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00120\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ \ \ *\ \ \ memory\ ::}}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ handle\ to\ the\ source\ memory\ manager.}}
+\DoxyCodeLine{00123\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00124\ \textcolor{comment}{\ \ \ *\ \ \ cur\_size\ ::}}
+\DoxyCodeLine{00125\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ block's\ current\ size\ in\ bytes.}}
+\DoxyCodeLine{00126\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00127\ \textcolor{comment}{\ \ \ *\ \ \ new\_size\ ::}}
+\DoxyCodeLine{00128\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ block's\ requested\ new\ size.}}
+\DoxyCodeLine{00129\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00130\ \textcolor{comment}{\ \ \ *\ \ \ block\ ::}}
+\DoxyCodeLine{00131\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ block's\ current\ address.}}
+\DoxyCodeLine{00132\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00133\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{00134\ \textcolor{comment}{\ \ \ *\ \ \ New\ block\ address.\ \ 0\string~in\ case\ of\ memory\ shortage.}}
+\DoxyCodeLine{00135\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ \ \ *\ @note:}}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ \ \ *\ \ \ In\ case\ of\ error,\ the\ old\ block\ must\ still\ be\ available.}}
+\DoxyCodeLine{00138\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00139\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00140\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}*}
+\DoxyCodeLine{00141\ \ \ (*FT\_Realloc\_Func)(\ \mbox{\hyperlink{ftsystem_8h_a67ec7ea35cde99a89a65e9f827a9ad3a}{FT\_Memory}}\ \ memory,}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \ \ \ \ \ \ cur\_size,}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \ \ \ \ \ \ new\_size,}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ block\ );}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00148\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00149\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00150\ \textcolor{comment}{\ \ \ *\ \ \ FT\_MemoryRec}}
+\DoxyCodeLine{00151\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00152\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00153\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ used\ to\ describe\ a\ given\ memory\ manager\ to\ FreeType\string~2.}}
+\DoxyCodeLine{00154\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00155\ \textcolor{comment}{\ \ \ *\ @fields:}}
+\DoxyCodeLine{00156\ \textcolor{comment}{\ \ \ *\ \ \ user\ ::}}
+\DoxyCodeLine{00157\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ generic\ typeless\ pointer\ for\ user\ data.}}
+\DoxyCodeLine{00158\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00159\ \textcolor{comment}{\ \ \ *\ \ \ alloc\ ::}}
+\DoxyCodeLine{00160\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ pointer\ type\ to\ an\ allocation\ function.}}
+\DoxyCodeLine{00161\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00162\ \textcolor{comment}{\ \ \ *\ \ \ free\ ::}}
+\DoxyCodeLine{00163\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ pointer\ type\ to\ an\ memory\ freeing\ function.}}
+\DoxyCodeLine{00164\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00165\ \textcolor{comment}{\ \ \ *\ \ \ realloc\ ::}}
+\DoxyCodeLine{00166\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ pointer\ type\ to\ a\ reallocation\ function.}}
+\DoxyCodeLine{00167\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00168\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00169\ \ \ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___memory_rec__}{FT\_MemoryRec\_}}}
+\DoxyCodeLine{00170\ \ \ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___memory_rec___aae5bc614434ba4525e37d7faaf03c4b7}{user}};}
+\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{ftsystem_8h_a3022e34c346d3c076e05df3952923e7f}{FT\_Alloc\_Func}}\ \ \ \ \mbox{\hyperlink{struct_f_t___memory_rec___a2269eada6afbb008fe5c73707145410c}{alloc}};}
+\DoxyCodeLine{00173\ \ \ \ \ \mbox{\hyperlink{ftsystem_8h_abbf66b34e6c3a7f9564cbe3d6fa6c6fb}{FT\_Free\_Func}}\ \ \ \ \ \mbox{\hyperlink{struct_f_t___memory_rec___a83ab2422bd9265d8731b9e5e368ba240}{free}};}
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{ftsystem_8h_a7bce40b59dbc237d86decf6ebd81b4a2}{FT\_Realloc\_Func}}\ \ \mbox{\hyperlink{struct_f_t___memory_rec___a5ce3424cc72e898fe973ffeabe44a95c}{realloc}};}
+\DoxyCodeLine{00175\ \ \ \};}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00179\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00180\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ I\ /\ O\ \ \ M\ A\ N\ A\ G\ E\ M\ E\ N\ T}}
+\DoxyCodeLine{00181\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00182\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00186\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00187\ \textcolor{comment}{\ \ \ *\ @type:}}
+\DoxyCodeLine{00188\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Stream}}
+\DoxyCodeLine{00189\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00190\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00191\ \textcolor{comment}{\ \ \ *\ \ \ A\ handle\ to\ an\ input\ stream.}}
+\DoxyCodeLine{00192\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00193\ \textcolor{comment}{\ \ \ *\ @also:}}
+\DoxyCodeLine{00194\ \textcolor{comment}{\ \ \ *\ \ \ See\ @FT\_StreamRec\ for\ the\ publicly\ accessible\ fields\ of\ a\ given\ stream}}
+\DoxyCodeLine{00195\ \textcolor{comment}{\ \ \ *\ \ \ object.}}
+\DoxyCodeLine{00196\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00197\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00198\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_f_t___stream_rec__}{FT\_StreamRec\_}}*\ \ \mbox{\hyperlink{ftsystem_8h_a788b32c932932f7411a8dfa7f6c794bf}{FT\_Stream}};}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00202\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00203\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00204\ \textcolor{comment}{\ \ \ *\ \ \ FT\_StreamDesc}}
+\DoxyCodeLine{00205\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00206\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00207\ \textcolor{comment}{\ \ \ *\ \ \ A\ union\ type\ used\ to\ store\ either\ a\ long\ or\ a\ pointer.\ \ This\ is\ used}}
+\DoxyCodeLine{00208\ \textcolor{comment}{\ \ \ *\ \ \ to\ store\ a\ file\ descriptor\ or\ a\ \`{}FILE*\`{}\ in\ an\ input\ stream.}}
+\DoxyCodeLine{00209\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00210\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00211\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ \ }\mbox{\hyperlink{union_f_t___stream_desc__}{FT\_StreamDesc\_}}}
+\DoxyCodeLine{00212\ \ \ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{long}\ \ \ \mbox{\hyperlink{union_f_t___stream_desc___a1a94493032faef1c3ed7bc33816ce90c}{value}};}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \mbox{\hyperlink{union_f_t___stream_desc___a410ed102dc377fb9a5b9c950c3f863dc}{pointer}};}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \}\ \mbox{\hyperlink{ftsystem_8h_a302b58ffa36ab8ca08cadb2629bb8e8f}{FT\_StreamDesc}};}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00220\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00221\ \textcolor{comment}{\ \ \ *\ @functype:}}
+\DoxyCodeLine{00222\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Stream\_IoFunc}}
+\DoxyCodeLine{00223\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00224\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00225\ \textcolor{comment}{\ \ \ *\ \ \ A\ function\ used\ to\ seek\ and\ read\ data\ from\ a\ given\ input\ stream.}}
+\DoxyCodeLine{00226\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00227\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{00228\ \textcolor{comment}{\ \ \ *\ \ \ stream\ ::}}
+\DoxyCodeLine{00229\ \textcolor{comment}{\ \ \ *\ \ \ \ \ A\ handle\ to\ the\ source\ stream.}}
+\DoxyCodeLine{00230\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00231\ \textcolor{comment}{\ \ \ *\ \ \ offset\ ::}}
+\DoxyCodeLine{00232\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ offset\ of\ read\ in\ stream\ (always\ from\ start).}}
+\DoxyCodeLine{00233\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00234\ \textcolor{comment}{\ \ \ *\ \ \ buffer\ ::}}
+\DoxyCodeLine{00235\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ address\ of\ the\ read\ buffer.}}
+\DoxyCodeLine{00236\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00237\ \textcolor{comment}{\ \ \ *\ \ \ count\ ::}}
+\DoxyCodeLine{00238\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ number\ of\ bytes\ to\ read\ from\ the\ stream.}}
+\DoxyCodeLine{00239\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00240\ \textcolor{comment}{\ \ \ *\ @return:}}
+\DoxyCodeLine{00241\ \textcolor{comment}{\ \ \ *\ \ \ The\ number\ of\ bytes\ effectively\ read\ by\ the\ stream.}}
+\DoxyCodeLine{00242\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00243\ \textcolor{comment}{\ \ \ *\ @note:}}
+\DoxyCodeLine{00244\ \textcolor{comment}{\ \ \ *\ \ \ This\ function\ might\ be\ called\ to\ perform\ a\ seek\ or\ skip\ operation\ with}}
+\DoxyCodeLine{00245\ \textcolor{comment}{\ \ \ *\ \ \ a\ \`{}count`\ of\string~0.\ \ A\ non-\/zero\ return\ value\ then\ indicates\ an\ error.}}
+\DoxyCodeLine{00246\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00247\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00248\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ long}
+\DoxyCodeLine{00249\ \ \ (*\mbox{\hyperlink{ftsystem_8h_a1909d9c00ba62592c047a9868e5a6b0b}{FT\_Stream\_IoFunc}})(\ \mbox{\hyperlink{struct_f_t___stream_rec__}{FT\_Stream}}\ \ \ \ \ \ \ stream,}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \ \ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_ae1b92ae085ddef4b1cdca7d749339fb0}{offset}},}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ \ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a3667f558219c90437106b544a3ca00b8}{buffer}},}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \ \ \mbox{\hyperlink{imgui__impl__opengl3__loader_8h_a619bc20e8198de3bd3f3d7fc34de66b2}{count}}\ );}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00256\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00257\ \textcolor{comment}{\ \ \ *\ @functype:}}
+\DoxyCodeLine{00258\ \textcolor{comment}{\ \ \ *\ \ \ FT\_Stream\_CloseFunc}}
+\DoxyCodeLine{00259\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00260\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00261\ \textcolor{comment}{\ \ \ *\ \ \ A\ function\ used\ to\ close\ a\ given\ input\ stream.}}
+\DoxyCodeLine{00262\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00263\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{00264\ \textcolor{comment}{\ \ \ *\ \ stream\ ::}}
+\DoxyCodeLine{00265\ \textcolor{comment}{\ \ \ *\ \ \ \ A\ handle\ to\ the\ target\ stream.}}
+\DoxyCodeLine{00266\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00267\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00268\ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}}
+\DoxyCodeLine{00269\ \ \ (*\mbox{\hyperlink{ftsystem_8h_a9ab6151513724c69e5493d520d43135f}{FT\_Stream\_CloseFunc}})(\ \mbox{\hyperlink{struct_f_t___stream_rec__}{FT\_Stream}}\ \ stream\ );}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \textcolor{comment}{\ \ /**************************************************************************}}
+\DoxyCodeLine{00273\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00274\ \textcolor{comment}{\ \ \ *\ @struct:}}
+\DoxyCodeLine{00275\ \textcolor{comment}{\ \ \ *\ \ \ FT\_StreamRec}}
+\DoxyCodeLine{00276\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00277\ \textcolor{comment}{\ \ \ *\ @description:}}
+\DoxyCodeLine{00278\ \textcolor{comment}{\ \ \ *\ \ \ A\ structure\ used\ to\ describe\ an\ input\ stream.}}
+\DoxyCodeLine{00279\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00280\ \textcolor{comment}{\ \ \ *\ @input:}}
+\DoxyCodeLine{00281\ \textcolor{comment}{\ \ \ *\ \ \ base\ ::}}
+\DoxyCodeLine{00282\ \textcolor{comment}{\ \ \ *\ \ \ \ \ For\ memory-\/based\ streams,\ this\ is\ the\ address\ of\ the\ first\ stream}}
+\DoxyCodeLine{00283\ \textcolor{comment}{\ \ \ *\ \ \ \ \ byte\ in\ memory.\ \ This\ field\ should\ always\ be\ set\ to\ \`{}NULL`\ for}}
+\DoxyCodeLine{00284\ \textcolor{comment}{\ \ \ *\ \ \ \ \ disk-\/based\ streams.}}
+\DoxyCodeLine{00285\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00286\ \textcolor{comment}{\ \ \ *\ \ \ size\ ::}}
+\DoxyCodeLine{00287\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ stream\ size\ in\ bytes.}}
+\DoxyCodeLine{00288\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00289\ \textcolor{comment}{\ \ \ *\ \ \ \ \ In\ case\ of\ compressed\ streams\ where\ the\ size\ is\ unknown\ before}}
+\DoxyCodeLine{00290\ \textcolor{comment}{\ \ \ *\ \ \ \ \ actually\ doing\ the\ decompression,\ the\ value\ is\ set\ to\ 0x7FFFFFFF.}}
+\DoxyCodeLine{00291\ \textcolor{comment}{\ \ \ *\ \ \ \ \ (Note\ that\ this\ size\ value\ can\ occur\ for\ normal\ streams\ also;\ it\ is}}
+\DoxyCodeLine{00292\ \textcolor{comment}{\ \ \ *\ \ \ \ \ thus\ just\ a\ hint.)}}
+\DoxyCodeLine{00293\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00294\ \textcolor{comment}{\ \ \ *\ \ \ pos\ ::}}
+\DoxyCodeLine{00295\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ current\ position\ within\ the\ stream.}}
+\DoxyCodeLine{00296\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00297\ \textcolor{comment}{\ \ \ *\ \ \ descriptor\ ::}}
+\DoxyCodeLine{00298\ \textcolor{comment}{\ \ \ *\ \ \ \ \ This\ field\ is\ a\ union\ that\ can\ hold\ an\ integer\ or\ a\ pointer.\ \ It\ is}}
+\DoxyCodeLine{00299\ \textcolor{comment}{\ \ \ *\ \ \ \ \ used\ by\ stream\ implementations\ to\ store\ file\ descriptors\ or\ \`{}FILE*\`{}}}
+\DoxyCodeLine{00300\ \textcolor{comment}{\ \ \ *\ \ \ \ \ pointers.}}
+\DoxyCodeLine{00301\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00302\ \textcolor{comment}{\ \ \ *\ \ \ pathname\ ::}}
+\DoxyCodeLine{00303\ \textcolor{comment}{\ \ \ *\ \ \ \ \ This\ field\ is\ completely\ ignored\ by\ FreeType.\ \ However,\ it\ is\ often}}
+\DoxyCodeLine{00304\ \textcolor{comment}{\ \ \ *\ \ \ \ \ useful\ during\ debugging\ to\ use\ it\ to\ store\ the\ stream's\ filename}}
+\DoxyCodeLine{00305\ \textcolor{comment}{\ \ \ *\ \ \ \ \ (where\ available).}}
+\DoxyCodeLine{00306\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00307\ \textcolor{comment}{\ \ \ *\ \ \ read\ ::}}
+\DoxyCodeLine{00308\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ stream's\ input\ function.}}
+\DoxyCodeLine{00309\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00310\ \textcolor{comment}{\ \ \ *\ \ \ close\ ::}}
+\DoxyCodeLine{00311\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ stream's\ close\ function.}}
+\DoxyCodeLine{00312\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00313\ \textcolor{comment}{\ \ \ *\ \ \ memory\ ::}}
+\DoxyCodeLine{00314\ \textcolor{comment}{\ \ \ *\ \ \ \ \ The\ memory\ manager\ to\ use\ to\ preload\ frames.\ \ This\ is\ set\ internally}}
+\DoxyCodeLine{00315\ \textcolor{comment}{\ \ \ *\ \ \ \ \ by\ FreeType\ and\ shouldn't\ be\ touched\ by\ stream\ implementations.}}
+\DoxyCodeLine{00316\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00317\ \textcolor{comment}{\ \ \ *\ \ \ cursor\ ::}}
+\DoxyCodeLine{00318\ \textcolor{comment}{\ \ \ *\ \ \ \ \ This\ field\ is\ set\ and\ used\ internally\ by\ FreeType\ when\ parsing}}
+\DoxyCodeLine{00319\ \textcolor{comment}{\ \ \ *\ \ \ \ \ frames.\ \ In\ particular,\ the\ \`{}FT\_GET\_XXX`\ macros\ use\ this\ instead\ of}}
+\DoxyCodeLine{00320\ \textcolor{comment}{\ \ \ *\ \ \ \ \ the\ \`{}pos`\ field.}}
+\DoxyCodeLine{00321\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00322\ \textcolor{comment}{\ \ \ *\ \ \ limit\ ::}}
+\DoxyCodeLine{00323\ \textcolor{comment}{\ \ \ *\ \ \ \ \ This\ field\ is\ set\ and\ used\ internally\ by\ FreeType\ when\ parsing}}
+\DoxyCodeLine{00324\ \textcolor{comment}{\ \ \ *\ \ \ \ \ frames.}}
+\DoxyCodeLine{00325\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{00326\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00327\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{struct_f_t___stream_rec__}{FT\_StreamRec\_}}}
+\DoxyCodeLine{00328\ \ \ \{}
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___stream_rec___a7b406cb9a60c5a8b4bd8d04b7a23cfee}{base}};}
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___stream_rec___ab00e3cf802c950d0ca5a022a06953123}{size}};}
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___stream_rec___a5bf82c2ff4554752edfeec442fba2f33}{pos}};}
+\DoxyCodeLine{00332\ }
+\DoxyCodeLine{00333\ \ \ \ \ \mbox{\hyperlink{union_f_t___stream_desc__}{FT\_StreamDesc}}\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___stream_rec___a361c44020eace21cc453b51852d8cc4f}{descriptor}};}
+\DoxyCodeLine{00334\ \ \ \ \ \mbox{\hyperlink{union_f_t___stream_desc__}{FT\_StreamDesc}}\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___stream_rec___afd75c5de5ed78c484a200a7e97ef5a41}{pathname}};}
+\DoxyCodeLine{00335\ \ \ \ \ \mbox{\hyperlink{ftsystem_8h_a1909d9c00ba62592c047a9868e5a6b0b}{FT\_Stream\_IoFunc}}\ \ \ \ \ \mbox{\hyperlink{struct_f_t___stream_rec___af724049d0258d4988c2b11c3a08b1b05}{read}};}
+\DoxyCodeLine{00336\ \ \ \ \ \mbox{\hyperlink{ftsystem_8h_a9ab6151513724c69e5493d520d43135f}{FT\_Stream\_CloseFunc}}\ \ \mbox{\hyperlink{struct_f_t___stream_rec___a7d7c7a1d7de8f580d7ad66efe89defa9}{close}};}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \ \ \ \ \mbox{\hyperlink{ftsystem_8h_a67ec7ea35cde99a89a65e9f827a9ad3a}{FT\_Memory}}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___stream_rec___a51e2be0d80d70b532aae3face5461e7e}{memory}};}
+\DoxyCodeLine{00339\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___stream_rec___ab7dbbad87d8b6d0178771a06e1ce8b4d}{cursor}};}
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_t___stream_rec___aff006e6ee3bbc2741a2c4ae79b1bad3a}{limit}};}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \ \ \}\ \mbox{\hyperlink{ftsystem_8h_a0ac77b1942c2bf23e05e4f95976a993a}{FT\_StreamRec}};}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \ \ \textcolor{comment}{/*\ */}}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \mbox{\hyperlink{ftheader_8h_a2ebbdbbee7f9bfa8b6b86790de7e9963}{FT\_END\_HEADER}}}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00349\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ FTSYSTEM\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00352\ \textcolor{comment}{/*\ END\ */}}
+
+\end{DoxyCode}

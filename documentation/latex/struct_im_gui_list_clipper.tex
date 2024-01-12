@@ -1,0 +1,149 @@
+\doxysection{Im\+Gui\+List\+Clipper Struct Reference}
+\hypertarget{struct_im_gui_list_clipper}{}\label{struct_im_gui_list_clipper}\index{ImGuiListClipper@{ImGuiListClipper}}
+
+
+{\ttfamily \#include $<$imgui.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_gui_list_clipper_a0035888e7e97938bf0646e10db45afb8}{Im\+Gui\+List\+Clipper}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{struct_im_gui_list_clipper_adeec7e8141c995825b862cb43d3ed8e2}{\texorpdfstring{$\sim$}{\string~}\+Im\+Gui\+List\+Clipper}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_gui_list_clipper_a7561a04de4a70ad5dcd670e1e0d8e31b}{Begin}} (int items\+\_\+count, float items\+\_\+height=-\/1.\+0f)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_gui_list_clipper_a28ec3b502f742f386dc518c40e9e2c98}{End}} ()
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} bool \mbox{\hyperlink{struct_im_gui_list_clipper_a80de04a3a9958f4c6eea974cca060bdf}{Step}} ()
+\item 
+\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_gui_list_clipper_a37f10ca5da7a7503866059006b6c76c1}{Include\+Item\+By\+Index}} (int item\+\_\+index)
+\item 
+\mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_gui_list_clipper_aa8c8ec2d815bc70e325236dd53c9a474}{Include\+Items\+By\+Index}} (int item\+\_\+begin, int item\+\_\+end)
+\item 
+\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_gui_list_clipper_a7413ddbaa573fed143c8ca33dd4c9077}{Include\+Range\+By\+Indices}} (int item\+\_\+begin, int item\+\_\+end)
+\item 
+\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \mbox{\hyperlink{struct_im_gui_list_clipper_a2363fd5ddd1cabfc50080ada65ff8916}{Force\+Display\+Range\+By\+Indices}} (int item\+\_\+begin, int item\+\_\+end)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_im_gui_context}{Im\+Gui\+Context}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_gui_list_clipper_a4c983c526d4653cd51684a65aa134eaf}{Ctx}}
+\item 
+int \mbox{\hyperlink{struct_im_gui_list_clipper_a9d096e06e5633fd77a8a209c00fe454a}{Display\+Start}}
+\item 
+int \mbox{\hyperlink{struct_im_gui_list_clipper_aa49e30d04ad8f8b95fbaa62dfbb4ea3e}{Display\+End}}
+\item 
+int \mbox{\hyperlink{struct_im_gui_list_clipper_a4e2b4e8efe10615d04ad2aeea467f522}{Items\+Count}}
+\item 
+float \mbox{\hyperlink{struct_im_gui_list_clipper_a19762cb78ff0adccb414027c25678a60}{Items\+Height}}
+\item 
+float \mbox{\hyperlink{struct_im_gui_list_clipper_affee91b338520cd4bd59b5b680dcb5ae}{Start\+PosY}}
+\item 
+\mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_im_gui_list_clipper_a596215ed18fa6d4094d9bf4da975e1be}{Temp\+Data}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_im_gui_list_clipper_a0035888e7e97938bf0646e10db45afb8}\label{struct_im_gui_list_clipper_a0035888e7e97938bf0646e10db45afb8} 
+\index{ImGuiListClipper@{ImGuiListClipper}!ImGuiListClipper@{ImGuiListClipper}}
+\index{ImGuiListClipper@{ImGuiListClipper}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{ImGuiListClipper()}{ImGuiListClipper()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} Im\+Gui\+List\+Clipper\+::\+Im\+Gui\+List\+Clipper (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_gui_list_clipper_adeec7e8141c995825b862cb43d3ed8e2}\label{struct_im_gui_list_clipper_adeec7e8141c995825b862cb43d3ed8e2} 
+\index{ImGuiListClipper@{ImGuiListClipper}!````~ImGuiListClipper@{\texorpdfstring{$\sim$}{\string~}ImGuiListClipper}}
+\index{````~ImGuiListClipper@{\texorpdfstring{$\sim$}{\string~}ImGuiListClipper}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ImGuiListClipper()}{\string~ImGuiListClipper()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} Im\+Gui\+List\+Clipper\+::\texorpdfstring{$\sim$}{\string~}\+Im\+Gui\+List\+Clipper (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_im_gui_list_clipper_a7561a04de4a70ad5dcd670e1e0d8e31b}\label{struct_im_gui_list_clipper_a7561a04de4a70ad5dcd670e1e0d8e31b} 
+\index{ImGuiListClipper@{ImGuiListClipper}!Begin@{Begin}}
+\index{Begin@{Begin}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{Begin()}{Begin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Gui\+List\+Clipper\+::\+Begin (\begin{DoxyParamCaption}\item[{int}]{items\+\_\+count,  }\item[{float}]{items\+\_\+height = {\ttfamily -\/1.0f} }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_gui_list_clipper_a28ec3b502f742f386dc518c40e9e2c98}\label{struct_im_gui_list_clipper_a28ec3b502f742f386dc518c40e9e2c98} 
+\index{ImGuiListClipper@{ImGuiListClipper}!End@{End}}
+\index{End@{End}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{End()}{End()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Gui\+List\+Clipper\+::\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_gui_list_clipper_a2363fd5ddd1cabfc50080ada65ff8916}\label{struct_im_gui_list_clipper_a2363fd5ddd1cabfc50080ada65ff8916} 
+\index{ImGuiListClipper@{ImGuiListClipper}!ForceDisplayRangeByIndices@{ForceDisplayRangeByIndices}}
+\index{ForceDisplayRangeByIndices@{ForceDisplayRangeByIndices}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{ForceDisplayRangeByIndices()}{ForceDisplayRangeByIndices()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Gui\+List\+Clipper\+::\+Force\+Display\+Range\+By\+Indices (\begin{DoxyParamCaption}\item[{int}]{item\+\_\+begin,  }\item[{int}]{item\+\_\+end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_im_gui_list_clipper_a37f10ca5da7a7503866059006b6c76c1}\label{struct_im_gui_list_clipper_a37f10ca5da7a7503866059006b6c76c1} 
+\index{ImGuiListClipper@{ImGuiListClipper}!IncludeItemByIndex@{IncludeItemByIndex}}
+\index{IncludeItemByIndex@{IncludeItemByIndex}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{IncludeItemByIndex()}{IncludeItemByIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Gui\+List\+Clipper\+::\+Include\+Item\+By\+Index (\begin{DoxyParamCaption}\item[{int}]{item\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_im_gui_list_clipper_aa8c8ec2d815bc70e325236dd53c9a474}\label{struct_im_gui_list_clipper_aa8c8ec2d815bc70e325236dd53c9a474} 
+\index{ImGuiListClipper@{ImGuiListClipper}!IncludeItemsByIndex@{IncludeItemsByIndex}}
+\index{IncludeItemsByIndex@{IncludeItemsByIndex}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{IncludeItemsByIndex()}{IncludeItemsByIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Gui\+List\+Clipper\+::\+Include\+Items\+By\+Index (\begin{DoxyParamCaption}\item[{int}]{item\+\_\+begin,  }\item[{int}]{item\+\_\+end }\end{DoxyParamCaption})}
+
+\Hypertarget{struct_im_gui_list_clipper_a7413ddbaa573fed143c8ca33dd4c9077}\label{struct_im_gui_list_clipper_a7413ddbaa573fed143c8ca33dd4c9077} 
+\index{ImGuiListClipper@{ImGuiListClipper}!IncludeRangeByIndices@{IncludeRangeByIndices}}
+\index{IncludeRangeByIndices@{IncludeRangeByIndices}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{IncludeRangeByIndices()}{IncludeRangeByIndices()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}} Im\+Gui\+List\+Clipper\+::\+Include\+Range\+By\+Indices (\begin{DoxyParamCaption}\item[{int}]{item\+\_\+begin,  }\item[{int}]{item\+\_\+end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_im_gui_list_clipper_a80de04a3a9958f4c6eea974cca060bdf}\label{struct_im_gui_list_clipper_a80de04a3a9958f4c6eea974cca060bdf} 
+\index{ImGuiListClipper@{ImGuiListClipper}!Step@{Step}}
+\index{Step@{Step}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{Step()}{Step()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{imgui_8h_a43829975e84e45d1149597467a14bbf5}{IMGUI\+\_\+\+API}} bool Im\+Gui\+List\+Clipper\+::\+Step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_im_gui_list_clipper_a4c983c526d4653cd51684a65aa134eaf}\label{struct_im_gui_list_clipper_a4c983c526d4653cd51684a65aa134eaf} 
+\index{ImGuiListClipper@{ImGuiListClipper}!Ctx@{Ctx}}
+\index{Ctx@{Ctx}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{Ctx}{Ctx}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_im_gui_context}{Im\+Gui\+Context}}\texorpdfstring{$\ast$}{*} Im\+Gui\+List\+Clipper\+::\+Ctx}
+
+\Hypertarget{struct_im_gui_list_clipper_aa49e30d04ad8f8b95fbaa62dfbb4ea3e}\label{struct_im_gui_list_clipper_aa49e30d04ad8f8b95fbaa62dfbb4ea3e} 
+\index{ImGuiListClipper@{ImGuiListClipper}!DisplayEnd@{DisplayEnd}}
+\index{DisplayEnd@{DisplayEnd}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{DisplayEnd}{DisplayEnd}}
+{\footnotesize\ttfamily int Im\+Gui\+List\+Clipper\+::\+Display\+End}
+
+\Hypertarget{struct_im_gui_list_clipper_a9d096e06e5633fd77a8a209c00fe454a}\label{struct_im_gui_list_clipper_a9d096e06e5633fd77a8a209c00fe454a} 
+\index{ImGuiListClipper@{ImGuiListClipper}!DisplayStart@{DisplayStart}}
+\index{DisplayStart@{DisplayStart}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{DisplayStart}{DisplayStart}}
+{\footnotesize\ttfamily int Im\+Gui\+List\+Clipper\+::\+Display\+Start}
+
+\Hypertarget{struct_im_gui_list_clipper_a4e2b4e8efe10615d04ad2aeea467f522}\label{struct_im_gui_list_clipper_a4e2b4e8efe10615d04ad2aeea467f522} 
+\index{ImGuiListClipper@{ImGuiListClipper}!ItemsCount@{ItemsCount}}
+\index{ItemsCount@{ItemsCount}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{ItemsCount}{ItemsCount}}
+{\footnotesize\ttfamily int Im\+Gui\+List\+Clipper\+::\+Items\+Count}
+
+\Hypertarget{struct_im_gui_list_clipper_a19762cb78ff0adccb414027c25678a60}\label{struct_im_gui_list_clipper_a19762cb78ff0adccb414027c25678a60} 
+\index{ImGuiListClipper@{ImGuiListClipper}!ItemsHeight@{ItemsHeight}}
+\index{ItemsHeight@{ItemsHeight}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{ItemsHeight}{ItemsHeight}}
+{\footnotesize\ttfamily float Im\+Gui\+List\+Clipper\+::\+Items\+Height}
+
+\Hypertarget{struct_im_gui_list_clipper_affee91b338520cd4bd59b5b680dcb5ae}\label{struct_im_gui_list_clipper_affee91b338520cd4bd59b5b680dcb5ae} 
+\index{ImGuiListClipper@{ImGuiListClipper}!StartPosY@{StartPosY}}
+\index{StartPosY@{StartPosY}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{StartPosY}{StartPosY}}
+{\footnotesize\ttfamily float Im\+Gui\+List\+Clipper\+::\+Start\+PosY}
+
+\Hypertarget{struct_im_gui_list_clipper_a596215ed18fa6d4094d9bf4da975e1be}\label{struct_im_gui_list_clipper_a596215ed18fa6d4094d9bf4da975e1be} 
+\index{ImGuiListClipper@{ImGuiListClipper}!TempData@{TempData}}
+\index{TempData@{TempData}!ImGuiListClipper@{ImGuiListClipper}}
+\doxysubsubsection{\texorpdfstring{TempData}{TempData}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libpng16_2png_8h_a05f08be336491be77cd4dfa98f747c69}{void}}\texorpdfstring{$\ast$}{*} Im\+Gui\+List\+Clipper\+::\+Temp\+Data}
+

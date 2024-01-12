@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['handle_0',['handle',['../struct_glb_handle.html#a0cf24ec54b85d9f73567a0bcf6ad9768',1,'GlbHandle']]],
-  ['hour_1',['hour',['../struct_absolute_time.html#a7ca84c89373702fa65d5767355c4a4f4',1,'AbsoluteTime']]]
+  ['numbytesreceived_0',['numBytesReceived',['../class_receive___state.html#a83fe4f7e48aafe993c220a01cdf43c39',1,'Receive_State']]],
+  ['numbytestransferred_1',['numBytesTransferred',['../class_receive___state.html#a8f326890bd357419138344df156898a4',1,'Receive_State']]]
 ];

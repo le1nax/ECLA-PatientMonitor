@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['glbhandle_0',['GlbHandle',['../struct_glb_handle.html',1,'']]]
+  ['program_0',['Program',['../class_program.html',1,'']]]
 ];

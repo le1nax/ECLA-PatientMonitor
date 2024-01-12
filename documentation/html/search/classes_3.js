@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['idlabel_0',['IDLabel',['../struct_i_d_label.html',1,'']]]
+  ['receive_5fstate_0',['Receive_State',['../class_receive___state.html',1,'']]]
 ];

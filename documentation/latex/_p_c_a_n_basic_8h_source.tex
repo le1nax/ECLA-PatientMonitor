@@ -1,0 +1,460 @@
+\doxysection{PCANBasic.\+h}
+\hypertarget{_p_c_a_n_basic_8h_source}{}\label{_p_c_a_n_basic_8h_source}\index{build/vcpkg\_installed/x64-\/mingw-\/static/include/PCANBasic.h@{build/vcpkg\_installed/x64-\/mingw-\/static/include/PCANBasic.h}}
+\mbox{\hyperlink{_p_c_a_n_basic_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ PCANBasic.h}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ PCAN-\/Basic\ API}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ Author\ :\ Keneth\ Wagner}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ \ Last\ change:\ 2023-\/06-\/01}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ \ Language:\ ANSI-\/C}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ \ Copyright\ (C)\ 1999-\/2023\ \ PEAK-\/System\ Technik\ GmbH,\ Darmstadt}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ \ more\ Info\ at\ http://www.peak-\/system.com\ }}
+\DoxyCodeLine{00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifndef\ \_\_PCANBASICH\_\_}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ \_\_PCANBASICH\_\_}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <windows.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ \_DEF\_ARG\ =0}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ \_DEF\_ARG}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ Value\ definitions}}
+\DoxyCodeLine{00033\ \textcolor{comment}{}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Currently\ defined\ and\ supported\ PCAN\ channels}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ PCAN\_NONEBUS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00U\ \ }\textcolor{comment}{//\ Undefined/default\ value\ for\ a\ PCAN\ bus}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ PCAN\_ISABUS1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x21U\ \ }\textcolor{comment}{//\ PCAN-\/ISA\ interface,\ channel\ 1}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ PCAN\_ISABUS2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x22U\ \ }\textcolor{comment}{//\ PCAN-\/ISA\ interface,\ channel\ 2}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ PCAN\_ISABUS3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x23U\ \ }\textcolor{comment}{//\ PCAN-\/ISA\ interface,\ channel\ 3}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ PCAN\_ISABUS4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x24U\ \ }\textcolor{comment}{//\ PCAN-\/ISA\ interface,\ channel\ 4}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ PCAN\_ISABUS5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x25U\ \ }\textcolor{comment}{//\ PCAN-\/ISA\ interface,\ channel\ 5}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ PCAN\_ISABUS6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x26U\ \ }\textcolor{comment}{//\ PCAN-\/ISA\ interface,\ channel\ 6}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ PCAN\_ISABUS7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x27U\ \ }\textcolor{comment}{//\ PCAN-\/ISA\ interface,\ channel\ 7}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ PCAN\_ISABUS8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x28U\ \ }\textcolor{comment}{//\ PCAN-\/ISA\ interface,\ channel\ 8}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ PCAN\_DNGBUS1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x31U\ \ }\textcolor{comment}{//\ PCAN-\/Dongle/LPT\ interface,\ channel\ 1}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x41U\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 1}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x42U\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 2}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x43U\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 3}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x44U\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 4}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x45U\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 5}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x46U\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 6}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x47U\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 7}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x48U\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 8}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS9\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x409U\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 9}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS10\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40AU\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 10}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS11\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40BU\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 11}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS12\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40CU\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 12}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS13\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40DU\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 13}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS14\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40EU\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 14}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS15\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40FU\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 15}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ PCAN\_PCIBUS16\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x410U\ \ }\textcolor{comment}{//\ PCAN-\/PCI\ interface,\ channel\ 16}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x51U\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 1}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x52U\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 2}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x53U\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 3}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x54U\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 4}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x55U\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 5}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x56U\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 6}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x57U\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 7}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x58U\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 8}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS9\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x509U\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 9}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS10\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x50AU\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 10}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS11\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x50BU\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 11}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS12\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x50CU\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 12}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS13\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x50DU\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 13}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS14\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x50EU\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 14}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS15\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x50FU\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 15}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ PCAN\_USBBUS16\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x510U\ \ }\textcolor{comment}{//\ PCAN-\/USB\ interface,\ channel\ 16}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ PCAN\_PCCBUS1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x61U\ \ }\textcolor{comment}{//\ PCAN-\/PC\ Card\ interface,\ channel\ 1}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ PCAN\_PCCBUS2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x62U\ \ }\textcolor{comment}{//\ PCAN-\/PC\ Card\ interface,\ channel\ 2}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x801U\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 1}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x802U\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 2}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x803U\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 3}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x804U\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 4}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x805U\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 5}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x806U\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 6}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x807U\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 7}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x808U\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 8}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS9\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x809U\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 9}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS10\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80AU\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 10}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS11\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80BU\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 11}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS12\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80CU\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 12}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS13\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80DU\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 13}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS14\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80EU\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 14}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS15\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80FU\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 15}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ PCAN\_LANBUS16\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x810U\ \ }\textcolor{comment}{//\ PCAN-\/LAN\ interface,\ channel\ 16}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ Represent\ the\ PCAN\ error\ and\ status\ codes\ }}
+\DoxyCodeLine{00104\ \textcolor{comment}{//}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_OK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000U\ \ }\textcolor{comment}{//\ No\ error\ }}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_XMTFULL\ \ \ \ \ \ \ \ \ \ \ \ 0x00001U\ \ }\textcolor{comment}{//\ Transmit\ buffer\ in\ CAN\ controller\ is\ full}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_OVERRUN\ \ \ \ \ \ \ \ \ \ \ \ 0x00002U\ \ }\textcolor{comment}{//\ CAN\ controller\ was\ read\ too\ late}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_BUSLIGHT\ \ \ \ \ \ \ \ \ \ \ 0x00004U\ \ }\textcolor{comment}{//\ Bus\ error:\ an\ error\ counter\ reached\ the\ 'light'\ limit}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_BUSHEAVY\ \ \ \ \ \ \ \ \ \ \ 0x00008U\ \ }\textcolor{comment}{//\ Bus\ error:\ an\ error\ counter\ reached\ the\ 'heavy'\ limit}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_BUSWARNING\ \ \ \ \ \ \ \ \ PCAN\_ERROR\_BUSHEAVY\ }\textcolor{comment}{//\ Bus\ error:\ an\ error\ counter\ reached\ the\ 'warning'\ limit}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_BUSPASSIVE\ \ \ \ \ \ \ \ \ 0x40000U\ \ }\textcolor{comment}{//\ Bus\ error:\ the\ CAN\ controller\ is\ error\ passive}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_BUSOFF\ \ \ \ \ \ \ \ \ \ \ \ \ 0x00010U\ \ }\textcolor{comment}{//\ Bus\ error:\ the\ CAN\ controller\ is\ in\ bus-\/off\ state}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_ANYBUSERR\ \ \ \ \ \ \ \ \ \ (PCAN\_ERROR\_BUSWARNING\ |\ PCAN\_ERROR\_BUSLIGHT\ |\ PCAN\_ERROR\_BUSHEAVY\ |\ PCAN\_ERROR\_BUSOFF\ |\ PCAN\_ERROR\_BUSPASSIVE)\ }\textcolor{comment}{//\ Mask\ for\ all\ bus\ errors}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_QRCVEMPTY\ \ \ \ \ \ \ \ \ \ 0x00020U\ \ }\textcolor{comment}{//\ Receive\ queue\ is\ empty}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_QOVERRUN\ \ \ \ \ \ \ \ \ \ \ 0x00040U\ \ }\textcolor{comment}{//\ Receive\ queue\ was\ read\ too\ late}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_QXMTFULL\ \ \ \ \ \ \ \ \ \ \ 0x00080U\ \ }\textcolor{comment}{//\ Transmit\ queue\ is\ full}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_REGTEST\ \ \ \ \ \ \ \ \ \ \ \ 0x00100U\ \ }\textcolor{comment}{//\ Test\ of\ the\ CAN\ controller\ hardware\ registers\ failed\ (no\ hardware\ found)}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_NODRIVER\ \ \ \ \ \ \ \ \ \ \ 0x00200U\ \ }\textcolor{comment}{//\ Driver\ not\ loaded}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_HWINUSE\ \ \ \ \ \ \ \ \ \ \ \ 0x00400U\ \ }\textcolor{comment}{//\ Hardware\ already\ in\ use\ by\ a\ Net}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_NETINUSE\ \ \ \ \ \ \ \ \ \ \ 0x00800U\ \ }\textcolor{comment}{//\ A\ Client\ is\ already\ connected\ to\ the\ Net}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_ILLHW\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01400U\ \ }\textcolor{comment}{//\ Hardware\ handle\ is\ invalid}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_ILLNET\ \ \ \ \ \ \ \ \ \ \ \ \ 0x01800U\ \ }\textcolor{comment}{//\ Net\ handle\ is\ invalid}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_ILLCLIENT\ \ \ \ \ \ \ \ \ \ 0x01C00U\ \ }\textcolor{comment}{//\ Client\ handle\ is\ invalid}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_ILLHANDLE\ \ \ \ \ \ \ \ \ \ (PCAN\_ERROR\_ILLHW\ |\ PCAN\_ERROR\_ILLNET\ |\ PCAN\_ERROR\_ILLCLIENT)\ \ }\textcolor{comment}{//\ Mask\ for\ all\ handle\ errors}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_RESOURCE\ \ \ \ \ \ \ \ \ \ \ 0x02000U\ \ }\textcolor{comment}{//\ Resource\ (FIFO,\ Client,\ timeout)\ cannot\ be\ created}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_ILLPARAMTYPE\ \ \ \ \ \ \ 0x04000U\ \ }\textcolor{comment}{//\ Invalid\ parameter}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_ILLPARAMVAL\ \ \ \ \ \ \ \ 0x08000U\ \ }\textcolor{comment}{//\ Invalid\ parameter\ value}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_UNKNOWN\ \ \ \ \ \ \ \ \ \ \ \ 0x10000U\ \ }\textcolor{comment}{//\ Unknown\ error}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_ILLDATA\ \ \ \ \ \ \ \ \ \ \ \ 0x20000U\ \ }\textcolor{comment}{//\ Invalid\ data,\ function,\ or\ action}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_ILLMODE\ \ \ \ \ \ \ \ \ \ \ \ 0x80000U\ \ }\textcolor{comment}{//\ Driver\ object\ state\ is\ wrong\ for\ the\ attempted\ operation}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_CAUTION\ \ \ \ \ \ \ \ \ \ \ \ 0x2000000U\ \ }\textcolor{comment}{//\ An\ operation\ was\ successfully\ carried\ out,\ however,\ irregularities\ were\ registered}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_INITIALIZE\ \ \ \ \ \ \ \ \ 0x4000000U\ \ }\textcolor{comment}{//\ Channel\ is\ not\ initialized\ [Value\ was\ changed\ from\ 0x40000\ to\ 0x4000000]}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ PCAN\_ERROR\_ILLOPERATION\ \ \ \ \ \ \ 0x8000000U\ \ }\textcolor{comment}{//\ Invalid\ operation\ [Value\ was\ changed\ from\ 0x80000\ to\ 0x8000000]}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{comment}{//\ PCAN\ devices}}
+\DoxyCodeLine{00136\ \textcolor{comment}{//}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ PCAN\_NONE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00U\ \ }\textcolor{comment}{//\ Undefined,\ unknown\ or\ not\ selected\ PCAN\ device\ value}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ PCAN\_PEAKCAN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01U\ \ }\textcolor{comment}{//\ PCAN\ Non-\/PnP\ devices.\ NOT\ USED\ WITHIN\ PCAN-\/Basic\ API}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#define\ PCAN\_ISA\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02U\ \ }\textcolor{comment}{//\ PCAN-\/ISA,\ PCAN-\/PC/104,\ and\ PCAN-\/PC/104-\/Plus}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#define\ PCAN\_DNG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x03U\ \ }\textcolor{comment}{//\ PCAN-\/Dongle}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#define\ PCAN\_PCI\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04U\ \ }\textcolor{comment}{//\ PCAN-\/PCI,\ PCAN-\/cPCI,\ PCAN-\/miniPCI,\ and\ PCAN-\/PCI\ Express}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ PCAN\_USB\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x05U\ \ }\textcolor{comment}{//\ PCAN-\/USB\ and\ PCAN-\/USB\ Pro}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ PCAN\_PCC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x06U\ \ }\textcolor{comment}{//\ PCAN-\/PC\ Card}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ PCAN\_VIRTUAL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x07U\ \ }\textcolor{comment}{//\ PCAN\ Virtual\ hardware.\ NOT\ USED\ WITHIN\ PCAN-\/Basic\ API}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#define\ PCAN\_LAN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08U\ \ }\textcolor{comment}{//\ PCAN\ Gateway\ devices}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{comment}{//\ PCAN\ parameters}}
+\DoxyCodeLine{00148\ \textcolor{comment}{//}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#define\ PCAN\_DEVICE\_ID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01U\ \ }\textcolor{comment}{//\ Device\ identifier\ parameter}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#define\ PCAN\_5VOLTS\_POWER\ \ \ \ \ \ \ \ \ \ \ \ \ 0x02U\ \ }\textcolor{comment}{//\ 5-\/Volt\ power\ parameter}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#define\ PCAN\_RECEIVE\_EVENT\ \ \ \ \ \ \ \ \ \ \ \ 0x03U\ \ }\textcolor{comment}{//\ PCAN\ receive\ event\ handler\ parameter}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ PCAN\_MESSAGE\_FILTER\ \ \ \ \ \ \ \ \ \ \ 0x04U\ \ }\textcolor{comment}{//\ PCAN\ message\ filter\ parameter}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#define\ PCAN\_API\_VERSION\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x05U\ \ }\textcolor{comment}{//\ PCAN-\/Basic\ API\ version\ parameter}}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#define\ PCAN\_CHANNEL\_VERSION\ \ \ \ \ \ \ \ \ \ 0x06U\ \ }\textcolor{comment}{//\ PCAN\ device\ channel\ version\ parameter}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#define\ PCAN\_BUSOFF\_AUTORESET\ \ \ \ \ \ \ \ \ 0x07U\ \ }\textcolor{comment}{//\ PCAN\ Reset-\/On-\/Busoff\ parameter}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#define\ PCAN\_LISTEN\_ONLY\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08U\ \ }\textcolor{comment}{//\ PCAN\ Listen-\/Only\ parameter}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#define\ PCAN\_LOG\_LOCATION\ \ \ \ \ \ \ \ \ \ \ \ \ 0x09U\ \ }\textcolor{comment}{//\ Directory\ path\ for\ log\ files}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#define\ PCAN\_LOG\_STATUS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0AU\ \ }\textcolor{comment}{//\ Debug-\/Log\ activation\ status}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ PCAN\_LOG\_CONFIGURE\ \ \ \ \ \ \ \ \ \ \ \ 0x0BU\ \ }\textcolor{comment}{//\ Configuration\ of\ the\ debugged\ information\ (LOG\_FUNCTION\_***)}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ PCAN\_LOG\_TEXT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0CU\ \ }\textcolor{comment}{//\ Custom\ insertion\ of\ text\ into\ the\ log\ file}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ PCAN\_CHANNEL\_CONDITION\ \ \ \ \ \ \ \ 0x0DU\ \ }\textcolor{comment}{//\ Availability\ status\ of\ a\ PCAN-\/Channel}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#define\ PCAN\_HARDWARE\_NAME\ \ \ \ \ \ \ \ \ \ \ \ 0x0EU\ \ }\textcolor{comment}{//\ PCAN\ hardware\ name\ parameter}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#define\ PCAN\_RECEIVE\_STATUS\ \ \ \ \ \ \ \ \ \ \ 0x0FU\ \ }\textcolor{comment}{//\ Message\ reception\ status\ of\ a\ PCAN-\/Channel}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#define\ PCAN\_CONTROLLER\_NUMBER\ \ \ \ \ \ \ \ 0x10U\ \ }\textcolor{comment}{//\ CAN-\/Controller\ number\ of\ a\ PCAN-\/Channel\ }}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#define\ PCAN\_TRACE\_LOCATION\ \ \ \ \ \ \ \ \ \ \ 0x11U\ \ }\textcolor{comment}{//\ Directory\ path\ for\ PCAN\ trace\ files}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#define\ PCAN\_TRACE\_STATUS\ \ \ \ \ \ \ \ \ \ \ \ \ 0x12U\ \ }\textcolor{comment}{//\ CAN\ tracing\ activation\ status}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#define\ PCAN\_TRACE\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x13U\ \ }\textcolor{comment}{//\ Configuration\ of\ the\ maximum\ file\ size\ of\ a\ CAN\ trace}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#define\ PCAN\_TRACE\_CONFIGURE\ \ \ \ \ \ \ \ \ \ 0x14U\ \ }\textcolor{comment}{//\ Configuration\ of\ the\ trace\ file\ storing\ mode\ (TRACE\_FILE\_***)}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#define\ PCAN\_CHANNEL\_IDENTIFYING\ \ \ \ \ \ 0x15U\ \ }\textcolor{comment}{//\ Physical\ identification\ of\ a\ USB\ based\ PCAN-\/Channel\ by\ blinking\ its\ associated\ LED}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#define\ PCAN\_CHANNEL\_FEATURES\ \ \ \ \ \ \ \ \ 0x16U\ \ }\textcolor{comment}{//\ Capabilities\ of\ a\ PCAN\ device\ (FEATURE\_***)}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#define\ PCAN\_BITRATE\_ADAPTING\ \ \ \ \ \ \ \ \ 0x17U\ \ }\textcolor{comment}{//\ Using\ of\ an\ existing\ bit\ rate\ (PCAN-\/View\ connected\ to\ a\ channel)}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#define\ PCAN\_BITRATE\_INFO\ \ \ \ \ \ \ \ \ \ \ \ \ 0x18U\ \ }\textcolor{comment}{//\ Configured\ bit\ rate\ as\ Btr0Btr1\ value}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#define\ PCAN\_BITRATE\_INFO\_FD\ \ \ \ \ \ \ \ \ \ 0x19U\ \ }\textcolor{comment}{//\ Configured\ bit\ rate\ as\ TPCANBitrateFD\ string}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#define\ PCAN\_BUSSPEED\_NOMINAL\ \ \ \ \ \ \ \ \ 0x1AU\ \ }\textcolor{comment}{//\ Configured\ nominal\ CAN\ Bus\ speed\ as\ Bits\ per\ seconds}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#define\ PCAN\_BUSSPEED\_DATA\ \ \ \ \ \ \ \ \ \ \ \ 0x1BU\ \ }\textcolor{comment}{//\ Configured\ CAN\ data\ speed\ as\ Bits\ per\ seconds}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#define\ PCAN\_IP\_ADDRESS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x1CU\ \ }\textcolor{comment}{//\ Remote\ address\ of\ a\ LAN\ channel\ as\ string\ in\ IPv4\ format}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#define\ PCAN\_LAN\_SERVICE\_STATUS\ \ \ \ \ \ \ 0x1DU\ \ }\textcolor{comment}{//\ Status\ of\ the\ Virtual\ PCAN-\/Gateway\ Service}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#define\ PCAN\_ALLOW\_STATUS\_FRAMES\ \ \ \ \ \ 0x1EU\ \ }\textcolor{comment}{//\ Status\ messages\ reception\ status\ within\ a\ PCAN-\/Channel}}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#define\ PCAN\_ALLOW\_RTR\_FRAMES\ \ \ \ \ \ \ \ \ 0x1FU\ \ }\textcolor{comment}{//\ RTR\ messages\ reception\ status\ within\ a\ PCAN-\/Channel}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#define\ PCAN\_ALLOW\_ERROR\_FRAMES\ \ \ \ \ \ \ 0x20U\ \ }\textcolor{comment}{//\ Error\ messages\ reception\ status\ within\ a\ PCAN-\/Channel}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ PCAN\_INTERFRAME\_DELAY\ \ \ \ \ \ \ \ \ 0x21U\ \ }\textcolor{comment}{//\ Delay,\ in\ microseconds,\ between\ sending\ frames}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#define\ PCAN\_ACCEPTANCE\_FILTER\_11BIT\ \ 0x22U\ \ }\textcolor{comment}{//\ Filter\ over\ code\ and\ mask\ patterns\ for\ 11-\/Bit\ messages}}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#define\ PCAN\_ACCEPTANCE\_FILTER\_29BIT\ \ 0x23U\ \ }\textcolor{comment}{//\ Filter\ over\ code\ and\ mask\ patterns\ for\ 29-\/Bit\ messages}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#define\ PCAN\_IO\_DIGITAL\_CONFIGURATION\ 0x24U\ \ }\textcolor{comment}{//\ Output\ mode\ of\ 32\ digital\ I/O\ pin\ of\ a\ PCAN-\/USB\ Chip.\ 1:\ Output-\/Active\ 0\ :\ Output\ Inactive}}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#define\ PCAN\_IO\_DIGITAL\_VALUE\ \ \ \ \ \ \ \ \ 0x25U\ \ }\textcolor{comment}{//\ Value\ assigned\ to\ a\ 32\ digital\ I/O\ pins\ of\ a\ PCAN-\/USB\ Chip}}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#define\ PCAN\_IO\_DIGITAL\_SET\ \ \ \ \ \ \ \ \ \ \ 0x26U\ \ }\textcolor{comment}{//\ Value\ assigned\ to\ a\ 32\ digital\ I/O\ pins\ of\ a\ PCAN-\/USB\ Chip\ -\/\ Multiple\ digital\ I/O\ pins\ to\ 1\ =\ High}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\#define\ PCAN\_IO\_DIGITAL\_CLEAR\ \ \ \ \ \ \ \ \ 0x27U\ \ }\textcolor{comment}{//\ Clear\ multiple\ digital\ I/O\ pins\ to\ 0}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#define\ PCAN\_IO\_ANALOG\_VALUE\ \ \ \ \ \ \ \ \ \ 0x28U\ \ }\textcolor{comment}{//\ Get\ value\ of\ a\ single\ analog\ input\ pin}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#define\ PCAN\_FIRMWARE\_VERSION\ \ \ \ \ \ \ \ \ 0x29U\ \ }\textcolor{comment}{//\ Get\ the\ version\ of\ the\ firmware\ used\ by\ the\ device\ associated\ with\ a\ PCAN-\/Channel}}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#define\ PCAN\_ATTACHED\_CHANNELS\_COUNT\ \ 0x2AU\ \ }\textcolor{comment}{//\ Get\ the\ amount\ of\ PCAN\ channels\ attached\ to\ a\ system}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\#define\ PCAN\_ATTACHED\_CHANNELS\ \ \ \ \ \ \ \ 0x2BU\ \ }\textcolor{comment}{//\ Get\ information\ about\ PCAN\ channels\ attached\ to\ a\ system}}
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\#define\ PCAN\_ALLOW\_ECHO\_FRAMES\ \ \ \ \ \ \ \ 0x2CU\ \ }\textcolor{comment}{//\ Echo\ messages\ reception\ status\ within\ a\ PCAN-\/Channel}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#define\ PCAN\_DEVICE\_PART\_NUMBER\ \ \ \ \ \ \ 0x2DU\ \ }\textcolor{comment}{//\ Get\ the\ part\ number\ associated\ to\ a\ device}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \textcolor{comment}{//\ DEPRECATED\ parameters}}
+\DoxyCodeLine{00196\ \textcolor{comment}{//}}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#define\ PCAN\_DEVICE\_NUMBER\ \ \ \ \ \ \ \ \ \ \ \ PCAN\_DEVICE\_ID\ \ }\textcolor{comment}{//\ Deprecated\ parameter.\ Use\ PCAN\_DEVICE\_ID\ instead\ }}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \textcolor{comment}{//\ PCAN\ parameter\ values}}
+\DoxyCodeLine{00200\ \textcolor{comment}{//}}
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#define\ PCAN\_PARAMETER\_OFF\ \ \ \ \ \ \ \ \ \ \ \ 0x00U\ \ }\textcolor{comment}{//\ The\ PCAN\ parameter\ is\ not\ set\ (inactive)}}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\#define\ PCAN\_PARAMETER\_ON\ \ \ \ \ \ \ \ \ \ \ \ \ 0x01U\ \ }\textcolor{comment}{//\ The\ PCAN\ parameter\ is\ set\ (active)}}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#define\ PCAN\_FILTER\_CLOSE\ \ \ \ \ \ \ \ \ \ \ \ \ 0x00U\ \ }\textcolor{comment}{//\ The\ PCAN\ filter\ is\ closed.\ No\ messages\ will\ be\ received}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#define\ PCAN\_FILTER\_OPEN\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01U\ \ }\textcolor{comment}{//\ The\ PCAN\ filter\ is\ fully\ opened.\ All\ messages\ will\ be\ received}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#define\ PCAN\_FILTER\_CUSTOM\ \ \ \ \ \ \ \ \ \ \ \ 0x02U\ \ }\textcolor{comment}{//\ The\ PCAN\ filter\ is\ custom\ configured.\ Only\ registered\ messages\ will\ be\ received}}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#define\ PCAN\_CHANNEL\_UNAVAILABLE\ \ \ \ \ \ 0x00U\ \ }\textcolor{comment}{//\ The\ PCAN-\/Channel\ handle\ is\ illegal,\ or\ its\ associated\ hardware\ is\ not\ available}}
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\#define\ PCAN\_CHANNEL\_AVAILABLE\ \ \ \ \ \ \ \ 0x01U\ \ }\textcolor{comment}{//\ The\ PCAN-\/Channel\ handle\ is\ available\ to\ be\ connected\ (PnP\ Hardware:\ it\ means\ furthermore\ that\ the\ hardware\ is\ plugged-\/in)}}
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#define\ PCAN\_CHANNEL\_OCCUPIED\ \ \ \ \ \ \ \ \ 0x02U\ \ }\textcolor{comment}{//\ The\ PCAN-\/Channel\ handle\ is\ valid,\ and\ is\ already\ being\ used}}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#define\ PCAN\_CHANNEL\_PCANVIEW\ \ \ \ \ \ \ \ \ (PCAN\_CHANNEL\_AVAILABLE\ |\ \ PCAN\_CHANNEL\_OCCUPIED)\ }\textcolor{comment}{//\ The\ PCAN-\/Channel\ handle\ is\ already\ being\ used\ by\ a\ PCAN-\/View\ application,\ but\ is\ available\ to\ connect}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#define\ LOG\_FUNCTION\_DEFAULT\ \ \ \ \ \ \ \ \ \ 0x00U\ \ \ \ }\textcolor{comment}{//\ Logs\ system\ exceptions\ /\ errors}}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\#define\ LOG\_FUNCTION\_ENTRY\ \ \ \ \ \ \ \ \ \ \ \ 0x01U\ \ \ \ }\textcolor{comment}{//\ Logs\ the\ entries\ to\ the\ PCAN-\/Basic\ API\ functions\ }}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#define\ LOG\_FUNCTION\_PARAMETERS\ \ \ \ \ \ \ 0x02U\ \ \ \ }\textcolor{comment}{//\ Logs\ the\ parameters\ passed\ to\ the\ PCAN-\/Basic\ API\ functions\ }}
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\#define\ LOG\_FUNCTION\_LEAVE\ \ \ \ \ \ \ \ \ \ \ \ 0x04U\ \ \ \ }\textcolor{comment}{//\ Logs\ the\ exits\ from\ the\ PCAN-\/Basic\ API\ functions\ }}
+\DoxyCodeLine{00215\ \textcolor{preprocessor}{\#define\ LOG\_FUNCTION\_WRITE\ \ \ \ \ \ \ \ \ \ \ \ 0x08U\ \ \ \ }\textcolor{comment}{//\ Logs\ the\ CAN\ messages\ passed\ to\ the\ CAN\_Write\ function}}
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#define\ LOG\_FUNCTION\_READ\ \ \ \ \ \ \ \ \ \ \ \ \ 0x10U\ \ \ \ }\textcolor{comment}{//\ Logs\ the\ CAN\ messages\ received\ within\ the\ CAN\_Read\ function}}
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#define\ LOG\_FUNCTION\_ALL\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xFFFFU\ \ }\textcolor{comment}{//\ Logs\ all\ possible\ information\ within\ the\ PCAN-\/Basic\ API\ functions}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#define\ TRACE\_FILE\_SINGLE\ \ \ \ \ \ \ \ \ \ \ \ \ 0x00U\ \ }\textcolor{comment}{//\ A\ single\ file\ is\ written\ until\ it\ size\ reaches\ PAN\_TRACE\_SIZE}}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\#define\ TRACE\_FILE\_SEGMENTED\ \ \ \ \ \ \ \ \ \ 0x01U\ \ }\textcolor{comment}{//\ Traced\ data\ is\ distributed\ in\ several\ files\ with\ size\ PAN\_TRACE\_SIZE}}
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#define\ TRACE\_FILE\_DATE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02U\ \ }\textcolor{comment}{//\ Includes\ the\ date\ into\ the\ name\ of\ the\ trace\ file}}
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#define\ TRACE\_FILE\_TIME\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04U\ \ }\textcolor{comment}{//\ Includes\ the\ start\ time\ into\ the\ name\ of\ the\ trace\ file}}
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#define\ TRACE\_FILE\_OVERWRITE\ \ \ \ \ \ \ \ \ \ 0x80U\ \ }\textcolor{comment}{//\ Causes\ the\ overwriting\ of\ available\ traces\ (same\ name)}}
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#define\ TRACE\_FILE\_DATA\_LENGTH\ \ \ \ \ \ \ \ 0x100U\ }\textcolor{comment}{//\ Causes\ using\ the\ data\ length\ column\ ('l')\ instead\ of\ the\ DLC\ column\ ('L')\ in\ the\ trace\ file}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#define\ FEATURE\_FD\_CAPABLE\ \ \ \ \ \ \ \ \ \ \ \ 0x01U\ \ }\textcolor{comment}{//\ Device\ supports\ flexible\ data-\/rate\ (CAN-\/FD)}}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\#define\ FEATURE\_DELAY\_CAPABLE\ \ \ \ \ \ \ \ \ 0x02U\ \ }\textcolor{comment}{//\ Device\ supports\ a\ delay\ between\ sending\ frames\ (FPGA\ based\ USB\ devices)}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#define\ FEATURE\_IO\_CAPABLE\ \ \ \ \ \ \ \ \ \ \ \ 0x04U\ \ }\textcolor{comment}{//\ Device\ supports\ I/O\ functionality\ for\ electronic\ circuits\ (USB-\/Chip\ devices)}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#define\ SERVICE\_STATUS\_STOPPED\ \ \ \ \ \ \ \ 0x01U\ \ }\textcolor{comment}{//\ The\ service\ is\ not\ running}}
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#define\ SERVICE\_STATUS\_RUNNING\ \ \ \ \ \ \ \ 0x04U\ \ }\textcolor{comment}{//\ The\ service\ is\ running}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \textcolor{comment}{//\ Other\ constants}}
+\DoxyCodeLine{00234\ \textcolor{comment}{//}}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#define\ MAX\_LENGTH\_HARDWARE\_NAME\ \ \ \ \ \ 33\ \ \ \ \ }\textcolor{comment}{//\ Maximum\ length\ of\ the\ name\ of\ a\ device:\ 32\ characters\ +\ terminator}}
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\#define\ MAX\_LENGTH\_VERSION\_STRING\ \ \ \ \ 256\ \ \ \ }\textcolor{comment}{//\ Maximum\ length\ of\ a\ version\ string:\ 255\ characters\ +\ terminator}}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \textcolor{comment}{//\ PCAN\ message\ types}}
+\DoxyCodeLine{00239\ \textcolor{comment}{//}}
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\#define\ PCAN\_MESSAGE\_STANDARD\ \ \ \ \ \ \ \ \ 0x00U\ \ }\textcolor{comment}{//\ The\ PCAN\ message\ is\ a\ CAN\ Standard\ Frame\ (11-\/bit\ identifier)}}
+\DoxyCodeLine{00241\ \textcolor{preprocessor}{\#define\ PCAN\_MESSAGE\_RTR\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01U\ \ }\textcolor{comment}{//\ The\ PCAN\ message\ is\ a\ CAN\ Remote-\/Transfer-\/Request\ Frame}}
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\#define\ PCAN\_MESSAGE\_EXTENDED\ \ \ \ \ \ \ \ \ 0x02U\ \ }\textcolor{comment}{//\ The\ PCAN\ message\ is\ a\ CAN\ Extended\ Frame\ (29-\/bit\ identifier)}}
+\DoxyCodeLine{00243\ \textcolor{preprocessor}{\#define\ PCAN\_MESSAGE\_FD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04U\ \ }\textcolor{comment}{//\ The\ PCAN\ message\ represents\ a\ FD\ frame\ in\ terms\ of\ CiA\ Specs}}
+\DoxyCodeLine{00244\ \textcolor{preprocessor}{\#define\ PCAN\_MESSAGE\_BRS\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08U\ \ }\textcolor{comment}{//\ The\ PCAN\ message\ represents\ a\ FD\ bit\ rate\ switch\ (CAN\ data\ at\ a\ higher\ bit\ rate)}}
+\DoxyCodeLine{00245\ \textcolor{preprocessor}{\#define\ PCAN\_MESSAGE\_ESI\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10U\ \ }\textcolor{comment}{//\ The\ PCAN\ message\ represents\ a\ FD\ error\ state\ indicator(CAN\ FD\ transmitter\ was\ error\ active)}}
+\DoxyCodeLine{00246\ \textcolor{preprocessor}{\#define\ PCAN\_MESSAGE\_ECHO\ \ \ \ \ \ \ \ \ \ \ \ \ 0x20U\ \ }\textcolor{comment}{//\ The\ PCAN\ message\ represents\ an\ echo\ CAN\ Frame}}
+\DoxyCodeLine{00247\ \textcolor{preprocessor}{\#define\ PCAN\_MESSAGE\_ERRFRAME\ \ \ \ \ \ \ \ \ 0x40U\ \ }\textcolor{comment}{//\ The\ PCAN\ message\ represents\ an\ error\ frame}}
+\DoxyCodeLine{00248\ \textcolor{preprocessor}{\#define\ PCAN\_MESSAGE\_STATUS\ \ \ \ \ \ \ \ \ \ \ 0x80U\ \ }\textcolor{comment}{//\ The\ PCAN\ message\ represents\ a\ PCAN\ status\ message}}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \textcolor{comment}{//\ LookUp\ Parameters}}
+\DoxyCodeLine{00251\ \textcolor{comment}{//}}
+\DoxyCodeLine{00252\ \textcolor{preprocessor}{\#define\ LOOKUP\_DEVICE\_TYPE\ \ \ \ \ \ \ \ \ \ \_\_T("{}devicetype"{}})\ \ \ \ \ \ \ \textcolor{comment}{//\ Lookup\ channel\ by\ Device\ type\ (see\ PCAN\ devices\ e.g.\ PCAN\_USB)}}
+\DoxyCodeLine{00253\ \textcolor{preprocessor}{\#define\ LOOKUP\_DEVICE\_ID\ \ \ \ \ \ \ \ \ \ \ \ \_\_T("{}deviceid"{}})\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lookup\ channel\ by\ device\ id}}
+\DoxyCodeLine{00254\ \textcolor{preprocessor}{\#define\ LOOKUP\_CONTROLLER\_NUMBER\ \ \ \ \_\_T("{}controllernumber"{}})\ \textcolor{comment}{//\ Lookup\ channel\ by\ CAN\ controller\ 0-\/based\ index}}
+\DoxyCodeLine{00255\ \textcolor{preprocessor}{\#define\ LOOKUP\_IP\_ADDRESS\ \ \ \ \ \ \ \ \ \ \ \_\_T("{}ipaddress"{}})\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lookup\ channel\ by\ IP\ address\ (LAN\ channels\ only)}}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \textcolor{comment}{//\ Frame\ Type\ /\ Initialization\ Mode}}
+\DoxyCodeLine{00258\ \textcolor{comment}{//}}
+\DoxyCodeLine{00259\ \textcolor{preprocessor}{\#define\ PCAN\_MODE\_STANDARD\ \ \ \ \ \ \ \ \ \ \ \ PCAN\_MESSAGE\_STANDARD\ \ }}
+\DoxyCodeLine{00260\ \textcolor{preprocessor}{\#define\ PCAN\_MODE\_EXTENDED\ \ \ \ \ \ \ \ \ \ \ \ PCAN\_MESSAGE\_EXTENDED\ \ }}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \textcolor{comment}{//\ Baud\ rate\ codes\ =\ BTR0/BTR1\ register\ values\ for\ the\ CAN\ controller.}}
+\DoxyCodeLine{00263\ \textcolor{comment}{//\ You\ can\ define\ your\ own\ Baud\ rate\ with\ the\ BTROBTR1\ register.}}
+\DoxyCodeLine{00264\ \textcolor{comment}{//\ Take\ a\ look\ at\ www.peak-\/system.com\ for\ our\ free\ software\ "{}BAUDTOOL"{}\ }}
+\DoxyCodeLine{00265\ \textcolor{comment}{//\ to\ calculate\ the\ BTROBTR1\ register\ for\ every\ bit\ rate\ and\ sample\ point.}}
+\DoxyCodeLine{00266\ \textcolor{comment}{//}}
+\DoxyCodeLine{00267\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_1M\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0014U\ \ }\textcolor{comment}{//\ \ \ 1\ MBit/s}}
+\DoxyCodeLine{00268\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_800K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0016U\ \ }\textcolor{comment}{//\ 800\ kBit/s}}
+\DoxyCodeLine{00269\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_500K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x001CU\ \ }\textcolor{comment}{//\ 500\ kBit/s}}
+\DoxyCodeLine{00270\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_250K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x011CU\ \ }\textcolor{comment}{//\ 250\ kBit/s}}
+\DoxyCodeLine{00271\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_125K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x031CU\ \ }\textcolor{comment}{//\ 125\ kBit/s}}
+\DoxyCodeLine{00272\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_100K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x432FU\ \ }\textcolor{comment}{//\ 100\ kBit/s}}
+\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_95K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xC34EU\ \ }\textcolor{comment}{//\ \ 95,238\ kBit/s}}
+\DoxyCodeLine{00274\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_83K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x852BU\ \ }\textcolor{comment}{//\ \ 83,333\ kBit/s}}
+\DoxyCodeLine{00275\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_50K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x472FU\ \ }\textcolor{comment}{//\ \ 50\ kBit/s}}
+\DoxyCodeLine{00276\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_47K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x1414U\ \ }\textcolor{comment}{//\ \ 47,619\ kBit/s}}
+\DoxyCodeLine{00277\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_33K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x8B2FU\ \ }\textcolor{comment}{//\ \ 33,333\ kBit/s}}
+\DoxyCodeLine{00278\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_20K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x532FU\ \ }\textcolor{comment}{//\ \ 20\ kBit/s}}
+\DoxyCodeLine{00279\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_10K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x672FU\ \ }\textcolor{comment}{//\ \ 10\ kBit/s}}
+\DoxyCodeLine{00280\ \textcolor{preprocessor}{\#define\ PCAN\_BAUD\_5K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x7F7FU\ \ }\textcolor{comment}{//\ \ \ 5\ kBit/s}}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ \textcolor{comment}{//\ Represents\ the\ configuration\ for\ a\ CAN\ bit\ rate}}
+\DoxyCodeLine{00283\ \textcolor{comment}{//\ Note:\ }}
+\DoxyCodeLine{00284\ \textcolor{comment}{//\ \ \ \ *\ Each\ parameter\ and\ its\ value\ must\ be\ separated\ with\ a\ '='.}}
+\DoxyCodeLine{00285\ \textcolor{comment}{//\ \ \ \ *\ Each\ pair\ of\ parameter/value\ must\ be\ separated\ using\ ','.\ }}
+\DoxyCodeLine{00286\ \textcolor{comment}{//}}
+\DoxyCodeLine{00287\ \textcolor{comment}{//\ Example:}}
+\DoxyCodeLine{00288\ \textcolor{comment}{//\ \ \ \ f\_clock=80000000,nom\_brp=10,nom\_tseg1=5,nom\_tseg2=2,nom\_sjw=1,data\_brp=4,data\_tseg1=7,data\_tseg2=2,data\_sjw=1}}
+\DoxyCodeLine{00289\ \textcolor{comment}{//}}
+\DoxyCodeLine{00290\ \textcolor{preprocessor}{\#define\ PCAN\_BR\_CLOCK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_T("{}f\_clock"{}})}
+\DoxyCodeLine{00291\ \textcolor{preprocessor}{\#define\ PCAN\_BR\_CLOCK\_MHZ\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_T("{}f\_clock\_mhz"{}})}
+\DoxyCodeLine{00292\ \textcolor{preprocessor}{\#define\ PCAN\_BR\_NOM\_BRP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_T("{}nom\_brp"{}})}
+\DoxyCodeLine{00293\ \textcolor{preprocessor}{\#define\ PCAN\_BR\_NOM\_TSEG1\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_T("{}nom\_tseg1"{}})}
+\DoxyCodeLine{00294\ \textcolor{preprocessor}{\#define\ PCAN\_BR\_NOM\_TSEG2\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_T("{}nom\_tseg2"{}})}
+\DoxyCodeLine{00295\ \textcolor{preprocessor}{\#define\ PCAN\_BR\_NOM\_SJW\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_T("{}nom\_sjw"{}})}
+\DoxyCodeLine{00296\ \textcolor{preprocessor}{\#define\ PCAN\_BR\_NOM\_SAMPLE\ \ \ \ \ \ \ \ \ \ \ \ \_\_T("{}nom\_sam"{}})}
+\DoxyCodeLine{00297\ \textcolor{preprocessor}{\#define\ PCAN\_BR\_DATA\_BRP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_T("{}data\_brp"{}})}
+\DoxyCodeLine{00298\ \textcolor{preprocessor}{\#define\ PCAN\_BR\_DATA\_TSEG1\ \ \ \ \ \ \ \ \ \ \ \ \_\_T("{}data\_tseg1"{}})}
+\DoxyCodeLine{00299\ \textcolor{preprocessor}{\#define\ PCAN\_BR\_DATA\_TSEG2\ \ \ \ \ \ \ \ \ \ \ \ \_\_T("{}data\_tseg2"{}})}
+\DoxyCodeLine{00300\ \textcolor{preprocessor}{\#define\ PCAN\_BR\_DATA\_SJW\ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_T("{}data\_sjw"{}})}
+\DoxyCodeLine{00301\ \textcolor{preprocessor}{\#define\ PCAN\_BR\_DATA\_SAMPLE\ \ \ \ \ \ \ \ \ \ \ \_\_T("{}data\_ssp\_offset"{}})}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \textcolor{comment}{//\ Type\ of\ PCAN\ (Non-\/PnP)\ hardware}}
+\DoxyCodeLine{00304\ \textcolor{comment}{//}}
+\DoxyCodeLine{00305\ \textcolor{preprocessor}{\#define\ PCAN\_TYPE\_ISA\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01U\ \ }\textcolor{comment}{//\ PCAN-\/ISA\ 82C200}}
+\DoxyCodeLine{00306\ \textcolor{preprocessor}{\#define\ PCAN\_TYPE\_ISA\_SJA\ \ \ \ \ \ \ \ \ \ \ \ \ 0x09U\ \ }\textcolor{comment}{//\ PCAN-\/ISA\ SJA1000}}
+\DoxyCodeLine{00307\ \textcolor{preprocessor}{\#define\ PCAN\_TYPE\_ISA\_PHYTEC\ \ \ \ \ \ \ \ \ \ 0x04U\ \ }\textcolor{comment}{//\ PHYTEC\ ISA\ }}
+\DoxyCodeLine{00308\ \textcolor{preprocessor}{\#define\ PCAN\_TYPE\_DNG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02U\ \ }\textcolor{comment}{//\ PCAN-\/Dongle\ 82C200}}
+\DoxyCodeLine{00309\ \textcolor{preprocessor}{\#define\ PCAN\_TYPE\_DNG\_EPP\ \ \ \ \ \ \ \ \ \ \ \ \ 0x03U\ \ }\textcolor{comment}{//\ PCAN-\/Dongle\ EPP\ 82C200}}
+\DoxyCodeLine{00310\ \textcolor{preprocessor}{\#define\ PCAN\_TYPE\_DNG\_SJA\ \ \ \ \ \ \ \ \ \ \ \ \ 0x05U\ \ }\textcolor{comment}{//\ PCAN-\/Dongle\ SJA1000}}
+\DoxyCodeLine{00311\ \textcolor{preprocessor}{\#define\ PCAN\_TYPE\_DNG\_SJA\_EPP\ \ \ \ \ \ \ \ \ 0x06U\ \ }\textcolor{comment}{//\ PCAN-\/Dongle\ EPP\ SJA1000}}
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00314\ \textcolor{comment}{//\ Type\ definitions}}
+\DoxyCodeLine{00316\ \textcolor{comment}{}}
+\DoxyCodeLine{00317\ \textcolor{preprocessor}{\#define\ TPCANHandle\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WORD\ \ \ }\textcolor{comment}{//\ Represents\ a\ PCAN\ hardware\ channel\ handle}}
+\DoxyCodeLine{00318\ \textcolor{preprocessor}{\#define\ TPCANStatus\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DWORD\ \ }\textcolor{comment}{//\ Represents\ a\ PCAN\ status/error\ code}}
+\DoxyCodeLine{00319\ \textcolor{preprocessor}{\#define\ TPCANParameter\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BYTE\ \ \ }\textcolor{comment}{//\ Represents\ a\ PCAN\ parameter\ to\ be\ read\ or\ set}}
+\DoxyCodeLine{00320\ \textcolor{preprocessor}{\#define\ TPCANDevice\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BYTE\ \ \ }\textcolor{comment}{//\ Represents\ a\ PCAN\ device}}
+\DoxyCodeLine{00321\ \textcolor{preprocessor}{\#define\ TPCANMessageType\ \ \ \ \ \ \ \ \ \ \ \ \ \ BYTE\ \ \ }\textcolor{comment}{//\ Represents\ the\ type\ of\ a\ PCAN\ message}}
+\DoxyCodeLine{00322\ \textcolor{preprocessor}{\#define\ TPCANType\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BYTE\ \ \ }\textcolor{comment}{//\ Represents\ the\ type\ of\ PCAN\ hardware\ to\ be\ initialized}}
+\DoxyCodeLine{00323\ \textcolor{preprocessor}{\#define\ TPCANMode\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BYTE\ \ \ }\textcolor{comment}{//\ Represents\ a\ PCAN\ filter\ mode}}
+\DoxyCodeLine{00324\ \textcolor{preprocessor}{\#define\ TPCANBaudrate\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WORD\ \ \ }\textcolor{comment}{//\ Represents\ a\ PCAN\ Baud\ rate\ register\ value}}
+\DoxyCodeLine{00325\ \textcolor{preprocessor}{\#define\ TPCANBitrateFD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LPSTR\ \ }\textcolor{comment}{//\ Represents\ a\ PCAN-\/FD\ bit\ rate\ string}}
+\DoxyCodeLine{00326\ \textcolor{preprocessor}{\#define\ TPCANTimestampFD\ \ \ \ \ \ \ \ \ \ \ \ \ \ UINT64\ }\textcolor{comment}{//\ Represents\ a\ timestamp\ of\ a\ received\ PCAN\ FD\ message}}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00329\ \textcolor{comment}{//\ Structure\ definitions}}
+\DoxyCodeLine{00331\ \textcolor{comment}{}}
+\DoxyCodeLine{00332\ \textcolor{comment}{//\ Represents\ a\ PCAN\ message}}
+\DoxyCodeLine{00333\ \textcolor{comment}{//}}
+\DoxyCodeLine{00334\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtag_t_p_c_a_n_msg}{tagTPCANMsg}}}
+\DoxyCodeLine{00335\ \{}
+\DoxyCodeLine{00336\ \ \ \ \ DWORD\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_msg_aa0f859337b08752d87f4af8ef801e46a}{ID}};\ \ \ \ \ \ \textcolor{comment}{//\ 11/29-\/bit\ message\ identifier}}
+\DoxyCodeLine{00337\ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a3bee82993dcb5649c482fdfabf4f0386}{TPCANMessageType}}\ \ \mbox{\hyperlink{structtag_t_p_c_a_n_msg_a137d36fa663e848029521ce19dad5ed5}{MSGTYPE}};\ \textcolor{comment}{//\ Type\ of\ the\ message}}
+\DoxyCodeLine{00338\ \ \ \ \ BYTE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_msg_ab5bf9102bab0ebd589084c2c95b2f2df}{LEN}};\ \ \ \ \ \textcolor{comment}{//\ Data\ Length\ Code\ of\ the\ message\ (0..8)}}
+\DoxyCodeLine{00339\ \ \ \ \ BYTE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_msg_aa3b189bf5893efd2f2c897a9f89fc9b6}{DATA}}[8];\ \textcolor{comment}{//\ Data\ of\ the\ message\ (DATA[0]..DATA[7])}}
+\DoxyCodeLine{00340\ \}\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a9a20d6ecf53320490ec762fea48a2ab8}{TPCANMsg}};}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \textcolor{comment}{//\ Represents\ a\ timestamp\ of\ a\ received\ PCAN\ message}}
+\DoxyCodeLine{00343\ \textcolor{comment}{//\ Total\ Microseconds\ =\ micros\ +\ (1000ULL\ *\ millis)\ +\ (0x100000000ULL\ *\ 1000ULL\ *\ millis\_overflow)}}
+\DoxyCodeLine{00344\ \textcolor{comment}{//}}
+\DoxyCodeLine{00345\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtag_t_p_c_a_n_timestamp}{tagTPCANTimestamp}}}
+\DoxyCodeLine{00346\ \{}
+\DoxyCodeLine{00347\ \ \ \ \ DWORD\ \ \mbox{\hyperlink{structtag_t_p_c_a_n_timestamp_ac27f198ecd0fffb5b91b1c4a7054add6}{millis}};\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Base-\/value:\ milliseconds:\ 0..\ 2\string^32-\/1}}
+\DoxyCodeLine{00348\ \ \ \ \ WORD\ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_timestamp_abef51a50d2e4447c5e3f57c10cd509f1}{millis\_overflow}};\ \ \ \ \textcolor{comment}{//\ Roll-\/arounds\ of\ millis}}
+\DoxyCodeLine{00349\ \ \ \ \ WORD\ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_timestamp_ae2f2721768417a0c3adf2dc58e794109}{micros}};\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Microseconds:\ 0..999}}
+\DoxyCodeLine{00350\ \}\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a8983bf79f3fd5c53f868c8a603f84fa2}{TPCANTimestamp}};}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00352\ \textcolor{comment}{//\ Represents\ a\ PCAN\ message\ from\ a\ FD\ capable\ hardware}}
+\DoxyCodeLine{00353\ \textcolor{comment}{//}}
+\DoxyCodeLine{00354\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtag_t_p_c_a_n_msg_f_d}{tagTPCANMsgFD}}}
+\DoxyCodeLine{00355\ \{}
+\DoxyCodeLine{00356\ \ \ \ \ DWORD\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_msg_f_d_afedad054037b6046cf08c3c8d5d9f120}{ID}};\ \ \ \ \ \ \ \textcolor{comment}{//\ 11/29-\/bit\ message\ identifier}}
+\DoxyCodeLine{00357\ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a3bee82993dcb5649c482fdfabf4f0386}{TPCANMessageType}}\ \ \mbox{\hyperlink{structtag_t_p_c_a_n_msg_f_d_a41abc83bdbe860e7448b902a35651f35}{MSGTYPE}};\ \ \textcolor{comment}{//\ Type\ of\ the\ message}}
+\DoxyCodeLine{00358\ \ \ \ \ BYTE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_msg_f_d_a06d8dc1fd545ccf4ba150550e47694c5}{DLC}};\ \ \ \ \ \ \textcolor{comment}{//\ Data\ Length\ Code\ of\ the\ message\ (0..15)}}
+\DoxyCodeLine{00359\ \ \ \ \ BYTE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_msg_f_d_a780357a26a0aaf3b95c3740edfeeb761}{DATA}}[64];\ \textcolor{comment}{//\ Data\ of\ the\ message\ (DATA[0]..DATA[63])}}
+\DoxyCodeLine{00360\ \}\ \mbox{\hyperlink{_p_c_a_n_basic_8h_ab8b617e7b69324dc0b39da85d5007df1}{TPCANMsgFD}};}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \textcolor{comment}{//\ Describes\ an\ available\ PCAN\ channel}}
+\DoxyCodeLine{00363\ \textcolor{comment}{//}}
+\DoxyCodeLine{00364\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtag_t_p_c_a_n_channel_information}{tagTPCANChannelInformation}}}
+\DoxyCodeLine{00365\ \{}
+\DoxyCodeLine{00366\ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ \mbox{\hyperlink{structtag_t_p_c_a_n_channel_information_ac9e1a11f60e5321e9c118325067993d5}{channel\_handle}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ PCAN\ channel\ handle\ \ \ }}
+\DoxyCodeLine{00367\ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_afb69adbfbb891eefe428ddc547558897}{TPCANDevice}}\ \mbox{\hyperlink{structtag_t_p_c_a_n_channel_information_a5f1bb43de4a42887ea1c889ece83ef20}{device\_type}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Kind\ of\ PCAN\ device}}
+\DoxyCodeLine{00368\ \ \ \ \ BYTE\ \mbox{\hyperlink{structtag_t_p_c_a_n_channel_information_a0b511a57343f6d2ae203fe63d8895908}{controller\_number}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ CAN-\/Controller\ number}}
+\DoxyCodeLine{00369\ \ \ \ \ DWORD\ \mbox{\hyperlink{structtag_t_p_c_a_n_channel_information_a9d538967ab86cb315e6fd49a7a270782}{device\_features}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Device\ capabilities\ flag\ (see\ FEATURE\_*)}}
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structtag_t_p_c_a_n_channel_information_a2aab99661cfbceac3b18d5bb894d8feb}{device\_name}}[\mbox{\hyperlink{_p_c_a_n_basic_8h_a6b0e7acb159e8d24b1d72eefd6c80766}{MAX\_LENGTH\_HARDWARE\_NAME}}];\ \textcolor{comment}{//\ Device\ name}}
+\DoxyCodeLine{00371\ \ \ \ \ DWORD\ \mbox{\hyperlink{structtag_t_p_c_a_n_channel_information_a69e1430269ec10b4a24595d12a1dfa04}{device\_id}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Device\ number\ \ \ }}
+\DoxyCodeLine{00372\ \ \ \ \ DWORD\ \mbox{\hyperlink{structtag_t_p_c_a_n_channel_information_a2b20758a6e52c68833184d28f7083a3b}{channel\_condition}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Availability\ status\ of\ a\ PCAN-\/Channel\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00373\ \}\mbox{\hyperlink{_p_c_a_n_basic_8h_a6e4a96bc3e570b384101e125458afe2c}{TPCANChannelInformation}};}
+\DoxyCodeLine{00374\ }
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00377\ \textcolor{comment}{//\ PCAN-\/Basic\ API\ function\ declarations}}
+\DoxyCodeLine{00379\ \textcolor{comment}{}}
+\DoxyCodeLine{00380\ }
+\DoxyCodeLine{00390\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a20af3d51795575de76cd978bb0946953}{CAN\_Initialize}}(}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ Channel,\ }
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a0e4eca8764a42ce5977582c12f178711}{TPCANBaudrate}}\ Btr0Btr1,\ }
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a58aed11b911a4feb810d554f1455c432}{TPCANType}}\ HwType\ \mbox{\hyperlink{_p_c_a_n_basic_8h_af6d29016a2e53a596f23f08fa9066ee7}{\_DEF\_ARG}},}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ DWORD\ IOPort\ \mbox{\hyperlink{_p_c_a_n_basic_8h_af6d29016a2e53a596f23f08fa9066ee7}{\_DEF\_ARG}},\ }
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ WORD\ Interrupt\ \mbox{\hyperlink{_p_c_a_n_basic_8h_af6d29016a2e53a596f23f08fa9066ee7}{\_DEF\_ARG}});}
+\DoxyCodeLine{00396\ }
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00412\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7a16eae1bd29feb563414c970a69091c}{CAN\_InitializeFD}}(}
+\DoxyCodeLine{00413\ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ Channel,}
+\DoxyCodeLine{00414\ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a172ab7abcf5b5a9bce40cb2f59829316}{TPCANBitrateFD}}\ BitrateFD);}
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ }
+\DoxyCodeLine{00424\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a3715eebfb1d0ac6f80e0f7f5730ca32d}{CAN\_Uninitialize}}(}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ Channel);}
+\DoxyCodeLine{00426\ }
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00436\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aef4b155d2e6be2fd36b188909da03882}{CAN\_Reset}}(}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ Channel);}
+\DoxyCodeLine{00438\ }
+\DoxyCodeLine{00439\ }
+\DoxyCodeLine{00445\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_af59c61b3f5616f4caa822c1b9824659a}{CAN\_GetStatus}}(}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ Channel);}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00448\ }
+\DoxyCodeLine{00458\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a92f43c11cb71590cba76155340a5b395}{CAN\_Read}}(}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ Channel,\ }
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_msg}{TPCANMsg}}*\ MessageBuffer,\ }
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_timestamp}{TPCANTimestamp}}*\ TimestampBuffer);}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ }
+\DoxyCodeLine{00473\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a5c1cac2ba7a8f3d30bb8853bad4ca607}{CAN\_ReadFD}}(}
+\DoxyCodeLine{00474\ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ Channel,}
+\DoxyCodeLine{00475\ \ \ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_msg_f_d}{TPCANMsgFD}}*\ MessageBuffer,\ }
+\DoxyCodeLine{00476\ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a61acd73852b70be92677f9a3dea1e491}{TPCANTimestampFD}}\ *TimestampBuffer);}
+\DoxyCodeLine{00477\ }
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00485\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a02d2f873980df41f099380a530d77a7b}{CAN\_Write}}(}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ Channel,\ }
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_msg}{TPCANMsg}}*\ MessageBuffer);}
+\DoxyCodeLine{00488\ }
+\DoxyCodeLine{00489\ }
+\DoxyCodeLine{00496\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a687c5727922ad0dc73974c4765309e12}{CAN\_WriteFD}}(}
+\DoxyCodeLine{00497\ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ Channel,}
+\DoxyCodeLine{00498\ \ \ \ \ \mbox{\hyperlink{structtag_t_p_c_a_n_msg_f_d}{TPCANMsgFD}}*\ MessageBuffer);}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00500\ }
+\DoxyCodeLine{00513\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a4b1542df766b1e6baac6e882ec520061}{CAN\_FilterMessages}}(}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ Channel,\ }
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ DWORD\ FromID,\ }
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ DWORD\ ToID,\ }
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a5b07d478fd732b13d87d55b79da7c3f4}{TPCANMode}}\ Mode);}
+\DoxyCodeLine{00518\ }
+\DoxyCodeLine{00519\ }
+\DoxyCodeLine{00531\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a6264b7de19be60778667a2ebf62a98d2}{CAN\_GetValue}}(}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ Channel,\ }
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a10adcad6c11864853a821b67c6d8bea7}{TPCANParameter}}\ Parameter,\ \ }
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ Buffer,\ }
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ DWORD\ BufferLength);}
+\DoxyCodeLine{00536\ }
+\DoxyCodeLine{00537\ }
+\DoxyCodeLine{00549\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a189dc3cbb358ce628536092c7252f3e4}{CAN\_SetValue}}(}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}\ Channel,}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a10adcad6c11864853a821b67c6d8bea7}{TPCANParameter}}\ Parameter,}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ Buffer,}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ DWORD\ BufferLength);}
+\DoxyCodeLine{00554\ }
+\DoxyCodeLine{00555\ }
+\DoxyCodeLine{00567\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_ae9a75045d4912ed909b2cb8fd45acb4e}{CAN\_GetErrorText}}(}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ Error,\ }
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ WORD\ Language,\ }
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ LPSTR\ Buffer);}
+\DoxyCodeLine{00571\ }
+\DoxyCodeLine{00580\ \mbox{\hyperlink{_p_c_a_n_basic_8h_aae87959d727eb27bf8dd71c988cf2156}{TPCANStatus}}\ \_\_stdcall\ \mbox{\hyperlink{_p_c_a_n_basic_8h_a550702819ec156ab5051b213d01664b7}{CAN\_LookUpChannel}}(}
+\DoxyCodeLine{00581\ \ \ \ \ LPSTR\ Parameters,\ }
+\DoxyCodeLine{00582\ \ \ \ \ \mbox{\hyperlink{_p_c_a_n_basic_8h_a7f39b8bdfe72b284f51c9803a2026b7d}{TPCANHandle}}*\ FoundChannel);}
+\DoxyCodeLine{00583\ }
+\DoxyCodeLine{00584\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00585\ \}}
+\DoxyCodeLine{00586\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00587\ }
+\DoxyCodeLine{00588\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
