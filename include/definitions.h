@@ -28,10 +28,25 @@ static constexpr size_t beaconbuffersize = sizeof(uint8_t);
 static constexpr size_t timestampbuffersize = sizeof(uint16_t);
 static constexpr size_t counterbuffersize = beaconbuffersize;
 
+/// @brief conversion factor of the payload value, used for HW Press
+static constexpr double canPressConversionFactor = 1e-2;
+/// @brief conversion factor of the payload value, used for HW Temperature
+static constexpr double canTempConversionFactor = 1e-2;
+
 enum class DataPointType 
 {
     BP = 0, 
     ECG = 1, 
+    CONFIG = 2,
+    DEBUG = 3
+};
+
+/// @brief Enum class defining the CanIDs. It is used to process incoming messages.
+enum class EnumCanID
+{
+    PRESS =     0x102A0010, 
+    TEMP =      0x102A0020,
+    SFM3300 =   0x102A0060, 
     CONFIG = 2,
     DEBUG = 3
 };

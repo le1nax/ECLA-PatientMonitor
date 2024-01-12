@@ -1,6 +1,5 @@
 #include <iostream>
 #include "CanAdapter.h"
-#include "DataManager.h"
 
 CanAdapter::CanAdapter(TPCANHandle device)
 {
