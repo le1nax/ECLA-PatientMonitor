@@ -2,6 +2,7 @@
 
 #include "SocketClient.h"
 #include "../PCANModule/CanAdapter.h"
+#include "DataLogger.h"
 #include <thread>
 
 /// @brief Class, that manages the udp send thread and logs the data
@@ -47,6 +48,8 @@ class DataTransfer
         /// @brief WSA Server Socket
         SOCKET serverSocket;
         //sockaddr_in clientAddress{};
+
+        std::unique_ptr<DataLogger> m_logger{};
 
         /// @brief CanAdapter instance that manages the CAN Listening
         std::unique_ptr<CanAdapter> m_CanAdapter{};

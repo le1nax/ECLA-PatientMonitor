@@ -19,7 +19,9 @@ void DataPoint::parseValuesFromDataString(char* data, uint64_t milliseconds, uin
 
 
 	encodedData.canID = m_canID;
-	encodedData.pcanTimestamp = m_pcanTimestamp;
+	///@todo pcanTimestamp in Uhrzeit
+	encodedData.pcanTimestamp = m_pcanTimestamp; 
+	///@todo beaconsignal im server ansteuern
 	encodedData.timestamp = static_cast<uint32_t>(ReadByteSignedValuesFromBuffer(m_timestamp, 0, timestampbuffersize));
 	encodedData.value = static_cast<uint32_t>(ReadByteSignedValuesFromBuffer(m_value, 0 , valuebuffersize));
 	// if(configModeDebug){ std::cout <<  "encoded canID: " << encodedData.canID << std::endl;

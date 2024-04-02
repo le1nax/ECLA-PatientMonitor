@@ -6,6 +6,7 @@
 #include "../PCANModule/CanAdapter.h"
 
 #include "../include/SocketClient.h"
+#include "../include/DataLogger.h"
 
 #include <string.h>
 #include <thread>
@@ -24,6 +25,7 @@ DataTransfer::DataTransfer() : udp_signal_period{1000/udp_freq}
     0x0D, 0xEC, 0x05, 0x08, 0x13, 0x01, 0x00, 0x16, 0x01, 0x02, 0x80, 0x00, 0x14, 0x02, 0x00, 0x02
     );
 	init_msg_char = reinterpret_cast<char*>(init_msg_vec.data());
+
 
 	//add every measurement stream to vector
     measurementsVec.push_back(&m_BPData_mBar);
@@ -170,47 +172,48 @@ void DataTransfer::createPCANSendThread()
 
 void DataTransfer::logData(DataPoint& data)
 {
-	float readData = data.encodedData.value;
-    switch (static_cast<EnumCanID>(data.encodedData.canID))
-    {
-    case EnumCanID::PRESS:
-		{
-        m_BPData_mBar.push_back(readData*canPressConversionFactor);
-		std::ofstream csvFileHWPress("measurementsHWPRess", std::ios_base::app);
-		if (!csvFileHWPress.is_open()) {
-        	std::cerr << "Error opening CSV file" << std::endl;
-        	return;
-    	}
-		csvFileHWPress << readData*canPressConversionFactor << std::endl;
-        break;
-		}
-    case EnumCanID::TEMP:
-		{
-        m_TempData_Celsius.push_back(readData*canTempConversionFactor);
-		std::ofstream csvFileHWTemp("measurementsHWTemp", std::ios_base::app);
-		if (!csvFileHWTemp.is_open()) {
-        	std::cerr << "Error opening CSV file" << std::endl;
-        	return;
-    	}
-		csvFileHWTemp << readData*canPressConversionFactor << std::endl;
-        break;
-		}
+	m_logger->logData("measurements.csv", data);
+	// float readData = data.encodedData.value;
+    // switch (static_cast<EnumCanID>(data.encodedData.canID))
+    // {
+    // case EnumCanID::PRESS:
+	// 	{
+    //     m_BPData_mBar.push_back(readData*canPressConversionFactor);
+	// 	std::ofstream csvFileHWPress("measurementsHWPRess", std::ios_base::app);
+	// 	if (!csvFileHWPress.is_open()) {
+    //     	std::cerr << "Error opening CSV file" << std::endl;
+    //     	return;
+    // 	}
+	// 	csvFileHWPress << readData*canPressConversionFactor << std::endl;
+    //     break;
+	// 	}
+    // case EnumCanID::TEMP:
+	// 	{
+    //     m_TempData_Celsius.push_back(readData*canTempConversionFactor);
+	// 	std::ofstream csvFileHWTemp("measurementsHWTemp", std::ios_base::app);
+	// 	if (!csvFileHWTemp.is_open()) {
+    //     	std::cerr << "Error opening CSV file" << std::endl;
+    //     	return;
+    // 	}
+	// 	csvFileHWTemp << readData*canPressConversionFactor << std::endl;
+    //     break;
+	// 	}
 
-    case EnumCanID::SFM3300:
-		{
-        m_FlowData_mBar.push_back(readData*canPressConversionFactor);
-		std::ofstream csvFileSFM3300("measurementsSFM3300", std::ios_base::app);
-    	if (!csvFileSFM3300.is_open()) {
-        	std::cerr << "Error opening CSV file" << std::endl;
-        	return;
-    	}
-		csvFileSFM3300 << readData*canPressConversionFactor << std::endl;
-		}
+    // case EnumCanID::SFM3300:
+	// 	{
+    //     m_FlowData_mBar.push_back(readData*canPressConversionFactor);
+	// 	std::ofstream csvFileSFM3300("measurementsSFM3300", std::ios_base::app);
+    // 	if (!csvFileSFM3300.is_open()) {
+    //     	std::cerr << "Error opening CSV file" << std::endl;
+    //     	return;
+    // 	}
+	// 	csvFileSFM3300 << readData*canPressConversionFactor << std::endl;
+	// 	}
 
-    default:
-        std::cout <<  "Invalid canID: " << data.encodedData.canID << std::endl;
-        break;
-    }
+    // default:
+    //     std::cout <<  "Invalid canID: " << data.encodedData.canID << std::endl;
+    //     break;
+    // }
 }
 
 
@@ -219,7 +222,10 @@ void DataTransfer::pcanSendData()
 	while(1)
 	{
 		DataPoint data = m_CanAdapter->listen();
+		///@todo runtime pro iteration speicher vs. zyklisches Speichern alle 1000 Werte ggF
 		logData(data);
+
+		
 
 		////////////////////////////////////////////////////////////
 		//// SERVER SENDS
@@ -232,6 +238,7 @@ void DataTransfer::pcanSendData()
 		}
 		auto dataSize = sizeof(data.encodedData);
 		char buffer[dataSize];
+		///@todo ggf buffer eizeln generieren
 		memcpy(buffer, &data.encodedData, dataSize);
 
 		LPWSABUF lpwsabuf = new WSABUF();

@@ -179,11 +179,20 @@ static int BinaryCodedDecimalToInteger(int value)
             else return 0;
         }
 
-static std::unique_ptr<char[]> ReadBytesFromBuffer(const char* array, size_t startIndex, size_t numBytes) {
-    std::unique_ptr<char[]> output(new char[numBytes]);
+/// @brief Reads a certain amount numBytes of Bytes from a given input array inputArray.
+/// @param inputArray ByteArray to read from.
+/// @param startIndex Start read at byte startIndex.
+/// @param numBytes Amount of bytes to read.
+/// @return Returns the read byte.
+
+///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+///@todo handle memory (!new operator!)
+///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+static std::unique_ptr<char[]> ReadBytesFromBuffer(const char* inputArray, size_t startIndex, size_t numBytes) {
+    std::unique_ptr<char[]> output(new char[numBytes]); /// todo
 
     for (size_t i = 0; i < numBytes; ++i) {
-        output[i] = array[startIndex + i];
+        output[i] = inputArray[startIndex + i];
     }
 
     return output;
